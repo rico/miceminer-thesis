@@ -26,7 +26,7 @@ The \textit{Modules} read out the configuration and make it available for the im
 \subsection{Importing}
 \label{subsec:importing}
 
-The \lstinline|logimport.pl| script writes the data to the \lstinline|data| table as described in section \ref{para:data_table} on page \pageref{para:data_table}.
+The \lstinline|logimport.pl| extracts the spatial position data from the data files and writes it to the \lstinline|data| table \footnote{The \lstinline|data| table structure is descriped section \ref{para:data_table} on page \pageref{para:data_table}.}.
 
 Prior to the data extraction, the  script creates a backup of the actual database\footnote{The configuration for the backup is explained in appendix \ref{app:configperl} on page \pageref{app:configperl}.}. Subsequently the data is extracted from the data files and written to the database. 
 
@@ -35,21 +35,57 @@ As mentioned in section \ref{subsubsec:problems} on page \pageref{subsubsec:prob
 \subsection{Direction Results}
 \label{subsec:dirres}
 
-The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table. A pair matches if,
+The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table, which build a \textit{direction result}. A pair matches if,
 
-\begin{mydesc}
-\item the transponder identification of the two readings is the same,
-\item the time difference in seconds between the two readings is not greater then the value set as the \lstinline|<antennaInterval>| value \footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl}.} in the configuration, 
-\item and the readings originate from the two different antennas attached to the a box.  
-\end{mydesc}
+\begin{mylist}
+\item the transponder identification values of the two readings is the same,
+\item time difference in seconds between the two readings is not greater then the value set as the \lstinline|<antennaInterval>| value \footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl}.} in the configuration, 
+\item and the readings originate from the two different antennas attached to a box.  
+\end{mylist}
 
-If the \lstinline|<antennaInterval>| has been changed, the \lstinline| searchdirreset.pl| needs to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script \footnotemark[14].
+This is exactly the order this script searches for \textit{direction results}. The findings are written to the \lstinline|dir| table\footnote{The \lstinline|dir| table structure described in sction \ref{para:dir_table} on page \pageref{para:dir_table}}. The value for the \lstinline|time| field of the \textit{direction result} is always taken from the antenna reading at the outer antenna.
+
+If the \lstinline|<antennaInterval>| has been changed, the \lstinline| searchdirreset.pl| needs to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script \footnotemark[14]. 
 
 \subsection{Stay Results}
 \label{subsec:stayres}
 
-Aim of the script / step.
-Describing code, rules used to calculate the  stay results.
+The \lstinline|searchres.pl| aims to find matching \textit{direction results} in the \lstinline|dir| table, which build a \textit{stay results}.
+
+A pair matches if,
+
+\begin{mylist}
+\item the transponder identification values of the two \textit{direction results} are the same
+\item the \lstinline|direction| values of the \textit{direction results} are oppositional
+\item and the \textit{direction results} are recorded at the same box.
+\end{mylist}
+
+or,
+
+\begin{mylist}
+\item the transponder identification values of a \textit{direction result} with a \lstinline|direction| value of \lstinline|in| and an unused (=could not be used for a \textit{direction result}) dataset from the \lstinline|data| table recorded at an outer antenna, are the same
+\item and belong to the same box.
+\end{mylist}
+
+In the former case, it is written to the \lstinline|res| table as a \textbf{type 3} result in the latter case a \textbf{type 4} result \footnote{See section \ref{para:res_table} on page \pageref{para:res_table} for details about the \lstinline|res| table.}. 
+
+Additionaly, the script has to handle the temporal overlaps of stay results. Since, the antenna system is not working perfect (see section \ref{subsubsec:problems}), if we let the script search for all possible \textit{stay results}, we get situations as illustrated in figures \ref{fig:result_overlap} and \ref{fig:result_overlap_single}. The antenna system must have missed readings, but we have no clue about the exact moment.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.75\textwidth]{assets/pdf/result_overlaps_schema.pdf}
+  \caption[Multiple result overlap illustration]{Illustration of a possible result overlap situation, where one \textit{stay result} overlaps many others.}
+  \label{fig:result_overlap}
+\end{center}
+\end{figure}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.75\textwidth]{assets/pdf/result_overlaps_single_schema.pdf}
+  \caption[Single result overlap illustration]{Illustration of a possible result overlap situation, where a \textit{stay result} overlaps another.}
+  \label{fig:result_overlap_single}
+\end{center}
+\end{figure}
 
 A mouse is termed \textit{nervous}, when she has been read at the inner antenna of the box but not at the outer antenna. The mouse is out of the box only when she is read at the outer antenna of the box.
 

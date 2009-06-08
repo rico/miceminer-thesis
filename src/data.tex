@@ -171,7 +171,7 @@ During the \textit{population checks}, the whole shed, including all artificial 
 
 All the data is stored in a MySQL\footnote{\href{http://www.mysql.com/}{MySQL database}} database, which is  a \acf{RDBMS} (RDMS). The following figure (fig. \ref{fig:database_schema}) shows all the tables including the data types\footnote{An overview of the MySQL data types can be found on the following webpage: \url{http://dev.mysql.com/doc/refman/5.0/en/data-types.html}} of the columns and their relations to columns in other tables. 
 
-A schema of the database including all the tables and the references between the table columns can be found in the Appendix on page \pageref{fig:database_schema_app}.
+A schema of the database including all the tables and the references between the table columns can be found in the Appendix on page \pageref{fig:database_schema}.
 
 
 The tables can be divided into different groups by looking at the type of data they hold. The following sections explain these groups and the associated tables in short.
@@ -293,7 +293,7 @@ Shown next is a row of the \lstinline|res| table followed by short explanation o
 	\item \lstinline|id|, \lstinline|rfid| and \lstinline|box| were already explained for the previous tables, and have the same function in this table.
 	\item \lstinline|box_in| and \lstinline|box_out| denote the beginning and the end time of the sojourn of the \lstinline|rfid| in a \lstinline|box|.
 	 \item \lstinline|inid| and \lstinline|outid| can be used to backtrace the datasets in the \lstinline|dir| or \lstinline|data| table making up the \textit{stay result}. This is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
-	 \item \lstinline|i| is either \lstinline|3| or \lstinline|4| and indicate the type of the result. This distinction is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
+	 \item \lstinline|i| is either \lstinline|3| or \lstinline|4| and indicates the type of the result. This distinction is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
 	 \item \lstinline|meetings| is set to \lstinline|true| when the result set has been analyzed for meetings.
 	 \item \lstinline|nerv_index| gives an idea about how \textit{nervous} the mouse was when she stayed in the box. The \textit{nervousity} is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}. 
 \end{mydesc}
