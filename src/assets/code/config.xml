@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	XML configuration file for the miceminer application. 
+	
+	Please be careful on what you change, or even better, make a backup copy of this file prior to
+	the changes. 
+	
+	Feel free to correct or clarify my english information and help texts in the  <info><![CDATA[ ]]></info> blocks,
+	which are shown in a pop-up when the user clicks on the blue question mark button in a component.
+	These texts are wrapped in html markup. There is a special style class called 'attention' available to render text 
+	bold and red.
+	
+	If you want to change something else then help texts, labels or widths, you need some understanding on 
+	how the application works.
+	
+	rleuthold@access.ch // 2009
+
+-->
+<config>
+	
+<!-- specify the domain. Needed for flex security reasons -->
+<domain>http://zool-miceminer.uzh.ch</domain>
+
+<!-- db section -->
+<db>
+	<dbname>[database name]</dbname>
+	<dbuser>[database user name]</dbuser>
+	<dbpass>[database user password]</dbpass>		
+	<dbsocket>[database socket]</dbsocket>				
+	<tables>
+		<table id="data">data</table>
+		<table id="direction_results">dir</table>
+		<table id="results">res</table>
+		<table id="meetings">meetings</table>												
+		<table id="rfids">rfid</table>
+		<table id="boxes">box</table>		
+		<table id="antennas">ant</table>				
+		<table id="antenna_count">ant_count</table>						
+		<table id="rfid_count">rfid_count</table>								
+		<table id="box_count">box_count</table>										
+		<table id="logfiles">logs</table>													
+	</tables>
+</db>
+
+<!-- some directiories -->
+<directories>
+	<!-- the directory with the data to import or the uploaded files -->
+	<data>/var/www/mouse/data/</data>
+	<!-- the directory where the application puts some information about the imports order by day -->
+	<imported>/var/www/mouse/data/imported/</imported>
+	<!-- the directory the imported logs are moved to -->
+	<importedlogs>/var/www/mouse/data/imported/imported_logs/</importedlogs>
+	<!-- directory where the export files are written to -->
+	<downloaddir>/var/www/mouse/data/downloads/</downloaddir>		
+	<!-- url for the directory which contains the files to  download, must correspondend with the downloaddir value -->
+	<downloadurl>http://zool-miceminer.uzh.ch/data/downloads/</downloadurl>				
+</directories>
+
+<perl>
+	<!-- the folder with the perl import skripts -->
+	<scriptsFolder>/var/www/mouse/perl/import/</scriptsFolder>
+	<!-- The mysql user which has SELECT and LOCK TABLES privileges on the database specified
+		in <dbname> and needs NO password -->		
+	<dbBackupUser>mice_backup</dbBackupUser>
+	<!-- the location to save the backup -->
+	<dbBackupDirectory>/var/www/mouse/dbbackups/</dbBackupDirectory>
+	<!-- the maximal time in seconds that can elapse between the two antennas at a box 
+		to build a valid direction result -->
+	<antennaInterval>5</antennaInterval>
+</perl>
+
+<flex>
+
+<!-- remote object declarations - Please do not change !
+	!only one source and destination node is allowed! -->
+<remoting>
+	<ro id="getDBData">
+		<source>miceMiner.Mice</source>
+		<destination>amfphp-uzh</destination>
+	</ro>
+</remoting>
+<!-- the maximum duration of a stay result in hours -->
+<maxStay>9</maxStay>
+<!-- 
+   Choose which components to create when the application is loaded by setting the onStart attribute to 'true' or 'false'.
+   The name attribute values correspond to the button labels in the top menu of the application. 
+   Do not change the name attribute values!
+--> 
+<components>
+	<component name="Browse Data" onStart="true">
+		<info><![CDATA[
+			<p>This component is used to browse and filter the data.</p>
+			<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#browse_data_sc" target="_blank">different screencasts</a> for the Browse Data component.</p>
+		]]></info>				
+	</component>
+	<component name="Data Overview" onStart="false">
+		<info><![CDATA[
+			<p>This components lists the mice, boxes and antennas with their attributes.</p>
+			<p>The difference between the <b>Browse Data</b> component and this component, is that the counts show the values for the whole period of data in the database and not over a specific date range.</p>
+			<p>The filter possibilities are basically the same as in the <b>Browse Data</b> component.</p>
+			<p>Getting data for a mouse, a box or an antenna is not possible in this component.</p>
+		]]></info>
+	</component>
+	<component name="Data Analysis" onStart="false"/>
+	<component name="Graph Data" onStart="false">
+		<info><![CDATA[
+		<p>Graph Data help coming soon ...</p>
+		]]></info>
+	</component>
+	<component name="Upload Files" onStart="false"/>
+</components>
+<!-- helper mehods, no need to change something here -->
+<helpers>
+	<dateRange method="dbDateRange">
+		<min_field>box_in</min_field>
+		<max_field>box_out</max_field>				
+	</dateRange>
+	<deleteFile method="deleteFile" />
+	<exportToExcel method="exportToExcel" />
+	<exportToDbase method="exportToDbase" />
+</helpers>
+<analysises>
+	<analysis id="home_range" label="Home range" method="getRfidData" comp="HomeRange">
+	<info><![CDATA[
+		<p>Get home range information for an rfid within a certain date range.</p>
+		<p><ul>
+		<li>Choose an <b>rfid</b> from the drop down menu. You can as well write part of the rfid into the the combo box text field to search for an rfid.</li>
+		<li>Select the <b>date range</b> by using the text fields or the calendar interface. To open the calendar interface  click on the button with the calendar icon.</li>
+		<li>If you wish to export the data to a <b>dBase</b> file, click on the button labeled <b>Export Data as dBase File</b>.</li>
+		<li>To get an idea of the <b>home range area</b>, click on the button labeled <b>Calculate Minimum Convex Polygon (MCP)</b>.
+		This will calculate the area spanned by the boxes used by the selected rfid. You can set the <b>limit</b> of the <i>MCP</i> as well by choosing a percentage value from the respective combo box.</li>
+		</ul></p>
+		<p>If you click on an entry in the list, you get <b>detailed information about the box usage</b>. click the entry again to hide the panel holding the detail information.</p>
+		<p><b><i>Note:</i></b> The <i>MCP</i> limit has no influence on the <b>dBase</b> export.</p>
+		<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#data_analysis_sc" target="_blank">screencast</a> for this component.</p>
+	]]></info>
+		<grid id="box_rfid_month" initsort="rfid" filename="home_range" isBranch="false">
+			<col field="rfid" label="rfid" width="80" sort="alphanum"/>
+			<col field="data_count" label="data count" width="40" sort="numeric"/>													
+			<col field="sex" label="sex" width="40" sort="alphanum"/>													
+			<col field="boxes_count" label="number of boxes" width="80" sort="numeric"/>							
+			<col field="boxes_string" label="boxes" width="80" sort="alphanum"/>							
+			<col field="area" label="territory [cm&#178;]" width="80" sort="numeric" />
+			<col field="from" label="from" width="150" sort="date" />
+			<col field="to" label="to" width="150" sort="date" />
+			<col field="limit" label="MCP limit in % (absolut)" width="150" sort="alphanum" />
+		</grid>
+	</analysis>
+	<analysis id="shared_preferences" label="Shared preference" comp="FemaleFrequency">
+		<info><![CDATA[
+					<p>Get observed and expected times (in % of seconds per week) two females spent in a box together on a weekly basis.</p>
+					<p>The percent values are always the absolute time values represented as the percentage of a week in seconds (60*60*24*7 = 604800).</p>
+					<p>The sum of the time for each rfid is retrieved from the <b>stay results</b> and can be find in the <b>female one</b> and <b>female two</b> columns. Out of these sum the percentage is calculate: <b>([sum] * 100) / 604800</b>.</p>
+					<p>The values for the <b>observed</b> columns are retrieved from the <b>meetings data</b>, and the percentage value is calculated exactly the same as the percentage values before.</p>
+					<p>The <b>expected percentage</b> is calculated as follow: <b>( ([female one %] / 100) * ([female two %] / 100) ) * 100</b>.</p>
+
+					<p><ul>
+					<li>Choose <b>Female one</b> and <b>Female two</b>, either by typing a part of the rfid in the box and choosing the desired rfid, or by pasting the whole rfid from your clipboard into the field.</li>
+					<li>Choose if you want search over all the boxes choose <b>all</b> from the <b<Box(es)</b> drop down menu, else pick a specific box.</li>
+					<li>Choose <b>Year</b> and <b>Week</b>, either by choosing the values from the drop down menus or by clicking the button with the calendar button and choosing the date from the calendar interface (a period can be selected with click on the start day and a click on the end day while holding this SHIFT key).</li>
+					<li>Hit the <b>Get Data</b> button.</li>
+					</ul></p>
+					<p>If some data is found, it will be displayed in the table.</p>
+				]]></info>
+		<grid id="shared_preferences" filename="shared_preferences" initsort="from_date" isBranch="false">							
+			<col field="f_one" label="female one" width="80" sort="alphanum"/>							
+			<col field="f_one_t" label="female one (sec)" width="80" sort="numeric"/>							
+			<col field="f_one_t_per" label="female one (%)" width="80" sort="numeric"/>							
+			<col field="f_two" label="female two" width="100" sort="alphanum" />
+			<col field="f_two_t" label="female two (sec)" width="100" sort="numeric" />						
+			<col field="f_two_t_per" label="female two (in %)" width="100" sort="numeric" />
+			<col field="obs" label="observed (sec)" width="80" sort="numeric" />
+			<col field="obs_per" label="observed (%)" width="80" sort="numeric" />
+			<col field="exp" label="expected (%)" width="80" sort="numeric" />						
+			<col field="box" label="box" width="80" sort="numeric" />						
+			<col field="from_date" label="from" width="80" sort="date" />
+			<col field="to_date" label="to" width="80" sort="date" />
+		</grid>
+	</analysis>
+	<analysis id="monthly_boxes_rfid" label="Monthly box" method="monthlyRfidBox" comp="MonthlyBoxesRfid">
+		<info><![CDATA[
+				<p>Get a list with the rfids and the boxes the mice visited within the given month, year and period of time of day.</p>
+				<p><ul>
+				<li>Choose a <b>Year</b> and a <b>Month</b> from the respective drop down menu.</li>
+				<li>You can limit the results to a given period of time of day by choosing <b>From</b> and <b>To</b> values from the drop down menus.</li>
+				<li>Hit the <b>get data</b> button.</li>
+				</ul></p>
+				<p>The data is calculated based on the direction <i>in</i> datasets. So every direction <i>in</i> result increases the data count by one.</p>
+				<p>The <i>boxes</i> column lists all boxes this mouse has been read at least once.</p>
+			]]></info>
+		<grid id="monthly_boxes_rfid"  filename="monthly_boxes_rfid" initsort="rfid" isBranch="false">
+			<col field="rfid" label="rfid" width="80" sort="alphanum"/>
+			<col field="sex" label="sex" width="40" sort="alphanum"/>
+			<col field="implant_date" label="implant date" width="100" sort="date"/>
+			<col field="1" label="box 1" width="45" sort="numeric"/>			
+			<col field="2" label="box 2" width="45" sort="numeric"/>			
+			<col field="3" label="box 3" width="45" sort="numeric"/>			
+			<col field="4" label="box 4" width="45" sort="numeric"/>			
+			<col field="5" label="box 5" width="45" sort="numeric"/>			
+			<col field="6" label="box 6" width="45" sort="numeric"/>			
+			<col field="7" label="box 7" width="45" sort="numeric"/>			
+			<col field="8" label="box 8" width="45" sort="numeric"/>			
+			<col field="9" label="box 9" width="45" sort="numeric"/>			
+			<col field="10" label="box 10" width="45" sort="numeric"/>			
+			<col field="11" label="box 11" width="45" sort="numeric"/>			
+			<col field="12" label="box 12" width="45" sort="numeric"/>			
+			<col field="13" label="box 13" width="45" sort="numeric"/>			
+			<col field="14" label="box 14" width="45" sort="numeric"/>			
+			<col field="15" label="box 15" width="45" sort="numeric"/>			
+			<col field="16" label="box 16" width="45" sort="numeric"/>			
+			<col field="17" label="box 17" width="45" sort="numeric"/>			
+			<col field="18" label="box 18" width="45" sort="numeric"/>			
+			<col field="19" label="box 19" width="45" sort="numeric"/>			
+			<col field="20" label="box 20" width="45" sort="numeric"/>			
+			<col field="21" label="box 21" width="45" sort="numeric"/>			
+			<col field="22" label="box 22" width="45" sort="numeric"/>			
+			<col field="23" label="box 23" width="45" sort="numeric"/>			
+			<col field="24" label="box 24" width="45" sort="numeric"/>			
+			<col field="25" label="box 25" width="45" sort="numeric"/>			
+			<col field="26" label="box 26" width="45" sort="numeric"/>			
+			<col field="27" label="box 27" width="45" sort="numeric"/>			
+			<col field="28" label="box 28" width="45" sort="numeric"/>			
+			<col field="29" label="box 29" width="45" sort="numeric"/>			
+			<col field="30" label="box 30" width="45" sort="numeric"/>								
+			<col field="31" label="box 31" width="45" sort="numeric"/>			
+			<col field="32" label="box 32" width="45" sort="numeric"/>			
+			<col field="33" label="box 33" width="45" sort="numeric"/>			
+			<col field="34" label="box 34" width="45" sort="numeric"/>			
+			<col field="35" label="box 35" width="45" sort="numeric"/>			
+			<col field="36" label="box 36" width="45" sort="numeric"/>			
+			<col field="37" label="box 37" width="45" sort="numeric"/>			
+			<col field="38" label="box 38" width="45" sort="numeric"/>			
+			<col field="39" label="box 39" width="45" sort="numeric"/>			
+			<col field="40" label="box 40" width="45" sort="numeric"/>			
+			<col field="data_count" label="data count" width="80" sort="numeric"/>
+			<col field="boxes_string" label="boxes" width="80" sort="alphanum"/>
+			<col field="month" label="month" width="50" sort="alphanum" />
+			<col field="year" label="year" width="50" sort="alphanum" />
+			<col field="from_hour" label="from" width="50" sort="alphanum" />
+			<col field="to_hour" label="to" width="50" sort="alphanum" />
+		</grid>
+	</analysis>
+	<analysis id="monthly_antennas_rfid" label="Monthly antennas" method="monthlyRfidAnt" comp="MonthlyAntennasRfid">
+		<info><![CDATA[
+			<p>Get a list with the rfids and the boxes (antennas) the mice visited within the given month, year and period of time of day.</p>
+			<p><ul>
+			<li>Choose a <b>Year</b> and a <b>Month</b> from the respective drop down menu.</li>
+			<li>You can limit the results to a given period of time of day by choosing <b>From</b> and <b>To</b> values from the drop down menus.</li>
+			<li>Hit the <b>get data</b> button.</li>
+			</ul></p>
+			<p>The data is calculated out of the antenna data. So from every antenna reading, the box is derived and the data count for this box increased by one.</p>
+			<p>The <i>antennas</i> column lists all antennas this mouse has been read at least once.</p>
+		]]></info>
+		<grid id="monthly_antennas_rfid" filename="monthly_antennas_rfid" initsort="rfid" isBranch="false" >
+			<col field="rfid" label="rfid" width="80" sort="alphanum"/>
+			<col field="sex" label="sex" width="40" sort="alphanum"/>
+			<col field="implant_date" label="implant date" width="100" sort="date"/>
+			<col field="antennas_string" label="antennas" width="80" sort="alphanum"/>
+			<col field="data_count" label="data count" width="80" sort="numeric"/>
+			<col field="1" label="box 1" width="45" sort="numeric"/>			
+			<col field="2" label="box 2" width="45" sort="numeric"/>			
+			<col field="3" label="box 3" width="45" sort="numeric"/>			
+			<col field="4" label="box 4" width="45" sort="numeric"/>			
+			<col field="5" label="box 5" width="45" sort="numeric"/>			
+			<col field="6" label="box 6" width="45" sort="numeric"/>			
+			<col field="7" label="box 7" width="45" sort="numeric"/>			
+			<col field="8" label="box 8" width="45" sort="numeric"/>			
+			<col field="9" label="box 9" width="45" sort="numeric"/>			
+			<col field="10" label="box 10" width="45" sort="numeric"/>			
+			<col field="11" label="box 11" width="45" sort="numeric"/>			
+			<col field="12" label="box 12" width="45" sort="numeric"/>			
+			<col field="13" label="box 13" width="45" sort="numeric"/>			
+			<col field="14" label="box 14" width="45" sort="numeric"/>			
+			<col field="15" label="box 15" width="45" sort="numeric"/>			
+			<col field="16" label="box 16" width="45" sort="numeric"/>			
+			<col field="17" label="box 17" width="45" sort="numeric"/>			
+			<col field="18" label="box 18" width="45" sort="numeric"/>			
+			<col field="19" label="box 19" width="45" sort="numeric"/>			
+			<col field="20" label="box 20" width="45" sort="numeric"/>			
+			<col field="21" label="box 21" width="45" sort="numeric"/>			
+			<col field="22" label="box 22" width="45" sort="numeric"/>			
+			<col field="23" label="box 23" width="45" sort="numeric"/>			
+			<col field="24" label="box 24" width="45" sort="numeric"/>			
+			<col field="25" label="box 25" width="45" sort="numeric"/>			
+			<col field="26" label="box 26" width="45" sort="numeric"/>			
+			<col field="27" label="box 27" width="45" sort="numeric"/>			
+			<col field="28" label="box 28" width="45" sort="numeric"/>			
+			<col field="29" label="box 29" width="45" sort="numeric"/>			
+			<col field="30" label="box 30" width="45" sort="numeric"/>								
+			<col field="31" label="box 31" width="45" sort="numeric"/>			
+			<col field="32" label="box 32" width="45" sort="numeric"/>			
+			<col field="33" label="box 33" width="45" sort="numeric"/>			
+			<col field="34" label="box 34" width="45" sort="numeric"/>			
+			<col field="35" label="box 35" width="45" sort="numeric"/>			
+			<col field="36" label="box 36" width="45" sort="numeric"/>			
+			<col field="37" label="box 37" width="45" sort="numeric"/>			
+			<col field="38" label="box 38" width="45" sort="numeric"/>			
+			<col field="39" label="box 39" width="45" sort="numeric"/>			
+			<col field="40" label="box 40" width="45" sort="numeric"/>			
+			<col field="month" label="month" width="50" sort="alphanum" />
+			<col field="year" label="year" width="50" sort="alphanum" />
+			<col field="from_hour" label="from" width="50" sort="alphanum" />
+			<col field="to_hour" label="to" width="50" sort="alphanum" />
+		</grid>
+	</analysis>
+</analysises>
+<fileManagers>
+	<fileManager id="fileUpload" label="Log Files" comp="FileUpload" script="/perl/cgi/uploadlogs.pl">
+		<info><![CDATA[								
+			<p>Upload log files to server.</p>							
+			<p><ul>
+			<li>Click the <b>Add File(s)</b> button to add the files you wish to upload.</li>
+			<li>Hit the <b>Upload File(s)</b> button and wait until all files are uploaded.</li>
+			</ul><p>
+			<p>Read carefully which files have been successfully uploaded (green check mark icon) and which failed (red exclamation mark).</p>
+			<p>The successfully uploaded files will be imported to the database in the following night (import starts around midnight) and should be available the next morning.</p>
+			<p>The filenames need to be in the format <b>yyyymmdd_hhmmss.txt</b>, where yyyy is the year in four digits, mm is the month in two digits, dd is the day of month in two digits, hh is the hour in two digits, mm are the minutes in two digits and ss are the seconds in two digits.</p>
+			<p>This date and time should be the date and time the log was created.</p>
+			<p/>
+			<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#upload_files_sc" target="_blank">Log Files screencast</a> for an audio-visual guide.</p>
+		]]></info>
+		<grid id="listFiles" initsort="name" isBranch="false">							
+			<col field="name" label="File" width="80" sort="alphanum"/>							
+			<col field="size" label="size" width="80" sort="alphanum"/>
+		</grid>
+	</fileManager>
+	
+	<fileManager id="rfidUpdate" label="Update Rfid Attributes" table="rfids" comp="AttributeUpdate" script="/perl/cgi/rfidupdate.pl" deleteMethod="deleteRfid" updateDayCountsScript="/perl/cgi/countday.pl">
+		<info><![CDATA[
+			<p class="attention">Please use with care as this procedure changes data in the database.</p>								
+			<p>This component is used to update the rfid attributes.</p>
+			<p>Choose the file (file extension <i>txt</i>) containing the upddated rfid attribute data by clicking on the <b>Choose File</b> button.
+			<p>The lines in the file must have the following format:</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<b>[rfid](tab)[sex](tab)[weight](tab)[implant date]</b></p>
+			<p>With the field values in this format:</p>
+			<p><ul>
+			<li>[rfid]: 10 characters without dashes, underscore or spaces</li>
+			<li>[sex]: f or F or m or M</li>
+			<li>[weight]: nonegative integer</li>
+			<li>[implant date]: yyyy-mm-dd</li>
+			</ul></p>
+			<p>The easiest way to get this format, is preparing the data in an <i>Excel</i> sheet and then save it in the tab-delimited format ( Save As... -> Format: <b>Tab Delimited Text (.txt)</b> ).</p>
+			<p>Hint: If you want to update only single values, let's say the implant date, your line would look like this:</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;[rfid](tab)(tab)[implant date]</p>
+			<p>In other words, you need to insert two empty columns between the [rfid] and the [implant date]column.</p>
+			<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#upload_files_sc" target="_blank"><b>Update Rfid Attributes, Update Box Attributes</b> screencast</a> for an audio-visual guide.</p>
+		]]></info>
+		<grid id="updatedRfids" initsort="id" isBranch="false" filename="rfids_with_attributes">							
+			<col field="id" label="rfid" width="80" sort="alphanum"/>							
+			<col field="sex" label="sex" width="80" sort="alphanum"/>
+			<col field="weight" label="weight" width="80" sort="numeric"/>
+			<col field="implant_date" label="implant date" width="80" sort="date"/>
+		</grid>
+	</fileManager>
+	
+	
+	<fileManager id="boxUpdate" label="Update Box Attributes" comp="AttributeUpdate" table="boxes" script="/perl/cgi/boxupdate.pl">
+		<info><![CDATA[
+			<p class="attention">Please use with care as this procedure changes data in the database.</p>
+			<p>This component is used to update the box attributes.</p>
+			<p>Choose the file (file extension <i>txt</i>) containing the upddated rfid attribute data by clicking on the <b>Choose File</b> button.
+			<p>The lines in the file must have the following format:</p>
+			<p>The lines in the file must have the following format:</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<b>[box](tab)[xcoord](tab)[ycoord](tab)[segment]</b></p>
+			<p>With the field values in this format:</p>
+			<p><ul>
+			<li>[box]: 1 or 2 characters which must be an existing box number(01, 02, 03, ... 40 or 1,2,3, ... 40)</li>
+			<li>[xcoord]: nonegative integer</li>
+			<li>[ycoord]: nonegative integer</li>
+			<li>[segment]: A or B or C or D (case insensitive)</li></ul></p>
+			<p>The easiest way to get this format, is preparing the data in an <i>Excel</i> sheet and then save it in the tab-delimited format ( Save As... -> Format: <b>Tab Delimited Text (.txt)</b> ).</p>
+			<p>Hint: If you want to update only single values, let's say the segment, your line would look like this:</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;[box](tab)(tab)[segment]</p>
+			<p>In other words, you need to insert two empty columns between the [box] and the [segment]column.</p>
+			<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#upload_files_sc" target="_blank"><b>Update Rfid Attributes, Update Box Attributes</b> screencast</a> for an audio-visual guide.</p>
+		]]></info>
+		<grid id="updatedBoxes" initsort="id" isBranch="false" filename="boxes_with_attributes">							
+			<col field="id" label="box" width="80" sort="alphanum"/>							
+			<col field="xcoord" label="x-coordinate" width="80" sort="numeric"/>
+			<col field="ycoord" label="y-coordinate" width="80" sort="numeric"/>
+			<col field="segment" label="segment" width="80" sort="numeric"/>					
+		</grid>
+	</fileManager>
+</fileManagers>
+
+<!-- graph stuff -->
+<!-- the limit attributes sets the minimum time two mice need to have spent together (in seconds) 
+	during the month to include the edge in the displayed network -->
+<graph>
+	<!-- this grid configuration is only used for the export (not to configure the build like the following ones) 
+		but you can still adjust the column size and the label
+		Please do not add mor grids to this section --> 
+	<graphData limit="3600" method="graphData">
+		<grid id="nodeBasedMeasures" label="node based measures" header="graphData" filename="node_based_measures" initsort="component">
+			<col field="label" label="component" width="100" sort="alphanum"/>
+			<col field="rfid" label="rfid" width="100" sort="alphanum"/>
+			<col field="path_length" label="path length" width="100" sort="numeric" />
+			<col field="clust_coeff" label="clusterinng" width="100" sort="numeric" />
+			<col field="degree" label="degree" width="70" sort="numeric" />
+			<col field="betweenness" label="betweenness" width="100" sort="numeric" />
+		</grid>
+	</graphData>
+	
+	<!-- this grid configuration is only used for the export (not to configure the build like the following ones) 
+		but you can still adjust the column size and the label
+		Please do not add mor grids to this section --> 
+	<edgeData method="getEdgeData">
+		<grid id="edgeData" label="Edge data" header="edgeData" filename="edge_data" initsort="from">
+			<col field="box" label="Box" width="100" sort="alphanum"/>
+			<col field="dt" label="duration (hh:mm:ss)" width="150" sort="alphanum"/>
+			<col field="from" label="from" width="150" sort="alphanum"/>
+			<col field="to" label="to" width="150" sort="alphanum"/>					
+			<col field="typ" label="meeting typ" width="100" sort="numeric"/>					
+		</grid>
+	</edgeData>
+</graph>
+<!-- flex grids -->
+<grids>
+	<!-- 
+		The grids are the ui components which look like tables.
+		You can change the label and width attributes as you like. 
+		
+		The label sets the string for the header part of the column.
+		
+		You will find some further documentation of the other attributes below.
+	
+	-->
+	<itemsGrids>
+		
+		<!--	item grid (grid child of <itemGrids>)
+		
+				id: unique identifier of this grid
+				label: data grid label
+				method: the method in the remote object source (amfphp services file -> Mice.php) 
+				filename: the prefix when exporting the file to excel
+				initsort: points to one of the col field id attribute values and sets this column as the initial sort column
+		-->
+				
+		<grid id="miceItemAll" label="mice" header="mice" method="getMice" filename="mice_list"
+			 initsort="data_count">
+			 
+			 
+			<!--	columns (col) for the grid
+
+					field: the field in the data provider or database 
+					label: column label
+					width: column width in pixel
+					sort: what kind of sort to offer for this column (shown in the header when choosed to filter this column) -
+							alphanum -> textfield
+							numeric ->	slider numeric
+							date -> slider date 
+			-->
+					
+			<col field="id" label="rfid" width="80" sort="alphanum"/>
+			<col field="last" label="last dataset" width="100" sort="date"/>
+			<col field="implant_date" label="implant date" width="60" sort="date"/>
+			<col field="sex" label="sex" width="40" sort="alphanum" />
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="70" sort="numeric" />
+			<col field="res_count" label="stay count" width="70" sort="numeric" />					
+			
+			<!--	chart
+			
+					the chart to show for this grid 
+			-->
+			
+			<chart type="colChart" id="genItemChart" />
+		</grid>
+		
+
+		<grid id="boxItemAll" label="boxes" header="antennas" method="getBoxes" filename="box_list"
+			 initsort="id">
+			 
+			<col field="id" label="box id" width="60" sort="alphanum"/>
+			<col field="last" label="last dataset" width="100" sort="date"/>
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="100" sort="numeric" />
+			<col field="res_count" label="stay count" width="100" sort="numeric" />		
+			<col field="xcoord" label="x-coordinate" width="100" sort="numeric" />							
+			<col field="ycoord" label="y-coordinate" width="100" sort="numeric" />
+			
+			<chart type="colChart" id="genItemChart" />
+			
+		</grid>
+		<grid id="antsItemAll" label="antennas" header="antennas" method="getAntennas" filename="antenna_list" 
+			initsort="id">
+			
+			<col field="id" label="antenna id" width="80" sort="alphanum"/>							
+			<col field="last" label="last dataset" width="100" sort="date" />
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="100" sort="numeric" />
+			<col field="res_count" label="stay count" width="100" sort="numeric" />		
+			
+			<chart type="colChart" id="genItemChart" />
+			
+		</grid>
+	</itemsGrids>
+	<!-- double click enabled grids to get data -->
+	<itemsGridsInDateRange>
+
+		<!--	item grid (grid child of <itemGrids>)
+		
+				id: unique identifier of this grid
+				label: data grid label
+				method: the method in the remote object source source 
+				filename: the prefix when exporting the file to excel
+				initsort: points to one of the col field attributes an sets the column we want to have as initially sorted column
+		-->
+				
+		<grid id="miceItem" label="mice" method="getMice" filename="mice_list" header="mouse"
+			 initsort="data_count">
+			 
+			 
+			<!--	columns (col) for the grid
+
+					field: the field in the data provider or database 
+					label: column label
+					width: column width in pixel
+					sort: what kind of sort to offer for this column (shown in the header when choosed to filter this column) -
+							alphanum -> textfield
+							numeric ->	slider numeric
+							date -> slider date 
+			-->
+					
+			<col field="id" label="rfid" width="80" sort="alphanum"/>
+			<col field="sex" label="sex" width="40" sort="alphanum"/>
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="70" sort="numeric" />
+			<col field="res_count" label="stay count" width="70" sort="numeric" />					
+			
+			<toolTip>Double click to get data for the rfid</toolTip>
+			
+			<!--	chart
+			
+					the chart to show for this grid 
+			-->
+			
+			<chart type="colChart" id="genItemInDateRangeChart" />
+			
+			<!--	dataGrids
+					
+					the data grids which show the data for this item grid.
+					Each id must point to an existing grid with this id which is a child of grids.dataGrids		
+			-->
+					
+			<dataGrids>
+				<id>miceData</id>
+				<id>dirResMice</id>
+				<id>resMice</id>						
+			</dataGrids>
+		</grid>
+		
+
+		<grid id="boxItem" label="boxes" method="getBoxes" filename="box_list" header="box"
+			 initsort="id">
+			 
+			<col field="id" label="box id" width="60" sort="alphanum"/>
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="100" sort="numeric" />
+			<col field="res_count" label="stay count" width="100" sort="numeric" />							
+			
+			<chart type="colChart" id="genItemInDateRangeChart" />
+			<toolTip>Double click to get data for the box</toolTip>
+			
+			<dataGrids>
+				<id>boxData</id>
+				<id>dirResBox</id>
+				<id>resBox</id>						
+			</dataGrids>
+		</grid>
+		<grid id="antsItem" label="antennas" method="getAntennas" filename="antenna_list" header="antenna"
+			initsort="id">
+			
+			<col field="id" label="antenna id" width="80" sort="alphanum"/>							
+			<col field="last" label="last dataset" width="100" sort="date" />
+			<col field="data_count" label="dataset count" width="100" sort="numeric" />
+			<col field="dir_count" label="in/out count" width="100" sort="numeric" />
+			<col field="res_count" label="stay count" width="100" sort="numeric" />		
+			
+			<chart type="colChart" id="genItemInDateRangeChart" />
+			<toolTip>Double click to get data for the antenna</toolTip>
+			
+			<dataGrids >
+				<id>antData</id>
+			</dataGrids>
+		</grid>
+	</itemsGridsInDateRange>
+	
+	<dataGrids>
+		
+		<!--	data grid (grid child of <dataGrids>)
+		
+				id: unique identifier of this grid
+				where: the where clause field (sql)
+				header: the label which is shown in the filter box
+				label: data grid label
+				method: the method in the remote object source source 
+				filename: the prefix when exporting the file to excel
+				initsort: points to one of the col field attributes an sets the column we want to have as initially sorted column
+		-->
+		
+		<grid id ="miceData" where="rfid" header="datasets for mouse" label="datasets" method="getData" 
+			filename="data_for_mouse" initsort="time">
+			
+			<col field="ant" label="antenna" width="60" sort="alphanum" />							
+			<col field="time" label="time" width="150" sort="date" />											
+			
+			<!-- 	sql attribute: can be used to have select as sql statements as field.
+					e.g this line becomes SUBSTRING(ant,1,2) AS box 
+			-->
+					
+			<col field="box" sql="SUBSTRING(ant,1,2)" label="box" width="100" sort="alphanum" />
+			
+			<!--	only one chart of a grid can act as a drillDown chart. If multiple charts
+					are specifid as drillDown="true", the first one will be used
+			-->
+			<chart type="pieChart" id="antToBoxDataChart" drillDown="true"/>					
+			<chart type="pieChart" id="antDataChart" />					
+			
+		</grid>	
+		<grid id="antData" where="ant" header="datasets for antenna" label="datasets" method="getDataRfid"
+			filename="data_for_antenna" initsort="time">
+			
+			<col field="rfid" label="rfid" width="80" sort="alphanum" />							
+			<col field="sex" label="sex" table="rfid" width="40" sort="alphanum" />							
+			<col field="time" label="time" width="150" sort="date" />											
+			
+			<chart type="pieChart" id="antrfidDataChart" drillDown="true" />
+			
+		</grid>			
+		<grid id="boxData" where="ant" header="datasets for box" label="datasets" method="getBoxDataRfid" filename="data_for_box" initsort="time">
+			
+			<col field="rfid" label="rfid" width="80" sort="alphanum" />
+			<col field="sex" label="sex" table="rfid" width="40" sort="alphanum" />							
+			<col field="ant" label="antenna" width="60" sort="alphanum" />					
+			<col field="time" label="time" width="150" sort="date" />							
+			
+			<chart type="pieChart" id="boxDataChart" drillDown="true" />
+								
+		</grid>
+		<grid id="dirResMice" where="rfid" header="in/out results for mouse" label="in/out" name="dir results" method="getDirRes" filename="direction_results_for_mouse" initsort="time">
+			
+			<col field="time" label="time" width="150" sort="date" />
+			<col field="box" label="box" width="60" sort="alphanum" />
+			<col field="dir" label="direction" width="80" sort="alphanum" />
+			
+			<chart type="pieChart" id="mouseDirChart" drillDown="true" />
+			
+		</grid>
+		<grid id="dirResBox" where="box" header="in/out results for box" label="in/out" name="dir results" method="getDirResRfid" filename="direction_results_for_box" initsort="time">
+			
+			<col field="rfid" label="rfid" width="80" sort="alphanum" />
+			<col field="sex" label="sex" table="rfid" width="40" sort="alphanum" />							
+			<col field="time" label="time" width="150" sort="date" />
+			<col field="dir" label="direction" width="80" sort="alphanum" />
+			
+			<chart type="pieChart" id="boxDirChart" drillDown="true" />
+			
+		</grid>
+		<grid id="resMice" where="rfid" header="stay results for mouse" label="stay" method="getRes" filename="results_for_mouse" initsort="box_out">
+			
+			<col field="box" label="box" width="40" sort="alphanum" />
+			<col field="box_in" label="entered" width="150" sort="date" />
+			<col field="box_out" label="left" width="150" sort="date" />
+			<col field="dt" label="duration (hh:mm:ss)" width="120" sort="date" />
+			
+			<chart type="pieChart" id="mouseResChart" drillDown="true" />
+			
+		</grid>
+		<grid id="resBox" where="box" header="stay results for box" label="stay" method="getRes" filename="results_for_box" initsort="box_out">
+			
+			<col field="rfid" label="rfid" width="80" sort="alphanum" />
+			<col field="sex" label="sex" table="rfid" width="40" sort="alphanum" />
+			<col field="box_in" label="entered" width="150" sort="date" />
+			<col field="box_out" label="left" width="150" sort="date" />
+			<col field="dt" label="duration (hh:mm:ss)" width="120" sort="date" />
+			
+			<chart type="pieChart" id="boxResChart" drillDown="true" />		
+		</grid>			
+	</dataGrids>	
+</grids>
+
+<!-- charts -->
+<charts>
+	<!-- column charts -->
+	<!-- generic column chart for item grids -->
+	<!-- column (bar) chart -->
+	<chart type="colChart" id="genItemChart">
+		
+		<!--	
+				the field in the data provider we use as the x-axis 
+				This field must correspond to a column (col) field attribute in the 
+				grid which this chart is set als chart
+					
+		-->
+		<xAxis>
+			<field>id</field>
+		</xAxis>
+		
+		<!--	
+				the fields in the data provider we use as values in the y-axis 
+				Each of these fields must correspond to a column (col) field attribute in the 
+				grid which this chart is set als chart -->
+					
+		-->
+		<yAxis>
+			<field>data_count</field>
+			<field>dir_count</field>
+			<field>res_count</field>					
+			<label>count</label>
+		</yAxis>
+		
+		<!-- 
+				Additional information to show in the data tip of the chart (shown when mousing over).
+			 	field must correspond to a column (col) field attribute in the 
+			 	grid which this chart is set als chart
+		-->
+		
+		<dataTip>
+			<field>last</field>
+		</dataTip>
+		
+		<!--
+				The description for the chart (will be shown below the chart)
+		-->
+		<desc>Grouped count chart for</desc>
+	</chart>
+	
+	<chart type="colChart" id="genItemInDateRangeChart">
+		
+		<xAxis>
+			<field>id</field>
+		</xAxis>
+		
+		<yAxis>
+			<field>data_count</field>
+			<field>dir_count</field>
+			<field>res_count</field>					
+			<label>count</label>
+		</yAxis>
+		
+		
+		<desc>Grouped count chart for</desc>
+	</chart>
+	
+	<!-- pie charts -->
+	<chart type="pieChart" id="antDataChart">
+		<field>ant</field>
+		<desc>Grouped antenna data for rfid</desc>	
+	</chart>
+	<chart type="pieChart" id="antToBoxDataChart">
+		<dataTip>Double click to get other mice seen in this box</dataTip>
+		<field>box</field>
+		<desc>Grouped box data for rfid</desc>
+		
+		<!-- the grid to export the grouped data -->
+		<grid id="antToBoxDataChartGrid" filename="grouped_box_data_for_rfid">
+			<col field="label" label="box" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		
+		<!-- 	drillDown:
+			
+				Drill down chart for this grid. The gridId value must be equal to a grid with this id.
+		-->
+		<drillDown>
+			<gridId>boxData</gridId>
+		</drillDown>
+	</chart>
+	<chart type="pieChart" id="mouseDirChart">
+		<field>box</field>
+		<desc>Grouped box direction results for rfid</desc>
+		<dataTip>Double click to get other mice entered/left this box</dataTip>
+		
+		<grid id="mouseDirChartGrid" filename="grouped_box_direction_results_for_rfid">
+			<col field="label" label="box" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		
+		<drillDown>
+			<gridId>dirResBox</gridId>
+		</drillDown>
+	</chart>
+	<chart type="pieChart" id="mouseResChart">
+		<field>box</field>
+		<desc>Grouped box stay results for rfid</desc>
+		<grid id="mouseResChartGrid" filename="grouped_box_stay_results_for_rfid">
+			<col field="label" label="box" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		<dataTip>Double click to get other mice who stayed in this box</dataTip>
+		<drillDown>
+			<gridId>resBox</gridId>
+		</drillDown>
+	</chart>
+	
+	<chart type="pieChart" id="antrfidDataChart">
+		<field>rfid</field>
+		<desc>Grouped rfid data for antenna</desc>					
+		
+		<!--	addLabel:
+				
+				The field we want to add to the chart legend label. It will bi shown in braces.
+				The field value must correspond to a column (col) field attribute in the 
+			 	grid which this chart is set als chart
+		-->
+		<addLabel>
+			<field>sex</field>
+		</addLabel>
+	</chart>	
+	
+	<!-- box data charts -->
+	<chart type="pieChart" id="boxDataChart">
+		<field>rfid</field>
+		<desc>Grouped rfid data for box</desc>
+		<dataTip>Double click to get boxes this mouse was</dataTip>
+		<grid id="boxDataChartGrid" filename="grouped_rfid_data_for_box">
+			<col field="label" label="rfid" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		<addLabel>
+			<field>sex</field>
+		</addLabel>
+		<drillDown>
+			<gridId>miceData</gridId>
+		</drillDown>
+	</chart>
+	<chart type="pieChart" id="boxDirChart">			
+		<field>rfid</field>
+		<desc>Grouped rfid direction results for box</desc>
+		<dataTip>Double click to get boxes this mouse has entered/left</dataTip>
+		<grid id="boxDirChartGrid" filename="grouped_rfid_direction_results_for_box">
+			<col field="label" label="rfid" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		<addLabel>
+			<field>sex</field>
+		</addLabel>
+		<drillDown>
+			<gridId>dirResMice</gridId>
+		</drillDown>
+	</chart>
+	<chart type="pieChart" id="boxResChart">			
+		<field>rfid</field>
+		<desc>Grouped rfid stay results for box</desc>
+		<grid id="boxResChartGrid" filename="grouped_rfid_stay_results_for_box">
+			<col field="label" label="rfid" width="100" sort="alphanum"/>
+			<col field="count" label="count" width="100" sort="numeric"/>
+		</grid>
+		<dataTip>Double click to get boxes this mouse stayed</dataTip>
+		<addLabel>
+			<field>sex</field>
+		</addLabel>
+		<drillDown>
+			<gridId>resMice</gridId>
+      </drillDown>
+	</chart>
+</charts>
+</flex>
+</config>

@@ -1,0 +1,295 @@
+<tex2html_file>#/Users/rico/Documents/workspace/miceminer_thesis/src/data.tex#
+\newpage
+\section<<372>>Data<<372>>
+\label<<373>>sec:datacollection<<373>>
+\begin<<602>>tex2html_deferred<<602>>\par\end<<603>>tex2html_deferred<<603>>
+When gathering data for behavioural analysis of different species, typically the observer tracks the position of one or several individuals over the time. Additionally data about the pheno- and genotype of the individuals are collected.
+\begin<<604>>tex2html_deferred<<604>>\par\end<<605>>tex2html_deferred<<605>>
+Usually the spatial postion data is collected by one ore a few people. In this project the data is collected by an antenna system (see section \ref<<374>>subsec:collectspatialpos<<374>> on page \pageref<<375>>subsec:collectspatialpos<<375>>). This approach has the advantage, that the data is recorded 24 hours a day, without presence of people needed.
+\begin<<606>>tex2html_deferred<<606>>\par\end<<607>>tex2html_deferred<<607>>
+To collect phenotypical data, so called \textit<<376>>population checks<<376>> are conducted every one to two months. During these tests, the mice get caught for measuring, weighing (see section \ref<<377>>subsec:dataattr<<377>> on page \pageref<<378>>subsec:dataattr<<378>> for details) and - if not already present - a \ac<<379>>RFID<<379>> (RFID) transponder is injected under the skin of the mouse (see figure \ref<<380>>fig:inject_rfid<<380>>).
+\begin<<608>>tex2html_deferred<<608>>\par\end<<609>>tex2html_deferred<<609>>
+\begin<<381>>figure<<381>>[htpb]
+\begin<<382>>center<<382>>
+  \includegraphics[width=0.5\textwidth]<<383>>assets/pdf/transponder_inject.pdf<<383>>
+  \begin<<610>>tex2html_deferred<<610>>\caption[Injecting rfid transponder]<<567>>Injecting an \ac<<384>>RFID<<384>> transponder under the skin of a mouse.<<567>>\end<<611>>tex2html_deferred<<611>>
+  \label<<385>>fig:inject_rfid<<385>>
+\end<<386>>center<<386>>
+\end<<387>>figure<<387>>
+\begin<<612>>tex2html_deferred<<612>>\par\end<<613>>tex2html_deferred<<613>>
+The genetical information is needed to get information about the relatdness between the mice within the population. Genotypical information has no influence on my work.
+\begin<<614>>tex2html_deferred<<614>>\par\end<<615>>tex2html_deferred<<615>>
+\subsection<<388>>Collecting spatial position data<<388>>
+\label<<389>>subsec:collectspatialpos<<389>>
+\begin<<616>>tex2html_deferred<<616>>\par\end<<617>>tex2html_deferred<<617>>
+To collect the spatial position data, a project specific system has been by built by New Behaviour, a company specialized in creating systems to study animal behaviour. 
+\begin<<618>>tex2html_deferred<<618>>\par\end<<619>>tex2html_deferred<<619>>
+The basic idea is to use \acf<<390>>RFID<<390>> tags, to identify the mice at specific locations in the shed. These \ac<<391>>RFID<<391>> tags are about the size of a rice corn and are injected under the skin of the mice (see figure \ref<<392>>fig:inject_rfid<<392>> on page \pageref<<393>>fig:inject_rfid<<393>>). 
+\begin<<620>>tex2html_deferred<<620>>\par\end<<621>>tex2html_deferred<<621>>
+Furthermore, the system includes 40 artificial nestboxes with an entry tube made of \textit<<394>>Plexiglass<<394>>. Two antennas, which can read the RFID tags, are wrapped around the entry tube. A bend in the middle of the entry tube, with an angle of about ??? degrees, is slowing down the mice when they go trough the pipe (see fig. \ref<<395>>fig:artNestbox<<395>> on page \pageref<<396>>fig:artNestbox<<396>>). This is improving the accuracy of the readings at the antennas, as they need a certain time to complete the identification process. 
+\begin<<622>>tex2html_deferred<<622>>\par\end<<623>>tex2html_deferred<<623>>
+\begin<<397>>figure<<397>>[htbp]	
+\begin<<624>>tex2html_deferred<<624>>\centering\end<<625>>tex2html_deferred<<625>>
+\includegraphics[width=\textwidth]<<398>>assets/pdf/box_schema.pdf<<398>>	
+\begin<<626>>tex2html_deferred<<626>>\caption[Model of an artificial nestbox]<<399>>3d-Model of an artificial nestbox with the two antennas wrapped around the entry tube.<<399>>\end<<627>>tex2html_deferred<<627>>
+\label<<400>>fig:artNestbox<<400>>
+\end<<401>>figure<<401>>
+\begin<<628>>tex2html_deferred<<628>>\par\end<<629>>tex2html_deferred<<629>>
+The \ac<<402>>RFID<<402>> tags used are passiv, meaning that they do not include a battery. The antenna acts as a scanner, presenting an inductive field which excites the \ac<<403>>RFID<<403>> tag when entering the coverage area of the antenna. This energy is used by the \ac<<404>>RFID<<404>> tag to send its identification to the antenna. 
+\begin<<630>>tex2html_deferred<<630>>\par\end<<631>>tex2html_deferred<<631>>
+So, whenever a mouse carrying an \ac<<405>>RFID<<405>> tag passes by an antenna, it's identification is recorded and sent to a central computer along with the antenna adress. The computer then writes the received data to a text file. The structure of these data files is explained in detail in the next section.
+\begin<<632>>tex2html_deferred<<632>>\par\end<<633>>tex2html_deferred<<633>>
+\subsubsection<<406>>Data File Format<<406>>
+\label<<407>>subsubsec:datafileformat<<407>>
+The data files are simple text files, where each line denotes an \textit<<408>>event<<408>> registered by an antenna in the system. Every day the data file is closed saved, and a new data file is created automatically by the system. Basically there are to types of events.
+\begin<<634>>tex2html_deferred<<634>>\par\end<<635>>tex2html_deferred<<635>>
+The system output for first type is shown in figure \ref<<409>>fig:dataset<<409>> on page \pageref<<410>>fig:dataset<<410>>. It shows the line of text written to the data file when the \ac<<411>>RFID<<411>> has been identified by an antenna. The \ac<<412>>RFID<<412>> is a unique, ten character wide, alphanumeric value.
+\begin<<636>>tex2html_deferred<<636>>\par\end<<637>>tex2html_deferred<<637>>
+\begin<<413>>figure<<413>>[htbp]	
+\begin<<638>>tex2html_deferred<<638>>\centering\end<<639>>tex2html_deferred<<639>>
+\includegraphics[width=0.8\textwidth]<<414>>assets/pdf/dataset.pdf<<414>>	
+\begin<<640>>tex2html_deferred<<640>>\caption[Dataset with RFID identification]<<568>>Typical dataset in a data file with and \ac<<415>>RFID<<415>> identification<<568>>\end<<641>>tex2html_deferred<<641>>
+\label<<416>>fig:dataset<<416>>
+\end<<417>>figure<<417>>
+\begin<<642>>tex2html_deferred<<642>>\par\end<<643>>tex2html_deferred<<643>>
+If an \ac<<418>>RFID<<418>> enters or leaves the coverage area, the second event type occurs. The ouput is shown in figure \ref<<419>>fig:dataset_no_data<<419>> on page \pageref<<420>>fig:dataset_no_data<<420>>.
+\begin<<644>>tex2html_deferred<<644>>\par\end<<645>>tex2html_deferred<<645>>
+\begin<<421>>figure<<421>>[htbp]	
+\begin<<646>>tex2html_deferred<<646>>\centering\end<<647>>tex2html_deferred<<647>>
+\includegraphics[width=0.8\textwidth]<<422>>assets/pdf/dataset_no_data.pdf<<422>>	
+\begin<<648>>tex2html_deferred<<648>>\caption[Dataset without RFID identification]<<569>>Typical dataset in a data file without an \ac<<423>>RFID<<423>> identification<<569>>\end<<649>>tex2html_deferred<<649>>
+\label<<424>>fig:dataset_no_data<<424>>
+\end<<425>>figure<<425>>
+\begin<<650>>tex2html_deferred<<650>>\par\end<<651>>tex2html_deferred<<651>>
+The following lines show the data written to the data file by the system, when a mouse passes the two antennas attached to a box. The events taking place when each of these lines is written to the data file is explained in the following list. The list numbers match the line numbers of the data file fragment. 
+\begin<<652>>tex2html_deferred<<652>>\par\end<<653>>tex2html_deferred<<653>>
+\numcodestyle
+\begin<<426>>lstlisting<<426>>[frame=none]
+2008-10-01 16:31:08:499;   111;   0; 
+2008-10-01 16:31:09:095;   113;   0; 
+2008-10-01 16:31:42:512;   111;   5;  00 06 B8 D4 5A
+2008-10-01 16:31:42:807;   113;   5;  00 06 B8 D4 5A
+2008-10-01 16:31:43:619;   111;   0; 
+2008-10-01 16:31:44:014;   113;   0;
+\end<<427>>lstlisting<<427>>
+\begin<<654>>tex2html_deferred<<654>>\par\end<<655>>tex2html_deferred<<655>>
+
+	\begin<<570>>enumerate<<570>>
+	  \begin<<656>>tex2html_nowrap<<656>>
+\setlength<<571>>\itemsep<<571>><<572>>1pt<<572>>\end<<657>>tex2html_nowrap<<657>> 
+	  \begin<<658>>tex2html_nowrap<<658>>
+\setlength<<573>>\parskip<<573>><<574>>0pt<<574>>\end<<659>>tex2html_nowrap<<659>> 
+	  \begin<<660>>tex2html_nowrap<<660>>
+\setlength<<575>>\parsep<<575>><<576>>0pt<<576>>\end<<661>>tex2html_nowrap<<661>> 
+\item The \ac<<429>>RFID<<429>> \textbf<<430>>enters coverage area<<430>> of the antenna with address \lstinline|111|.
+  \item The \ac<<431>>RFID<<431>> \textbf<<432>>enters coverage area<<432>> of the antenna with address \lstinline|113|.
+  \item The \ac<<433>>RFID<<433>> is \textbf<<434>>identified<<434>> as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|111|.
+  \item The \ac<<435>>RFID<<435>> is \textbf<<436>>identified<<436>> as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|113|.
+  \item The \ac<<437>>RFID<<437>> \textbf<<438>>leaves coverage area<<438>> of the antenna with address \lstinline|111|.
+  \item The \ac<<439>>RFID<<439>> \textbf<<440>>leaves coverage area<<440>> of the antenna with address \lstinline|113|. 
+	\end<<577>>enumerate<<577>>
+\begin<<662>>tex2html_deferred<<662>>\par\end<<663>>tex2html_deferred<<663>>
+Depending on the event type, the value of the packet size is either a \lstinline|0| for events without an identification value (\ac<<442>>RFID<<442>>), or a \lstinline|5| if the \ac<<443>>RFID<<443>> has been identified. For the data processing (see section \ref<<444>>sec:dataproc<<444>> on page \pageref<<445>>sec:dataproc<<445>>) only the datasets with an \ac<<446>>RFID<<446>> identification are taken into account.
+\begin<<664>>tex2html_deferred<<664>>\par\end<<665>>tex2html_deferred<<665>>
+\subsubsection<<447>>Antenna adressing<<447>>
+\label<<448>>subsubsec:addressing<<448>>
+\begin<<666>>tex2html_deferred<<666>>\par\end<<667>>tex2html_deferred<<667>>
+There are always two antennas attached to an entry tube of a box (see figure \ref<<449>>fig:artNestbox<<449>> on page \pageref<<450>>fig:artNestbox<<450>>). The antenna address is three digits long, composed by the box number they are attached to (first two digits), and their position at the entry tube of the box. Outer antennas have a \lstinline|1| as the last digit of the address, innner antennas a \lstinline|3| (e.g the antennas attached to box 11 are addressed 111 and 113). Needless to say, that box numbers have to be unique.
+\begin<<668>>tex2html_deferred<<668>>\par\end<<669>>tex2html_deferred<<669>>
+Unfortunately there are a few exceptions to that schema, because for a few antennas, the correct addressing failed due to technical problems.
+\begin<<670>>tex2html_deferred<<670>>\par\end<<671>>tex2html_deferred<<671>>
+\subsubsection<<451>>General system design and functionality<<451>>
+\label<<452>>subsubsec:generalsystem<<452>>
+\begin<<672>>tex2html_deferred<<672>>\par\end<<673>>tex2html_deferred<<673>>
+\begin<<453>>itemize<<453>>
+  \item Can-Bus
+  \item cable loop
+  \item rfid identification how
+  \item What happens in the boxes (boards) next to the antennas
+  \item How is can bus working/implemented
+  \item Where are the different cable loops (which antennas connected to a loop)
+  \item General system layout (cabeling, protocols)
+  \item Programmed software
+  \item etc. 
+\end<<454>>itemize<<454>>
+\begin<<674>>tex2html_deferred<<674>>\par\end<<675>>tex2html_deferred<<675>>
+\subsubsection<<455>>Problems<<455>>
+\label<<456>>subsubsec:problems<<456>>
+\begin<<676>>tex2html_deferred<<676>>\par\end<<677>>tex2html_deferred<<677>>
+\begin<<457>>itemize<<457>>
+  \item defect antennas
+  \item defect laptop
+  \item Wrong adressing
+  \item defect boards
+  \item seal, bury so that mice do not gnaw the connections
+\end<<458>>itemize<<458>>
+\begin<<678>>tex2html_deferred<<678>>\par\end<<679>>tex2html_deferred<<679>>
+\subsection<<459>>Collecting Data Attributes<<459>>
+\label<<460>>subsec:dataattr<<460>>
+\begin<<680>>tex2html_deferred<<680>>\par\end<<681>>tex2html_deferred<<681>>
+Every one to two months the whole shed, including all artificial nestboxes, plastic pipes andshelters is checked to screen the mice population. During these so called population and nest checks the data is collected using the following procedure.
+\begin<<682>>tex2html_deferred<<682>>\par\end<<683>>tex2html_deferred<<683>>
+\begin<<461>>enumerate<<461>> 
+	\item Each box is opened and the following observations made:
+	\begin<<462>>itemize<<462>>
+      \item \textbf<<463>>Mice in the box:<<463>> If adult mice are in the box, they get identified by theit RFID tag and are measured and weighed. Furthermore it is checked, if the sex of the mouse has already been determined.  
+      \item \textbf<<464>>Bedding:<<464>> ???
+      \item \textbf<<465>>Open or close Nest:<<465>> ???
+      \item \textbf<<466>>Pups:<<466>> Does the box contain pups, and if yes how many and whats their estimated age.
+      \item \textbf<<467>>Communal nest:<<467>> Check if two or more litters are reared in the box. 
+    \end<<468>>itemize<<468>>
+	\item All the possible shelters, like planks, are checked for mice presence as well.
+\end<<469>>enumerate<<469>>
+\begin<<684>>tex2html_deferred<<684>>\par\end<<685>>tex2html_deferred<<685>>
+\subsection<<470>>Data storage<<470>>
+\label<<471>>subsec:datastorage<<471>>
+\begin<<686>>tex2html_deferred<<686>>\par\end<<687>>tex2html_deferred<<687>>
+All the data is stored in a MySQL database, which is  a \acf<<472>>RDBMS<<472>> (RDMS). The following figure ( fig. \ref<<473>>fig:database_schema<<473>>) shows all the tables including the relations of the columns. 
+\begin<<688>>tex2html_deferred<<688>>\par\end<<689>>tex2html_deferred<<689>>
+\begin<<474>>figure<<474>>[htpb]
+\begin<<475>>center<<475>>
+  \includegraphics[width=\textwidth]<<476>>assets/pdf/micedata_schema.pdf<<476>>
+  \begin<<690>>tex2html_deferred<<690>>\caption[Database schema]<<477>>Database schema including all the tables and the relations between them.<<477>>\end<<691>>tex2html_deferred<<691>>
+  \label<<478>>fig:database_schema<<478>>
+\end<<479>>center<<479>>
+\end<<480>>figure<<480>>
+\begin<<692>>tex2html_deferred<<692>>\par\end<<693>>tex2html_deferred<<693>>
+The tables can be divided into different groups by looking at the type of data they hold. The following sections explain these groups and the associated tables in short.
+\begin<<694>>tex2html_deferred<<694>>\par\end<<695>>tex2html_deferred<<695>>
+\subsubsection<<481>>Processed data<<481>>
+\begin<<696>>tex2html_deferred<<696>>\par\end<<697>>tex2html_deferred<<697>>
+This group comprehends tables with data based on the spatial position data collected by the system in the shed (see section \ref<<482>>subsec:collectspatialpos<<482>> on page \pageref<<483>>subsec:collectspatialpos<<483>> for details).
+\begin<<698>>tex2html_deferred<<698>>\par\end<<699>>tex2html_deferred<<699>>
+The tables belonging to that group are outlined in figure \ref<<484>>fig:processed_data_schema<<484>> on page \pageref<<485>>fig:processed_data_schema<<485>>.
+\begin<<700>>tex2html_deferred<<700>>\par\end<<701>>tex2html_deferred<<701>>
+\begin<<486>>figure<<486>>[htpb]
+\begin<<487>>center<<487>>
+  \includegraphics[width=\textwidth]<<488>>assets/pdf/processed_data_schema.pdf<<488>>
+  \begin<<702>>tex2html_deferred<<702>>\caption[Schema of database tables with processed data]<<489>>Schemata of the data tables with the processed spatial position data.<<489>>\end<<703>>tex2html_deferred<<703>>
+  \label<<490>>fig:processed_data_schema<<490>>
+\end<<491>>center<<491>>
+\end<<492>>figure<<492>>
+\begin<<704>>tex2html_deferred<<704>>\par\end<<705>>tex2html_deferred<<705>>
+\paragraph<<493>>data table<<493>>
+\label<<494>>para:data_table<<494>>
+A \ac<<495>>perl<<495>> script (see section \ref<<496>>subsec:importing<<496>> on page \pageref<<497>>subsec:importing<<497>> for details about the script) imports the data files written by the system in the shed into the \lstinline|data| table. 
+\begin<<706>>tex2html_deferred<<706>>\par\end<<707>>tex2html_deferred<<707>>
+Shown next is a row of the \lstinline|data| table followed by short explanation of the columns.
+\begin<<708>>tex2html_deferred<<708>>\par\end<<709>>tex2html_deferred<<709>>
+\codescript
+\begin<<498>>lstlisting<<498>>[frame=none]
++---------+------------+---------------------+----------+-----+---------------+------+
+| id      | rfid       | time                | millisec | ant | import        | i    |
++---------+------------+---------------------+----------+-----+---------------+------+
+| 8184253 | 0006CD3416 | 2009-03-27 17:07:40 |       71 | 113 | 09-0326170750 |    2 | 
++---------+------------+---------------------+----------+-----+---------------+------+
+\end<<499>>lstlisting<<499>>
+\begin<<710>>tex2html_deferred<<710>>\par\end<<711>>tex2html_deferred<<711>>
+
+	\begin<<578>>description<<578>>
+	  \begin<<712>>tex2html_nowrap<<712>>
+\setlength<<579>>\itemsep<<579>><<580>>1pt<<580>>\end<<713>>tex2html_nowrap<<713>> 
+	  \begin<<714>>tex2html_nowrap<<714>>
+\setlength<<581>>\parskip<<581>><<582>>0pt<<582>>\end<<715>>tex2html_nowrap<<715>> 
+	  \begin<<716>>tex2html_nowrap<<716>>
+\setlength<<583>>\parsep<<583>><<584>>0pt<<584>>\end<<717>>tex2html_nowrap<<717>> 
+\item The \lstinline|id| value is an auto increment integer and therefore a unique identifier of a dataset in this table.
+  \item The \lstinline|rfid| column holds an RFID tag value. This value is a reference to a value in the \lstinline|id| column of the \lstinline|rfid| table (see paragraph \ref<<501>>para:rfid_table<<501>> on page \pageref<<502>>para:rfid_table<<502>>).
+  \item The \lstinline|time| and \lstinline|millsec| columns harbor the time the dataset has been recorded. Unfortunately the \textit<<503>>MySQL<<503>> \lstinline|DATETIME| data type does not include the milliseconds. Hence, these values have to be stored in a seperate column.
+  \item The \lstinline|ant| column denotes the antenna the data was recorded at. This value is a reference to a value in the \lstinline|id| column of the \lstinline|ant| table (see paragraph \ref<<504>>para:ant_table<<504>> on page \pageref<<505>>para:ant_table<<505>>).
+  \item The \lstinline|import| value is a reference to a dataset in the \lstinline|logs| table, simply unveils from which data file this dataset is part of.
+  \item The \lstinline|i| value is an indicator if the dataset could is used in a direction result (see \ref<<506>>para:dir_table<<506>> ) and stay result (see \ref<<507>>para:res_table<<507>>). Table \ref<<508>>tab:i_values<<508>> on page \pageref<<509>>tab:i_values<<509>> gives an overview of the \lstinline|i| values in the different tables. 
+	\end<<585>>description<<585>>
+\begin<<718>>tex2html_deferred<<718>>\par\end<<719>>tex2html_deferred<<719>>
+\paragraph<<511>>dir table<<511>>
+\label<<512>>para:dir_table<<512>>
+Another \ac<<513>>perl<<513>> script searches for matching pairs of datasets in the \lstinline|data| table which form a \textit<<514>>direction result<<514>>.
+\begin<<720>>tex2html_deferred<<720>>\par\end<<721>>tex2html_deferred<<721>>
+When a mouse carrying an RFID tag passes the two antennas attached to an artificial nestbox, within a certain time, it is possible to determine if the mouse went in or out of that box (see section \ref<<515>>subsec:dirres<<515>> on page \pageref<<516>>subsec:dirres<<516>> for details about the script). 
+\begin<<722>>tex2html_deferred<<722>>\par\end<<723>>tex2html_deferred<<723>>
+Shown next is a row of the \lstinline|dir| table followed by short explanation of the columns.
+\begin<<724>>tex2html_deferred<<724>>\par\end<<725>>tex2html_deferred<<725>>
+\codescript
+\begin<<517>>lstlisting<<517>>[frame=none]
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+| id      | rfid       | time                | box | dir | outerdataid | innerdataid | i    |
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+| 2721669 | 0006CD3416 | 2009-03-27 17:07:40 | 11  | in  |     8184252 |     8184253 |    1 | 
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+\end<<518>>lstlisting<<518>>
+\begin<<726>>tex2html_deferred<<726>>\par\end<<727>>tex2html_deferred<<727>>
+
+	\begin<<586>>description<<586>>
+	  \begin<<728>>tex2html_nowrap<<728>>
+\setlength<<587>>\itemsep<<587>><<588>>1pt<<588>>\end<<729>>tex2html_nowrap<<729>> 
+	  \begin<<730>>tex2html_nowrap<<730>>
+\setlength<<589>>\parskip<<589>><<590>>0pt<<590>>\end<<731>>tex2html_nowrap<<731>> 
+	  \begin<<732>>tex2html_nowrap<<732>>
+\setlength<<591>>\parsep<<591>><<592>>0pt<<592>>\end<<733>>tex2html_nowrap<<733>> 
+\item The \lstinline|id| and \lstinline|rfid| columns have the identical function as in the \lstinline|data| table.
+  \item The \lstinline|time| value denotes the moment the the \lstinline|rfid| entered or left the \lstinline|box|.
+  \item The \lstinline|box| value is a reference to a value in the \lstinline|id| column of the \lstinline|box| table (see paragraph \ref<<520>>para:box_table<<520>> on page \pageref<<521>>para:box_table<<521>>).
+  \item The \lstinline|dir| value is either \textit<<522>>in<<522>> or \textit<<523>>out<<523>> and depicts the direction.
+  \item The \lstinline|outerdataid| and \lstinline|innerdataid| values can be used to backtrack the datasets in the \lstinline|data| table making up the \textit<<524>>direction result<<524>>. This is explained in detail in section \ref<<525>>subsec:dirres<<525>> on page \pageref<<526>>subsec:dirres<<526>>.
+  \item The \lstinline|i| value is an indicator if the direction result could is used in a \textit<<527>><<527>> (see \ref<<528>>para:res_table<<528>>). Table \ref<<529>>tab:i_values<<529>> on page \pageref<<530>>tab:i_values<<530>> gives an overview of the \lstinline|i| values in the different tables.
+	\end<<593>>description<<593>>
+\begin<<734>>tex2html_deferred<<734>>\par\end<<735>>tex2html_deferred<<735>>
+\paragraph<<532>>res table<<532>>
+\label<<533>>para:res_table<<533>>
+\begin<<736>>tex2html_deferred<<736>>\par\end<<737>>tex2html_deferred<<737>>
+When two \textit<<534>>direction result<<534>>, one with a \lstinline|dir| value of \lstinline|in| and the other with a \lstinline|dir| value of \lstinline|out|, as well as matching \lstinline|rfid| and \lstinline|box| values are found, they form a so called \textit<<535>>stay result<<535>> (see section \ref<<536>>subsec:stayres<<536>> on page \pageref<<537>>subsec:stayres<<537>> for details).
+\begin<<738>>tex2html_deferred<<738>>\par\end<<739>>tex2html_deferred<<739>>
+Shown next is a row of the \lstinline|res| table followed by short explanation of the columns.
+\begin<<740>>tex2html_deferred<<740>>\par\end<<741>>tex2html_deferred<<741>>
+\codetiny
+\begin<<538>>lstlisting<<538>>[frame=none]
+++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+| id     | rfid       | box | box_in              | box_out             | dt       | inid    | outid   | i    | meetings |
++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+| 593660 | 0006CC7646 | 28  | 2009-03-27 13:48:34 | 2009-03-27 17:05:56 | 03:17:22 | 2872164 | 8184246 |    4 | TRUE     | 
++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+\begin<<742>>tex2html_deferred<<742>>\par\end<<743>>tex2html_deferred<<743>>
+\end<<539>>lstlisting<<539>>
+\begin<<744>>tex2html_deferred<<744>>\par\end<<745>>tex2html_deferred<<745>>
+
+	\begin<<594>>description<<594>>
+	  \begin<<746>>tex2html_nowrap<<746>>
+\setlength<<595>>\itemsep<<595>><<596>>1pt<<596>>\end<<747>>tex2html_nowrap<<747>> 
+	  \begin<<748>>tex2html_nowrap<<748>>
+\setlength<<597>>\parskip<<597>><<598>>0pt<<598>>\end<<749>>tex2html_nowrap<<749>> 
+	  \begin<<750>>tex2html_nowrap<<750>>
+\setlength<<599>>\parsep<<599>><<600>>0pt<<600>>\end<<751>>tex2html_nowrap<<751>> 
+\item The columns \lstinline|id|, \lstinline|rfid| and \lstinline|box| were already explained for the previous tables, and have the same function in this table.
+	\item The \lstinline|box_in| and \lstinline|box_out| values denote the beginning and the end time of the sojourn of the \lstinline|rfid| in a \lstinline|box|.
+	 \item The \lstinline|inid| and \lstinline|outid| values can be used to backtrack the datasets in the \lstinline|dir| or \lstinline|data| table making up the \textit<<541>>stay result<<541>>. This is explained in detail in section \ref<<542>>subsec:stayres<<542>> on page \pageref<<543>>subsec:stayres<<543>>.
+	 \item The \lstinline|i| value is either \lstinline|3| or \lstinline|4| and indicate the type of the result. This distinction is explained in detail in section \ref<<544>>subsec:stayres<<544>> on page \pageref<<545>>subsec:stayres<<545>>.
+	 \item The boolean value \lstinline|meetings| is set to \lstinline|true| when the result set has been analyzed for meetings.
+	\end<<601>>description<<601>>
+\begin<<752>>tex2html_deferred<<752>>\par\end<<753>>tex2html_deferred<<753>>
+\paragraph<<547>>Meetings table<<547>>
+\label<<548>>para:res_table<<548>>
+\begin<<754>>tex2html_deferred<<754>>\par\end<<755>>tex2html_deferred<<755>>
+\subsubsection<<549>>System members data<<549>>
+\begin<<756>>tex2html_deferred<<756>>\par\end<<757>>tex2html_deferred<<757>>
+\paragraph<<550>>rfid table<<550>>
+\label<<551>>para:rfid_table<<551>>
+\label<<552>>para:box_table<<552>>
+\begin<<758>>tex2html_deferred<<758>>\par\end<<759>>tex2html_deferred<<759>>
+\paragraph<<553>>box table<<553>>
+\begin<<760>>tex2html_deferred<<760>>\par\end<<761>>tex2html_deferred<<761>>
+\paragraph<<554>>ant table<<554>>
+\label<<555>>para:ant_table<<555>>
+\begin<<762>>tex2html_deferred<<762>>\par\end<<763>>tex2html_deferred<<763>>
+\subsubsection<<556>>Auxiliary tables<<556>>
+\begin<<764>>tex2html_deferred<<764>>\par\end<<765>>tex2html_deferred<<765>>
+\paragraph<<557>>logs table<<557>>
+\label<<558>>para:logs_table<<558>> 
+\begin<<766>>tex2html_deferred<<766>>\par\end<<767>>tex2html_deferred<<767>>
+The data files are imported to the a RDMS using a script written \ac<<559>>perl<<559>>. 
+\begin<<768>>tex2html_deferred<<768>>\par\end<<769>>tex2html_deferred<<769>>
+\subsection<<560>>Data access<<560>>
+\label<<561>>subsec:dataccess<<561>>
+\begin<<770>>tex2html_deferred<<770>>\par\end<<771>>tex2html_deferred<<771>>
+Most of the mainly used relational databases are using the \ac<<562>>SQL<<562>> (SQL) to manage and retrive the data. However, \ac<<563>>SQL<<563>> is not easy to learn and use, lacks built-in export functionality of the data to file formats such as \textit<<564>>Microsoft Excel\copyright<<564>>, and does not offer any possibility to visualize the data. Therefore a feature rich, but still handy and intuitive, user interface is available , making it easy for the user interested in the data to explore, visualize and export the desired data (see section \ref<<565>>subsec:dataexp<<565>> on page \pageref<<566>>subsec:dataexp<<566>>).
+<tex2html_endfile>#/Users/rico/Documents/workspace/miceminer_thesis/src/data.tex#
+\begin<<772>>tex2html_deferred<<772>>\par\end<<773>>tex2html_deferred<<773>>

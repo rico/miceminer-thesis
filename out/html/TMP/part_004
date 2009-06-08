@@ -1,0 +1,30 @@
+<tex2html_file>#/Users/rico/Documents/workspace/miceminer_thesis/src/shed_setup.tex#
+\newpage
+\section<<324>>Shed setup<<324>>
+\label<<325>>sec:shedsetup<<325>>
+\begin<<354>>tex2html_deferred<<354>>\par\end<<355>>tex2html_deferred<<355>>
+The shed, which is a single room building located in a forest near Effretikon (Switzerland), covers an area of 64m\begin<<352>>tex2html_wrap_inline<<352>>$^2$\end<<353>>tex2html_wrap_inline<<353>>\space (12.8m x 5.75m). Stable plastic walls (height ~ 50cm) divide the area in to four sectors and an entry space. Small transit holes in the dividers ensure access to the different sections (see figure \ref<<326>>fig:shedschema<<326>> on page \pageref<<327>>fig:shedschema<<327>>).
+\begin<<356>>tex2html_deferred<<356>>\par\end<<357>>tex2html_deferred<<357>>
+The entry area provides workspace for the researchers and is used to store tools and material. Furthermore the central computer for the data collection system (see section \ref<<328>>subsec:collectspatialpos<<328>> on page \pageref<<329>>subsec:collectspatialpos<<329>>) as placed in this area.
+\begin<<358>>tex2html_deferred<<358>>\par\end<<359>>tex2html_deferred<<359>>
+The 40 artifical nestboxes (see figure \ref<<330>>fig:artNestbox<<330>> on page \pageref<<331>>fig:artNestbox<<331>> for a schematic model) are distributed in the four sectors (see figure \ref<<332>>fig:shedschema<<332>> on page \pageref<<333>>fig:shedschema<<333>> for the current positioning of the boxes) along with some plastic pipe structures, bricks and smaller plastic walls and shelters where the mice can climb, hide and play (see figure \ref<<334>>fig:shedoverview<<334>> on page \pageref<<335>>fig:shedoverview<<335>>). 
+\begin<<360>>tex2html_deferred<<360>>\par\end<<361>>tex2html_deferred<<361>>
+\begin<<336>>figure<<336>>[htpb]
+\begin<<337>>center<<337>>
+  \includegraphics[width=0.5\textwidth]<<338>>assets/pdf/shed_overview.pdf<<338>>
+  \begin<<362>>tex2html_deferred<<362>>\caption[Interior of the shed]<<339>>Overview of the interior of the shed. Visibel are the artificial nestboxes with the box number on the white cover panel, the grey colored sector dividers and the accessory structures.<<339>>\end<<363>>tex2html_deferred<<363>>
+  \label<<340>>fig:shedoverview<<340>>
+\end<<341>>center<<341>>
+\end<<342>>figure<<342>>
+\begin<<364>>tex2html_deferred<<364>>\par\end<<365>>tex2html_deferred<<365>>
+\begin<<343>>figure<<343>>[htpb]
+\begin<<344>>center<<344>>
+  \includegraphics[width=\textwidth]<<345>>assets/pdf/shed_schema.pdf<<345>>
+  \begin<<366>>tex2html_deferred<<366>>\caption[Schema of the shed]<<346>>Schema of the shed including the box postions and the plastic walls dividing the area in the four sections. <<346>>\end<<367>>tex2html_deferred<<367>>
+  \label<<347>>fig:shedschema<<347>>
+\end<<348>>center<<348>>
+\end<<349>>figure<<349>>
+\begin<<368>>tex2html_deferred<<368>>\par\end<<369>>tex2html_deferred<<369>>
+In addition, there is one dedicated pipe which connects the interior to the outside world, allowing the mice to freely leave or enter the shed. This connection is not included in the data mentioned in section \ref<<350>>sec:dataproc<<350>> on page \pageref<<351>>sec:dataproc<<351>>.
+<tex2html_endfile>#/Users/rico/Documents/workspace/miceminer_thesis/src/shed_setup.tex#
+\begin<<370>>tex2html_deferred<<370>>\par\end<<371>>tex2html_deferred<<371>>

@@ -1,0 +1,983 @@
+% Masterthesis 
+% Rico Leuthold 2.9.2008
+%
+%noTeXShop
+
+%---------------------------------------------------------------------------------------------------------
+% Document setup
+%---------------------------------------------------------------------------------------------------------
+
+
+% paper format and stylesheet
+\documentclass[a4paper,12pt,twoside,headings=small,bibliography=totocnumbered,headsepline]{scrartcl}
+%\usepackage[english,german,brazilian]{babel}
+
+% praphic package
+\usepackage{graphicx}
+
+% Font
+\usepackage{times}
+\usepackage[T1]{fontenc} 
+\usepackage[english]{babel}
+\usepackage{color}
+
+% orientation
+\usepackage{rotating}
+\usepackage{lscape}
+
+% used for citations
+\usepackage[square, numbers, super]{natbib}
+
+% Hyperlinks
+\usepackage{url}
+
+% tables
+
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ctable}
+
+% used for source code
+\usepackage{listings}
+\usepackage{fancyvrb}
+\definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+
+% heading on every page
+\pagestyle{headings}
+
+% Spacing
+\frenchspacing
+
+% ... some mor spacing stuff
+\usepackage{setspace}
+
+
+% border of pdf pics
+\pdfpagebox 4
+
+% Acronyms
+\usepackage[printonlyused,withpage,footnote]{acronym}
+
+%
+% CUSTOM COMMANDS
+%
+
+% make inline listings normal font size
+\makeatletter
+\lst@AddToHook{TextStyle}{\let\lst@basicstyle\ttfamily\small\fontfamily{pcr}\selectfont}
+\makeatother
+
+% Code style with line numbers 
+\newenvironment{numcodestyle}{
+	\lstset{basicstyle=\footnotesize, numbers=left, numberstyle=\tiny, numbersep=3mm, stepnumber=1, backgroundcolor=\color{lightgrey}}
+}
+
+% Code style without line numbers
+\newenvironment{codetiny}{
+	\lstset{basicstyle=\tiny, numbers=none, backgroundcolor=\color{lightgrey}}
+}
+
+\newenvironment{codefoot}{
+	\lstset{basicstyle=\footnotesize, numbers=none, backgroundcolor=\color{lightgrey}}
+}
+
+\newenvironment{codescript}{
+	\lstset{basicstyle=\scriptsize, numbers=none, backgroundcolor=\color{lightgrey}}
+}
+
+% this makes description lists spacing much better.
+\newenvironment{mydesc}{
+	\begin{description}
+	  \setlength{\itemsep}{1pt}
+	  \setlength{\parskip}{0pt}
+	  \setlength{\parsep}{0pt}
+}
+{
+	\end{description}
+}
+
+% this makes list spacing much better.
+\newenvironment{condensed_enum}{
+	\begin{enumerate}
+	  \setlength{\itemsep}{1pt}
+	  \setlength{\parskip}{0pt}
+	  \setlength{\parsep}{0pt}
+}
+{
+	\end{enumerate}
+}
+
+% this makes list spacing much better.
+\newenvironment{condensed_item}{
+	\begin{itemize}
+      \renewcommand{\labelitemi}{$\circ$}
+	  \setlength{\itemsep}{1pt}
+	  \setlength{\parskip}{0pt}
+	  \setlength{\parsep}{0pt}
+}
+{
+	\end{itemize}
+}
+
+% Table column types for bold row 
+\newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+#1\ignorespaces
+}
+
+%===============================
+% Start document
+%===============================
+\begin{document}
+
+% select language
+\selectlanguage{english}
+
+% Title page
+\title{Exploring Social Behavior in Mice}
+\author{Rico Leuthold}
+\date{\today}  %\today is replaced with the current date
+\maketitle
+
+\newpage
+
+% Table of contents
+\tableofcontents
+\listoftables
+% add table of figures to toc
+\listoffigures
+
+% ===============================
+% Introduction
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/introduction.tex
+% ===============================
+% Introduction
+% ===============================
+\newpage
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+In May 2008 the research group around Prof. Barbara K\"onig at the Institute of Zoology of the University of Zurich decided to take their research in the field of Animal Behaviour to the next level. Especially interested in the complex social behaviour of house mice \textit{(Mus domesticus)} (see section \ref{subsec:socialbehaviour} on page \pageref{subsec:socialbehaviour} for details) they had the idea to design an automated system, to collect time and position data of mice living in a shed.
+
+
+\subsection{Motivation}
+\label{subsec:motivation}
+The motivation for such an effort is to obtain a statistically relevant set of data to develop, test and prove scientific thesis about the social behaviour of the house mice. The research interests are outlined in section \ref{sec:biolhousemice} on page \pageref{sec:biolhousemice}. An automated system has the advantage that the data are collected without disturbing the mice in their natural behavior.
+
+My personal motivation comes from the interest in informatics and my study in biology. The project gave me a lot of room to explore and enhance my skills in informatics while working on a biological topic. Additionally I am interested in the \textit{network approach} to analyze complex social behaviour by the use of \textit{Graph theory}\cite{wiki:graph_theory}. This approach is outlined in section \ref{sec:netexp} on page \pageref{sec:netexp}. 
+
+\subsection{Task}
+\label{subsec:task}
+This approach of collecting data is challenging, as it includes several tasks which can be handled only using informatics on a level, that biologists usually can't cope with.
+
+The system collecting the data in the shed has been developed and constructed by \textit{New Behaviour}. For further information about the design and operation of the system please see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos}.     
+
+Thus, the main task for my master thesis was to create an informatics framework which stores the data and make it accessible to the users, which are mainly the researchers involved in the house mice project.
+
+\subsubsection{Storing and Accessing the Data}
+\label{subsubsec:storeaccess}
+The sheer amount of data expected to be collected by the automated system, has to be stored in a secure and stable way. This can be achieved by the use of a \ac{RDBMS} (RDBMS) (see section \ref{subsec:datastorage} on page \pageref{subsec:datastorage}).
+
+To access the data, an easy to handle user interface must be available, which facilitates the data exploration and export (see section \ref{subsec:dataccess} on page \pageref{subsec:dataccess}). 
+
+\subsubsection{Additional Tasks}
+\label{subsubsec:additional}
+Additionally the user should be provided with an interface to administrate attribute data of the mice (see section \ref{subsec:dataattr} on page \pageref{subsec:dataattr}) and to carry out some simple data analysis methods.
+
+Last but not least, some functionality should be present to be able to analyze the data according to the network approach (see section \ref{sec:netexp} on page \pageref{sec:netexp}).%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/introduction.tex
+
+% ===============================
+% Biology of the house mice
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/biology_house_mice.tex
+% ===============================
+% Biology of the house mice
+% ===============================
+\newpage
+\section{Biology of the house mice}
+\label{sec:biolhousemice}
+
+\subsection{Introduction}
+\label{subsec:introduction}
+
+House mice (\textit{Mus domesticus}) live under a multitude of different environmental conditions. Therefore they have to be very flexible in terms of their social, territorial an reproductive behavior \cite{bronson:79, bronson:84, berry:81}. Under natural conditions house mice have a very low expectancy of life (~100 to 150 days). During this short life span, female mice are eager to have as many offspring as possible. Living under optimal food conditions, a female mouse has a litter of 5-7 pups every four weeks \cite{berry:71, pelikan:81}. The juvenile mortality is estimated to be between 50\% and 85\% \cite{berry:71, berry:75, pennycuik:86}. Having heavier pups is an advantage, as they can be weaned much faster, hence it has a positive influence on the future reproduction \cite{fuchs:82}. Litter size of wild house mice increases from the first to the second lactation, and decreases after the fifth lactation \cite{pelikan:81, koenig:87b}. 
+
+\begin{figure}[htbp]	
+\centering	
+\includegraphics[width=0.5\textwidth]{assets/pdf/mus_domesticus.pdf}	
+\caption[House mice]{House mice \textit{(Mus doemsticus)}}
+\label{fig:housemice}
+\end{figure}
+
+\subsection{General social behavior}
+\label{subsec:socialbehaviour}
+House mice typically live in social groups which form a reproduction group. The groups usually include a dominant male, one or several females with their litters and possibly some subordinate males \cite{crowcroft:63, reimer:67, selander:70, mackintosh:81}.
+
+The mating habit is generally polyandric (a female has many male reproduction partners), but observations of monogamic living pairs have been reported \cite{lidicker:76}. Juvenile females are allowed to stay in the territory of their parents to raise their own offspring \cite{petras:67}. There is evidence of stranger females immigrating into social groups as well \cite{anderson:65, reimer:67, selander:70, bronson:79, baker:81}.     
+
+\subsection{Research topics}
+\label{subsec:researchtopics}
+
+The following descriptions of ongoing research topics had direct influence on the software design and the function volume of the miceminer application (see section \ref{subsec:dataexp} on page \pageref{subsec:dataexp}). 
+
+\subsubsection{Communal nursing}
+\label{subsubsec:comnurs}
+
+Over forty years ago, first observation of wild female house mice, belonging to the same reproduction group, which raise their pups in communal nests have been reported \cite{southwick:55}. Ever since, this behavior has been noticed for house mice living under all kind of environmental conditions.\cite{crowcroft:63, sayler:69, gandelman:70, werboff:70, baker:81}.
+
+This is an astonishing behavior, as the energetic cost of lactation is extremely high, hence influences the females future reproduction. To wean a litter of about seven to eight pups, the mother has to produce 100 grams of milk within 22 days, which is equivalent to 1100 \acf{KJ} \cite{koenig:88}. Depending on the size of the litter and the duration of the lactation phase, the length of the interbirth intervals change \cite{fuchs:81, fuchs:82, koenig:87a, koenig:87b}.
+
+Several experiments have been carried out with house mice living under laboratory conditions. Changes in group size and the composition of the group in terms of relatedness of the individuals revealed, that non-offspring nursing is an integral part of the reproductive behavior of female house mice in egalitarian groups. However, the probability for such mutualistic cooperation was highest when a female shared a nest with a familiar sister to form a low-skew society \cite{koenig:06}.
+
+According to Koenig \cite{koenig:06}, the direct benefits of allomaternal care for the pups could be diverse. As there are, improved survival, improved future reproduction, improved growth or immunological benefits.
+
+There are physiological benefits for the mother as well, which lead to an increase of their reproductive output. Of notably interest is the hypothesis named \textit{Metabolic peak load reduction}. Explained in short, a solitary nursing female tends to have a peak of energy consumption during the nursing phase of her litter. Nevertheless, female house mice are limited in their maximal sustainable metabolism \cite{hammond:92}. This limit depends on the age and physique of the individual and is called \textit{metabolic ceiling}. Partial synchronization in reproduction within females of a group, combined with the communal nursing, can balance the energy demand for the individual female, as the burden of nursing the litter is divided. Hence, the energy demand for each female is always on a medium level \cite{koenig:06}. 
+
+However, cause to the artificial setup of the experiments, no conclusion about the communal nursing under natural conditions could be made.
+
+\subsubsection{Home range}
+\label{subsubsec:homerange}
+
+Olivia Dieser \cite{dieser:08} carried out a long-term analysis to investigate the territorial social behavior of the house mice population living in the shed (see section \ref{sec:shedsetup} on page \pageref{sec:shedsetup}). Data used in this work has been retrieved via the miceminer application (see section \ref{subsubsec:monthbox} on page \pageref{subsubsec:monthbox} and section \ref{subsubsec:monthant} on page \pageref{subsubsec:monthant}). Based on the data of 321 individual mice, collected over a period of 15 months, she analyzed the influence of the sex, the season and the time of day, on the usage of the artificial nestboxes. Furthermore, the seasonal influence on the composition of the mouse population has been determined. Refer to section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos} for details about the artificial nestboxes and the system which is collecting the data.
+
+She found out, that during summer, when the mating activity is high, more female than male mice lived in the barn, while in winter the ratio was about one. This result can be explained by the polyandric mating behavior of the house mice. Only dominant male mice get access to a female for reproduction. Hence, subdominant male mice are banished from the shed by the dominant mice. This finding is supported by the fact, that less overlaps of the territories for male mice have been detected in summer than in winter. 
+
+Females, on the other hand, used more boxes during the summer, possibly to increase their chances of mating with many different males.
+
+In general, female mice visited more different artificial nestboxes than male mice. This could be explained by the limit of boxes male mice can defend to mark their territory.%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/biology_house_mice.tex
+
+% ===============================
+% Shed setup
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/shed_setup.tex
+% ===============================
+% Shed setup
+% ===============================
+\newpage
+\section{Shed setup}
+\label{sec:shedsetup}
+
+The shed, which is a single room building located in a forest near Effretikon (Switzerland), covers an area of 64m$^2$ (12.8m x 5.75m). Stable plastic walls (height ~ 50cm) divide the area in to four sectors and an entry space. Small transit holes in the dividers ensure access to the different sections (see figure \ref{fig:shedschema} on page \pageref{fig:shedschema}).
+
+The entry area provides workspace for the researchers and is used to store tools and material. Furthermore the central computer for the data collection system (see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos}) as placed in this area.
+
+The 40 artifical nestboxes (see figure \ref{fig:artNestbox} on page \pageref{fig:artNestbox} for a schematic model) are distributed in the four sectors (see figure \ref{fig:shedschema} on page \pageref{fig:shedschema} for the current positioning of the boxes) along with some plastic pipe structures, bricks and smaller plastic walls and shelters where the mice can climb, hide and play (see figure \ref{fig:shedoverview} on page \pageref{fig:shedoverview}). 
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{assets/pdf/shed_overview.pdf}
+  \caption[Interior of the shed]{Overview of the interior of the shed. Visibel are the artificial nestboxes with the box number on the white cover panel, the grey colored sector dividers and the accessory structures.}
+  \label{fig:shedoverview}
+\end{center}
+\end{figure}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/shed_schema.pdf}
+  \caption[Schema of the shed]{Schema of the shed including the box postions and the plastic walls dividing the area in the four sections. }
+  \label{fig:shedschema}
+\end{center}
+\end{figure}
+
+In addition, there is one dedicated pipe which connects the interior to the outside world, allowing the mice to freely leave or enter the shed. This connection is not included in the data mentioned in section \ref{sec:dataproc} on page \pageref{sec:dataproc}.%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/shed_setup.tex
+
+% ===============================
+% Data collection
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/data.tex
+% ===============================
+% Data collection
+% ===============================
+\newpage
+\section{Data}
+\label{sec:datacollection}
+
+When gathering data for behavioural analysis of different species, typically the observer tracks the position of one or several individuals over the time. Additionally data about the pheno- and genotype of the individuals are collected.
+
+Usually the spatial postion data is collected by one ore a few people. In this project the data is collected by an antenna system (see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos}). This approach has the advantage, that the data is recorded 24 hours a day, without presence of people needed.
+
+To collect phenotypical data, so called \textit{population checks} are conducted every one to two months. During these tests, the mice get caught for measuring, weighing (see section \ref{subsec:dataattr} on page \pageref{subsec:dataattr} for details) and - if not already present - a \ac{RFID} (RFID) transponder is injected under the skin of the mouse (see figure \ref{fig:inject_rfid}).
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{assets/pdf/transponder_inject.pdf}
+  \caption[Injecting rfid transponder]{Injecting an \ac{RFID} transponder under the skin of a mouse.}
+  \label{fig:inject_rfid}
+\end{center}
+\end{figure}
+
+The genetical information is needed to get information about the relatdness between the mice within the population. Genotypical information has no influence on my work.
+
+%----------------------------------------------
+%Position / Time data
+% ----------------------------------------------
+\subsection{Collecting spatial position data}
+\label{subsec:collectspatialpos}
+
+To collect the spatial position data, a project specific system has been by built by New Behaviour, a company specialized in creating systems to study animal behaviour. 
+
+The basic idea is to use \acf{RFID} tags, to identify the mice at specific locations in the shed. These \ac{RFID} tags are about the size of a rice corn and are injected under the skin of the mice (see figure \ref{fig:inject_rfid} on page \pageref{fig:inject_rfid}). 
+
+Furthermore, the system includes 40 artificial nestboxes with an entry tube made of \textit{Plexiglass}. Two antennas, which can read the RFID tags, are wrapped around the entry tube. A bend in the middle of the entry tube, with an angle of about ??? degrees, is slowing down the mice when they go trough the pipe (see fig. \ref{fig:artNestbox} on page \pageref{fig:artNestbox}). This is improving the accuracy of the readings at the antennas, as they need a certain time to complete the identification process. 
+
+\begin{figure}[htbp]	
+\centering	
+\includegraphics[width=\textwidth]{assets/pdf/box_schema.pdf}	
+\caption[Model of an artificial nestbox]{3d-Model of an artificial nestbox with the two antennas wrapped around the entry tube.}
+\label{fig:artNestbox}
+\end{figure}
+
+The \ac{RFID} tags used are passiv, meaning that they do not include a battery. The antenna acts as a scanner, presenting an inductive field which excites the \ac{RFID} tag when entering the coverage area of the antenna. This energy is used by the \ac{RFID} tag to send its identification to the antenna. 
+
+So, whenever a mouse carrying an \ac{RFID} tag passes by an antenna, it's identification is recorded and sent to a central computer along with the antenna adress. The computer then writes the received data to a text file. The structure of these data files is explained in detail in the next section.
+
+\subsubsection{Data File Format}
+\label{subsubsec:datafileformat}
+The data files are simple text files, where each line denotes an \textit{event} registered by an antenna in the system. Every day the data file is closed saved, and a new data file is created automatically by the system. Basically there are to types of events.
+
+The system output for first type is shown in figure \ref{fig:dataset} on page \pageref{fig:dataset}. It shows the line of text written to the data file when the \ac{RFID} has been identified by an antenna. The \ac{RFID} is a unique, ten character wide, alphanumeric value.
+
+\begin{figure}[htbp]	
+\centering	
+\includegraphics[width=0.8\textwidth]{assets/pdf/dataset.pdf}	
+\caption[Dataset with RFID identification]{Typical dataset in a data file with and \ac{RFID} identification}
+\label{fig:dataset}
+\end{figure}
+
+If an \ac{RFID} enters or leaves the coverage area, the second event type occurs. The ouput is shown in figure \ref{fig:dataset_no_data} on page \pageref{fig:dataset_no_data}.
+
+\begin{figure}[htbp]	
+\centering	
+\includegraphics[width=0.8\textwidth]{assets/pdf/dataset_no_data.pdf}	
+\caption[Dataset without RFID identification]{Typical dataset in a data file without an \ac{RFID} identification}
+\label{fig:dataset_no_data}
+\end{figure}
+
+The following lines show the data written to the data file by the system, when a mouse passes the two antennas attached to a box. The events taking place when each of these lines is written to the data file is explained in the following list. The list numbers match the line numbers of the data file fragment. 
+
+\numcodestyle
+\begin{lstlisting}[frame=none]
+2008-10-01 16:31:08:499;   111;   0; 
+2008-10-01 16:31:09:095;   113;   0; 
+2008-10-01 16:31:42:512;   111;   5;  00 06 B8 D4 5A
+2008-10-01 16:31:42:807;   113;   5;  00 06 B8 D4 5A
+2008-10-01 16:31:43:619;   111;   0; 
+2008-10-01 16:31:44:014;   113;   0;
+\end{lstlisting}
+
+\begin{condensed_enum}
+  \item The \ac{RFID} \textbf{enters coverage area} of the antenna with address \lstinline|111|.
+  \item The \ac{RFID} \textbf{enters coverage area} of the antenna with address \lstinline|113|.
+  \item The \ac{RFID} is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|111|.
+  \item The \ac{RFID} is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|113|.
+  \item The \ac{RFID} \textbf{leaves coverage area} of the antenna with address \lstinline|111|.
+  \item The \ac{RFID} \textbf{leaves coverage area} of the antenna with address \lstinline|113|. 
+\end{condensed_enum}
+ 
+Depending on the event type, the value of the packet size is either a \lstinline|0| for events without an identification value (\ac{RFID}), or a \lstinline|5| if the \ac{RFID} has been identified. For the data processing (see section \ref{sec:dataproc} on page \pageref{sec:dataproc}) only the datasets with an \ac{RFID} identification are taken into account.
+
+\subsubsection{Antenna adressing}
+\label{subsubsec:addressing}
+
+There are always two antennas attached to an entry tube of a box (see figure \ref{fig:artNestbox} on page \pageref{fig:artNestbox}). The antenna address is three digits long, composed by the box number they are attached to (first two digits), and their position at the entry tube of the box. Outer antennas have a \lstinline|1| as the last digit of the address, innner antennas a \lstinline|3| (e.g the antennas attached to box 11 are addressed 111 and 113). Needless to say, that box numbers have to be unique.
+
+Unfortunately there are a few exceptions to that schema, because for a few antennas, the correct addressing failed due to technical problems.
+
+\subsubsection{General system design and functionality}
+\label{subsubsec:generalsystem}
+
+\begin{itemize}
+  \item Can-Bus
+  \item cable loop
+  \item rfid identification how
+  \item What happens in the boxes (boards) next to the antennas
+  \item How is can bus working/implemented
+  \item Where are the different cable loops (which antennas connected to a loop)
+  \item General system layout (cabeling, protocols)
+  \item Programmed software
+  \item etc. 
+\end{itemize}
+
+\subsubsection{Problems}
+\label{subsubsec:problems}
+
+\begin{itemize}
+  \item defect antennas
+  \item defect laptop
+  \item Wrong adressing
+  \item defect boards
+  \item seal, bury so that mice do not gnaw the connections
+\end{itemize}
+
+% ----------------------------------------------
+%Data attributes
+% ----------------------------------------------
+\subsection{Collecting Data Attributes}
+\label{subsec:dataattr}
+
+Every one to two months the whole shed, including all artificial nestboxes, plastic pipes andshelters is checked to screen the mice population. During these so called population and nest checks the data is collected using the following procedure.
+
+\begin{enumerate} 
+	\item Each box is opened and the following observations made:
+	\begin{itemize}
+      \item \textbf{Mice in the box:} If adult mice are in the box, they get identified by theit RFID tag and are measured and weighed. Furthermore it is checked, if the sex of the mouse has already been determined.  
+      \item \textbf{Bedding:} ???
+      \item \textbf{Open or close Nest:} ???
+      \item \textbf{Pups:} Does the box contain pups, and if yes how many and whats their estimated age.
+      \item \textbf{Communal nest:} Check if two or more litters are reared in the box. 
+    \end{itemize}
+	\item All the possible shelters, like planks, are checked for mice presence as well.
+\end{enumerate}
+
+% ----------------------------------------------
+%storing Data
+% ----------------------------------------------
+\subsection{Data storage}
+\label{subsec:datastorage}
+
+All the data is stored in a MySQL database, which is  a \acf{RDBMS} (RDMS). The following figure ( fig. \ref{fig:database_schema}) shows all the tables including the relations of the columns. 
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/micedata_schema.pdf}
+  \caption[Database schema]{Database schema including all the tables and the relations between them.}
+  \label{fig:database_schema}
+\end{center}
+\end{figure}
+
+The tables can be divided into different groups by looking at the type of data they hold. The following sections explain these groups and the associated tables in short.
+
+\subsubsection{Processed data}
+
+This group comprehends tables with data based on the spatial position data collected by the system in the shed (see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos} for details).
+
+The tables belonging to that group are outlined in figure \ref{fig:processed_data_schema} on page \pageref{fig:processed_data_schema}.
+ 
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/processed_data_schema.pdf}
+  \caption[Schema of database tables with processed data]{Schemata of the data tables with the processed spatial position data.}
+  \label{fig:processed_data_schema}
+\end{center}
+\end{figure}
+
+\paragraph{data table}
+\label{para:data_table}
+A \ac{perl} script (see section \ref{subsec:importing} on page \pageref{subsec:importing} for details about the script) imports the data files written by the system in the shed into the \lstinline|data| table. 
+
+Shown next is a row of the \lstinline|data| table followed by short explanation of the columns.
+
+\codescript
+\begin{lstlisting}[frame=none]
++---------+------------+---------------------+----------+-----+---------------+------+
+| id      | rfid       | time                | millisec | ant | import        | i    |
++---------+------------+---------------------+----------+-----+---------------+------+
+| 8184253 | 0006CD3416 | 2009-03-27 17:07:40 |       71 | 113 | 09-0326170750 |    2 | 
++---------+------------+---------------------+----------+-----+---------------+------+
+\end{lstlisting}
+
+\begin{mydesc}
+  \item The \lstinline|id| value is an auto increment integer and therefore a unique identifier of a dataset in this table.
+  \item The \lstinline|rfid| column holds an RFID tag value. This value is a reference to a value in the \lstinline|id| column of the \lstinline|rfid| table (see paragraph \ref{para:rfid_table} on page \pageref{para:rfid_table}).
+  \item The \lstinline|time| and \lstinline|millsec| columns harbor the time the dataset has been recorded. Unfortunately the \textit{MySQL} \lstinline|DATETIME| data type does not include the milliseconds. Hence, these values have to be stored in a seperate column.
+  \item The \lstinline|ant| column denotes the antenna the data was recorded at. This value is a reference to a value in the \lstinline|id| column of the \lstinline|ant| table (see paragraph \ref{para:ant_table} on page \pageref{para:ant_table}).
+  \item The \lstinline|import| value is a reference to a dataset in the \lstinline|logs| table, simply unveils from which data file this dataset is part of.
+  \item The \lstinline|i| value is an indicator if the dataset could is used in a direction result (see \ref{para:dir_table} ) and stay result (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} gives an overview of the \lstinline|i| values in the different tables. 
+\end{mydesc}
+
+\paragraph{dir table}
+\label{para:dir_table}
+Another \ac{perl} script searches for matching pairs of datasets in the \lstinline|data| table which form a \textit{direction result}.
+
+When a mouse carrying an RFID tag passes the two antennas attached to an artificial nestbox, within a certain time, it is possible to determine if the mouse went in or out of that box (see section \ref{subsec:dirres} on page \pageref{subsec:dirres} for details about the script). 
+
+Shown next is a row of the \lstinline|dir| table followed by short explanation of the columns.
+
+\codescript
+\begin{lstlisting}[frame=none]
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+| id      | rfid       | time                | box | dir | outerdataid | innerdataid | i    |
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+| 2721669 | 0006CD3416 | 2009-03-27 17:07:40 | 11  | in  |     8184252 |     8184253 |    1 | 
++---------+------------+---------------------+-----+-----+-------------+-------------+------+
+\end{lstlisting}
+
+\begin{mydesc}
+  \item The \lstinline|id| and \lstinline|rfid| columns have the identical function as in the \lstinline|data| table.
+  \item The \lstinline|time| value denotes the moment the the \lstinline|rfid| entered or left the \lstinline|box|.
+  \item The \lstinline|box| value is a reference to a value in the \lstinline|id| column of the \lstinline|box| table (see paragraph \ref{para:box_table} on page \pageref{para:box_table}).
+  \item The \lstinline|dir| value is either \textit{in} or \textit{out} and depicts the direction.
+  \item The \lstinline|outerdataid| and \lstinline|innerdataid| values can be used to backtrack the datasets in the \lstinline|data| table making up the \textit{direction result}. This is explained in detail in section \ref{subsec:dirres} on page \pageref{subsec:dirres}.
+  \item The \lstinline|i| value is an indicator if the direction result could is used in a \textit{} (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} gives an overview of the \lstinline|i| values in the different tables.
+\end{mydesc}
+
+\paragraph{res table}
+\label{para:res_table}
+
+When two \textit{direction result}, one with a \lstinline|dir| value of \lstinline|in| and the other with a \lstinline|dir| value of \lstinline|out|, as well as matching \lstinline|rfid| and \lstinline|box| values are found, they form a so called \textit{stay result} (see section \ref{subsec:stayres} on page \pageref{subsec:stayres} for details).
+
+Shown next is a row of the \lstinline|res| table followed by short explanation of the columns.
+
+\codetiny
+\begin{lstlisting}[frame=none]
+++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+| id     | rfid       | box | box_in              | box_out             | dt       | inid    | outid   | i    | meetings |
++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+| 593660 | 0006CC7646 | 28  | 2009-03-27 13:48:34 | 2009-03-27 17:05:56 | 03:17:22 | 2872164 | 8184246 |    4 | TRUE     | 
++--------+------------+-----+---------------------+---------------------+----------+---------+---------+------+----------+
+
+\end{lstlisting}
+
+\begin{mydesc}
+	\item The columns \lstinline|id|, \lstinline|rfid| and \lstinline|box| were already explained for the previous tables, and have the same function in this table.
+	\item The \lstinline|box_in| and \lstinline|box_out| values denote the beginning and the end time of the sojourn of the \lstinline|rfid| in a \lstinline|box|.
+	 \item The \lstinline|inid| and \lstinline|outid| values can be used to backtrack the datasets in the \lstinline|dir| or \lstinline|data| table making up the \textit{stay result}. This is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
+	 \item The \lstinline|i| value is either \lstinline|3| or \lstinline|4| and indicate the type of the result. This distinction is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
+	 \item The boolean value \lstinline|meetings| is set to \lstinline|true| when the result set has been analyzed for meetings.
+\end{mydesc}
+
+\paragraph{Meetings table}
+\label{para:res_table}
+
+
+\subsubsection{System members data}
+
+\paragraph{rfid table}
+\label{para:rfid_table}
+\label{para:box_table}
+
+\paragraph{box table}
+
+\paragraph{ant table}
+\label{para:ant_table}
+
+
+\subsubsection{Auxiliary tables}
+
+\paragraph{logs table}
+\label{para:logs_table} 
+
+The data files are imported to the a RDMS using a script written \ac{perl}. 
+
+\subsection{Data access}
+\label{subsec:dataccess}
+
+Most of the mainly used relational databases are using the \ac{SQL} (SQL) to manage and retrive the data. However, \ac{SQL} is not easy to learn and use, lacks built-in export functionality of the data to file formats such as \textit{Microsoft Excel\copyright}, and does not offer any possibility to visualize the data. Therefore a feature rich, but still handy and intuitive, user interface is available , making it easy for the user interested in the data to explore, visualize and export the desired data (see section \ref{subsec:dataexp} on page \pageref{subsec:dataexp}).%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/data.tex
+
+% ===============================
+% Data processing
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/data_processing.tex
+% ===============================
+% Data processing
+% ===============================
+\newpage
+\section{Data Processing}
+\label{sec:dataproc}
+
+Introducing information technology methods used to process the data.
+
+\begin{itemize} 
+	\item Store data in a reasonable way
+	\item Make data accessible
+	\item Provide an interface for data mining
+	\item Data export functionality
+	\item Simple data visualization	
+	\item Simple analysis functionality
+	\item Social network analysis approach	
+\end{itemize}
+
+\subsection{Importing}
+\label{subsec:importing}
+
+Aim of the script / step.
+
+Describing code, rules used to import the data (optionally pseudo-code).
+
+\subsection{Direction Results}
+\label{subsec:dirres}
+
+Aim of the script / step.
+Describing code, rules used to calculate the  direction results.
+
+\subsection{Stay Results}
+\label{subsec:stayres}
+
+Aim of the script / step.
+Describing code, rules used to calculate the  stay results.
+
+\subsection{Association Results}
+\label{subsec:assocres}
+
+Aim of the script / step.
+Describing code, rules used to calculate the association results.%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/data_processing.tex
+
+% ===============================
+% Data exploration
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/data_exploration.tex
+% ===============================
+% Data exploration
+% ===============================
+\newpage
+\section{Accessing and exploring the Data }
+\label{sec:dataaccessandexp}
+
+%In the field of computer technology the process of scanning a huge pool of data  interesting datais called \textit{data mining}.
+
+Data exploration to scan data for interesting aspects.
+
+\subsection{Introducing miceminer}
+\label{subsec:dataexp}
+
+\begin{itemize} 
+	\item technology
+	\item installation	
+	\item usability
+	\item limitations	
+\end{itemize}
+
+\subsubsection{Data Filtering}
+\label{subsubsec:datafilter}
+
+Shortly explain the filtering possibilities of the program.
+
+\subsubsection{Data Visualization}
+\label{subsubsec:datavis}
+
+Shortly explain the visualization possibilities of the program.
+
+\subsubsection{Exporting Data}
+\label{subsubsec:dataexp}
+
+Shortly explain the export function of the program.
+
+% ----------------------------------------------
+% Data analysis
+% ----------------------------------------------
+\subsection{Data analysis with miceminer}
+\label{subsec:dataana} 
+
+Miceminer provides some simple data analysis functionality.
+
+\subsubsection{Home Range Data}
+\label{subsubsec:homerangedata} 
+
+Functionality of the home range analysis.
+
+Minimal polygon calculation for boxes area.
+Applying threshold which boxes to take into account calculation. 
+
+Exporting dbf files which can be imported into ARCGIS.
+
+\paragraph{Applications}
+Above method is outdated, nowadays Kernel Density Estimation is used -> Anna
+
+\subsubsection{Shared Preferences}
+\label{subsubsec:sharedpref} 
+
+Is there a preference between to female mice.
+Calculate if two females meet more often than expected, which lets us draw conclusions about a their relationship.
+
+\paragraph{Applications}
+Prof. Koenig ?
+
+\subsubsection{Monthly Box}
+\label{subsubsec:monthbox}
+
+A matrix  showing which mice has been seen in which boxes over the selected time range.
+
+\paragraph{Applications}
+Prof. Koenig ?
+
+\subsubsection{Monthly Antennas}
+\label{subsubsec:monthant}
+
+A matrix  showing which mice has been seen at which antennas over the selected time range.
+
+\paragraph{Applications}
+Prof. Koenig ?
+%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/data_exploration.tex
+
+% ===============================
+% Network exploration
+% ===============================
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/network_exploration.tex
+% ===============================
+% Network exploration
+% ===============================
+\newpage
+\section{Exploring Social Network}
+\label{sec:netexp}
+
+% ----------------------------------------------
+% Introduction to social networks
+% ----------------------------------------------
+\subsection{Introduction to Social Networks}
+\label{sec:introsocnet}
+
+Short introduction to network theory. 
+
+\begin{itemize} 
+	\item Graph (weighted/unweighted, directed/undirected)
+	\item Node
+	\item Vertex
+\end{itemize}
+
+% ---------------------------------------------------
+% Advantages of the network approach
+% ---------------------------------------------------
+\subsection{Advantages of the Networks approach}
+\label{sec:advantnetappr}
+
+Understanding the network structure gives us better understanding of the role of the individual in the population.
+
+% ----------------------------------------------
+% Relational Data
+% ----------------------------------------------
+\subsection{Relational Data For the Network}
+\label{subsec:datafilter}
+
+Preparation of the data.
+
+
+\begin{itemize} 
+	\item Period one month
+	\item The monthly association duration sum must be more than one hour (3600 seconds)
+	\item The count of monthly association must be higher than one
+\end{itemize}
+
+% ----------------------------------------------
+% Visual exploration
+% ----------------------------------------------
+\newpage
+\subsection{Visual Exploration}
+\label{subsec:visexp}
+
+\subsubsection{introduction}
+\label{subsubsec:visexpintro}
+
+\begin{itemize} 
+	\item Visual pattern detection
+	\item Network topology
+\end{itemize}
+
+\subsubsection{Visual exploration with miceminer}
+\label{subsec:visexpmiceminer}
+
+\begin{itemize} 
+	\item Weighted Graph (Edge labeling)
+	\item Attribute highlighting
+	\item Filtering Edges	
+	\item Ego network	
+	\item Walking the graph		
+	\item Exporting data for Netdraw			
+\end{itemize}
+
+\subsubsection{Visual exploration with Netdraw}
+\label{subsubsec:visexpnetdraw}
+
+Will see how I use netdraw ...
+
+% ----------------------------------------------
+% Network Analysis
+% ----------------------------------------------
+\newpage
+\subsection{Analysis of the Network Over the Time}
+\label{subsec:netan}
+
+\subsubsection{introduction}
+\label{subsubsec:netanintro}
+
+At each discrete time step (month), the network is quantified by the following measurements, tests.
+
+\subsubsection{Node Based Measures}
+\label{subsubsec:nodbasmea}
+
+\begin{itemize} 
+	\item Network edge density
+	\item Path length
+	\item Clustering coefficient
+	\item Degree	
+	\item Node betweenness
+\end{itemize}
+
+\subsubsection{Statistical Tests for Node Based Measures (p. 88 ff.)}
+\label{subsubsec:stattesnodbasmea}
+
+Null Hypothesis is randomized network data. (Monte Carlo)
+
+\begin{itemize} 
+	\item mean degree
+	\item mean clustering coefficient
+	\item Category measures	(Mann-Whitney test p.110)
+\end{itemize}
+
+\subsubsection{Substructures}
+\label{subsubsec:substrut}
+
+Evidence of segregation by discrete categories (p.117)
+
+\begin{itemize} 
+	\item Association pattern (Individuals are more likely to interact with individuals of similar type) (p .119)
+	\item Degree correlation (Nodes with high degree connect to other nodes with high degree ?) (p.123)
+	\item Community structure (p.124)
+\end{itemize}
+
+\subsubsection{Network Analysis with miceminer}
+\label{subsubsec:netanmiceminer}
+
+Only Node Based measures.
+
+Carry out Simplified Longitudinal Network Analysis with Promising Individuals.
+
+\subsubsection{Network Analysis with UCINET/Netdraw}
+\label{subsubsec:netanucinet}
+
+Need to see what is possible within reasonable time.
+
+% ----------------------------------------------
+% Results
+% ----------------------------------------------
+\subsubsection{Results}
+\label{subsubsec:netanres}
+
+How did the values (e.g. node based measures) evolve or change over the time.
+
+\label{paragraph:simlonnet}
+\paragraph{ Promising Individuals}
+Following individuals over time and see how their node based measures or place within the network change.%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/network_exploration.tex
+
+% ===============================
+% Conclusions
+% ===============================
+\newpage
+\section{Conclusions}
+\label{sec:concl}
+
+... will see.
+
+%---------------------------------------------------------------------------------------------------------
+% Document References
+%---------------------------------------------------------------------------------------------------------
+\newpage
+%\addcontentsline{toc}{section}{References}
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% ===============================
+% Appendix
+% ===============================
+\begin{appendix}
+
+%---------------------------------------------------------------------------------------------------------
+% Code
+%---------------------------------------------------------------------------------------------------------
+%%% TEXEXPAND: INCLUDED FILE MARKER /Users/rico/Documents/workspace/miceminer_thesis/src/code.tex
+%---------------------------------------------------------------------------------------------------------
+% Code
+%---------------------------------------------------------------------------------------------------------
+\newpage
+
+% style for the perlscript code
+\lstset{
+	language=Perl,
+	breaklines=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	basicstyle=\tiny,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=3mm,
+	stepnumber=1,
+	backgroundcolor=\color{lightgrey},
+	identifierstyle=\ttfamily,
+	keywordstyle=\color[rgb]{0.08,0,0.81},
+	commentstyle=\color[rgb]{0.33,0.33,0.33},
+	stringstyle=\color[rgb]{1,0.12,0.58},
+}
+
+\section{Code}
+\label{sec:code}
+
+\subsection{Data processing scripts}
+\label{subsec:dataprocscripts} 
+
+\subsubsection{logimport.pl}
+\label{code:logimport}
+
+Imports a data file into the data table of the database.
+\lstinputlisting{assets/code/logimport.pl}%%% TEXEXPAND: END FILE /Users/rico/Documents/workspace/miceminer_thesis/src/code.tex
+
+%---------------------------------------------------------------------------------------------------------
+% Code
+%---------------------------------------------------------------------------------------------------------
+\newpage
+\section{Tables \& schemata}
+\label{sec:tables_schmemata}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/app_design.pdf}
+  \caption[Application design]{Overview of the application design.}
+  \label{fig:app_design}
+\end{center}
+\end{figure}
+
+
+\begin{sidewaystable}
+\caption{Meaning of the i values in the data tables.}
+\begin{tabularx}{\textheight}{>{\bfseries}+lp{2cm}^X^X^X^X^X}
+\toprule
+\rowstyle{\bfseries}%
+			&	0	&	1	&	2	&	3	&	4\\\hline
+data	    &  Dataset has not analyzed yet.  &  Dataset has been analyzed but no matching dataset to form a direction result could be found.	&	Dataset is part of a direction result (either a value in column \lstinline|innerdataid| or column \lstinline|outerdataid| of a dataset in the \lstinline|dir| table).	&	Dataset is part of a typ 3 result.	&	Dataset is part of a typ 4 result.\\\midrule
+
+dir     	& AveC & Average cost across all genomes in population\\\midrule
+
+res     	& AveF & Average fitness of all genomes\\\midrule
+
+meetings    & MinC & The lowest cost from any genome (ignoring overfill)\\\bottomrule
+\label{tab:i_values}
+\end{tabularx}
+
+\end{sidewaystable}
+
+% Micedata cheatsheet
+\begin{sidewaysfigure}
+  \includegraphics[width=\textwidth]{assets/pdf/micedata_data_processing_cheatsheet.pdf}
+  \caption[Data processing cheatsheet]{Cheatsheet for the data processing steps.}
+  \label{fig:data_processing_cheatsheet}
+\end{sidewaysfigure}
+
+
+
+%---------------------------------------------------------------------------------------------------------
+% Glossary
+%---------------------------------------------------------------------------------------------------------
+\newpage
+
+\section{Glossary}
+\begin{acronym}
+\acro{RDBMS}[Relational Database Management System]{A Relational Database Management System is a \acs{DBMS} in which data is stored in the form of tables and the relationship among the data is also stored in the form of tables. \cite{wiki:rdms}}
+\acro{DBMS}[Database Management System]{A Database Management System is computer software that manages databases. \cite{wiki:dbms}}
+\acro{RFID}[Radio-frequency identification]{Radio-frequency identification (RFID) is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves.\cite{wiki:rfid} }
+\acro{SQL}[Structured Query Language]{The Structured Query Language is a database computer language designed for the retrieval and management of data in relational database management systems.\cite{wiki:sql}}
+\acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one metre. \cite{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
+\acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted, dynamic programming language. \cite{wiki:perl}}
+\end{acronym}
+
+
+
+
+\end{appendix}
+
+%---------------------------------------------------------------------------------------------------------
+% End Document
+%---------------------------------------------------------------------------------------------------------
+\end{document}

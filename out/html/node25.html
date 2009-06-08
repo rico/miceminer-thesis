@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>data table</TITLE>
+<META NAME="description" CONTENT="data table">
+<META NAME="keywords" CONTENT="thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="style/style.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="up" HREF="node24.html">
+<LINK REL="next" HREF="node26.html">
+</HEAD>
+
+<BODY >
+<span class='nav'>&laquo; <A NAME="tex2html484"
+  HREF="node24.html">Processed data</A> </span> | <span class='nav'><a href='node1.html'>Contents</a></span> | <span class='nav'> <A NAME="tex2html494"
+  HREF="node26.html">dir table</A> &raquo;</span>
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00073110000000000000"></A>
+<A NAME="para:data_table"></A>
+<BR>
+data table
+</H4>
+A perl script (see section <A HREF="node37.html#subsec:importing"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node37.html#subsec:importing"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> for details about the script) imports the data files written by the system in the shed into the |data| table. 
+
+<P>
+Shown next is a row of the |data| table followed by short explanation of the columns.
+
+<P>
+
+<BR>
+<IMG
+ WIDTH="988" HEIGHT="148" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="\begin{lstlisting}[frame=none]
++---------+------------+---------------------+---...
+...+---------------------+----------+-----+---------------+------+
+\end{lstlisting}">
+<BR>
+
+<P>
+
+	<DL>
+<DT></DT>
+<DD>The |id| value is an auto increment integer and therefore a unique identifier of a dataset in this table.
+  
+</DD>
+<DT></DT>
+<DD>The |rfid| column holds an RFID tag value. This value is a reference to a value in the |id| column of the |rfid| table (see paragraph <A HREF="node30.html#para:rfid_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node30.html#para:rfid_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>).
+  
+</DD>
+<DT></DT>
+<DD>The |time| and |millsec| columns harbor the time the dataset has been recorded. Unfortunately the <I>MySQL</I> |DATETIME| data type does not include the milliseconds. Hence, these values have to be stored in a seperate column.
+  
+</DD>
+<DT></DT>
+<DD>The |ant| column denotes the antenna the data was recorded at. This value is a reference to a value in the |id| column of the |ant| table (see paragraph <A HREF="node32.html#para:ant_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node32.html#para:ant_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>).
+  
+</DD>
+<DT></DT>
+<DD>The |import| value is a reference to a dataset in the |logs| table, simply unveils from which data file this dataset is part of.
+  
+</DD>
+<DT></DT>
+<DD>The |i| value is an indicator if the dataset could is used in a direction result (see <A HREF="node26.html#para:dir_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> ) and stay result (see <A HREF="node28.html#para:res_table"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>). Table <A HREF="node77.html#tab:i_values"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node77.html#tab:i_values"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> gives an overview of the |i| values in the different tables. 
+	
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html493"
+  HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html489"
+  HREF="node24.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html483"
+  HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html491"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html494"
+  HREF="node26.html">dir table</A>
+<B> Up:</B> <A NAME="tex2html490"
+  HREF="node24.html">Processed data</A>
+<B> Previous:</B> <A NAME="tex2html484"
+  HREF="node24.html">Processed data</A>
+ &nbsp; <B>  <A NAME="tex2html492"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+<a href='mailto:rleuthold@access.ch'>rleuthold@access.ch</a>
+</ADDRESS>
+</BODY>
+</HTML>

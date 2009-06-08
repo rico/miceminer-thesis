@@ -1,0 +1,1275 @@
+Note: Loading /Users/rico/.latex2html-init
+Note: Initialising with file: /Users/rico/.latex2html-init
+This is LaTeX2HTML Version 2008 (1.71)
+by Nikos Drakos, Computer Based Learning Unit, University of Leeds.
+
+Revised and extended by:
+ Marcus Hennecke, Ross Moore, Herb Swan and others
+...producing markup for HTML version 3.2  
+
+
+
+Extension: loading /opt/local/share/lib/latex2html/versions/latin1.pl
+HTML version: loading /opt/local/share/lib/latex2html/versions/html3_2.pl
+
+ *** processing declarations ***
+Starting at 1240558193 seconds
+
+OPENING /Users/rico/Documents/workspace/miceminer_thesis/src/thesis.tex 
+
+Cannot create directory ../out/html/: File exists, reusing it.
+Reusing directory ../out/html/:
+
+Note: Working directory is /Users/rico/Documents/workspace/miceminer_thesis/out/html
+Note: Images will be generated in /tmp/l2h46212
+
+
+
+
+Loading /opt/local/share/lib/latex2html/styles/texdefs.perl...
+Package: loading /opt/local/share/lib/latex2html/styles/babel.perl
+Extension: loading /opt/local/share/lib/latex2html/versions/lang.pl [english]
+Loading /opt/local/share/lib/latex2html/styles/english.perl
+Package: loading /opt/local/share/lib/latex2html/styles/color.perl
+(reading colors from /opt/local/share/lib/latex2html/styles/rgb.txt)
+
+Package: loading /opt/local/share/lib/latex2html/styles/natbib.perl
+Package: loading /opt/local/share/lib/latex2html/styles/babelbst.perl
+Package: loading /opt/local/share/lib/latex2html/styles/graphixx.perl
+Package: loading /opt/local/share/lib/latex2html/styles/graphics-support.perl
+Package: loading /opt/local/share/lib/latex2html/styles/getimagesize.perl
+Reading ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%, *** Could not find argument for command \newenvironment ***
+
+\par 
+\newenvironment <<26>>codetiny<<26>><<87>>
+	\lstset<<74>>basicstyle=\tiny, numbers=none, backgroundcolor=\color<<27>>lightgrey<<27>><<74>>
+<<87>>
+\par 
+\newenvironment <<28>>codefoot<<28>><<88>>
+	\lstset<<75>>basicstyle=\footnotesize, numbers=none, backgroundcolor=\color<<29>>lightgrey<<29>><<75>>
+<<88>>
+\par 
+\newenvironment <<30>>codescript<<30>><<89>>
+	\lstset<<76>>basicstyle=\scriptsize, numbers=none, backgroundcolor=\color<<31>>lightgrey<<31>><<76>>
+<<89>>
+\par 
+\newenvironment <<32>>mydesc<<32>><<77>>
+	\begin<<33>>description<<33>>
+	  \setlength<<34>>\itemsep<<34>><<35>>1pt<<35>>
+	  \setlength<<36>>\parskip<<36>><<37>>0pt<<37>>
+	  \setlength<<38>>\parsep<<38>><<39>>0pt<<39>>
+<<77>>
+<<78>>
+	\end<<40>>description<<40>>
+<<78>>
+\par 
+\newenvironment <<41>>condensed_enum<<41>><<79>>
+	\begin<<42>>enumerate<<42>>
+	  \setlength<<43>>\itemsep<<43>><<44>>1pt<<44>>
+	  \setlength<<45>>\parskip<<45>><<46>>0pt<<46>>
+	  \setlength<<47>>\parsep<<47>><<48>>0pt<<48>>
+<<79>>
+<<80>>
+	\end<<49>>enumerate<<49>>
+<<80>>
+\par 
+\newenvironment <<50>>condensed_item<<50>><<81>>
+	\begin<<51>>itemize<<51>>
+      \renewcommand <<52>>\labelitemi<<52>><<53>>$\circ$<<53>>
+	  \setlength<<54>>\itemsep<<54>><<55>>1pt<<55>>
+	  \setlength<<56>>\parskip<<56>><<57>>0pt<<57>>
+	  \setlength<<58>>\parsep<<58>><<59>>0pt<<59>>
+<<81>>
+<<82>>
+	\end<<60>>itemize<<60>>
+<<82>>
+\par 
+\newcolumntype<<61>>+<<61>><<83>>;SPMgt;<<62>>\global\let\currentrowstyle\relax<<62>><<83>>
+\newcolumntype<<63>>^<<63>><<84>>;SPMgt;<<64>>\currentrowstyle<<64>><<84>>
+\newcommand <<65>>\rowstyle<<65>>[1]<<85>>\gdef \currentrowstyle<<66>>#1<<66>><tex2html_comment_mark>32
+#1\ignorespaces
+<<85>>
+\par 
+\begin<<67>>document<<67>>
+\par 
+\selectlanguage<<68>>english<<68>>
+\par 
+\title<<69>>Exploring Social Behavior in Mice<<69>>
+\author<<70>>Rico Leuthold<<70>>
+\date<<71>>\today<<71>>  <tex2html_comment_mark>38
+\maketitle
+\par 
+\newpage
+\par 
+\tableofcontents
+\listoftables
+\listoffigures
+\par 
+
+, *** Could not find argument for command \newenvironment ***
+
+\par 
+\newenvironment <<28>>codefoot<<28>><<88>>
+	\lstset<<75>>basicstyle=\footnotesize, numbers=none, backgroundcolor=\color<<29>>lightgrey<<29>><<75>>
+<<88>>
+\par 
+\newenvironment <<30>>codescript<<30>><<89>>
+	\lstset<<76>>basicstyle=\scriptsize, numbers=none, backgroundcolor=\color<<31>>lightgrey<<31>><<76>>
+<<89>>
+\par 
+\newenvironment <<32>>mydesc<<32>><<77>>
+	\begin<<33>>description<<33>>
+	  \setlength<<34>>\itemsep<<34>><<35>>1pt<<35>>
+	  \setlength<<36>>\parskip<<36>><<37>>0pt<<37>>
+	  \setlength<<38>>\parsep<<38>><<39>>0pt<<39>>
+<<77>>
+<<78>>
+	\end<<40>>description<<40>>
+<<78>>
+\par 
+\newenvironment <<41>>condensed_enum<<41>><<79>>
+	\begin<<42>>enumerate<<42>>
+	  \setlength<<43>>\itemsep<<43>><<44>>1pt<<44>>
+	  \setlength<<45>>\parskip<<45>><<46>>0pt<<46>>
+	  \setlength<<47>>\parsep<<47>><<48>>0pt<<48>>
+<<79>>
+<<80>>
+	\end<<49>>enumerate<<49>>
+<<80>>
+\par 
+\newenvironment <<50>>condensed_item<<50>><<81>>
+	\begin<<51>>itemize<<51>>
+      \renewcommand <<52>>\labelitemi<<52>><<53>>$\circ$<<53>>
+	  \setlength<<54>>\itemsep<<54>><<55>>1pt<<55>>
+	  \setlength<<56>>\parskip<<56>><<57>>0pt<<57>>
+	  \setlength<<58>>\parsep<<58>><<59>>0pt<<59>>
+<<81>>
+<<82>>
+	\end<<60>>itemize<<60>>
+<<82>>
+\par 
+\newcolumntype<<61>>+<<61>><<83>>;SPMgt;<<62>>\global\let\currentrowstyle\relax<<62>><<83>>
+\newcolumntype<<63>>^<<63>><<84>>;SPMgt;<<64>>\currentrowstyle<<64>><<84>>
+\newcommand <<65>>\rowstyle<<65>>[1]<<85>>\gdef \currentrowstyle<<66>>#1<<66>><tex2html_comment_mark>32
+#1\ignorespaces
+<<85>>
+\par 
+\begin<<67>>document<<67>>
+\par 
+\selectlanguage<<68>>english<<68>>
+\par 
+\title<<69>>Exploring Social Behavior in Mice<<69>>
+\author<<70>>Rico Leuthold<<70>>
+\date<<71>>\today<<71>>  <tex2html_comment_mark>38
+\maketitle
+\par 
+\newpage
+\par 
+\tableofcontents
+\listoftables
+\listoffigures
+\par 
+
+, *** Could not find argument for command \newenvironment ***
+
+\par 
+\newenvironment <<30>>codescript<<30>><<89>>
+	\lstset<<76>>basicstyle=\scriptsize, numbers=none, backgroundcolor=\color<<31>>lightgrey<<31>><<76>>
+<<89>>
+\par 
+\newenvironment <<32>>mydesc<<32>><<77>>
+	\begin<<33>>description<<33>>
+	  \setlength<<34>>\itemsep<<34>><<35>>1pt<<35>>
+	  \setlength<<36>>\parskip<<36>><<37>>0pt<<37>>
+	  \setlength<<38>>\parsep<<38>><<39>>0pt<<39>>
+<<77>>
+<<78>>
+	\end<<40>>description<<40>>
+<<78>>
+\par 
+\newenvironment <<41>>condensed_enum<<41>><<79>>
+	\begin<<42>>enumerate<<42>>
+	  \setlength<<43>>\itemsep<<43>><<44>>1pt<<44>>
+	  \setlength<<45>>\parskip<<45>><<46>>0pt<<46>>
+	  \setlength<<47>>\parsep<<47>><<48>>0pt<<48>>
+<<79>>
+<<80>>
+	\end<<49>>enumerate<<49>>
+<<80>>
+\par 
+\newenvironment <<50>>condensed_item<<50>><<81>>
+	\begin<<51>>itemize<<51>>
+      \renewcommand <<52>>\labelitemi<<52>><<53>>$\circ$<<53>>
+	  \setlength<<54>>\itemsep<<54>><<55>>1pt<<55>>
+	  \setlength<<56>>\parskip<<56>><<57>>0pt<<57>>
+	  \setlength<<58>>\parsep<<58>><<59>>0pt<<59>>
+<<81>>
+<<82>>
+	\end<<60>>itemize<<60>>
+<<82>>
+\par 
+\newcolumntype<<61>>+<<61>><<83>>;SPMgt;<<62>>\global\let\currentrowstyle\relax<<62>><<83>>
+\newcolumntype<<63>>^<<63>><<84>>;SPMgt;<<64>>\currentrowstyle<<64>><<84>>
+\newcommand <<65>>\rowstyle<<65>>[1]<<85>>\gdef \currentrowstyle<<66>>#1<<66>><tex2html_comment_mark>32
+#1\ignorespaces
+<<85>>
+\par 
+\begin<<67>>document<<67>>
+\par 
+\selectlanguage<<68>>english<<68>>
+\par 
+\title<<69>>Exploring Social Behavior in Mice<<69>>
+\author<<70>>Rico Leuthold<<70>>
+\date<<71>>\today<<71>>  <tex2html_comment_mark>38
+\maketitle
+\par 
+\newpage
+\par 
+\tableofcontents
+\listoftables
+\listoffigures
+\par 
+
+, *** Could not find argument for command \newenvironment ***
+
+\par 
+\newenvironment <<32>>mydesc<<32>><<77>>
+	\begin<<33>>description<<33>>
+	  \setlength<<34>>\itemsep<<34>><<35>>1pt<<35>>
+	  \setlength<<36>>\parskip<<36>><<37>>0pt<<37>>
+	  \setlength<<38>>\parsep<<38>><<39>>0pt<<39>>
+<<77>>
+<<78>>
+	\end<<40>>description<<40>>
+<<78>>
+\par 
+\newenvironment <<41>>condensed_enum<<41>><<79>>
+	\begin<<42>>enumerate<<42>>
+	  \setlength<<43>>\itemsep<<43>><<44>>1pt<<44>>
+	  \setlength<<45>>\parskip<<45>><<46>>0pt<<46>>
+	  \setlength<<47>>\parsep<<47>><<48>>0pt<<48>>
+<<79>>
+<<80>>
+	\end<<49>>enumerate<<49>>
+<<80>>
+\par 
+\newenvironment <<50>>condensed_item<<50>><<81>>
+	\begin<<51>>itemize<<51>>
+      \renewcommand <<52>>\labelitemi<<52>><<53>>$\circ$<<53>>
+	  \setlength<<54>>\itemsep<<54>><<55>>1pt<<55>>
+	  \setlength<<56>>\parskip<<56>><<57>>0pt<<57>>
+	  \setlength<<58>>\parsep<<58>><<59>>0pt<<59>>
+<<81>>
+<<82>>
+	\end<<60>>itemize<<60>>
+<<82>>
+\par 
+\newcolumntype<<61>>+<<61>><<83>>;SPMgt;<<62>>\global\let\currentrowstyle\relax<<62>><<83>>
+\newcolumntype<<63>>^<<63>><<84>>;SPMgt;<<64>>\currentrowstyle<<64>><<84>>
+\newcommand <<65>>\rowstyle<<65>>[1]<<85>>\gdef \currentrowstyle<<66>>#1<<66>><tex2html_comment_mark>32
+#1\ignorespaces
+<<85>>
+\par 
+\begin<<67>>document<<67>>
+\par 
+\selectlanguage<<68>>english<<68>>
+\par 
+\title<<69>>Exploring Social Behavior in Mice<<69>>
+\author<<70>>Rico Leuthold<<70>>
+\date<<71>>\today<<71>>  <tex2html_comment_mark>38
+\maketitle
+\par 
+\newpage
+\par 
+\tableofcontents
+\listoftables
+\listoffigures
+\par 
+
+,,,,++
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/introduction.tex 
+%%%%%%
+Processing macros ...++
+@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/biology_house_mice.tex 
+%%%%%%
+Processing macros ...++
+@@@@@@@@@@@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/shed_setup.tex 
+%%%%%%
+Processing macros ...++
+@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/data.tex 
+%%%%%%%%%%%%%%%
+Processing macros ...+,{},{},{},{}
+ 4 new environments replaced
++
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/data_processing.tex 
+%%%%%%
+Processing macros ...++
+@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/data_exploration.tex 
+%%%%%%%%%%
+Processing macros ...++
+@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/network_exploration.tex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Processing macros ...++
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Doing /Users/rico/Documents/workspace/miceminer_thesis/src/code.tex 
+%%%%%%%%%%%%%%%
+Processing macros ...++.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+*** Could not find file: /Users/rico/Documents/workspace/miceminer_thesis/src//thesis.aux ***
+
+Cannot open thesis.aux No such file or directory
+
+*** Could not find file: /Users/rico/Documents/workspace/miceminer_thesis/src//thesis.lof ***
+
+*** Could not find file: /Users/rico/Documents/workspace/miceminer_thesis/src//thesis.lot ***
+
+Translating ...
+0/78:top of thesis:"Master Thesis miceminer" for thesis.html
+
+ *** translating preamble ***
+.......
+
+*** no brace for \newedenvironment , before:
+
+*** using "" as the argument instead; is this correct?  ***
+
+.
+
+*** no brace for \newedenvironment , before:
+
+*** using "" as the argument instead; is this correct?  ***
+
+.
+
+*** no brace for \newedenvironment , before:
+
+*** using "" as the argument instead; is this correct?  ***
+
+.
+
+*** no brace for \newedenvironment , before:
+
+*** using "" as the argument instead; is this correct?  ***
+
+...................................
+ *** preamble done ***
+;.......;....
+
+1/78:tableofcontents:.."Contents" for node1.html
+;;.
+
+2/78:listoftables:.."List of Tables" for node2.html
+;;.
+
+3/78:listoffigures:.."List of Figures" for node3.html
+;..;...
+
+4/78:section:..."Introduction" for node4.html
+;..;....
+
+5/78:subsection:..."Motivation" for node5.html
+;..;.......
+
+6/78:subsection:..."Task" for node6.html
+;...;...
+
+7/78:subsubsection:..."Storing and Accessing the Data" for node7.html
+;..;.....
+
+8/78:subsubsection:..."Additional Tasks" for node8.html
+;..;.....
+
+9/78:section:..."Biology of the house mice" for node9.html
+;.;
+
+10/78:subsection:..."Introduction" for node10.html
+;..,......;........
+
+11/78:subsection:..."General social behavior" for node11.html
+;..;....
+
+12/78:subsection:..."Research topics" for node12.html
+;..;..
+
+13/78:subsubsection:..."Communal nursing" for node13.html
+;.......;...........
+
+14/78:subsubsection:..."Home range" for node14.html
+;.....;..........
+
+15/78:section:..."Shed setup" for node15.html
+;.,...,,....,,.....;..............
+
+16/78:section:..."Data" for node16.html
+;....,,......;.......
+
+17/78:subsection:..."Collecting spatial position data" for node17.html
+;....,.......;...........
+
+18/78:subsubsection:..."Data File Format" for node18.html
+;..,.......,........,.....;....................................
+
+19/78:subsubsection:..."Antenna adressing" for node19.html
+;...;....
+
+20/78:subsubsection:..."General system design and functionality" for node20.html
+;.,.;
+
+21/78:subsubsection:..."Problems" for node21.html
+;.,.;
+
+22/78:subsection:..."Collecting Data Attributes" for node22.html
+;..,,.;.....
+
+23/78:subsection:..."Data storage" for node23.html
+;..,,.....;..
+
+24/78:subsubsection:.."Processed data" for node24.html
+;...,,....;....
+
+25/78:paragraph:..."data table" for node25.html
+;...,....;.............................
+
+26/78:paragraph:..."dir table" for node26.html
+;....,....;.................................
+
+27/78:paragraph:..."res table" for node27.html
+;....,....;.................................
+
+28/78:paragraph:..."Meetings table" for node28.html
+;.;
+
+29/78:subsubsection:.."System members data" for node29.html
+;.;
+
+30/78:paragraph:...."rfid table" for node30.html
+;.;
+
+31/78:paragraph:.."box table" for node31.html
+;.;
+
+32/78:paragraph:..."ant table" for node32.html
+;.;
+
+33/78:subsubsection:.."Auxiliary tables" for node33.html
+;.;
+
+34/78:paragraph:..."logs table" for node34.html
+;..;.
+
+35/78:subsection:..."Data access" for node35.html
+;...;......
+
+36/78:section:..."Data Processing" for node36.html
+;..,.;
+
+37/78:subsection:..."Importing" for node37.html
+;...;
+
+38/78:subsection:..."Direction Results" for node38.html
+;..;
+
+39/78:subsection:..."Stay Results" for node39.html
+;..;
+
+40/78:subsection:..."Association Results" for node40.html
+;..;.
+
+41/78:section:..."Accessing and exploring the Data " for node41.html
+;..;
+
+42/78:subsection:..."Introducing miceminer" for node42.html
+;.,.;
+
+43/78:subsubsection:..."Data Filtering" for node43.html
+;..;
+
+44/78:subsubsection:..."Data Visualization" for node44.html
+;..;
+
+45/78:subsubsection:..."Exporting Data" for node45.html
+;..;
+
+46/78:subsection:..."Data analysis with miceminer" for node46.html
+;..;
+
+47/78:subsubsection:..."Home Range Data" for node47.html
+;....;
+
+48/78:paragraph:.."Applications" for node48.html
+;.;
+
+49/78:subsubsection:..."Shared Preferences" for node49.html
+;..;
+
+50/78:paragraph:.."Applications" for node50.html
+;.;
+
+51/78:subsubsection:..."Monthly Box" for node51.html
+;..;
+
+52/78:paragraph:.."Applications" for node52.html
+;.;
+
+53/78:subsubsection:..."Monthly Antennas" for node53.html
+;..;
+
+54/78:paragraph:.."Applications" for node54.html
+;.;.
+
+55/78:section:..."Exploring Social Network" for node55.html
+;.;
+
+56/78:subsection:..."Introduction to Social Networks" for node56.html
+;..,.;
+
+57/78:subsection:..."Advantages of the Networks approach" for node57.html
+;..;
+
+58/78:subsection:..."Relational Data For the Network" for node58.html
+;..,.;.
+
+59/78:subsection:..."Visual Exploration" for node59.html
+;.;
+
+60/78:subsubsection:..."introduction" for node60.html
+;.,.;
+
+61/78:subsubsection:..."Visual exploration with miceminer" for node61.html
+;.,.;
+
+62/78:subsubsection:..."Visual exploration with Netdraw" for node62.html
+;..;.
+
+63/78:subsection:..."Analysis of the Network Over the Time" for node63.html
+;.;
+
+64/78:subsubsection:..."introduction" for node64.html
+;..;
+
+65/78:subsubsection:..."Node Based Measures" for node65.html
+;.,.;
+
+66/78:subsubsection:..."Statistical Tests for Node Based Measures (p. 88 ff.)" for node66.html
+;..,.;
+
+67/78:subsubsection:..."Substructures" for node67.html
+;..,.;
+
+68/78:subsubsection:..."Network Analysis with miceminer" for node68.html
+;...;
+
+69/78:subsubsection:..."Network Analysis with UCINET/Netdraw" for node69.html
+;..;
+
+70/78:subsubsection:..."Results" for node70.html
+;..;.
+
+71/78:paragraph:.."Promising Individuals" for node71.html
+;.;.
+
+72/78:section:..."Conclusions" for node72.html
+;..;..
+
+73/78:bibliography:..
+*** Could not find file: /Users/rico/Documents/workspace/miceminer_thesis/src//thesis.bbl ***
+
+Cannot open thesis.bbl No such file or directory
+
+"Bibliography" for node73.html
+;.
+Cannot find \end{appendix 940}
+..........;..
+
+74/78:section:..."Code" for node74.html
+;.;
+
+75/78:subsection:..."Data processing scripts" for node75.html
+;.;
+
+76/78:subsubsection:..."logimport.pl" for node76.html
+;..;..
+
+77/78:section:...."Tables \& schemata" for node77.html
+;.,,.......;.
+
+78/78:section:.."Glossary" for node78.html
+;..;.
+
+Writing image file ...
+
+/opt/local/bin/latex ./images.tex
+This is pdfTeX, Version 3.141592-1.40.3 (Web2C 7.5.6)
+entering extended mode
+(./images.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+
+(/opt/local/share/texmf-dist/tex/latex/koma-script/scrartcl.cls
+Document Class: scrartcl 2006/07/30 v2.95b KOMA-Script document class (article)
+
+(/opt/local/share/texmf-dist/tex/latex/koma-script/scrkbase.sty
+(/opt/local/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package scrlfile, 2006/03/28 v2.95 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+) (/opt/local/share/texmf-dist/tex/latex/graphics/keyval.sty))
+(/opt/local/share/texmf-dist/tex/latex/base/size12.clo)
+(/opt/local/share/texmf-dist/tex/latex/koma-script/typearea.sty
+Package typearea, 2006/07/30 v2.95b KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-2002
+
+)) (/opt/local/share/texmf-dist/tex/latex/base/ifthen.sty)
+(/opt/local/share/texmf-dist/tex/latex/psnfss/times.sty)
+(/opt/local/share/texmf-dist/tex/latex/base/fontenc.sty
+(/opt/local/share/texmf-dist/tex/latex/base/t1enc.def))
+(/opt/local/share/texmf-dist/tex/generic/babel/babel.sty
+(/opt/local/share/texmf-dist/tex/generic/babel/english.ldf
+(/opt/local/share/texmf-dist/tex/generic/babel/babel.def)))
+(/opt/local/share/texmf-dist/tex/latex/graphics/color.sty
+(/opt/local/share/texmf/tex/latex/config/color.cfg)
+(/opt/local/share/texmf-dist/tex/latex/graphics/dvips.def)
+(/opt/local/share/texmf-dist/tex/latex/graphics/dvipsnam.def))
+(/opt/local/share/texmf-dist/tex/latex/rotating/rotating.sty
+(/opt/local/share/texmf-dist/tex/latex/graphics/graphicx.sty
+(/opt/local/share/texmf-dist/tex/latex/graphics/graphics.sty
+(/opt/local/share/texmf-dist/tex/latex/graphics/trig.sty)
+(/opt/local/share/texmf/tex/latex/config/graphics.cfg))))
+(/opt/local/share/texmf-dist/tex/latex/graphics/lscape.sty)
+(/opt/local/share/texmf-dist/tex/latex/natbib/natbib.sty)
+(/opt/local/share/texmf-local/tex/latex/html/url.sty)
+(/opt/local/share/texmf-dist/tex/latex/tools/tabularx.sty
+(/opt/local/share/texmf-dist/tex/latex/tools/array.sty))
+(/opt/local/share/texmf-dist/tex/latex/ctable/ctable.sty
+(/opt/local/share/texmf-dist/tex/latex/tools/xspace.sty)
+(/opt/local/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/opt/local/share/texmf-dist/tex/latex/xkeyval/xkeyval.tex))
+(/opt/local/share/texmf-dist/tex/latex/booktabs/booktabs.sty))
+(/opt/local/share/texmf-dist/tex/latex/listings/listings.sty
+(/opt/local/share/texmf-dist/tex/latex/listings/lstpatch.sty)
+(/opt/local/share/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/opt/local/share/texmf-dist/tex/latex/listings/listings.cfg))
+(/opt/local/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
+No file fancyvrb.cfg.
+) (/opt/local/share/texmf-dist/tex/latex/setspace/setspace.sty
+Package: `setspace' 6.7 <2000/12/01>
+) (/opt/local/share/texmf-dist/tex/latex/acronym/acronym.sty
+(/opt/local/share/texmf-dist/tex/latex/bigfoot/suffix.sty)
+
+! LaTeX Error: Unknown option `withpage' for package `acronym'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 \ProcessOptions\relax
+                          
+) (/opt/local/share/texmf-dist/tex/latex/base/inputenc.sty
+(/opt/local/share/texmf-dist/tex/latex/base/latin1.def))
+
+LaTeX Warning: Unused global option(s):
+    [headings=small,bibliography=totocnumbered].
+
+(./images.aux) (/opt/local/share/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+
+latex2htmlLength hsize=349.0pt
+
+latex2htmlLength vsize=695.27559pt
+
+latex2htmlLength hoffset=0.0pt
+
+latex2htmlLength voffset=0.0pt
+
+latex2htmlLength topmargin=0.0pt
+
+latex2htmlLength topskip=0.00003pt
+
+latex2htmlLength headheight=0.0pt
+
+latex2htmlLength headsep=0.0pt
+
+latex2htmlLength parskip=0.0pt plus 1.0pt
+
+latex2htmlLength oddsidemargin=-22.47766pt
+
+latex2htmlLength evensidemargin=27.31467pt
+
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/mus_domesticus.pd
+f (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.275 ...textwidth]{assets/pdf/mus_domesticus.pdf}
+                                                  %
+<assets/pdf/mus_domesticus.pdf>
+l2hSize :tex2html_wrap1156:174.50948pt::0.0pt::349.0pt.
+[1]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/shed_overview.pdf
+ (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.287 ...\textwidth]{assets/pdf/shed_overview.pdf}
+                                                  %
+<assets/pdf/shed_overview.pdf>
+l2hSize :tex2html_wrap1166:174.50948pt::0.0pt::349.0pt.
+[2]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/shed_schema.pdf (
+no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.294 ...h=\textwidth]{assets/pdf/shed_schema.pdf}
+                                                  %
+<assets/pdf/shed_schema.pdf>
+l2hSize :tex2html_wrap1170:349.09615pt::0.0pt::349.0pt.
+[3]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/transponder_injec
+t.pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.302 ...width]{assets/pdf/transponder_inject.pdf}
+                                                  %
+<assets/pdf/transponder_inject.pdf>
+l2hSize :tex2html_wrap1175:174.50948pt::0.0pt::349.0pt.
+[4]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/box_schema.pdf (n
+o BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 ...th=\textwidth]{assets/pdf/box_schema.pdf}
+                                                  %
+<assets/pdf/box_schema.pdf>
+l2hSize :tex2html_wrap1180:349.09615pt::0.0pt::349.0pt.
+[5]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/dataset.pdf (no B
+oundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 ...th=0.8\textwidth]{assets/pdf/dataset.pdf}
+                                                  %
+<assets/pdf/dataset.pdf>
+l2hSize :tex2html_wrap1185:279.27759pt::0.0pt::349.0pt.
+[6]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/dataset_no_data.p
+df (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.325 ...extwidth]{assets/pdf/dataset_no_data.pdf}
+                                                  %
+<assets/pdf/dataset_no_data.pdf>
+l2hSize :tex2html_wrap1189:279.27759pt::0.0pt::349.0pt.
+[7]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/micedata_schema.p
+df (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.352 ...extwidth]{assets/pdf/micedata_schema.pdf}
+                                                  %
+<assets/pdf/micedata_schema.pdf>
+l2hSize :tex2html_wrap1198:349.09615pt::0.0pt::349.0pt.
+[8]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/processed_data_sc
+hema.pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.360 ...th]{assets/pdf/processed_data_schema.pdf}
+                                                  %
+<assets/pdf/processed_data_schema.pdf>
+l2hSize :tex2html_wrap1203:349.09615pt::0.0pt::349.0pt.
+[9]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/app_design.pdf (n
+o BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.464 ...th=\textwidth]{assets/pdf/app_design.pdf}
+                                                  %
+<assets/pdf/app_design.pdf>
+l2hSize :tex2html_wrap1260:349.09615pt::0.0pt::349.0pt.
+[10]
+
+! LaTeX Error: Cannot determine size of graphic in assets/pdf/micedata_data_pro
+cessing_cheatsheet.pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.474 .../micedata_data_processing_cheatsheet.pdf}
+                                                  
+<assets/pdf/micedata_data_processing_cheatsheet.pdf>
+Adding sideways figure on  right hand page
+*** image for sidewaysfigure1049 is too tall at 695.27559pt, reducing to .95 vs
+ize ***
+l2hSize :sidewaysfigure1049:660.50967pt::0.0pt::349.0pt.
+[11] (/opt/local/share/texmf-dist/tex/latex/psnfss/t1phv.fd)
+l2hSize :acronym1055:26.0pt::0.0pt::349.0pt.
+[12] (./images.aux) )
+(see the transcript file for additional information)
+Output written on images.dvi (12 pages, 3320 bytes).
+Transcript written on images.log.
+
+ *** processing 12 images ***
+
+Generating postscript images using dvips ...
+/opt/local/bin/dvips -S1 -i  -Ppdf  -E -E -o/tmp/l2h46212/image ./images.dvi
+Converting image #5
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image005.ps
+pstoimg: EPSF dimensions are 349x350
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g558x560  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46237.pnm 
+GS>-49 -371 translate
+GS>(/tmp/l2h46212/image005.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17163
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46237.pnm" is PPM, 558x560
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46237.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img6.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46237.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img6.png" failed: 
+
+Error while converting image
+Converting image #7
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image007.ps
+pstoimg: EPSF dimensions are 280x280
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g448x448  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46246.pnm 
+GS>-83 -441 translate
+GS>(/tmp/l2h46212/image007.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17167
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46246.pnm" is PPM, 448x448
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46246.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img8.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46246.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img8.png" failed: 
+
+Error while converting image
+Converting image #4
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image004.ps
+pstoimg: EPSF dimensions are 176x176
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g282x282  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46255.pnm 
+GS>-185 -545 translate
+GS>(/tmp/l2h46212/image004.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17172
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46255.pnm" is PPM, 282x282
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46255.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img5.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46255.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img5.png" failed: 
+
+Error while converting image
+Converting image #1
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image001.ps
+pstoimg: EPSF dimensions are 175x176
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g280x282  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46264.pnm 
+GS>-136 -545 translate
+GS>(/tmp/l2h46212/image001.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17167
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46264.pnm" is PPM, 280x282
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46264.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img1.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46264.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img1.png" failed: 
+
+Error while converting image
+Converting image #2
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image002.ps
+pstoimg: EPSF dimensions are 176x176
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g282x282  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46273.pnm 
+GS>-185 -545 translate
+GS>(/tmp/l2h46212/image002.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17167
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46273.pnm" is PPM, 282x282
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46273.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img3.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46273.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img3.png" failed: 
+
+Error while converting image
+Converting image #12
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image012.ps
+pstoimg: Page dimensions are 612x792
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g582x82  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46282.pnm 
+GS>-94 -686 translate
+GS>(/tmp/l2h46212/image012.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>>>showpage, press <return> to continue<<
+GS>>>showpage, press <return> to continue<<
+GS>Image "/tmp/l2h46212/p46282.pnm" is PPM, 582x82
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46282.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img18.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46282.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img18.png" failed: 
+
+Error while converting image
+Converting image #10
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image010.ps
+pstoimg: EPSF dimensions are 350x350
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g560x560  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46291.pnm 
+GS>-98 -371 translate
+GS>(/tmp/l2h46212/image010.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17163
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46291.pnm" is PPM, 560x560
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46291.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img15.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46291.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img15.png" failed: 
+
+Error while converting image
+Converting image #11
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image011.ps
+pstoimg: EPSF dimensions are 695x722
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g1111x1154  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46300.pnm 
+GS>-222 330 translate
+GS>(/tmp/l2h46212/image011.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Loading NimbusRomNo9L-Regu font from /opt/local/share/ghostscript/8.64/Resource/Font/NimbusRomNo9L-Regu... 2559428 1075746 6875128 5584384 2 done.
+Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:175/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Current file position is 17478
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46300.pnm" is PPM, 1111x1154
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46300.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img17.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46300.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img17.png" failed: 
+
+Error while converting image: No such file or directory
+Converting image #9
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image009.ps
+pstoimg: EPSF dimensions are 349x350
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g558x560  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46309.pnm 
+GS>-49 -371 translate
+GS>(/tmp/l2h46212/image009.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17174
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46309.pnm" is PPM, 558x560
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46309.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img11.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46309.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img11.png" failed: 
+
+Error while converting image
+Converting image #6
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image006.ps
+pstoimg: EPSF dimensions are 280x280
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g448x448  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46318.pnm 
+GS>-133 -441 translate
+GS>(/tmp/l2h46212/image006.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17160
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46318.pnm" is PPM, 448x448
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46318.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img7.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46318.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img7.png" failed: 
+
+Error while converting image
+Converting image #3
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image003.ps
+pstoimg: EPSF dimensions are 349x350
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g558x560  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46327.pnm 
+GS>-49 -371 translate
+GS>(/tmp/l2h46212/image003.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17164
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46327.pnm" is PPM, 558x560
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46327.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img4.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46327.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img4.png" failed: 
+
+Error while converting image
+Converting image #8
+pstoimg V2008 (Revision 1.19, Perl 5.008009)
+pstoimg: Temporary directory is /tmp/l2h46212
+pstoimg: Processing /tmp/l2h46212/image008.ps
+pstoimg: EPSF dimensions are 350x350
+pstoimg: Running /opt/local/bin/gs  -sDEVICE=ppmraw -g560x560  -r115 -dTextAlphaBits=4  -sOutputFile=/tmp/l2h46212/p46336.pnm 
+GS>-98 -371 translate
+GS>(/tmp/l2h46212/image008.ps) run
+GS>showpage
+GS>quit
+
+GPL Ghostscript 8.64 (2009-02-03)
+Copyright (C) 2009 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+GS>GS>Error: /undefined in obj
+Operand stack:
+   4   0
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   --nostringval--   %loop_continue   1753   2   3   %oparray_pop   --nostringval--   --nostringval--   false   1   %stopped_push   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--   1862   1   3   %oparray_pop   1861   1   3   %oparray_pop   --nostringval--   1845   1   3   %oparray_pop   1739   1   3   %oparray_pop   --nostringval--   %errorexec_pop   .runexec2   --nostringval--   --nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+Dictionary stack:
+   --dict:1150/1684(ro)(G)--   --dict:0/20(G)--   --dict:75/200(L)--   --dict:174/300(L)--   --dict:43/200(L)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 17167
+GS<1>>>showpage, press <return> to continue<<
+GS<1>Image "/tmp/l2h46212/p46336.pnm" is PPM, 560x560
+Running "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46336.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img10.png"
+pstoimg: Error: "/opt/local/bin/pnmcrop -verbose  < /tmp/l2h46212/p46336.pnm | /opt/local/bin/ppmquant -floyd 256 | /opt/local/bin/pnmtopng -interlace -trans 'rgb:d9/d9/d9'  > img10.png" failed: 
+
+Error while converting image
+
+Doing section links ......
+Doing table of contents ..............................................................................................................................................................
+
+*********** WARNINGS ***********  
+No implementation found for style `scrartcl'
+No implementation found for style `fontenc'
+No implementation found for style `rotating'
+No implementation found for style `lscape'
+No implementation found for style `url'
+No implementation found for style `ctable'
+No implementation found for style `listings'
+No implementation found for style `fancyvrb'
+No implementation found for style `setspace'
+No implementation found for style `graphicx'
+No implementation found for style `acronym'
+
+The thesis.aux file was not found, so sections will not be numbered 
+and cross-references will be shown as icons.
+
+? brace missing for \newedenvironment
+
+No number for "Housemice"
+
+No number for "Interioroftheshed"
+
+No number for "Schemaoftheshed"
+
+No number for "Injectingrfidtransponder"
+
+No number for "Modelofanartificialnestbox"
+
+No number for "DatasetwithRFIDidentification"
+
+No number for "DatasetwithoutRFIDidentification"
+
+No number for "Databaseschema"
+
+No number for "Schemaofdatabasetableswithprocesseddata"
+
+The bibliography file was not found.
+
+No number for "Applicationdesign"
+
+Unknown commands: codescript codetiny newcolumntype pdfpagebox frenchspacing lst ac fontfamily lstinputlisting lstset let lstinline currentrowstyle numcodestyle acf
+Done.
+Timing: 7 seconds

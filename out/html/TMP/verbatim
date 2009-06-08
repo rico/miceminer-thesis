@@ -1,0 +1,282 @@
+
+<tex2html_mydb_mark>#1#% Masterthesis 
+
+<tex2html_mydb_mark>#2#% Rico Leuthold 2.9.2008
+
+<tex2html_mydb_mark>#3#%
+
+<tex2html_mydb_mark>#4#%noTeXShop
+
+<tex2html_mydb_mark>#5#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#6#% Document setup
+
+<tex2html_mydb_mark>#7#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#8#% paper format and stylesheet
+
+<tex2html_mydb_mark>#9#%\usepackage[english,german,brazilian]{babel}
+
+<tex2html_mydb_mark>#10#% praphic package
+
+<tex2html_mydb_mark>#11#% Font
+
+<tex2html_mydb_mark>#12#% orientation
+
+<tex2html_mydb_mark>#13#% used for citations
+
+<tex2html_mydb_mark>#14#% Hyperlinks
+
+<tex2html_mydb_mark>#15#% tables
+
+<tex2html_mydb_mark>#16#% used for source code
+
+<tex2html_mydb_mark>#17#% heading on every page
+
+<tex2html_mydb_mark>#18#% Spacing
+
+<tex2html_mydb_mark>#19#% ... some mor spacing stuff
+
+<tex2html_mydb_mark>#20#% border of pdf pics
+
+<tex2html_mydb_mark>#21#% Acronyms
+
+<tex2html_mydb_mark>#22#%
+
+<tex2html_mydb_mark>#23#% CUSTOM COMMANDS
+
+<tex2html_mydb_mark>#24#%
+
+<tex2html_mydb_mark>#25#% make inline listings normal font size
+
+<tex2html_mydb_mark>#26#% Code style with line numbers 
+
+<tex2html_mydb_mark>#27#% Code style without line numbers
+
+<tex2html_mydb_mark>#28#% this makes description lists spacing much better.
+
+<tex2html_mydb_mark>#29#% this makes list spacing much better.
+
+<tex2html_mydb_mark>#30#% this makes list spacing much better.
+
+<tex2html_mydb_mark>#31#% Table column types for bold row 
+
+<tex2html_mydb_mark>#32#%
+
+<tex2html_mydb_mark>#33#%===============================
+
+<tex2html_mydb_mark>#34#% Start document
+
+<tex2html_mydb_mark>#35#%===============================
+
+<tex2html_mydb_mark>#36#% select language
+
+<tex2html_mydb_mark>#37#% Title page
+
+<tex2html_mydb_mark>#38#%\today is replaced with the current date
+
+<tex2html_mydb_mark>#39#% Table of contents
+
+<tex2html_mydb_mark>#40#% add table of figures to toc
+
+<tex2html_mydb_mark>#41#% ===============================
+
+<tex2html_mydb_mark>#42#% Introduction
+
+<tex2html_mydb_mark>#43#% ===============================
+
+<tex2html_mydb_mark>#44#% ===============================
+
+<tex2html_mydb_mark>#45#% Introduction
+
+<tex2html_mydb_mark>#46#% ===============================
+
+<tex2html_mydb_mark>#47#% ===============================
+
+<tex2html_mydb_mark>#48#% Biology of the house mice
+
+<tex2html_mydb_mark>#49#% ===============================
+
+<tex2html_mydb_mark>#50#% ===============================
+
+<tex2html_mydb_mark>#51#% Biology of the house mice
+
+<tex2html_mydb_mark>#52#% ===============================
+
+<tex2html_mydb_mark>#53#% ===============================
+
+<tex2html_mydb_mark>#54#% Shed setup
+
+<tex2html_mydb_mark>#55#% ===============================
+
+<tex2html_mydb_mark>#56#% ===============================
+
+<tex2html_mydb_mark>#57#% Shed setup
+
+<tex2html_mydb_mark>#58#% ===============================
+
+<tex2html_mydb_mark>#59#% ===============================
+
+<tex2html_mydb_mark>#60#% Data collection
+
+<tex2html_mydb_mark>#61#% ===============================
+
+<tex2html_mydb_mark>#62#% ===============================
+
+<tex2html_mydb_mark>#63#% Data collection
+
+<tex2html_mydb_mark>#64#% ===============================
+
+<tex2html_mydb_mark>#65#%----------------------------------------------
+
+<tex2html_mydb_mark>#66#%Position / Time data
+
+<tex2html_mydb_mark>#67#% ----------------------------------------------
+
+<tex2html_mydb_mark>#68#% ----------------------------------------------
+
+<tex2html_mydb_mark>#69#%Data attributes
+
+<tex2html_mydb_mark>#70#% ----------------------------------------------
+
+<tex2html_mydb_mark>#71#% ----------------------------------------------
+
+<tex2html_mydb_mark>#72#%storing Data
+
+<tex2html_mydb_mark>#73#% ----------------------------------------------
+
+<tex2html_mydb_mark>#74#% ===============================
+
+<tex2html_mydb_mark>#75#% Data processing
+
+<tex2html_mydb_mark>#76#% ===============================
+
+<tex2html_mydb_mark>#77#% ===============================
+
+<tex2html_mydb_mark>#78#% Data processing
+
+<tex2html_mydb_mark>#79#% ===============================
+
+<tex2html_mydb_mark>#80#% ===============================
+
+<tex2html_mydb_mark>#81#% Data exploration
+
+<tex2html_mydb_mark>#82#% ===============================
+
+<tex2html_mydb_mark>#83#% ===============================
+
+<tex2html_mydb_mark>#84#% Data exploration
+
+<tex2html_mydb_mark>#85#% ===============================
+
+<tex2html_mydb_mark>#86#%In the field of computer technology the process of scanning a huge pool of data  interesting datais called \textit{data mining}.
+
+<tex2html_mydb_mark>#87#% ----------------------------------------------
+
+<tex2html_mydb_mark>#88#% Data analysis
+
+<tex2html_mydb_mark>#89#% ----------------------------------------------
+
+<tex2html_mydb_mark>#90#% ===============================
+
+<tex2html_mydb_mark>#91#% Network exploration
+
+<tex2html_mydb_mark>#92#% ===============================
+
+<tex2html_mydb_mark>#93#% ===============================
+
+<tex2html_mydb_mark>#94#% Network exploration
+
+<tex2html_mydb_mark>#95#% ===============================
+
+<tex2html_mydb_mark>#96#% ----------------------------------------------
+
+<tex2html_mydb_mark>#97#% Introduction to social networks
+
+<tex2html_mydb_mark>#98#% ----------------------------------------------
+
+<tex2html_mydb_mark>#99#% ---------------------------------------------------
+
+<tex2html_mydb_mark>#100#% Advantages of the network approach
+
+<tex2html_mydb_mark>#101#% ---------------------------------------------------
+
+<tex2html_mydb_mark>#102#% ----------------------------------------------
+
+<tex2html_mydb_mark>#103#% Relational Data
+
+<tex2html_mydb_mark>#104#% ----------------------------------------------
+
+<tex2html_mydb_mark>#105#% ----------------------------------------------
+
+<tex2html_mydb_mark>#106#% Visual exploration
+
+<tex2html_mydb_mark>#107#% ----------------------------------------------
+
+<tex2html_mydb_mark>#108#% ----------------------------------------------
+
+<tex2html_mydb_mark>#109#% Network Analysis
+
+<tex2html_mydb_mark>#110#% ----------------------------------------------
+
+<tex2html_mydb_mark>#111#% ----------------------------------------------
+
+<tex2html_mydb_mark>#112#% Results
+
+<tex2html_mydb_mark>#113#% ----------------------------------------------
+
+<tex2html_mydb_mark>#114#% ===============================
+
+<tex2html_mydb_mark>#115#% Conclusions
+
+<tex2html_mydb_mark>#116#% ===============================
+
+<tex2html_mydb_mark>#117#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#118#% Document References
+
+<tex2html_mydb_mark>#119#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#120#%\addcontentsline{toc}{section}{References}
+
+<tex2html_mydb_mark>#121#% ===============================
+
+<tex2html_mydb_mark>#122#% Appendix
+
+<tex2html_mydb_mark>#123#% ===============================
+
+<tex2html_mydb_mark>#124#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#125#% Code
+
+<tex2html_mydb_mark>#126#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#127#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#128#% Code
+
+<tex2html_mydb_mark>#129#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#130#% style for the perlscript code
+
+<tex2html_mydb_mark>#131#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#132#% Code
+
+<tex2html_mydb_mark>#133#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#134#%
+			
+<tex2html_mydb_mark>#135#% Micedata cheatsheet
+
+<tex2html_mydb_mark>#136#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#137#% Glossary
+
+<tex2html_mydb_mark>#138#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#139#%---------------------------------------------------------------------------------------------------------
+
+<tex2html_mydb_mark>#140#% End Document
+
+<tex2html_mydb_mark>#141#%---------------------------------------------------------------------------------------------------------

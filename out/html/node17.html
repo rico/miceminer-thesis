@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Collecting spatial position data</TITLE>
+<META NAME="description" CONTENT="Collecting spatial position data">
+<META NAME="keywords" CONTENT="thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="style/style.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="up" HREF="node16.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY >
+<span class='nav'>&laquo; <A NAME="tex2html371"
+  HREF="node16.html">Data</A> </span> | <span class='nav'><a href='node1.html'>Contents</a></span> | <span class='nav'> <A NAME="tex2html381"
+  HREF="node18.html">Data File Format</A> &raquo;</span>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00071000000000000000"></A>
+<A NAME="subsec:collectspatialpos"></A>
+<BR>
+Collecting spatial position data
+</H2>
+
+<P>
+To collect the spatial position data, a project specific system has been by built by New Behaviour, a company specialized in creating systems to study animal behaviour. 
+
+<P>
+The basic idea is to use RFID tags, to identify the mice at specific locations in the shed. These RFID tags are about the size of a rice corn and are injected under the skin of the mice (see figure <A HREF="node16.html#fig:inject_rfid"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node16.html#fig:inject_rfid"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>). 
+
+<P>
+Furthermore, the system includes 40 artificial nestboxes with an entry tube made of <I>Plexiglass</I>. Two antennas, which can read the RFID tags, are wrapped around the entry tube. A bend in the middle of the entry tube, with an angle of about ??? degrees, is slowing down the mice when they go trough the pipe (see fig. <A HREF="#fig:artNestbox"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A> on page <A HREF="node17.html#fig:artNestbox"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/opt/local/share/lib/latex2html/icons/crossref.png"></A>). This is improving the accuracy of the readings at the antennas, as they need a certain time to complete the identification process. 
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:artNestbox"></A><A NAME="399"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+3d-Model of an artificial nestbox with the two antennas wrapped around the entry tube.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">	
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The RFID tags used are passiv, meaning that they do not include a battery. The antenna acts as a scanner, presenting an inductive field which excites the RFID tag when entering the coverage area of the antenna. This energy is used by the RFID tag to send its identification to the antenna. 
+
+<P>
+So, whenever a mouse carrying an RFID tag passes by an antenna, it's identification is recorded and sent to a central computer along with the antenna adress. The computer then writes the received data to a text file. The structure of these data files is explained in detail in the next section.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html382"
+  HREF="node18.html">Data File Format</A>
+<LI><A NAME="tex2html383"
+  HREF="node19.html">Antenna adressing</A>
+<LI><A NAME="tex2html384"
+  HREF="node20.html">General system design and functionality</A>
+<LI><A NAME="tex2html385"
+  HREF="node21.html">Problems</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html380"
+  HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html376"
+  HREF="node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html370"
+  HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html378"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html381"
+  HREF="node18.html">Data File Format</A>
+<B> Up:</B> <A NAME="tex2html377"
+  HREF="node16.html">Data</A>
+<B> Previous:</B> <A NAME="tex2html371"
+  HREF="node16.html">Data</A>
+ &nbsp; <B>  <A NAME="tex2html379"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+<a href='mailto:rleuthold@access.ch'>rleuthold@access.ch</a>
+</ADDRESS>
+</BODY>
+</HTML>

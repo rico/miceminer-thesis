@@ -1,0 +1,10 @@
+'<LI><A HREF="'.$dir.'node10.html#279">House mice</A>
+<LI><A HREF="'.$dir.'node15.html#339">Interior of the shed</A>
+<LI><A HREF="'.$dir.'node15.html#346">Schema of the shed</A>
+<LI><A HREF="'.$dir.'node16.html#567">Injecting rfid transponder</A>
+<LI><A HREF="'.$dir.'node17.html#399">Model of an artificial nestbox</A>
+<LI><A HREF="'.$dir.'node18.html#568">Dataset with RFID identification</A>
+<LI><A HREF="'.$dir.'node18.html#569">Dataset without RFID identification</A>
+<LI><A HREF="'.$dir.'node23.html#477">Database schema</A>
+<LI><A HREF="'.$dir.'node24.html#489">Schema of database tables with processed data</A>
+<LI><A HREF="'.$dir.'node77.html#1035">Application design</A>'

@@ -1,0 +1,55 @@
+<tex2html_file>#/Users/rico/Documents/workspace/miceminer_thesis/src/biology_house_mice.tex#
+\newpage
+\section<<230>>Biology of the house mice<<230>>
+\label<<231>>sec:biolhousemice<<231>>
+\begin<<280>>tex2html_deferred<<280>>\par\end<<281>>tex2html_deferred<<281>>
+\subsection<<232>>Introduction<<232>>
+\label<<233>>subsec:introduction<<233>>
+\begin<<282>>tex2html_deferred<<282>>\par\end<<283>>tex2html_deferred<<283>>
+House mice (\textit<<234>>Mus domesticus<<234>>) live under a multitude of different environmental conditions. Therefore they have to be very flexible in terms of their social, territorial an reproductive behavior \cite<<235>>bronson:79, bronson:84, berry:81<<235>>. Under natural conditions house mice have a very low expectancy of life (~100 to 150 days). During this short life span, female mice are eager to have as many offspring as possible. Living under optimal food conditions, a female mouse has a litter of 5-7 pups every four weeks \cite<<236>>berry:71, pelikan:81<<236>>. The juvenile mortality is estimated to be between 50\% and 85\% \cite<<237>>berry:71, berry:75, pennycuik:86<<237>>. Having heavier pups is an advantage, as they can be weaned much faster, hence it has a positive influence on the future reproduction \cite<<238>>fuchs:82<<238>>. Litter size of wild house mice increases from the first to the second lactation, and decreases after the fifth lactation \cite<<239>>pelikan:81, koenig:87b<<239>>. 
+\begin<<284>>tex2html_deferred<<284>>\par\end<<285>>tex2html_deferred<<285>>
+\begin<<240>>figure<<240>>[htbp]	
+\begin<<286>>tex2html_deferred<<286>>\centering\end<<287>>tex2html_deferred<<287>>
+\includegraphics[width=0.5\textwidth]<<241>>assets/pdf/mus_domesticus.pdf<<241>>	
+\begin<<288>>tex2html_deferred<<288>>\caption[House mice]<<279>>House mice \textit<<242>>(Mus doemsticus)<<242>><<279>>\end<<289>>tex2html_deferred<<289>>
+\label<<243>>fig:housemice<<243>>
+\end<<244>>figure<<244>>
+\begin<<290>>tex2html_deferred<<290>>\par\end<<291>>tex2html_deferred<<291>>
+\subsection<<245>>General social behavior<<245>>
+\label<<246>>subsec:socialbehaviour<<246>>
+House mice typically live in social groups which form a reproduction group. The groups usually include a dominant male, one or several females with their litters and possibly some subordinate males \cite<<247>>crowcroft:63, reimer:67, selander:70, mackintosh:81<<247>>.
+\begin<<292>>tex2html_deferred<<292>>\par\end<<293>>tex2html_deferred<<293>>
+The mating habit is generally polyandric (a female has many male reproduction partners), but observations of monogamic living pairs have been reported \cite<<248>>lidicker:76<<248>>. Juvenile females are allowed to stay in the territory of their parents to raise their own offspring \cite<<249>>petras:67<<249>>. There is evidence of stranger females immigrating into social groups as well \cite<<250>>anderson:65, reimer:67, selander:70, bronson:79, baker:81<<250>>.     
+\begin<<294>>tex2html_deferred<<294>>\par\end<<295>>tex2html_deferred<<295>>
+\subsection<<251>>Research topics<<251>>
+\label<<252>>subsec:researchtopics<<252>>
+\begin<<296>>tex2html_deferred<<296>>\par\end<<297>>tex2html_deferred<<297>>
+The following descriptions of ongoing research topics had direct influence on the software design and the function volume of the miceminer application (see section \ref<<253>>subsec:dataexp<<253>> on page \pageref<<254>>subsec:dataexp<<254>>). 
+\begin<<298>>tex2html_deferred<<298>>\par\end<<299>>tex2html_deferred<<299>>
+\subsubsection<<255>>Communal nursing<<255>>
+\label<<256>>subsubsec:comnurs<<256>>
+\begin<<300>>tex2html_deferred<<300>>\par\end<<301>>tex2html_deferred<<301>>
+Over forty years ago, first observation of wild female house mice, belonging to the same reproduction group, which raise their pups in communal nests have been reported \cite<<257>>southwick:55<<257>>. Ever since, this behavior has been noticed for house mice living under all kind of environmental conditions.\cite<<258>>crowcroft:63, sayler:69, gandelman:70, werboff:70, baker:81<<258>>.
+\begin<<302>>tex2html_deferred<<302>>\par\end<<303>>tex2html_deferred<<303>>
+This is an astonishing behavior, as the energetic cost of lactation is extremely high, hence influences the females future reproduction. To wean a litter of about seven to eight pups, the mother has to produce 100 grams of milk within 22 days, which is equivalent to 1100 \acf<<259>>KJ<<259>> \cite<<260>>koenig:88<<260>>. Depending on the size of the litter and the duration of the lactation phase, the length of the interbirth intervals change \cite<<261>>fuchs:81, fuchs:82, koenig:87a, koenig:87b<<261>>.
+\begin<<304>>tex2html_deferred<<304>>\par\end<<305>>tex2html_deferred<<305>>
+Several experiments have been carried out with house mice living under laboratory conditions. Changes in group size and the composition of the group in terms of relatedness of the individuals revealed, that non-offspring nursing is an integral part of the reproductive behavior of female house mice in egalitarian groups. However, the probability for such mutualistic cooperation was highest when a female shared a nest with a familiar sister to form a low-skew society \cite<<262>>koenig:06<<262>>.
+\begin<<306>>tex2html_deferred<<306>>\par\end<<307>>tex2html_deferred<<307>>
+According to Koenig \cite<<263>>koenig:06<<263>>, the direct benefits of allomaternal care for the pups could be diverse. As there are, improved survival, improved future reproduction, improved growth or immunological benefits.
+\begin<<308>>tex2html_deferred<<308>>\par\end<<309>>tex2html_deferred<<309>>
+There are physiological benefits for the mother as well, which lead to an increase of their reproductive output. Of notably interest is the hypothesis named \textit<<264>>Metabolic peak load reduction<<264>>. Explained in short, a solitary nursing female tends to have a peak of energy consumption during the nursing phase of her litter. Nevertheless, female house mice are limited in their maximal sustainable metabolism \cite<<265>>hammond:92<<265>>. This limit depends on the age and physique of the individual and is called \textit<<266>>metabolic ceiling<<266>>. Partial synchronization in reproduction within females of a group, combined with the communal nursing, can balance the energy demand for the individual female, as the burden of nursing the litter is divided. Hence, the energy demand for each female is always on a medium level \cite<<267>>koenig:06<<267>>. 
+\begin<<310>>tex2html_deferred<<310>>\par\end<<311>>tex2html_deferred<<311>>
+However, cause to the artificial setup of the experiments, no conclusion about the communal nursing under natural conditions could be made.
+\begin<<312>>tex2html_deferred<<312>>\par\end<<313>>tex2html_deferred<<313>>
+\subsubsection<<268>>Home range<<268>>
+\label<<269>>subsubsec:homerange<<269>>
+\begin<<314>>tex2html_deferred<<314>>\par\end<<315>>tex2html_deferred<<315>>
+Olivia Dieser \cite<<270>>dieser:08<<270>> carried out a long-term analysis to investigate the territorial social behavior of the house mice population living in the shed (see section \ref<<271>>sec:shedsetup<<271>> on page \pageref<<272>>sec:shedsetup<<272>>). Data used in this work has been retrieved via the miceminer application (see section \ref<<273>>subsubsec:monthbox<<273>> on page \pageref<<274>>subsubsec:monthbox<<274>> and section \ref<<275>>subsubsec:monthant<<275>> on page \pageref<<276>>subsubsec:monthant<<276>>). Based on the data of 321 individual mice, collected over a period of 15 months, she analyzed the influence of the sex, the season and the time of day, on the usage of the artificial nestboxes. Furthermore, the seasonal influence on the composition of the mouse population has been determined. Refer to section \ref<<277>>subsec:collectspatialpos<<277>> on page \pageref<<278>>subsec:collectspatialpos<<278>> for details about the artificial nestboxes and the system which is collecting the data.
+\begin<<316>>tex2html_deferred<<316>>\par\end<<317>>tex2html_deferred<<317>>
+She found out, that during summer, when the mating activity is high, more female than male mice lived in the barn, while in winter the ratio was about one. This result can be explained by the polyandric mating behavior of the house mice. Only dominant male mice get access to a female for reproduction. Hence, subdominant male mice are banished from the shed by the dominant mice. This finding is supported by the fact, that less overlaps of the territories for male mice have been detected in summer than in winter. 
+\begin<<318>>tex2html_deferred<<318>>\par\end<<319>>tex2html_deferred<<319>>
+Females, on the other hand, used more boxes during the summer, possibly to increase their chances of mating with many different males.
+\begin<<320>>tex2html_deferred<<320>>\par\end<<321>>tex2html_deferred<<321>>
+In general, female mice visited more different artificial nestboxes than male mice. This could be explained by the limit of boxes male mice can defend to mark their territory.
+<tex2html_endfile>#/Users/rico/Documents/workspace/miceminer_thesis/src/biology_house_mice.tex#
+\begin<<322>>tex2html_deferred<<322>>\par\end<<323>>tex2html_deferred<<323>>
