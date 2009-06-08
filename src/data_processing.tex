@@ -35,14 +35,15 @@ As mentioned in section \ref{subsubsec:problems} on page \pageref{subsubsec:prob
 \subsection{Direction Results}
 \label{subsec:dirres}
 
-The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table. A pair matches, if 
+The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table. A pair matches if,
 
 \begin{mydesc}
-\item 
-
+\item the transponder identification of the two readings is the same,
+\item the time difference in seconds between the two readings is not greater then the value set as the \lstinline|<antennaInterval>| value \footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl}.} in the configuration, 
+\item and the readings originate from the two different antennas attached to the a box.  
 \end{mydesc}
 
-To commit changes made to this value, the \lstinline| searchdirreset.pl| has to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script.    
+If the \lstinline|<antennaInterval>| has been changed, the \lstinline| searchdirreset.pl| needs to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script \footnotemark[14].
 
 \subsection{Stay Results}
 \label{subsec:stayres}
