@@ -346,8 +346,9 @@ Perl version	&	 5.10.0 \\\bottomrule
 
 \textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
 
+\begin{sidewaystable}
 \begin{center} 
-\newcolumntype{H}{>{\bf}p{7cm}}
+\newcolumntype{H}{>{\bf}p{9cm}}
 \renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 \toprule
@@ -364,20 +365,20 @@ Address	&	Description \\\midrule
 \url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\\midrule
 \url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\\midrule
 \url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\\midrule
-\url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
+\url{http://github.com/rico/miceminer-thesis/tree/master}	& \ac{GIT} repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
 
 
 \end{tabularx}
 \captionof{table}{List of web addresses.}
 \label{tab:web_addresses}
 \end{center}
+\end{sidewaystable}
 
 % Files and Directories
 \subsubsection{Files \& directories overview}
 \label{subsubsec:sys_directories}
 
 \lstset{language=bash}
-  
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{5cm}}
@@ -386,7 +387,7 @@ Address	&	Description \\\midrule
 \toprule
 \rowstyle{\bfseries}
 Directory	&	Description \\\midrule
-\lstinline|/var/www/mouse|	&	Base directory of the whole project relevant files and folders. \\\midrule
+\lstinline|/var/www/mouse|	&	\textbf{Base directory} of the whole project relevant files and folders. \\\midrule
 \\
 \hline
 \multicolumn{2}{|l|}{\textbf{All of the following files and directories are located within the base directory!}} \\
