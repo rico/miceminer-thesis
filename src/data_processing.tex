@@ -21,7 +21,7 @@ A scheduled, daily task checks for new data files uploaded to the server and sta
 
 The \textit{Reset Scripts} set the database back to a state from where the import cascade can be rerun,  starting with the corresponding import script (indicated in figure \ref{fig:app_design_perl} by the orange arrows). If, for example, the \lstinline|searchdirreset.pl| has been executed, the import cascade can be started with the \lstinline|searchdir.pl| script\footnote{It is recommended to start the import cascade by using the import BASH scripts. This is explained in appendix \ref{app:import_schedule} on page \pageref{app:import_schedule}.}.
 
-The \textit{Modules} read out the configuration and make it available for the import and reset scripts (indicated in figure \ref{fig:app_design_perl} by the large grey arrow with the white border). The whole configuration for the application is stored in an XML file. The part of configuration file accountable for the perl part is shown in appendix \ref{app:configperl} on page \pageref{app:configperl}. As the perl scripts are heavily interacting with the database, the database configuration part of the configuration is read as well by some of the \textit{Modules}\footnote{The database configuration is shown and explained in appendix \ref{app:configdb} on page \pageref{app:configdb}.}. 
+The \textit{Modules} read out the configuration and make it available for the import and reset scripts (indicated in figure \ref{fig:app_design_perl} by the large grey arrow with the white border). The whole configuration for the application is stored in an XML file. The part of configuration file accountable for the perl part is shown in appendix \ref{app:configperl} on page \pageref{app:configperl}. As the perl scripts are heavily interacting with the database, the database configuration part of the configuration files is read as well by some of the \textit{Modules}\footnote{The database configuration is shown and explained in appendix \ref{app:configdb} on page \pageref{app:configdb}.}. 
 
 \subsection{Importing}
 \label{subsec:importing}
@@ -55,7 +55,9 @@ Figure \ref{fig:direction_result} shows the composition of a direction \textit{i
 
 This is exactly the order this script searches for \textit{direction results}. The findings are written to the \lstinline|dir| table\footnote{The \lstinline|dir| table structure described in sction \ref{para:dir_table} on page \pageref{para:dir_table}}. The value for the \lstinline|time| field of the \textit{direction result} is always taken from the antenna reading at the outer antenna. Therefore, a transpondered mouse is out of a box, when she passed the outer antenna. 
 
-If the \lstinline|<antennaInterval>| has been changed, the \lstinline| searchdirreset.pl| needs to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script \footnotemark[14]. 
+If the \lstinline|<antennaInterval>| is changed, the \lstinline| searchdirreset.pl| needs to be executed followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script \footnotemark[14].
+
+The \textit{direction results} are written to the \lstinline|dir| table as explaine in paragraph \ref{para:dir_table} on page \pageref{para:dir_table}. 
 
 \subsection{Stay Results}
 \label{subsec:stayres}
@@ -77,7 +79,7 @@ or,
 \item and belong to the same box.
 \end{mylist}
 
-In the former case, the \textit{stay result} is written to the \lstinline|res| table as a \textbf{type 3} result in the latter case as a \textbf{type 4} result \footnote{See section \ref{para:res_table} on page \pageref{para:res_table} for details about the \lstinline|res| table.}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example of at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds.
+In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example of at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -107,9 +109,9 @@ In figure \ref{fig:result_overlap} we have the situation, that one \textit{stay 
 \end{center}
 \end{figure}
 
-Figures \ref{fig:result_overlap_single} and \ref{fig:result_overlap_single_shifted} illustrate the situation where one \textit{stay result} overlaps another. In this case, the \textit{stay result} (1) is discarded.
+Figures \ref{fig:result_overlap_single} and \ref{fig:result_overlap_single_shifted} illustrate the situation where one \textit{stay result} overlaps another. In this case, the \textit{stay result} (1) is discarded as well.
 
-For the situation depicted in figure \ref{fig:result_overlap_single}, the explantion for this approach is pretty similar to the one just discussed. \textit{Stay result} (2) looks valid, but there must be missed antenna readings between the time of \textit{stay result} (1) and \textit{stay result} (2) \textit{in}, and between \textit{stay result} (2) and \textit{stay result} (1) respectively. In figure \ref{fig:result_overlap_single_shifted} the two \textit{stay results} are only partly overlapping. \textit{Stay result} (1) is discarded as well, but \textit{stay result} (2) will be discared at a later time.      
+The justification for this approach is pretty similar to the one just discussed. \textit{Stay result} (2) looks valid, but there must be missed antenna readings between the time of \textit{stay result} (1) and \textit{stay result} (2) \textit{in}, and between \textit{stay result} (2) and \textit{stay result} (1) respectively. In figure \ref{fig:result_overlap_single_shifted} the two \textit{stay results} are only partly overlapping. \textit{Stay result} (1) is discarded as well, but \textit{stay result} (2) will be discared in the next step.      
 
 \begin{figure}[htpb]
 \begin{center}
@@ -127,7 +129,7 @@ For the situation depicted in figure \ref{fig:result_overlap_single}, the explan
 \end{center}
 \end{figure}
 
-Now that the \textit{stay result} is checked for overlaps with other \textit{stay results}, the script checks for other antenna readings that were recorded during the \textit{stay result} as illustrated by an example in figure \ref{fig:dataset_overlap}. Obviously, only antenna readings originating from the same transponder are taken into account.
+Now, that the \textit{stay result} is checked for overlaps with other \textit{stay results}, the script checks for other antenna readings that were recorded during the \textit{stay result} as illustrated by an example in figure \ref{fig:dataset_overlap}. Obviously, only antenna readings originating from the same transponder are taken into account.
 
 In figure \ref{fig:dataset_overlap}, four other antenna readings could be found, two of them not even from the same box. This \textit{stay result} will be discarded, as we don't know what really happened.
 
@@ -139,20 +141,59 @@ In figure \ref{fig:dataset_overlap}, four other antenna readings could be found,
 \end{center}
 \end{figure}
 
-As seen in figure \ref{fig:dataset_overlap}, the reading at antenna \lstinline|163|, which is the inner antenna attached to nestbox 16, is colored green. If we have a look at the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the innner antenna are overlapped. In such a case, we keep the result, as the transpondered mouse has not left the box\footnote{As stated in section \ref{subsec:dirres} a transpondered mouse is out af the box, if she is recorded at the outer antenna.}, and talk about a \textit{nervous mouse}, as we think that she is only checking the entry tube out of nervousness.
+As seen in figure \ref{fig:dataset_overlap}, the reading at antenna \lstinline|163|, which is the inner antenna attached to nestbox 16, is colored green. If we have a look at the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the innner antenna are overlapped. In such a case, we keep the result, as the transpondered mouse has not left the box\footnote{As stated in section \ref{subsec:dirres}, a transpondered mouse is out af the box if she is recorded at the outer antenna.}, and denote it a \textit{nervous mouse}, as we think, that she is only checking the entry tube out of nervousness.
 
-The \textit{nervous index} is simply the number of readings at the inner antenna during the \textit{stay result}, which is 4 for the situation shown in figure \ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table} on page \pageref{para:res_table}.
+The \textit{nervous index} is simply the number of readings at the inner antenna during the \textit{stay result}, which is 4 for the situation shown in figure \ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table}.
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/dataset_overlap_nervous_schema.pdf}
-  \caption[Dataset overlap illustration]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a \textit{stay result}, but only at the inner antenna of the box. Such a situation is termed \textit{nervous mouse}.}
+  \caption[Dataset overlap illustration]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a \textit{stay result}, but only at the inner antenna of the box. Such a situation is termed a \textit{nervous mouse}.}
   \label{fig:dataset_overlap_nervous}
 \end{center}
 \end{figure}
 
+The searches for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers.
+
+The \textit{stay results} are written to the \lstinline|res| table as escribed in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
+
+
 \subsection{Meeting Results}
 \label{subsec:meetingres}
 
-Aim of the script / step.
-Describing code, rules used to calculate the association results.
+The \lstinline|meetings.pl| script determines, when and how many time the transpondered mice spend together in the nestboxes. The \textit{stay results} make the basis. A \textit{meeting result} is found, whenever
+
+\begin{mylist}
+\item two \textit{stay results},
+\item of two different transpondered mice,
+\item which take place in the same nestbox,
+\item temporally overlap.
+\end{mylist}
+
+Additionaly, the script analyses, how the mice meet. There are four different possibilities, as shown in figure \ref{fig:meeting_types} and explained in the follwing list.
+
+\begin{mydesc}
+\item \textbf{Type 1}: Tr. B entered the nestbox, while Tr. A was already in the box, and Tr. B left the nestbox, while Tr. A was still in the box. 
+\item \textbf{Type 2}: Tr. A entered the nestbox, while Tr. B was already in the box, and Tr. A left the nestbox, while Tr. B was still in the box. 
+\item \textbf{Type 3}: Tr. A entered the nestbox, while Tr. B was already in the box, and Tr. B left the nestbox, while Tr. A was still in the box. 
+\item \textbf{Type 4}: Tr. A entered the nestbox, while Tr. B was already in the box, and Tr. B left the nestbox, while Tr. A was still in the box. 
+\end{mydesc}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.75\textwidth]{assets/pdf/meeting_types_schema.pdf}
+  \caption[Meeting resulst types illusttration]{Illustration of the possible meeting situations in a nestbox between two transpondered mice (Tr. A , Tr. B).}
+  \label{fig:meeting_types}
+\end{center}
+\end{figure}
+
+However, the \textit{meeting result} types and explanations above only apply, if we look at the situations from the point of view of transpondered mice Tr. A. When looking at the situations from Tr. B, the types change as follows\footnote{When using the \textit{miceminer Graph Data} interface to retrieve the data, these adjustments are already done (see \ref{sec:netexp})}.
+
+\begin{mylist}
+\item Type 1 is equivalent to \textbf{Type 2}   
+\item Type 2 is equivalent to \textbf{Type 1}
+\item Type 3 is equivalent to \textbf{Type 4} 
+\item Type 4 is equivalent to \textbf{Type 3}
+\end{mylist}
+
+The \textit{meeting results}, including the \textit{type} values are written to the \lstinline|meetings| table as described in paragraph \ref{para:meetings_table} on page \pageref{para:meetings_table}.
