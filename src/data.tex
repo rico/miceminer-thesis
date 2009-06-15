@@ -125,11 +125,11 @@ Unfortunately the problems with the system are diverse. Antenna drop outs, broke
 
 However, one of biggest problem is, that the readings at the antennas are not as reliable as planned. This is clearly visible in the following numbers:
 
-From the 5 of April 2007 to the 27 of March 2009, xxx datasets (table \lstinline|data|) have been recorded. Assuming that the system works perfect, we would get xxx \textit{direction results}. Compared to the real number of \textit{direction results}, which is xxx, we have a yield of xx\%.
+From the 5 of April 2007 to the 27 of March 2009, 8,171,945 datasets (table \lstinline|data|) have been collected. Assuming that the system works perfect, we would get 4,085,972 \textit{direction results}. Compared to the real number of \textit{direction results}, which is 2,907,495 , we have a yield of 71.16\%.
 
-In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find xxx results in the xxx \textit{direction results}, which is xx\%. Most likely this low numbers are an effect of missed antenna readings. Normally, an antenna reads out the transponder information 10 times, to ensure maximum 
+In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find 1,453,747 results in the 2,907,495 \textit{direction results}, but finds 992,128 which is 68.25\%. Most likely these low numbers are an effect of missed antenna readings. 
 
-Another problem are the transponders which have never been injected in a mouse, but are recorded by the system. 
+Normally, an antenna reads out the transponder information 10 times, to ensure maximum reliability of a correct reading. The antenna system in the shed reads the identification only 3 times, as the time that a transpondered mouse spend in the coverage area of an antenna is usually short. We are able to partially comprehend the impact of this factor by looking at the \lstinline|rfid| table. The table contains 4605 different transponder id's, whereof only 1014 have been read at an antenna more then 10 times. The other 3546 rfids are most probably a result of the so called \textit{bit flipping}. Consider the the following listing which shows a clipping of a data file. The \ac{RFID} transponder is identified as \lstinline|00 05 B8 D2 70| on line two, but as \lstinline|0 06 B8 E2 70| on the other lines. 
 
 \numcodestyle
 \begin{lstlisting}[frame=none]
@@ -138,11 +138,11 @@ Another problem are the transponders which have never been injected in a mouse, 
 2007-11-25 10:09:16:932;   381;   5;  00 06 B8 E2 70
 2007-11-25 10:09:19:950;   381;   0; 
 2007-11-25 10:09:20:253;   381;   5;  00 06 B8 E2 70
-\end{lstlisting}   
+\end{lstlisting}
 
-This clipping of a data file shows an \ac{RFID} transponder which appears as \lstinline|00 05 B8 D2 70| on line two but as \lstinline|0 06 B8 E2 70| on the other data lines. The \lstinline|rfid| table contains xxx different \ac{RFID}'s whereof xxx could not be identified as an injected transponder.   
+The first four digits of the transponder identification represents some kind of the manufacturer series. The manufacturer sold only transponder from the \lstinline|00 06| series to us. Just out of this fact, we can conclud, that line two is a read error. Still, this transponder has been read 53 times between the November 2007 and May 2008, but none of the readings could be used to form a \textit{direction result}. Assuming that this is not a singular case, we get many of these false readings, leading to a low rate of yield in the following data analysis. 
 
-Furthermore, for some antennas the address could not be set properly. In one case two antennas even sent the same adress, so that no distinction of the data could be made. The workaround for this problem is, two find an unused address which we are able to set and map it to the desired address during the data import.   
+Furthermore, for some antennas the address could not be set properly. In one case two antennas even sent the same adress, so that no distinction of the data could be made. The workaround for this problem is, two find an unused address which we are able to set and map it to the desired address during the data import (see section \ref{subsec:importing} on page \pageref{subsec:importing}).   
 
 % ----------------------------------------------
 %Data attributes

@@ -79,7 +79,7 @@ or,
 \item and belong to the same box.
 \end{mylist}
 
-In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example of at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds.
+In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example of at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Out of the 992,128 \textit{stay results} currently in the database, 851612 (85.8\%) are type 3 results and 140516 (14.2\%) type 4 results.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -153,10 +153,9 @@ The \textit{nervous index} is simply the number of readings at the inner antenna
 \end{center}
 \end{figure}
 
-The searches for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers.
+The searches for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers. In the period from the 5 of April 2007 to the 27 of March 2009, 1,499,110 \textit{direction results} with a direction value of \lstinline|in| are found. Without any overlap filtering, the script finds a \textit{stay result} for 1,484,458 (99.0\%) . After excluding the \textit{stay result} overlaps, 1,020,983 (68.1\%) remain, and 992,128 (66.2\%) after excluding the \textit{stay results} with overlapping antenna readings. Though, 591,549 (59.6\%) of the remaining \textit{stay results} are \textit{nervous mouse} results.
 
-The \textit{stay results} are written to the \lstinline|res| table as escribed in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
-
+The \textit{stay results} are written to the \lstinline|res| table as described in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
 
 \subsection{Meeting Results}
 \label{subsec:meetingres}
