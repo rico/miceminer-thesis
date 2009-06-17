@@ -5,31 +5,92 @@
 \section{Accessing and exploring the Data }
 \label{sec:dataaccessandexp}
 
-%In the field of computer technology the process of scanning a huge pool of data  interesting datais called \textit{data mining}.
-
-Data exploration to scan data for interesting aspects.
+As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for \textit{potentially interesting} sets of data is called \textit{data mining}. What's \textit{potentially interesting} completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
 
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
 
-\begin{itemize} 
-	\item technology
-	\item installation	
-	\item usability
-	\item limitations	
-\end{itemize}
+The \textit{miceminer} application intends to meet exactly these requirements. Written entirely in \textit{Flex}\footnote{Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \cite{wiki:flex}.}, the application runs within every web browser with the $Flash^{\copyright}$ plug-in version 9 or above installed. Thus, the software is cross platform compatible, meaning that it runs on every operating system for which the $Flash^{\copyright}$ player is available. 
 
-\subsubsection{Data Filtering}
-\label{subsubsec:datafilter}
+Furthermore, the \textit{miceminer} application doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, which is called the client. This has the comfortable consequence, that each user always uses the latest version.
+
+Additionaly, \textit{Flex} offers convincing tools to build interactive user interfaces and, in counjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java application can run on any Java virtual machine (JVM) regardless of computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the \ac{API} offered by \textit{Flex} is appropriate for our needs.
+
+Additional information about the \textit{miceminer} project, including screencasts which show how to use teh application, \ac{API} documentation, source code and links to resources used, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}. 
+
+\subsection{Interface}
+\label{subsec:miceminer_interface}
+
+This section gives a very short introduction to the user interface. User help can be found on the project homepage. Furthermore, all of the components contain a help button in the upper right corner. Clicking on this button reveals the help text for the component.
+
+Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer} interface and identifies the main parts. 
+
+\begin{figure}[!ht]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/interface_overview.pdf}
+  \caption[miceminer interface overview]{Screenshot of the miceminer application displaying data for a mice.}
+  \label{fig:interface_overview}
+\end{center}
+\end{figure}
+
+From the \textit{main menu}, the user can choose from the following main components.
+
+\subsubsection*{Browse Data}
+This is the core component of the application and contains the functionality to explore the data in the database within a definable date range.
+
+\subsubsection*{Data Overview}
+Shows summarized information about all the mice, boxes antennas in the database.
+
+\subsubsection*{Data Analysis}
+Offers some simple data analysis and evaluation methods.
+
+\subsubsection*{Graph Data}
+Interactive network representation of a possible social network within the mice community.
+
+\subsubsection*{Upload Files}
+Components to perform administrative tasks. This component is password protected.
+
+% \begin{figure}[htpb]
+% \begin{center}
+%   \includegraphics[width=0.75\textwidth]{assets/img/main_menu.png}
+%   \caption[miceminer main components]{The main components of the \textit{miceminer} application.}
+%   \label{fig:main_components}
+% \end{center}
+% \end{figure}  
+
+
+\subsection{Software design}
+\label{subsec:miceminer_design}
+
+\textit{Flex} itself does not include methods to query a database with \ac{SQL}. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, containing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}) speeds up the data transfer between the server and the client.
+
+\textit{PHP} offers convincing ways to export the data to different file formats, including \textit{Excel} worksheets. \textit{Excel} export is available within most    
+
+These interactions are illustrated in figure \ref{fig:app_design_miceminer}.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/application_design_miceminer.pdf}
+  \caption[User Interface overview]{Overview of the parts involved in the user interface.}
+  \label{fig:app_design_miceminer}
+\end{center}
+\end{figure}
+
+
+\subsection{Configuration}
+\label{subsec:miceminer_config}
+
+\subsection{Data Filtering}
+\label{subsec:datafilter}
 
 Shortly explain the filtering possibilities of the program.
 
-\subsubsection{Data Visualization}
-\label{subsubsec:datavis}
+\subsection{Data Visualization}
+\label{subsec:datavis}
 
 Shortly explain the visualization possibilities of the program.
 
-\subsubsection{Exporting Data}
+\subsection{Exporting Data}
 \label{subsubsec:dataexp}
 
 Shortly explain the export function of the program.
@@ -37,7 +98,7 @@ Shortly explain the export function of the program.
 % ----------------------------------------------
 % Data analysis
 % ----------------------------------------------
-\subsection{Data analysis with miceminer}
+\subsection{Simple data analysis with miceminer}
 \label{subsec:dataana} 
 
 Miceminer provides some simple data analysis functionality.
