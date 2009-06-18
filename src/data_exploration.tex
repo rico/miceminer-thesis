@@ -10,30 +10,32 @@ As seen in the previous sections, the amount of available data in the database i
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
 
-The \textit{miceminer} application intends to meet exactly these requirements. Written entirely in \textit{Flex}\footnote{Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \cite{wiki:flex}.}, the application runs within every web browser with the $Flash^{\copyright}$ plug-in version 9 or above installed. Thus, the software is cross platform compatible, meaning that it runs on every operating system for which the $Flash^{\copyright}$ player is available. 
+The \textit{miceminer} application intends to meet exactly these requirements. Basically, the application provides a user friendly interface to retrieve data from the database. Combined with some nifty filter capabilities and visualization options, the user gets a powerful tool to explore the data.
+
+Written entirely in \textit{Flex}\footnote{Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \cite{wiki:flex}.}, the application runs within every web browser which has the $Flash^{\copyright}$ plug-in version 9 or above installed. Thus, the software is cross platform compatible, meaning that it runs on every operating system for which the $Flash^{\copyright}$ player is available. 
 
 Furthermore, the \textit{miceminer} application doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, which is called the client. This has the comfortable consequence, that each user always uses the latest version.
 
 Additionaly, \textit{Flex} offers convincing tools to build interactive user interfaces and, in counjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java application can run on any Java virtual machine (JVM) regardless of computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the \ac{API} offered by \textit{Flex} is appropriate for our needs.
 
-Additional information about the \textit{miceminer} project, including screencasts which show how to use teh application, \ac{API} documentation, source code and links to resources used, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}. 
+More information about the \textit{miceminer} project, including screencasts which show how to use the application, \ac{API} documentation, source code and links to other resources used in the development, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}\footnote{The site is only accessible from within the network of the University of Z\"urich.}. 
 
 \subsection{Interface}
 \label{subsec:miceminer_interface}
 
-This section gives a very short introduction to the user interface. User help can be found on the project homepage. Furthermore, all of the components contain a help button in the upper right corner. Clicking on this button reveals the help text for the component.
+This section gives a very short introduction to the user interface. User help is found on the project homepage. Furthermore, all of the components contain a help button in the upper right corner. Clicking on this button reveals the help text for the component.
 
-Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer} interface and identifies the main parts. 
+Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer} interface and identifies the main parts.
 
 \begin{figure}[!ht]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/interface_overview.pdf}
-  \caption[miceminer interface overview]{Screenshot of the miceminer application displaying data for a mice.}
+  \caption[miceminer interface overview]{Screenshot of the miceminer application, displaying data for a (transpondered) mice and identifying the main parts of the interface.}
   \label{fig:interface_overview}
 \end{center}
 \end{figure}
 
-From the \textit{main menu}, the user can choose from the following main components.
+From the \textit{main menu}, the user can start the following main components.
 
 \subsubsection*{Browse Data}
 This is the core component of the application and contains the functionality to explore the data in the database within a definable date range.
@@ -48,23 +50,26 @@ Offers some simple data analysis and evaluation methods.
 Interactive network representation of a possible social network within the mice community.
 
 \subsubsection*{Upload Files}
-Components to perform administrative tasks. This component is password protected.
+Components to perform administrative tasks. This component is password protected and only used by the system administrators.
 
-% \begin{figure}[htpb]
-% \begin{center}
-%   \includegraphics[width=0.75\textwidth]{assets/img/main_menu.png}
-%   \caption[miceminer main components]{The main components of the \textit{miceminer} application.}
-%   \label{fig:main_components}
-% \end{center}
-% \end{figure}  
+If a main component is started, its interface will be shown in the main viewport, and a tab is added to the tab bar. The user can switch between the main components by clicking on the appropriate tab.
 
+The interface arrangement is the same in all components except for the \textbf{Graph Data} component. Figure \ref{fig:interface_component} identifies the different parts with a screenshot of the \textbf{Browse Data} component.
+
+\begin{figure}[!htbp]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/interface_component.pdf}
+  \caption[miceminer coponent interface]{Screenshot of the \textbf{Browse Data} component, including the identification of the different parts of the interface.}
+  \label{fig:interface_component}
+\end{center}
+\end{figure}
 
 \subsection{Software design}
 \label{subsec:miceminer_design}
 
 \textit{Flex} itself does not include methods to query a database with \ac{SQL}. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, containing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}) speeds up the data transfer between the server and the client.
 
-\textit{PHP} offers convincing ways to export the data to different file formats, including \textit{Excel} worksheets. \textit{Excel} export is available within most    
+\textit{PHP} offers convincing ways to export the data to different file formats, including \textit{Excel} worksheets. \textit{Excel} export is available within most of the 
 
 These interactions are illustrated in figure \ref{fig:app_design_miceminer}.
 
