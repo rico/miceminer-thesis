@@ -272,7 +272,7 @@
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=\textwidth]{assets/pdf/app_design.pdf}
+  \includegraphics[width=\textwidth]{assets/pdf/application_design.pdf}
   \caption[Application design]{Overview of the application design.}
   \label{fig:app_design}
 \end{center}
@@ -366,7 +366,6 @@ Address	&	Description \\\midrule
 \url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\\midrule
 \url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\\midrule
 \url{http://github.com/rico/miceminer-thesis/tree/master}	& \ac{GIT} repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
-
 
 \end{tabularx}
 \captionof{table}{List of web addresses.}
@@ -471,7 +470,7 @@ The mapping to the database tables can be changed by setting the node value to a
 
 The perl part of the XML configuration file.
 
-\lstinputlisting[firstnumber=59,firstline=59, lastline=70, caption=Perl configuration, label='lst:perl_config']{assets/code/config.xml}
+\lstinputlisting[firstnumber=59,firstline=59, lastline=70, caption=Perl configuration, label=lst:perl_config]{assets/code/config.xml}
 
 \paragraph{scriptsFolder} The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details).
 
@@ -485,9 +484,9 @@ Number of seconds that are allowed to elapse between the transponder readings at
 
 \subsubsection{GUI \& PHP}
 \label{app:configfrontend}
-\lstinputlisting[firstnumber=82,firstline=82, lastline=83, caption=Maximum hours of stay results, label=lst:stay_config]{assets/code/config.xml}
+\lstinputlisting[firstnumber=82,firstline=82, lastline=83, caption={Maximum hours of stay results}, label=lst:stay_config]{assets/code/config.xml}
 
-\lstinputlisting[firstnumber=84,firstline=84, lastline=111, caption=Components configuration, label=lst:comp_config]{assets/code/config.xml}
+\lstinputlisting[firstnumber=84,firstline=84, lastline=111, caption={Components configuration}, label=lst:comp_config]{assets/code/config.xml}
 
 Shown in the next listing is the beginning of the configuration for the grids in the GUI. The different part of the configuration is explained on the spot in the configuration file.
 

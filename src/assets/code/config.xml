@@ -79,11 +79,11 @@
 		<destination>amfphp-uzh</destination>
 	</ro>
 </remoting>
-<!-- the maximum duration of a stay result in hours -->
+<!-- the maximum duration of a stay result and meeting result in hours to be included in the displayed data -->
 <maxStay>9</maxStay>
 <!-- 
    Choose which components to create when the application is loaded by setting the onStart attribute to 'true' or 'false'.
-   The name attribute values correspond to the button labels in the top menu of the application. 
+   The name attribute values correspond to the button labels in the main menu of the application. 
    Do not change the name attribute values!
 --> 
 <components>

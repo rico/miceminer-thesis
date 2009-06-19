@@ -5,7 +5,7 @@
 \section{Accessing and exploring the Data }
 \label{sec:dataaccessandexp}
 
-As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for \textit{potentially interesting} sets of data is called \textit{data mining}. What's \textit{potentially interesting} completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
+As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets of data is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
 
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
@@ -56,22 +56,24 @@ If a main component is started, its interface will be shown in the main viewport
 
 The interface arrangement is the same in all components except for the \textbf{Graph Data} component. Figure \ref{fig:interface_component} identifies the different parts with a screenshot of the \textbf{Browse Data} component.
 
+In the parameters section, the user sets the factors influencing the data displayed in the viewport. When the help button is clicked, a window will pop up, containing instructions to use the actual component. View options are only available in the \textbf{Browse Data} component. An export to \textit{Excel} option is available in every component. Some components offer additional export formats, depending on their function.   
+
 \begin{figure}[!htbp]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/interface_component.pdf}
-  \caption[miceminer coponent interface]{Screenshot of the \textbf{Browse Data} component, including the identification of the different parts of the interface.}
+  \caption[miceminer coponent interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
   \label{fig:interface_component}
 \end{center}
 \end{figure}
 
 \subsection{Software design}
-\label{subsec:miceminer_design}
+\label{subsec:miceminer_design}   
 
-\textit{Flex} itself does not include methods to query a database with \ac{SQL}. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, containing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}) speeds up the data transfer between the server and the client.
+\textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}) speeds up the data transfer between the server and the client.
 
-\textit{PHP} offers convincing ways to export the data to different file formats, including \textit{Excel} worksheets. \textit{Excel} export is available within most of the 
+\textit{PHP} offers convincing ways to export the data to different file formats, from which the most prominent is \textit{Excel}. A few components offer other export options, which have been designed to ensure the usage of the data in specialised data analysis software used by the researchers.
 
-These interactions are illustrated in figure \ref{fig:app_design_miceminer}.
+The interactions of the different software parts is illustrated in figure \ref{fig:app_design_miceminer}. Readers who are interested in the actual programming are reffered to the \textit{Additional Sites} section on the project homepage.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -81,21 +83,31 @@ These interactions are illustrated in figure \ref{fig:app_design_miceminer}.
 \end{center}
 \end{figure}
 
-
 \subsection{Configuration}
 \label{subsec:miceminer_config}
 
-\subsection{Data Filtering}
-\label{subsec:datafilter}
+As pictured in Figure \ref{fig:app_design_miceminer}, the relevant parts reads its configuration from the same XML file as the data processing scripts.
+
+The \textit{PHP} file reads the database configuration (see appendix \ref{app:configdb}) and extracts some of the values in the in the \lstinline|<flex>| configuration part.
+
+Explaining the configuration of the user interface (\textit{Flex} part) in detail is beyond the scope of this document. The influence of the different values is exlplained on spot in the configuration file. The clipping of the main components configuration which is shown in the appendix \ref{lst:comp_config} on page \pageref{lst:comp_config}, for instance, shows the actual configuration and the associated explanations.
+
+The most important parameter, which can be changed easely, is the \lstinline|<maxStay>| value. This value sets the upper limit of a \textit{stay} or a \textit{meeting result} in hours, to be included in the displayed data. It had to be introduced due to the impractical duration of stay values in the \textit{stay results} (see section \ref{subsec:stayres} and \ref{subsec:meetingres} for details).   
+
+\subsection{General concepts}
+\label{subsec:general_concepts}
+
+\subsubsection{Data Filtering}
+\label{sububsec:datafilter}
 
 Shortly explain the filtering possibilities of the program.
 
-\subsection{Data Visualization}
-\label{subsec:datavis}
+\subsubsection{Data Visualization}
+\label{subsubsec:datavis}
 
 Shortly explain the visualization possibilities of the program.
 
-\subsection{Exporting Data}
+\subsubsection{Network Data}
 \label{subsubsec:dataexp}
 
 Shortly explain the export function of the program.
