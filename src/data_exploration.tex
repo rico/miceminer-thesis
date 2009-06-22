@@ -35,32 +35,33 @@ Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer}
 \end{center}
 \end{figure}
 
-From the \textit{main menu}, the user can start the following main components.
+From the \textit{main menu}, the user can start the main components listed in table \ref{tab:main_components}.
 
-\subsubsection*{Browse Data}
-This is the core component of the application and contains the functionality to explore the data in the database within a definable date range.
+\begin{center} 
+\newcolumntype{H}{>{\bf}p{2.5cm}}
+\renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
+\begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
 
-\subsubsection*{Data Overview}
-Shows summarized information about all the mice, boxes antennas in the database.
-
-\subsubsection*{Data Analysis}
-Offers some simple data analysis and evaluation methods.
-
-\subsubsection*{Graph Data}
-Interactive network representation of a possible social network within the mice community.
-
-\subsubsection*{Upload Files}
-Components to perform administrative tasks. This component is password protected and only used by the system administrators.
+\toprule
+Browse Data		& 	This is the core component of the application and contains the functionality to explore the data in the database within a definable date range. \\
+Data Overview	&	Shows an overview about all the mice, boxes antennas in the database. \\
+Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
+Graph Data		&	Interactive network representation of a possible social network within the mice community. \\
+Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
+\end{tabularx}
+\captionof{table}{Main components selectable from the main menu within the \textit{miceminer} application.}
+\label{tab:main_components}
+\end{center}
 
 If a main component is started, its interface will be shown in the main viewport, and a tab is added to the tab bar. The user can switch between the main components by clicking on the appropriate tab.
 
 The interface arrangement is the same in all components except for the \textbf{Graph Data} component. Figure \ref{fig:interface_component} identifies the different parts with a screenshot of the \textbf{Browse Data} component.
 
-In the parameters section, the user sets the factors influencing the data displayed in the viewport. When the help button is clicked, a window will pop up, containing instructions to use the actual component. View options are only available in the \textbf{Browse Data} component. An export to \textit{Excel} option is available in every component. Some components offer additional export formats, depending on their function.   
+In the parameters section, the user sets the factors influencing the data displayed in the viewport. When the help button is clicked, a window will pop up, containing instructions to use the actual component. An export to \textit{Excel} option is available in every component. Some components offer additional export formats, depending on their function. View options are only available in the \textbf{Browse Data} component.   
 
 \begin{figure}[!htbp]
 \begin{center}
-  \includegraphics[width=\textwidth]{assets/pdf/interface_component.pdf}
+  \includegraphics[width=.75\textwidth]{assets/pdf/interface_component.pdf}
   \caption[miceminer coponent interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
   \label{fig:interface_component}
 \end{center}
@@ -69,11 +70,11 @@ In the parameters section, the user sets the factors influencing the data displa
 \subsection{Software design}
 \label{subsec:miceminer_design}   
 
-\textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}) speeds up the data transfer between the server and the client.
+\textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{AMFPHP}\footnote{See \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
 
 \textit{PHP} offers convincing ways to export the data to different file formats, from which the most prominent is \textit{Excel}. A few components offer other export options, which have been designed to ensure the usage of the data in specialised data analysis software used by the researchers.
 
-The interactions of the different software parts is illustrated in figure \ref{fig:app_design_miceminer}. Readers who are interested in the actual programming are reffered to the \textit{Additional Sites} section on the project homepage.   
+The interactions of the different software parts is illustrated in figure \ref{fig:app_design_miceminer}. Readers who are interested in the actual programming are reffered to the \textit{Additional Sites}\footnote{\href{http://zool-miceminer.uzh.ch/\#additional_sites}{http://zool-miceminer.uzh.ch/\#additional\_sites}} section on the project homepage.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -88,19 +89,59 @@ The interactions of the different software parts is illustrated in figure \ref{f
 
 As pictured in Figure \ref{fig:app_design_miceminer}, the relevant parts reads its configuration from the same XML file as the data processing scripts.
 
-The \textit{PHP} file reads the database configuration (see appendix \ref{app:configdb}) and extracts some of the values in the in the \lstinline|<flex>| configuration part.
+A detailed explanation of the \lstinline|<flex>| part of the configuration file, where the user interface can be configured, is beyond the scope of this document. The influence of the different values is exlplained on spot in the file. The clipping of the main components configuration which is shown in the appendix \ref{lst:comp_config} on page \pageref{lst:comp_config}, for instance, shows the actual configuration and the associated explanations.
 
-Explaining the configuration of the user interface (\textit{Flex} part) in detail is beyond the scope of this document. The influence of the different values is exlplained on spot in the configuration file. The clipping of the main components configuration which is shown in the appendix \ref{lst:comp_config} on page \pageref{lst:comp_config}, for instance, shows the actual configuration and the associated explanations.
+The \textit{PHP} file reads the database configuration (see appendix \ref{app:configdb}) and extracts some of the values in the in the \lstinline|<flex>| configuration part as well.
 
-The most important parameter, which can be changed easely, is the \lstinline|<maxStay>| value. This value sets the upper limit of a \textit{stay} or a \textit{meeting result} in hours, to be included in the displayed data. It had to be introduced due to the impractical duration of stay values in the \textit{stay results} (see section \ref{subsec:stayres} and \ref{subsec:meetingres} for details).   
+The most important parameter, which can be changed easily, is the \lstinline|<maxStay>| value. This value sets the upper limit of a \textit{stay} or a \textit{meeting result} in hours, to be included in the displayed data. It had to be introduced due to the impractical duration of stay values in the \textit{stay results} (see section \ref{subsec:stayres} and \ref{subsec:meetingres} for details).   
 
-\subsection{General concepts}
-\label{subsec:general_concepts}
+\subsection{Basic application concept}
+\label{subsec:app_concept}
 
+Several aspects have been included in the concept for the \textit{miceminer} application. On one hand, the software should offer a variety of ways and means to browse the data. On the other hand, the ease uf use should be assured. Additionaly, the technology sets its boundaries. 
+
+Taking these aspects into account, the final concept has been finalized during the development of the application. This concept is elucidated on the following sections, on the basis of the three main functionalities the application provide. 
+   
 \subsubsection{Data Filtering}
 \label{sububsec:datafilter}
 
-Shortly explain the filtering possibilities of the program.
+The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at an antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches share, is that the data is usually analyzed for a specific period.
+
+Hence, the selection of the period has been defined to be the starting point for every session (see figur \ref{fig:date_period}).
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.75\textwidth]{assets/pdf/date_period.pdf}
+  \caption[Date period selection]{Date period selector and current selection.}
+  \label{fig:date_period}
+\end{center}
+\end{figure}
+
+The user is then provided with three lists, one with the mice, another one with the boxes, and the third one with the antennas, for which data in the selected period could be found. For each of this list elements, the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and important information about the item is displayed alongside (see figure \ref{fig:data_overview_with_count}). These lists aim to be a basis for the selection of interesting items. In addition, if somebody is just intersted in summarized data, he already found what he's looking for. 
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.75\textwidth]{assets/pdf/overview_list.pdf}
+  \caption[Overview of the data within a date period]{Overview of the mice, boxes and antennas with the respective counts for a selected period. The number of \textit{direction results} are labeled \textbf{in/out count}, the \textit{stay results}  \textbf{stay count}.}
+  \label{fig:data_overview_with_count}
+\end{center}
+\end{figure}
+
+The data displayed in the list can be constrained by setting filters. For each column a filter can be chosen from a menu. The type of the filter depends on the sort of data the column contains.
+
+
+
+Based on the list with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one to display the data in the \textit{miceminer} application, the second one to export data directly as an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows th user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.    
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.75\textwidth]{assets/pdf/get_data_options.pdf}
+  \caption{Data retrieval options}
+  \label{fig:get_data_options}
+\end{center}
+\end{figure}
+
+Once the data has been load loaded into the miceminer
 
 \subsubsection{Data Visualization}
 \label{subsubsec:datavis}
