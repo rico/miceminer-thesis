@@ -5,7 +5,7 @@
 \section{Accessing and exploring the Data }
 \label{sec:dataaccessandexp}
 
-As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets of data is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
+As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
 
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
@@ -98,16 +98,14 @@ The most important parameter, which can be changed easily, is the \lstinline|<ma
 \subsection{Basic application concept}
 \label{subsec:app_concept}
 
-Several aspects have been included in the concept for the \textit{miceminer} application. On one hand, the software should offer a variety of ways and means to browse the data. On the other hand, the ease uf use should be assured. Additionaly, the technology sets its boundaries. 
+On one hand, the software should offer a variety of ways and means to browse the data. On the other hand, the ease uf use should be assured. Additionaly, the technology sets its boundaries. Taking these aspects into account, as weill as the needs of the researchers and the feedbacks, the concept has been finalized during the development of the application. 
 
-Taking these aspects into account, the final concept has been finalized during the development of the application. This concept is elucidated on the following sections, on the basis of the three main functionalities the application provide. 
+This concept is elucidated in the following sections, on the basis of the three main functionalities that the application provide. 
    
 \subsubsection{Data Filtering}
 \label{sububsec:datafilter}
 
-The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at an antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches share, is that the data is usually analyzed for a specific period.
-
-Hence, the selection of the period has been defined to be the starting point for every session (see figur \ref{fig:date_period}).
+The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at an antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches share, is that the data is usually analyzed for a specific period. Hence, the selection of the period has been defined to be the starting point for every session (see figure \ref{fig:date_period}).
 
 \begin{figure}[htpb]
 \begin{center}
@@ -117,7 +115,7 @@ Hence, the selection of the period has been defined to be the starting point for
 \end{center}
 \end{figure}
 
-The user is then provided with three lists, one with the mice, another one with the boxes, and the third one with the antennas, for which data in the selected period could be found. For each of this list elements, the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and important information about the item is displayed alongside (see figure \ref{fig:data_overview_with_count}). These lists aim to be a basis for the selection of interesting items. In addition, if somebody is just intersted in summarized data, he already found what he's looking for. 
+The user is then provided with three tables, one with the mice, another one with the boxes, and the third one with the antennas, for which data in the selected period could be found. For each of this table elements, the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and some additional information about the item is displayed alongside (see figure \ref{fig:data_overview_with_count}). These lists aim to be a basis for the selection of interesting items. In addition, if somebody is just intersted in summarized data, he already found what he's looking for. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -127,11 +125,17 @@ The user is then provided with three lists, one with the mice, another one with 
 \end{center}
 \end{figure}
 
-The data displayed in the list can be constrained by setting filters. For each column a filter can be chosen from a menu. The type of the filter depends on the sort of data the column contains.
+The data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content follow the user focus, meaning, that if the user switches to another table, the filter menu is adjusted to show the available column based filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
 
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/filter_types.pdf}
+  \caption[Filter types]{The \textit{Fulltext} filter searches the column data for the typed text. The \textit{data count} and \textit{Period} filters allow to set a lower and an upper limit by using the two sliders.}
+  \label{fig:filter_types}
+\end{center}
+\end{figure}
 
-
-Based on the list with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one to display the data in the \textit{miceminer} application, the second one to export data directly as an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows th user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.    
+Based on the list with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one to display the data in the \textit{miceminer} application, the second one to export data directly as an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.    
 
 \begin{figure}[htpb]
 \begin{center}
@@ -141,7 +145,9 @@ Based on the list with the summarized data, the user can choose the mice, box or
 \end{center}
 \end{figure}
 
-Once the data has been load loaded into the miceminer
+Once the data has been load loaded into the miceminer, a secondary group of tables containing the antenna recordings, \textit{direction results} and \textit{stay results} is shown in the right part of the viewport. The filter mechanism is exactly the same as in the tables with the summarized data.
+
+Starting with the period and ending with the column filter option, the user is able to explore the data at every level. If the application itself is not able to handle the amount of the data requested by the user, the data can be exported to a \textit{Excel} where the desired filter can be applied.       
 
 \subsubsection{Data Visualization}
 \label{subsubsec:datavis}
