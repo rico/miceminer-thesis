@@ -95,7 +95,7 @@ The \textit{PHP} file reads the database configuration (see appendix \ref{app:co
 
 The most important parameter, which can be changed easily, is the \lstinline|<maxStay>| value. This value sets the upper limit of a \textit{stay} or a \textit{meeting result} in hours, to be included in the displayed data. It had to be introduced due to the impractical duration of stay values in the \textit{stay results} (see section \ref{subsec:stayres} and \ref{subsec:meetingres} for details).   
 
-\subsection{Basic application concept}
+\subsection{Basic application concept and implementation}
 \label{subsec:app_concept}
 
 On one hand, the software should offer a variety of ways and means to browse the data. On the other hand, the ease uf use should be assured. Additionaly, the technology sets its boundaries. Taking these aspects into account, as weill as the needs of the researchers and the feedbacks, the concept has been finalized during the development of the application. 
@@ -120,12 +120,12 @@ The user is then provided with three tables, one with the mice, another one with
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/overview_list.pdf}
-  \caption[Overview of the data within a date period]{Overview of the mice, boxes and antennas with the respective counts for a selected period. The number of \textit{direction results} are labeled \textbf{in/out count}, the \textit{stay results}  \textbf{stay count}.}
+  \caption[Overview of the summarized data for mice, boxes and antennas within a date period]{Overview of the mice, boxes and antennas with the respective counts for a selected period. The number of \textit{direction results} are labeled \textbf{in/out count}, the \textit{stay results}  \textbf{stay count}.}
   \label{fig:data_overview_with_count}
 \end{center}
 \end{figure}
 
-The data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content follow the user focus, meaning, that if the user switches to another table, the filter menu is adjusted to show the available column based filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
+With a click on the column header, the data gets sorted ascending or descending. Moreover, the data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content follow the user focus, meaning, that if the user switches to another table, the filter menu is adjusted to show the available column based filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -135,7 +135,7 @@ The data displayed in the tables can be constrained by setting filters. For each
 \end{center}
 \end{figure}
 
-Based on the list with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one to display the data in the \textit{miceminer} application, the second one to export data directly as an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.    
+Based on the tables with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one to display the data in the \textit{miceminer} application, the second one to export data directly as an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -145,17 +145,55 @@ Based on the list with the summarized data, the user can choose the mice, box or
 \end{center}
 \end{figure}
 
-Once the data has been load loaded into the miceminer, a secondary group of tables containing the antenna recordings, \textit{direction results} and \textit{stay results} is shown in the right part of the viewport. The filter mechanism is exactly the same as in the tables with the summarized data.
+Once the data has been load loaded into the miceminer, a secondary group of tables containing the antenna recordings, \textit{direction results} and \textit{stay results} is shown in the right part of the viewport (see figure \ref{fig:overview_data} for clippings of the tables containing the data for a mouse). The menu with the column based filters, as well as the filter mechanism is exactly the same as in the tables with the summarized data, to ensure usabilty and avoid cluttering of the display. 
 
-Starting with the period and ending with the column filter option, the user is able to explore the data at every level. If the application itself is not able to handle the amount of the data requested by the user, the data can be exported to a \textit{Excel} where the desired filter can be applied.       
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.75\textwidth]{assets/pdf/overview_data.pdf}
+  \caption[Overview of the data sets for mouse]{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
+  \label{fig:overview_data}
+\end{center}
+\end{figure}  
+
+With the whole package of filter options, starting with the period and ending with the column filter option, the user is able to explore the data at every level. If the application itself is not able to handle the amount of the data requested by the user, it can be exported to an \textit{Excel} sheet where the desired filters can be applied.       
 
 \subsubsection{Data Visualization}
 \label{subsubsec:datavis}
 
-Shortly explain the visualization possibilities of the program.
+Sometimes it might not be convenient to look at tables of data to get an idea of how an item, a mouse for instance, is positioned by its numbers in comparison to the others. Furthermore, distributions are better illustrated by the use of a pie chart. 
 
-\subsubsection{Network Data}
-\label{subsubsec:dataexp}
+The chart view for the tables containing the summarized data is a column chart. The x-axis values are either the mice, the boxes or the antennas with their respective counts of the antenna recordings (data count), \textit{direction results} (in/out count) and \textit{stay results} (stay count) as the y-axis values (see figure \ref{fig:mouse_chart_item} for an example of a chart item for a mouse). 
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{assets/pdf/mouse_chart_item.pdf}
+  \caption[Chart item of a mouse]{Chart item of a mouse with the corresponding data counts.}
+  \label{fig:mouse_chart_item}
+\end{center}
+\end{figure}
+
+% \begin{figure}[htpb]
+% \begin{center}
+%   \includegraphics[width=.3\textwidth]{assets/pdf/view_options.pdf}
+%   \caption[View options]{The view options for the \textbf{Browse Data} component. The splitted view is selected to get the table and the chart view side by side.}
+%   \label{fig:view_options}
+% \end{center}
+% \end{figure}    
+
+As in the table view, the chart view offers the same sorting, filter and export options. Furthermore, if a sort or a filter has been applied in one of the views or another item is selected, this change is updated in the other view. This is best seen if the splitted view is selected as shown in figure \ref{fig:table_chart_view}. Thus, the user is able to quickly find a mouse, box or antenna, which might be of special interest for further analysis.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/table_chart_view.pdf}
+  \caption[Split view]{Split view in in the \textbf{Browse Data} component. Indicated the values which are synchronized in both, the table and the chart, views}
+  \label{fig:table_chart_view}
+\end{center}
+\end{figure}
+
+The chart view for the actual results of a mouse, box or antenna has to be different, as the structure of the data is not appropriate to be shown in a column chart (see figure \ref{fig:overview_data}). Since the reseachers are usually interested
+
+\subsubsection{Graph representation}
+\label{subsubsec:graph}
 
 Shortly explain the export function of the program.
 
