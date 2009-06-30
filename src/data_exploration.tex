@@ -125,7 +125,7 @@ The user is then provided with three tables, one with the mice, another one with
 \end{center}
 \end{figure}
 
-With a click on the column header, the data gets sorted ascending or descending. Moreover, the data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content is follows the user focus, meaning, that if the user switches to another table, the filter menu is updated to show the available column based filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
+With a click on the column header, the data gets sorted ascending or descending. Moreover, the data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content follows the user focus, meaning, that if the user switches to another table, the filter menu is updated to show the available column based filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -155,7 +155,7 @@ Once the data has been load loaded into the miceminer, a secondary group of tabl
 \end{center}
 \end{figure}  
 
-With the whole package of filter options, starting with the period and ending with the column filter option, the user is able to explore the data at every level. If the application itself is not able to handle the amount of the data requested by the user, it can be exported to an \textit{Excel} sheet where the desired filters can be applied.       
+With the whole package of filter options, starting with the period and ending with the column filter option, the user is able to explore and export the data at every level. If the application itself is not able to handle the amount of data requested by the user, it can be exported to an \textit{Excel} sheet where the desired filters can be applied.       
 
 \subsubsection{Data Visualization}
 \label{subsubsec:datavis}
@@ -180,7 +180,7 @@ For the visualization of the tables containing the summarized data, the chart vi
 % \end{center}
 % \end{figure}    
 
-As in the table view, the chart view offers the same sorting, filter and export options. Furthermore, if a sort or a filter has been applied in one of the views or another item is selected, this change is updated in the other view. This is best seen if the splitted view is selected, as shown in figure \ref{fig:table_chart_view}. Thus, the user is able to quickly find a mouse, box or antenna, which might be of special interest for further analysis.
+As in the table view, the chart view offers the same sorting, filter and export options. Furthermore, if a sort or a filter has been applied in one of the views, or another item is selected, this change is updated in the other view. This is best seen if the splitted view is selected, as shown in figure \ref{fig:table_chart_view}. Thus, the user is able to quickly find a mouse, box or antenna, which might be of special interest for further analysis.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -190,7 +190,7 @@ As in the table view, the chart view offers the same sorting, filter and export 
 \end{center}
 \end{figure}
 
-The chart view for the actual results of a mouse, box or antenna has to be different, as the structure of the data is not appropriate to be shown in a column chart (see figure \ref{fig:overview_data}). Since the reseachers are usually interested at which location a mouse has spent how many time, the data is grouped and displayed as a pie chart (see figure \ref{fig:pie_chart_for_mouse}).
+The chart view for the actual results of a mouse, box or antenna is different, because the reseachers are usually interested at which location a mouse has spent how many time. Therefore the data is grouped on the values in a column and displayed as a pie chart (see figure \ref{fig:pie_chart_for_mouse}). This reveals the distribution of the time spent at the different locations in a simple and clear way. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -200,15 +200,33 @@ The chart view for the actual results of a mouse, box or antenna has to be diffe
 \end{center}
 \end{figure}
 
-When the user has selected the chart view, the \textit{Excel} export behaviour changes. Not the data shown in the table will be exported, but the grouped data underlying the chart. This has been introduced according to the interest of the researchers in this data.
+When the user has selected the chart view, the \textit{Excel} export behaviour changes. Not the data shown in the table will be exported, but the grouped data underlying the chart. This has been introduced according to the needs of the researchers.
 
-In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded in at box 40 during the period. In fact, this secondary chart is shown as well, if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time.
+In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the period. In fact, this secondary chart is the same as if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
 
-Combined with the table view and the shared filter capabilities the visualization options offer a good alternative to explore the data. A special visualization, which shows possible social relations between the mice living in the shed is explained in the following chapter.           
+Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible social relations between the mice living in the shed is explained in the following section.
 
-\subsubsection{Graph representation}
-\label{subsubsec:graph}
+\subsection{Network visualization}
+\label{subec:graph}
 
+The visualization of somewhow parwaise connected data is ganining popularity in a broad variety of research fields. Firstly, cause it as an attractive way to present the data, and facilitates the communication of complex interdependences.
+
+Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using the coventional statistical approach.
+
+Thus, what is the advantage or the additonal benefit, to have data that can be represented as a network? 
+   
+
+\subsubsection{Short introduction to Graph Theory}
+\label{subsubsec:graph_intro}
+
+\subsubsection{Social networks}
+\label{subsubsec:graph_social}
+
+\subsubsection{Exploring the graph with miceminer}
+\label{subsubsec:graph_explore}
+
+\subsubsection{Possible research}
+\label{subsubsec:graph_research}
 
 
 % ----------------------------------------------
