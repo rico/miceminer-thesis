@@ -5,7 +5,7 @@
 \section{Accessing and exploring the Data }
 \label{sec:dataaccessandexp}
 
-As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available, to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
+As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
 
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
@@ -209,31 +209,52 @@ Combined with the shared filter capabilities and the export options, the visuali
 \subsection{Network visualization}
 \label{subec:graph}
 
-The visualization of somewhow parwaise connected data is ganining popularity in a broad variety of research fields. Firstly, cause it as an attractive way to present the data, and facilitates the communication of complex interdependences.
+The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using the coventional statistical approach.
+As well in biology, networks are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+tool for the study of sociality}\cite{wey:08} reviews and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
 
-Thus, what is the advantage or the additonal benefit, to have data that can be represented as a network? 
-   
+Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
 
-\subsubsection{Short introduction to Graph Theory}
+The next section contains a very short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the \textit{miceminder} application are outlined.  
+
+\subsubsection{Short introduction to network theory}
 \label{subsubsec:graph_intro}
 
-\subsubsection{Social networks}
-\label{subsubsec:graph_social}
+Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some edges between them. In social networks, the nodes are normally indviduals and the edges denote a relation between them. For the train network, however, the nodes would stand for the train stations, and the edges for the tracks.
 
-\subsubsection{Exploring the graph with miceminer}
+Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
+
+\begin{figure}[htbp]
+	\begin{minipage}[b]{0.5\linewidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected.pdf}
+			\caption{Undirected graph}
+			\label{fig:graph_undirected}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.5\linewidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
+			\caption{Undirected graph with weighted edges}
+			\label{fig:graph_undirected_weighted}
+	\end{minipage}
+\end{figure}   
+
+\subsubsection{Concept}
+\label{subsubsec:graph_concept}
+
+\subsubsection{Implementation}
 \label{subsubsec:graph_explore}
 
-\subsubsection{Possible research}
+\subsubsection{Possible applications}
 \label{subsubsec:graph_research}
-
 
 % ----------------------------------------------
 % Data analysis
 % ----------------------------------------------
 \subsection{Simple data analysis with miceminer}
-\label{subsec:dataana} 
+\label{subsec:data_ana} 
 
 Miceminer provides some simple data analysis functionality.
 
