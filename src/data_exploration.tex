@@ -221,25 +221,168 @@ The next section contains a very short introduction to network theory, the theor
 \subsubsection{Short introduction to network theory}
 \label{subsubsec:graph_intro}
 
-Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some edges between them. In social networks, the nodes are normally indviduals and the edges denote a relation between them. For the train network, however, the nodes would stand for the train stations, and the edges for the tracks.
+Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available.   
 
-Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
+\paragraph{Network types}
+\label{para:net_types}
+Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes are normally indviduals and the edges denote a relation between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
+
+Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strenght of a connection. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
 
 \begin{figure}[htbp]
-	\begin{minipage}[b]{0.5\linewidth}
+	\begin{minipage}[b]{0.5\textwidth}
 		\centering
 			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected.pdf}
-			\caption{Undirected graph}
+			\caption{Undirected network with binary edges.}
 			\label{fig:graph_undirected}
 	\end{minipage}
 	\hspace{0.5cm}
-	\begin{minipage}[b]{0.5\linewidth}
+	\begin{minipage}[b]{0.5\textwidth}
 		\centering
 			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
-			\caption{Undirected graph with weighted edges}
+			\caption{Undirected network with weighted edges.}
 			\label{fig:graph_undirected_weighted}
 	\end{minipage}
-\end{figure}   
+\end{figure}
+
+Another type of networks are the so called directed networks (see figures \ref{fig:graph_directed} and \ref{fig:graph_directed_weighted}). Unlike the undirected networks, the edges have a direction (usually depicted by an arrowhead). Applied to our real world model networks, the direction could represent a one way track of a train network, or the connection between a supplier and a customer. 
+
+\begin{figure}[htbp]
+	\begin{minipage}[b]{0.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed.pdf}
+			\caption{Directed network with binary edges.}
+			\label{fig:graph_directed}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed_weighted.pdf}
+			\caption{Directed network with weighted edges.}
+			\label{fig:graph_directed_weighted}
+	\end{minipage}
+\end{figure}
+
+There are plenty of other varieties of networks. But the ones described above are adequate to understand the visualization implemented in the \textit{miceminer} application.
+
+\paragraph{Adjacency matrix}
+\label{para:adjacency_matrix}
+
+The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular reprsentation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.4\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	1	&	0	&	1 \\
+			B	&	1	&	0	&	1	&	1 \\
+			C	&	0	&	1	&	0	&	0 \\
+			D	&	1	&	1	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected}.}
+			\label{tab:am_undirected}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+        	0	&	1	&	0	&	1 \\
+			1	&	0	&	1	&	1 \\
+			0	&	1	&	0	&	0 \\
+			1	&	1	&	0	&	0 \\
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected}.}
+		\label{fig:am_undirected}
+	\end{minipage}
+\end{figure}
+
+For the model network with the weighted graph (figure \ref{fig:graph_undirected_weighted}) the tabular representation and the adjacency matrix looks like shown in table \ref{tab:am_undirected_weighted} and figure \ref{fig:am_undirected_weighted} (assuming that the maximum weight of an edge is 5).
+
+An adjacency matrix for an undirected network is symmetrical by the diagonal, since the edges do not have any direction. 
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.45\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	5	&	0	&	4 \\
+			B	&	5	&	0	&	1	&	2 \\
+			C	&	0	&	1	&	0	&	0 \\
+			D	&	4	&	2	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected_weighted}.}
+			\label{tab:am_undirected_weighted}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+			0	&	5	&	0	&	4 \\
+			5	&	0	&	1	&	2 \\
+			0	&	1	&	0	&	0 \\
+			4	&	2	&	0	&	0 \\	
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected_weighted}.}
+		\label{fig:am_undirected_weighted}
+	\end{minipage}
+\end{figure}
+
+Consequently, for a directed network, as the one shown in figure \ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure \ref{fig:am_directed}).
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.45\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	1	&	0	&	1 \\
+			B	&	0	&	0	&	1	&	1 \\
+			C	&	0	&	0	&	0	&	0 \\
+			D	&	0	&	0	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_directed}.}
+			\label{tab:am_directed}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+			0	&	1	&	0	&	1 \\
+			0	&	0	&	1	&	1 \\
+			0	&	0	&	0	&	0 \\
+			0	&	0	&	0	&	0 \\	
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_directed}.}
+		\label{fig:am_directed}
+	\end{minipage}
+\end{figure}
+
+The data matrix corresponding to a visualization, gives us the ability to calculate defined values for nodes, even for large networks, by using a computer. Some of these values are explained in the next section. 
+
+\paragraph{Node based measures}
+\label{para:node_based}
+
+In order to get some quantitative data about a node in a network, 
+  
+
 
 \subsubsection{Concept}
 \label{subsubsec:graph_concept}

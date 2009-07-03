@@ -23,9 +23,15 @@
 \usepackage[english]{babel}
 \usepackage{color}
 
+% captions
+\usepackage[format=plain,font=small,labelfont=bf,labelsep=period]{caption}
+
 % orientation
 \usepackage{rotating}
 \usepackage{lscape}
+
+%math
+\usepackage[intlimits]{amsmath}
 
 % used for citations
 \usepackage[square, numbers, super]{natbib}
@@ -73,6 +79,14 @@
 
 % Acronyms
 \usepackage[printonlyused,withpage,footnote]{acronym}
+
+% Space before and after paragraph title
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-1.25ex\@plus -.5ex \@minus -.2ex}%
+  {.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
 
 %
 % CUSTOM COMMANDS
@@ -381,7 +395,7 @@ Address	&	Description \\\midrule
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{5cm}}
-\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
+\renewcommand\arraystretch{1.2}% 1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 \toprule
 \rowstyle{\bfseries}
