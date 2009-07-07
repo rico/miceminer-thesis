@@ -35,7 +35,7 @@ Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer}
 \end{center}
 \end{figure}
 
-From the \textit{main menu}, the user can start the main components listed in table \ref{tab:main_components}.
+From the \textit{main menu}, the user can start the main components listed in table \ref{tab:main_components}. 
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2.5cm}}
@@ -46,7 +46,7 @@ From the \textit{main menu}, the user can start the main components listed in ta
 Browse Data		& 	This is the core component of the application and contains the functionality to explore the data in the database within a definable date range. \\
 Data Overview	&	Shows an overview about all the mice, boxes antennas in the database. \\
 Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
-Graph Data		&	Interactive network representation of a possible social network within the mice community. \\
+Graph Data		&	Interactive network representation of possible social networks within the mice community. \\
 Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
 \end{tabularx}
 \captionof{table}{Main components selectable from the main menu within the \textit{miceminer} application.}
@@ -166,7 +166,7 @@ For the visualization of the tables containing the summarized data, the chart vi
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=0.5\textwidth]{assets/pdf/mouse_chart_item.pdf}
+  \includegraphics[width=.33\textwidth]{assets/pdf/mouse_chart_item.pdf}
   \caption[Chart item of a mouse]{Chart item of a mouse with the corresponding data counts.}
   \label{fig:mouse_chart_item}
 \end{center}
@@ -195,7 +195,7 @@ The chart view for the actual results of a mouse, box or antenna is different, b
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.66\textwidth]{assets/img/pie_chart_for_mouse.png}
-  \caption[Pie chart of result data for a mouse]{Exported pie chart with grouped box recordings for a mouse. The chart shows how many times the mouse has been recorded at the antennas of the boxes listed in the legend on the left side (e.g. 4754 times at box 40) durig the selected period.}
+  \caption[Pie chart of result data for a mouse]{Pie chart with grouped box recordings for a mouse. The chart shows how many times the mouse has been recorded at the antennas of the boxes listed in the legend on the left side (e.g. 4754 times at box 40) durig the selected period.}
   \label{fig:pie_chart_for_mouse}
 \end{center}
 \end{figure}
@@ -205,193 +205,6 @@ When the user has selected the chart view, the \textit{Excel} export behaviour c
 In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the period. In fact, this secondary chart is the same as if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
 
 Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible social relations between the mice living in the shed is explained in the following section.
-
-\subsection{Network visualization}
-\label{subec:graph}
-
-The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
-
-As well in biology, networks are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
-tool for the study of sociality}\cite{wey:08} reviews and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
-
-Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
-
-The next section contains a very short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the \textit{miceminder} application are outlined.  
-
-\subsubsection{Short introduction to network theory}
-\label{subsubsec:graph_intro}
-
-Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available.   
-
-\paragraph{Network types}
-\label{para:net_types}
-Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes are normally indviduals and the edges denote a relation between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
-
-Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strenght of a connection. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
-
-\begin{figure}[htbp]
-	\begin{minipage}[b]{0.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected.pdf}
-			\caption{Undirected network with binary edges.}
-			\label{fig:graph_undirected}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[b]{0.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
-			\caption{Undirected network with weighted edges.}
-			\label{fig:graph_undirected_weighted}
-	\end{minipage}
-\end{figure}
-
-Another type of networks are the so called directed networks (see figures \ref{fig:graph_directed} and \ref{fig:graph_directed_weighted}). Unlike the undirected networks, the edges have a direction (usually depicted by an arrowhead). Applied to our real world model networks, the direction could represent a one way track of a train network, or the connection between a supplier and a customer. 
-
-\begin{figure}[htbp]
-	\begin{minipage}[b]{0.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed.pdf}
-			\caption{Directed network with binary edges.}
-			\label{fig:graph_directed}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[b]{0.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed_weighted.pdf}
-			\caption{Directed network with weighted edges.}
-			\label{fig:graph_directed_weighted}
-	\end{minipage}
-\end{figure}
-
-There are plenty of other varieties of networks. But the ones described above are adequate to understand the visualization implemented in the \textit{miceminer} application.
-
-\paragraph{Adjacency matrix}
-\label{para:adjacency_matrix}
-
-The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular reprsentation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
-
-\begin{figure}[ht]
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-			\newcolumntype{H}{>{\bf}p{.5cm}}
-			\begin{tabularx}{.4\textwidth}{+H|^X^X^X^X}
-			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
-			A	&	0	&	1	&	0	&	1 \\
-			B	&	1	&	0	&	1	&	1 \\
-			C	&	0	&	1	&	0	&	0 \\
-			D	&	1	&	1	&	0	&	0 \\	
-			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected}.}
-			\label{tab:am_undirected}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-		\[
-		\begin{pmatrix}
-        	0	&	1	&	0	&	1 \\
-			1	&	0	&	1	&	1 \\
-			0	&	1	&	0	&	0 \\
-			1	&	1	&	0	&	0 \\
-		\end{pmatrix} 
-		\]
-		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected}.}
-		\label{fig:am_undirected}
-	\end{minipage}
-\end{figure}
-
-For the model network with the weighted graph (figure \ref{fig:graph_undirected_weighted}) the tabular representation and the adjacency matrix looks like shown in table \ref{tab:am_undirected_weighted} and figure \ref{fig:am_undirected_weighted} (assuming that the maximum weight of an edge is 5).
-
-An adjacency matrix for an undirected network is symmetrical by the diagonal, since the edges do not have any direction. 
-
-\begin{figure}[ht]
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-			\newcolumntype{H}{>{\bf}p{.5cm}}
-			\begin{tabularx}{.45\textwidth}{+H|^X^X^X^X}
-			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
-			A	&	0	&	5	&	0	&	4 \\
-			B	&	5	&	0	&	1	&	2 \\
-			C	&	0	&	1	&	0	&	0 \\
-			D	&	4	&	2	&	0	&	0 \\	
-			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected_weighted}.}
-			\label{tab:am_undirected_weighted}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-		\[
-		\begin{pmatrix}
-			0	&	5	&	0	&	4 \\
-			5	&	0	&	1	&	2 \\
-			0	&	1	&	0	&	0 \\
-			4	&	2	&	0	&	0 \\	
-		\end{pmatrix} 
-		\]
-		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected_weighted}.}
-		\label{fig:am_undirected_weighted}
-	\end{minipage}
-\end{figure}
-
-Consequently, for a directed network, as the one shown in figure \ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure \ref{fig:am_directed}).
-
-\begin{figure}[ht]
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-			\newcolumntype{H}{>{\bf}p{.5cm}}
-			\begin{tabularx}{.45\textwidth}{+H|^X^X^X^X}
-			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
-			A	&	0	&	1	&	0	&	1 \\
-			B	&	0	&	0	&	1	&	1 \\
-			C	&	0	&	0	&	0	&	0 \\
-			D	&	0	&	0	&	0	&	0 \\	
-			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_directed}.}
-			\label{tab:am_directed}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[t]{0.5\textwidth}
-    \vspace{0pt}
-		\centering
-		\[
-		\begin{pmatrix}
-			0	&	1	&	0	&	1 \\
-			0	&	0	&	1	&	1 \\
-			0	&	0	&	0	&	0 \\
-			0	&	0	&	0	&	0 \\	
-		\end{pmatrix} 
-		\]
-		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_directed}.}
-		\label{fig:am_directed}
-	\end{minipage}
-\end{figure}
-
-The data matrix corresponding to a visualization, gives us the ability to calculate defined values for nodes, even for large networks, by using a computer. Some of these values are explained in the next section. 
-
-\paragraph{Node based measures}
-\label{para:node_based}
-
-In order to get some quantitative data about a node in a network, 
-  
-
-
-\subsubsection{Concept}
-\label{subsubsec:graph_concept}
-
-\subsubsection{Implementation}
-\label{subsubsec:graph_explore}
-
-\subsubsection{Possible applications}
-\label{subsubsec:graph_research}
 
 % ----------------------------------------------
 % Data analysis

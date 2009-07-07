@@ -1,144 +1,238 @@
-% ===============================
-% Network exploration
-% ===============================
-\newpage
-\section{Exploring Social Network}
-\label{sec:netexp}
+\section{Exploration of the social network data}
+\label{sec:graph}
 
-% ----------------------------------------------
-% Introduction to social networks
-% ----------------------------------------------
-\subsection{Introduction to Social Networks}
-\label{sec:introsocnet}
+The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-Short introduction to network theory. 
+As well in biology, networks are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+tool for the study of sociality}\cite{wey:08} reviews and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
 
-\begin{itemize} 
-	\item Graph (weighted/unweighted, directed/undirected)
-	\item Node
-	\item Vertex
-\end{itemize}
+Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
 
-% ---------------------------------------------------
-% Advantages of the network approach
-% ---------------------------------------------------
-\subsection{Advantages of the Networks approach}
-\label{sec:advantnetappr}
+The next section contains a very short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the \textit{miceminder} application are outlined.  
 
-Understanding the network structure gives us better understanding of the role of the individual in the population.
+\subsection{Short introduction to network theory}
+\label{subsec:graph_intro}
 
-% ----------------------------------------------
-% Relational Data
-% ----------------------------------------------
-\subsection{Relational Data For the Network}
-\label{subsec:datafilter}
+Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available.   
 
-Preparation of the data.
+\subsubsection{Network types}
+\label{subsubsec:net_types}
+Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes, also called actors, are normally indviduals and the edges denote a relationship between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
+
+Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strenght of a connection. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
+
+\begin{figure}[htbp]
+	\begin{minipage}[b]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected.pdf}
+			\caption{Undirected network with binary edges.}
+			\label{fig:graph_undirected}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
+			\caption{Undirected network with weighted edges.}
+			\label{fig:graph_undirected_weighted}
+	\end{minipage}
+\end{figure}
+
+Another type of networks are the so called directed networks (see figures \ref{fig:graph_directed} and \ref{fig:graph_directed_weighted}). Unlike the undirected networks, the edges have a direction (usually depicted by an arrowhead). Applied to our real world model networks, the direction could represent a one way track of a train network, or the connection between a supplier and a customer. 
+
+\begin{figure}[htbp]
+	\begin{minipage}[b]{0.5\textwidth}
+    	\captionsetup{width=.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed.pdf}
+			\caption{Directed network with binary edges.}
+			\label{fig:graph_directed}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+		\centering
+			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed_weighted.pdf}
+			\caption{Directed network with weighted edges.}
+			\label{fig:graph_directed_weighted}
+	\end{minipage}
+\end{figure}
+
+There are plenty of other varieties of networks. But the ones described above are adequate to understand the visualization implemented in the \textit{miceminer} application.
+
+\subsubsection{Adjacency matrix}
+\label{subsubsec:adjacency_matrix}
+
+The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular reprsentation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \captionsetup{width=.45\textwidth}
+    \vspace{0pt}
+		\centering
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	1	&	0	&	1 \\
+			B	&	1	&	0	&	1	&	1 \\
+			C	&	0	&	1	&	0	&	0 \\
+			D	&	1	&	1	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected}.}
+			\label{tab:am_undirected}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+        	0	&	1	&	0	&	1 \\
+			1	&	0	&	1	&	1 \\
+			0	&	1	&	0	&	0 \\
+			1	&	1	&	0	&	0 \\
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected}.}
+		\label{fig:am_undirected}
+	\end{minipage}
+\end{figure}
+
+For the model network with the weighted graph (figure \ref{fig:graph_undirected_weighted}) the tabular representation and the adjacency matrix looks like shown in table \ref{tab:am_undirected_weighted} and figure \ref{fig:am_undirected_weighted} (assuming that the maximum weight of an edge is 5).
+
+An adjacency matrix for an undirected network is symmetrical by the diagonal, since the edges do not have any direction. 
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \captionsetup{width=.45\textwidth}
+    \vspace{0pt}
+		\centering
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	5	&	0	&	4 \\
+			B	&	5	&	0	&	1	&	2 \\
+			C	&	0	&	1	&	0	&	0 \\
+			D	&	4	&	2	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected_weighted}.}
+			\label{tab:am_undirected_weighted}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+			0	&	5	&	0	&	4 \\
+			5	&	0	&	1	&	2 \\
+			0	&	1	&	0	&	0 \\
+			4	&	2	&	0	&	0 \\	
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_undirected_weighted}.}
+		\label{fig:am_undirected_weighted}
+	\end{minipage}
+\end{figure}
+
+Consequently, for a directed network, as the one shown in figure \ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure \ref{fig:am_directed}).
+
+\begin{figure}[ht]
+	\begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \captionsetup{width=.5\textwidth}
+    \vspace{0pt}
+			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
+			\rowstyle{\bfseries}
+				&	A	&	B	&	C	&	D \\\midrule
+			A	&	0	&	1	&	0	&	1 \\
+			B	&	0	&	0	&	1	&	1 \\
+			C	&	0	&	0	&	0	&	0 \\
+			D	&	0	&	0	&	0	&	0 \\	
+			\end{tabularx}
+			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_directed}.}
+			\label{tab:am_directed}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[t]{0.5\textwidth}
+    \captionsetup{width=.5\textwidth}
+    \vspace{0pt}
+		\centering
+		\[
+		\begin{pmatrix}
+			0	&	1	&	0	&	1 \\
+			0	&	0	&	1	&	1 \\
+			0	&	0	&	0	&	0 \\
+			0	&	0	&	0	&	0 \\	
+		\end{pmatrix} 
+		\]
+		\captionof{figure}{The adjacency matrix of the data shown in table \ref{tab:am_directed}.}
+		\label{fig:am_directed}
+	\end{minipage}
+\end{figure}
+
+A special network is the so called \textit{Ego Network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to \textit{Ego}, plus the edges between them. Illustrated in figure \ref{fig:graph_ego} is the ego network for node A within the undirected network shown in figure \ref{fig:graph_undirected}.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.5\textwidth]{assets/pdf/graph_egocentric.pdf}
+  \caption[Ego Network]{Ego Network for node A. The full network is shown in figure \ref{fig:graph_undirected} on page \pageref{fig:graph_undirected}.}
+  \label{fig:graph_ego}
+\end{center}
+\end{figure} 
+
+The adjacency matrix corresponding to a visualization, gives us the ability to characterize a network and make the actors comparable. These measurements are explained in the following sections.
+
+\subsubsection{Network topology}
+\label{subsubsec:topology}
 
 
-\begin{itemize} 
-	\item Period one month
-	\item The monthly association duration sum must be more than one hour (3600 seconds)
-	\item The count of monthly association must be higher than one
-\end{itemize}
 
-% ----------------------------------------------
-% Visual exploration
-% ----------------------------------------------
-\newpage
-\subsection{Visual Exploration}
-\label{subsec:visexp}
+\subsubsection{Node based measures}
+\label{subsubsec:node_based}
 
-\subsubsection{introduction}
-\label{subsubsec:visexpintro}
+In order to have some measures about a node in a network, values are defined to quantify the position of a node within a network. There are several of these so called node based measures available. Presented here are just the ones which are available in the \textit{miceminer} implementation.
 
-\begin{itemize} 
-	\item Visual pattern detection
-	\item Network topology
-\end{itemize}
+The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of these measurements for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not include possibilities to calculate these measures.
 
-\subsubsection{Visual exploration with miceminer}
-\label{subsec:visexpmiceminer}
+\paragraph{Average path length}
 
-\begin{itemize} 
-	\item Weighted Graph (Edge labeling)
-	\item Attribute highlighting
-	\item Filtering Edges	
-	\item Ego network	
-	\item Walking the graph		
-	\item Exporting data for Netdraw			
-\end{itemize}
+\paragraph{Clustering coefficient}
 
-\subsubsection{Visual exploration with Netdraw}
-\label{subsubsec:visexpnetdraw}
+\paragraph{Degree}
 
-Will see how I use netdraw ...
+\paragraph{Betweenness}
 
-% ----------------------------------------------
-% Network Analysis
-% ----------------------------------------------
-\newpage
-\subsection{Analysis of the Network Over the Time}
-\label{subsec:netan}
+\subsection{Concept}
+\label{subsec:graph_concept}
 
-\subsubsection{introduction}
-\label{subsubsec:netanintro}
+Social relations in the sense of this project are defined as the time two mice spend together in an artificial nestbox. This is an obvious approach. Mice only share an area at the same time voluntarily, if they have some kind of affirmative social relation.
 
-At each discrete time step (month), the network is quantified by the following measurements, tests.
+Since the data includes information about the strength of the relationship, which is the actual time two mice spent together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) imaginable, how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure \ref{fig:meeting_types}). Anyway, this information is not clearly unidirectional. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have a directed graph.
 
-\subsubsection{Node Based Measures}
-\label{subsubsec:nodbasmea}
+Consequently, an undirected network with weighted edges is shown. The weight depends on the sum of time two mice spend together over a period of time. In addition, information about the composition (different meetings) of the edges is available.
 
-\begin{itemize} 
-	\item Network edge density
-	\item Path length
-	\item Clustering coefficient
-	\item Degree	
-	\item Node betweenness
-\end{itemize}
+The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. Similar to the component to browse the data, the user should be provided with a tidy interface presenting the main information and options: the visulization of the network and the corresponding node based values, as well as export options for further analysis in the preferred software.    
 
-\subsubsection{Statistical Tests for Node Based Measures (p. 88 ff.)}
-\label{subsubsec:stattesnodbasmea}
+\subsection{Implementation}
+\label{subsec:graph_explore}
 
-Null Hypothesis is randomized network data. (Monte Carlo)
+Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component.
 
-\begin{itemize} 
-	\item mean degree
-	\item mean clustering coefficient
-	\item Category measures	(Mann-Whitney test p.110)
-\end{itemize}
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/graph_data_interface_overview.pdf}
+  \caption[Graph Data interface overview]{Interface overview of the \textbf{Graph Data} component, including the identificaton of the main parts.}
+  \label{fig:graph_data_interface_overview}
+\end{center}
+\end{figure}
 
-\subsubsection{Substructures}
-\label{subsubsec:substrut}
 
-Evidence of segregation by discrete categories (p.117)
-
-\begin{itemize} 
-	\item Association pattern (Individuals are more likely to interact with individuals of similar type) (p .119)
-	\item Degree correlation (Nodes with high degree connect to other nodes with high degree ?) (p.123)
-	\item Community structure (p.124)
-\end{itemize}
-
-\subsubsection{Network Analysis with miceminer}
-\label{subsubsec:netanmiceminer}
-
-Only Node Based measures.
-
-Carry out Simplified Longitudinal Network Analysis with Promising Individuals.
-
-\subsubsection{Network Analysis with UCINET/Netdraw}
-\label{subsubsec:netanucinet}
-
-Need to see what is possible within reasonable time.
-
-% ----------------------------------------------
-% Results
-% ----------------------------------------------
-\subsubsection{Results}
-\label{subsubsec:netanres}
-
-How did the values (e.g. node based measures) evolve or change over the time.
-
-\label{paragraph:simlonnet}
-\paragraph{ Promising Individuals}
-Following individuals over time and see how their node based measures or place within the network change.
+\subsection{Possible research}
+\label{subsec:graph_research}
