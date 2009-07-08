@@ -389,7 +389,12 @@
 <graph>
 	<!-- this grid configuration is only used for the export (not to configure the build like the following ones) 
 		but you can still adjust the column size and the label
-		Please do not add mor grids to this section --> 
+		Please do not add mor grids to this section -->
+      
+    <!-- Configuration for the Graph Data component. 
+    
+         With the limit value you can set the minimal duration of meetings between two mice within the selected month
+         to be included in the data which is shown in the component -->  
 	<graphData limit="3600" method="graphData">
 		<grid id="nodeBasedMeasures" label="node based measures" header="graphData" filename="node_based_measures" initsort="component">
 			<col field="label" label="component" width="100" sort="alphanum"/>

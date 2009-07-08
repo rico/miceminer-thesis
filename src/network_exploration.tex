@@ -3,7 +3,7 @@
 
 The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-As well in biology, networks are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+As well in biology, networks or graphs are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
 tool for the study of sociality}\cite{wey:08} reviews and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
 
 Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
@@ -187,19 +187,14 @@ A special network is the so called \textit{Ego Network}. The ego network consist
 \end{center}
 \end{figure} 
 
-The adjacency matrix corresponding to a visualization, gives us the ability to characterize a network and make the actors comparable. These measurements are explained in the following sections.
-
-\subsubsection{Network topology}
-\label{subsubsec:topology}
-
-
+The adjacency matrix makes it possible to apply mathematics to the network. Some of these    
 
 \subsubsection{Node based measures}
 \label{subsubsec:node_based}
 
-In order to have some measures about a node in a network, values are defined to quantify the position of a node within a network. There are several of these so called node based measures available. Presented here are just the ones which are available in the \textit{miceminer} implementation.
+In order to have some measures about a node in a network, measures are defined to quantify the degree or position of a node within a network. There are several of these so called node based measures available. Presented here are just the ones which are available in the \textit{miceminer} implementation.
 
-The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of these measurements for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not include possibilities to calculate these measures.
+The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of these measures for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not include possibilities to calculate these measures.  
 
 \paragraph{Average path length}
 
@@ -209,6 +204,14 @@ The following methods to calculate the node based measures apply to networks wit
 
 \paragraph{Betweenness}
 
+\subsubsection{Network properties}
+\label{subsubsec:topology}
+
+\begin{mylist}
+  \item unconnected networks
+  \item degree of separation 
+\end{mylist}
+
 \subsection{Concept}
 \label{subsec:graph_concept}
 
@@ -216,23 +219,71 @@ Social relations in the sense of this project are defined as the time two mice s
 
 Since the data includes information about the strength of the relationship, which is the actual time two mice spent together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) imaginable, how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure \ref{fig:meeting_types}). Anyway, this information is not clearly unidirectional. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have a directed graph.
 
-Consequently, an undirected network with weighted edges is shown. The weight depends on the sum of time two mice spend together over a period of time. In addition, information about the composition (different meetings) of the edges is available.
+Consequently, an undirected network with weighted edges is shown. The weight depends on the sum of time two mice spend together over a period of time. In addition, the node based measures for the shown mice and information about the composition (different meetings) of the edges must be available.
 
-The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. Similar to the component to browse the data, the user should be provided with a tidy interface presenting the main information and options: the visulization of the network and the corresponding node based values, as well as export options for further analysis in the preferred software.    
+The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. Similar to the component to browse the data, the user should be provided with a tidy interface presenting the main information and options: the visulization of the network and the corresponding node based values, as well as export options for further analysis in the preferred software.
+
+\subsection{Configuration}
+\label{subsec:graph_explore}
+
+There is only one configuration value in the XML configuration file worth mentioning here. With the \lstinline|limit| value (see clipping \ref{lst:graph_data_limit} on page \pageref{lst:graph_data_limit}) one can set the minimal time, two mice must have spent together in whatever box to be included in the data shown. 
 
 \subsection{Implementation}
 \label{subsec:graph_explore}
 
-Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component.
+Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component. 
 
-\begin{figure}[htpb]
+\begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/graph_data_interface_overview.pdf}
-  \caption[Graph Data interface overview]{Interface overview of the \textbf{Graph Data} component, including the identificaton of the main parts.}
+  \caption[Graph Data interface overview]{Interface overview of the \textbf{Graph Data} component.}
   \label{fig:graph_data_interface_overview}
 \end{center}
 \end{figure}
 
+The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all \lstinline|meeting resuls| (see \ref{subsec:meetingres} on page \pageref{subsec:meetingres} for details) during the selected period. Female mice are colored pink, male mice light blue, and the ones without a known gender grey. 
+
+The network can be dragged over the whole area of the component. Additionaly, the panels containing the controls and node based measures can be mimimized for an unhindered visual exploration.
+
+Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
+
+\subsubsection*{Data selection} 
+The period of the loaded network data is always one month\footnote{Based on the amount of \lstinline|meeting results| in the database this seems to be an appropriate period.}. Month selection is done by choosing the year and a month from the respective drop down menus.  
+
+\subsubsection*{Node based measures}
+
+Figure \ref{fig:node_based_measures} shows a section of the table containing the mice (nodes) and their corresponding node based measures, which are:
+
+\begin{mylist}
+\item Average path length
+\item Clustering coefficient
+\item Degree
+\item Betweenness
+\end{mylist}
+
+As it turned out, the network, or graph, is unconnected (consits of several connected network components). Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
+
+The nodes in the table are grouped by the network component they belong to (see figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization of the network component.
+
+However, if the clicked node belongs to the currently shown component, the node will be highlighted (node gets a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well. If the user double-clicks a node in the visualization, the corresponding table row will be highlighted.
+
+\begin{figure}[!htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/node_based_measures.pdf}
+  \caption[Node based measures]{Table containing the node based measures.}
+  \label{fig:node_based_measures}
+\end{center}
+\end{figure}
+
+\subsubsection*{Layout \& view options}
+
+These options allow the user to apply some settings to the network visualization. By changing the value of the \textit{Link Length} slider, the length of the edges can be adjusted. To see the nodes just with a certain distance (degree), the \textit{Degree of Situation} slider can be set to the desired value. The \textit{Zoom} affects the size of the network. For a better redabilty of the node labels, the \textit{Label Scale} value can be increased. Select the \textit{Display edge Label} checkbox to show the edge values (meeting durations).
+
+Normally the network layout is done by a so called layouter. In this case, a force directed, also known as spring force, layouter is used, which treat the edges as they were springs. These spring forces determine the final position of a node. This places the nodes with a high degree more in the center and the others in the periphery. At times, this makes it difficult to select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off by clicking on the button which is labeled ``Layout algorithm running''. Nodes can now be dragged to a desired position by using the mouse. 
+
+\subsubsection*{Export options}
+
+\subsubsection*{Edge filter}
 
 \subsection{Possible research}
 \label{subsec:graph_research}
