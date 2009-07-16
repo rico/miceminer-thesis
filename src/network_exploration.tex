@@ -142,7 +142,7 @@ An adjacency matrix for an undirected network is symmetrical by the diagonal, si
 
 Consequently, for a directed network, as the one shown in figure \ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure \ref{fig:am_directed}).
 
-\begin{figure}[ht]
+\begin{figure}[!htpb]
 	\begin{minipage}[t]{0.5\textwidth}
     \centering
     \captionsetup{width=.5\textwidth}
@@ -177,32 +177,126 @@ Consequently, for a directed network, as the one shown in figure \ref{fig:graph_
 	\end{minipage}
 \end{figure}
 
-A special network is the so called \textit{Ego Network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to \textit{Ego}, plus the edges between them. Illustrated in figure \ref{fig:graph_ego} is the ego network for node A within the undirected network shown in figure \ref{fig:graph_undirected}.
+A special network is the so called \textit{Ego Network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to \textit{Ego}, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network.
 
-\begin{figure}[htpb]
+\begin{figure}[!htpb]
 \begin{center}
-  \includegraphics[width=.5\textwidth]{assets/pdf/graph_egocentric.pdf}
-  \caption[Ego Network]{Ego Network for node A. The full network is shown in figure \ref{fig:graph_undirected} on page \pageref{fig:graph_undirected}.}
+  \includegraphics[width=.33\textwidth]{assets/pdf/graph_egocentric.pdf}
+  \caption[Ego Network]{Ego Network for node \textbf{A}.}
   \label{fig:graph_ego}
 \end{center}
 \end{figure} 
 
-The adjacency matrix makes it possible to apply mathematics to the network. Some of these    
+The adjacency matrix offers the basis to apply mathematics to the network, such that networks or nodes within networks can be compared. These analytical tools are outlined in the following two sectons.
 
 \subsubsection{Node based measures}
 \label{subsubsec:node_based}
 
-In order to have some measures about a node in a network, measures are defined to quantify the degree or position of a node within a network. There are several of these so called node based measures available. Presented here are just the ones which are available in the \textit{miceminer} implementation.
+In order to have comparable statistical values of nodes within a network, measures are defined to quantify the degree or position of a node within a network. There are several of these so called node based measures available. Presented here are just the ones which are available in the \textit{miceminer} implementation.
 
-The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of these measures for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not include possibilities to calculate these measures.  
+The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of the measures for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not offer these methods.
+
+For the following explainations, the model network from the previous sections is sligthly extended by two nodes and seven edges (see figure \ref{fig:extended_network}).
+
+\begin{figure}[!htpb]
+\begin{center}
+  \includegraphics[width=.33\textwidth]{assets/pdf/graph_undirected_node_based.pdf}
+  \caption{Extended model network}
+  \label{fig:extended_network}
+\end{center}
+\end{figure}    
 
 \paragraph{Average path length}
 
+The average path length is determined by calculating the average of the shortest distances from a node to all of the other nodes. Denoting the average path length for a node $i$ as $L_i$ the equation looks as follows:
+
+\begin{equation}
+L_i = \frac{1}{(n-1)}\sum^n_{j=1} d_{ij}
+\label{eq:average_path_lenght}
+\end{equation}
+
+Applied to node $E$ in the model network we get
+
+\begin{equation}
+L_E = \frac{1}{(6-1)}(2 + 2 + 2 + 1 + 0 + 1) = \frac{8}{5} = 1.6
+\label{eq:average_path_lenght_e}
+\end{equation}
+
+since the distances from node $E$ to the other nodes are:
+
+\begin{multline} 
+\\d_{EA} = 2 \\
+d_{EB} = 2 \\
+d_{EC} = 2 \\
+d_{ED} = 1 \\
+d_{EE} = 0 \\
+d_{EF} = 1 \\
+\label{eq:distances_e}
+\end{multline}
+
+The mean path length of a network ($L$) is simply the average of all the distances within the network.
+
+\begin{equation}
+L = \frac{1}{ \frac{1}{2}n(n-1)}\sum_{i<j} d_{ij} = \frac{1}{n}\sum^n_{i=1}L_i
+\label{eq:mean_path_lenght}
+\end{equation} 
+
+In a social network, this value could indicate how fast information can spread. The lower the value of $L$, the faster the information is received by all the individuals in the network. 
+
 \paragraph{Clustering coefficient}
 
+The clustering coefficient is a measure of how connected the neighborhood of a node is, and contributes to the understanding of how information in a network flows as well.
+
+Unlike the mean path length, only the nodes which are directly connected to a node (= neighborhood) are taken into account for the calculation. To start, the existing and possible edges in the neighborhood for a certain node are determined. Shown in figure \ref{fig:clust_coeff} is the neighborhood of node \textbf{B}. Possible edges are indicated by a dotted line.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.33\textwidth]{assets/pdf/clustering_coefficient.pdf}
+  \caption[Neighborhood of node \textit{B}]{Neighborhood of node \textit{B}. Existing edges are indicated by a solid line, possible ones by a dotted line.}
+  \label{fig:clust_coeff}
+\end{center}
+\end{figure}
+
+The maximum number of edges in the neighborhood of a node $i$ is $\frac{1}{2}k_i(k_1 -1)$, where $k$ is the number of nodes directly connected to $i$. This makes $\frac{1}{2}3(3 -1) = 3$ for node \textbf{B}. The clustering coefficient is just the fraction of the edges between the neighborhood nodes that really exist, which is $\frac{1}{3}$ (compare with figure \ref{fig:clust_coeff}). The average of the clustering coefficient of all nodes is called network clustering coefficient $C$.
+
+\begin{equation}
+C = \frac{1}{n}\sum^n_{i=1}C_i
+\end{equation}  
+
+Newman\cite{newman:2003} demonstrated, by using a model of an epidemic spreading with a fixed number of edges but adjustable clustering coefficient, that a transmissible disease could afflict a population more quickly the higher the clustering coefficient.
+     
 \paragraph{Degree}
 
-\paragraph{Betweenness}
+The degree ($k_i$) of a node $i$ is the number of edges connected to it. This has already been used to calculate the clustering coefficient. The mean degree ($k$) is then the average of the degree of all nodes in the network.
+
+\begin{equation}
+k = \frac{1}{n}\sum_i k_i
+\end{equation}
+
+This simple to calculate measure should not be underestimated. For example, if an individual with a high degree spreads an information to the network, it will propagate much faster than if the information originates from an individual with a low degree. It is even possible that the information will never propagate to all individuals if the degree of the originator is to low.
+
+\paragraph{Node Betweenness}
+
+The node betweenness, written as $B_i$, is calulated by searching for all the shortest paths between two nodes, $j$ and $k$ written as $g_{jk}$, that go through node $i$, written as $g_{jik}$.
+
+\begin{equation}
+B_i =	\sum_{
+			\substack{i \neq k \neq j \\ i \neq j}
+		}
+		\frac{g_{jik}}{g_{jk}}
+\end{equation}
+
+For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
+
+Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects the two groups of the network, as shown in figure \ref{fig:broker}. The node colored red is called a ``Broker'', since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the ``Broker'', but play a minor role when information needs to be spread over the whole network. 
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.75\textwidth]{assets/pdf/broker.pdf}
+  \caption[Model network with two groups]{Model network with two groups connected over a single node, called a ``Broker''.}
+  \label{fig:broker}
+\end{center}
+\end{figure}
 
 \subsubsection{Network properties}
 \label{subsubsec:topology}
@@ -211,6 +305,7 @@ The following methods to calculate the node based measures apply to networks wit
   \item unconnected networks
   \item degree of separation 
 \end{mylist}
+
 
 \subsection{Concept}
 \label{subsec:graph_concept}
@@ -263,27 +358,43 @@ Figure \ref{fig:node_based_measures} shows a section of the table containing the
 
 As it turned out, the network, or graph, is unconnected (consits of several connected network components). Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
 
-The nodes in the table are grouped by the network component they belong to (see figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization of the network component.
+The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization of the network component.
 
 However, if the clicked node belongs to the currently shown component, the node will be highlighted (node gets a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well. If the user double-clicks a node in the visualization, the corresponding table row will be highlighted.
 
 \begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/node_based_measures.pdf}
-  \caption[Node based measures]{Table containing the node based measures.}
+  \caption[Node based measures]{Intercative table containing the node based measures.}
   \label{fig:node_based_measures}
 \end{center}
 \end{figure}
 
+The second label in figure \ref{fig:node_based_measures} points to a text input with which a certain rfid (node) can be searched. This comes in escpecially handy when one tries to follow a specific mouse over different months.    
+
 \subsubsection*{Layout \& view options}
 
-These options allow the user to apply some settings to the network visualization. By changing the value of the \textit{Link Length} slider, the length of the edges can be adjusted. To see the nodes just with a certain distance (degree), the \textit{Degree of Situation} slider can be set to the desired value. The \textit{Zoom} affects the size of the network. For a better redabilty of the node labels, the \textit{Label Scale} value can be increased. Select the \textit{Display edge Label} checkbox to show the edge values (meeting durations).
+This panel offers settings to vary the different aspects aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. A checkbox is available to show or hide the edge labels.
 
-Normally the network layout is done by a so called layouter. In this case, a force directed, also known as spring force, layouter is used, which treat the edges as they were springs. These spring forces determine the final position of a node. This places the nodes with a high degree more in the center and the others in the periphery. At times, this makes it difficult to select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off by clicking on the button which is labeled ``Layout algorithm running''. Nodes can now be dragged to a desired position by using the mouse. 
+Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examince and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be freely dragged to a desired position.
 
 \subsubsection*{Export options}
 
+Since the \textit{miceminer} does not offer a full set of tools for social network analysis, an export to a file format, which can be imported into \textit{NetDraw} or \textit{UCINET}\footnote{Visit \href{http://www.analytictech.com/downloadnd.htm}{http://www.analytictech.com/downloadnd.htm} for details.}, is available. \textit{NetDraw} is a versatile tool to visualize networks, whereas \textit{UCINET} offer comprehensive tools for social network analysis. Shown in figure \ref{fig:netdraw_export_component} is a screenshot of \textit{NetDraw} visualizing a network for which the data has been exported from the \textit{miceminer} application.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/img/netdraw_export_component.png}
+  \caption[Netdraw]{Screenshot of the \textit{NetDraw} application visualizing a network.}
+  \label{fig:netdraw_export_component}
+\end{center}
+\end{figure}
+
+The edge data as well as the node based measures can be exported to an \textit{Excel} file. Additionally, the network visualization can be exported as an image.
+
 \subsubsection*{Edge filter}
+
+Edge filtering is used to hide edges which are under a certain weight. This can reveal social groups which are strongly connected within a network component.   
 
 \subsection{Possible research}
 \label{subsec:graph_research}
