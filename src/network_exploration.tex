@@ -298,14 +298,29 @@ Usually the betweeness values correlate with the degree. But sometimes, a node c
 \end{center}
 \end{figure}
 
-\subsubsection{Network properties}
-\label{subsubsec:topology}
+\paragraph{Model networks}
 
-\begin{mylist}
-  \item unconnected networks
-  \item degree of separation 
-\end{mylist}
+Node based measures calculated for a network needs to be compared to some kind of a null model network, which is very well studied and understood. After all, this reveals the significant differences of a network in question to a network which is just created by chance.
 
+Such models networks are for example the \textbf{Regular Network} (figure \ref{fig:regular_graph}), \textbf{Random Network} (figure \ref{fig:random_graph}), \textbf{Small World Network} and the \textbf{Scale-Free Networks}.
+
+Detailed information about the properties of these model networks is beyond the scope of this document \footnote{Pages 74 - 81 in the book ``Exploring Animal Social Networks''\cite{croft:07} offers a good introduction to this topic.}.
+
+
+\begin{figure}[htpb]% 
+	\centering 
+	\subfloat[][]{
+					\label{fig:regular_graph} %
+					\includegraphics[width=.33\textwidth]{assets/pdf/regular_network.pdf}
+				}% 
+	\qquad 
+	\subfloat[][]{
+					\label{fig:random_graph}%
+					\includegraphics[width=.33\textwidth]{assets/pdf/random_network.pdf}
+				} 
+	\caption{A regular \subref{fig:regular_graph} and a random \subref{fig:random_graph} model network with the same number of nodes.} 
+	 
+\end{figure} 
 
 \subsection{Concept}
 \label{subsec:graph_concept}
@@ -356,11 +371,11 @@ Figure \ref{fig:node_based_measures} shows a section of the table containing the
 \item Betweenness
 \end{mylist}
 
-As it turned out, the network, or graph, is unconnected (consits of several connected network components). Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
+As it turned out, the network, or graph, is consits of several unconnected network components. Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
 
 The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization of the network component.
 
-However, if the clicked node belongs to the currently shown component, the node will be highlighted (node gets a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well. If the user double-clicks a node in the visualization, the corresponding table row will be highlighted.
+However, if the clicked node belongs to the currently shown component, the node will be highlighted (node gets a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well. If the user double-clicks a node in the visualization, the corresponding table row will be selected.
 
 \begin{figure}[!htpb]
 \begin{center}
@@ -374,7 +389,7 @@ The second label in figure \ref{fig:node_based_measures} points to a text input 
 
 \subsubsection*{Layout \& view options}
 
-This panel offers settings to vary the different aspects aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. A checkbox is available to show or hide the edge labels.
+This panel offers settings to vary the different aspects aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. The degree of separation limits the visible nodes to a certain distance from the currently highlighted node. A checkbox is available to show or hide the edge labels.
 
 Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examince and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be freely dragged to a desired position.
 
@@ -394,7 +409,20 @@ The edge data as well as the node based measures can be exported to an \textit{E
 
 \subsubsection*{Edge filter}
 
-Edge filtering is used to hide edges which are under a certain weight. This can reveal social groups which are strongly connected within a network component.   
+Edge filtering is used to hide edges which are under a certain weight. This can reveal social groups which are strongly connected within a network component, or highlight edges that are more likely to be nonrandom.
+
+\subsubsection*{Additional options}
+
+A few additional options, that turned out to be useful or were just implemented out of interest, have been added to this component.
+
+\paragraph{Egocentric network view}
+
+Switching to the egocentric network view can be useful to verify a thesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highligted node), the user can choose another node from within the neighborhood of the starting node to check the egocentric network of this node.
+
+\paragraph{Edge data}
+
+The data for an edge can be accessed by double clicking on the edge label. This opens up a window showing the data for the edge.
+
 
 \subsection{Possible research}
 \label{subsec:graph_research}
