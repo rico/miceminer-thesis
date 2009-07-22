@@ -242,9 +242,9 @@ If the selected mouse vistited more than two nestboxes in the selected period, w
 Since this method of determining the home range is very sensible for outliers the MCP can be limited to the nestboxes with an adequate number of datasets. This is accomplished by selecting an appropriate percentage value for the MCP calculation. If the value is set 100\% percent all the nestboxes, independent of their data count, are included in the calculation. For a value of 90\%, the nestbox must have a data count which is equal or greater than 10\% of the data count for all the nestboxes. The following example which is based on the situation shown in figure \ref{fig:mcp} should clarify the method. Table \ref{tab:mcp_example} contains the distribution of the data counts for the nestboxes 12 to 17.
 
 \begin{center} 
-\newcolumntype{H}{>{\bf}p{9cm}}
+\newcolumntype{H}{>{}p{2cm}}
 \renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
-\begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
+\begin{tabularx}{.4\textwidth}{+>{\raggedright\arraybackslash}H^X}
 \toprule
 \rowstyle{\bfseries}
 Nestbox	& 	Data count \\\midrule
@@ -254,15 +254,15 @@ Nestbox	& 	Data count \\\midrule
 15	&	52 \\
 16	&	12 \\
 17	&	4 \\
-\\\midrule
-\\\midrule
+\midrule\midrule
 \rowstyle{\bfseries}
 Sum	&	254
 \end{tabularx}
+\captionof{table}{Data count distribution for the nestboxes.}
 \label{tab:mcp_example}
 \end{center}
 
-With the threshold set to 90\%, a nestbox must have at least a data count of $25.4 (10\% = \frac{254}{10})$. Nestboxes 16 and 17 are below this value and will be excluded from the calculation. Considering figure \ref{fig:mcp}, one can see how the MCP, and therefore the home range, strikingly shrinks due to this limitation. 
+With the threshold set to 90\%, a nestbox must have at least a data count of $25.4$ (10\% of 254). Nestboxes 16 and 17 are below this value and will be excluded from the calculation. Considering figure \ref{fig:mcp}, one can see how the MCP, and therefore the home range, strikingly shrinks due to this limitation. 
 
 The data count distribution is shown in the detail panel of the interface (labeled in figure \ref{fig:home_range}), to simplify the selection of the right percentage value.     
 
@@ -271,30 +271,33 @@ The data count distribution is shown in the detail panel of the interface (label
 
 The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is only the case if two mice have a some kind of a positive social relationship - caused by relatedness for example.
 
-Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for the period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
+Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for a period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=.75\textwidth]{assets/pdf/shared_pref.pdf}
+  \includegraphics[width=\textwidth]{assets/pdf/shared_pref.pdf}
   \caption[Shared preference component interface]{Shared preference component interface overview.}
   \label{fig:shared_pref}
 \end{center}
 \end{figure}
 
-The calculation starts by retrieving the time each of the two mice spent in a nestbox from the \lstinline|result| table (see section \ref{para:res_table} \pageref{para:res_table}). These time values are put into relation to the time the two mice spent together in a nestbox, which can be determined by querying the \lstinline|meetings| table (see section \ref{para:meetings_table} \pageref{para:meetings_table}).
+The calculation starts by retrieving the time each of the two mice spent in a nestbox from the \lstinline|result| table (see section \ref{para:res_table} \pageref{para:res_table}). These time values are put into relation to the time the two mice spent together in a nestbox, which can be determined by querying the \lstinline|meetings| table (see section \ref{para:meetings_table} \pageref{para:meetings_table}). Resulting are a relative values for the expected and and the observed time which can be compared. 
 
-\subsubsection{Monthly Box}
+\subsubsection{Monthly Box \& Monthly Antennas}
 \label{subsubsec:monthbox}
 
-A matrix  showing which mice has been seen in which boxes over the selected time range.
+Both components have been created to support Olivia Dieser in her work to determine the terretorial behaviour of the mice (see \ref{subsubsec:homerange} on page \pageref{subsubsec:homerange}).
 
-\paragraph{Applications}
-Prof. Koenig ?
+The user selects a month and optionally a period of the time of day (see figure \ref{fig:month_box_ant} for a screenshot with labeled controls) and obtains a table where the columns denote the nestboxes and each row represents a mouse. The respective data counts are found in the intersection of the nestbox column and the mouse row.
 
-\subsubsection{Monthly Antennas}
-\label{subsubsec:monthant}
+In the case of the \textbf{Monthly Box} component, the \lstinline|direction results| with a direction value of \lstinline|in| (see section \ref{para:dir_table} on page \pageref{para:dir_table}) are searched for the appropriate data. For the \textbf{Monthly Antenna} component, the data is retrieved from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).
 
-A matrix  showing which mice has been seen at which antennas over the selected time range.
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/month_box_ant.pdf}
+  \caption[Monthly boxes component interface]{Monthly boxes component interface overview.}
+  \label{fig:month_box_ant}
+\end{center}
+\end{figure}
 
-\paragraph{Applications}
-Prof. Koenig ?
+The option to select a period of the time of day is used tp perform a differentiated analysis of the terretorial behaviour of the mice during phases of higher and lower activity.

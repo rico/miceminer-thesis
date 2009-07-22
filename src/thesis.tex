@@ -53,6 +53,8 @@
 % tables
 \usepackage{tabularx}
 \usepackage{ctable}
+\usepackage{longtable}
+\usepackage{rotfloat}
 
 % subfigures 
 \usepackage{subfig}
@@ -304,7 +306,7 @@
   \label{fig:database_schema}
 \end{sidewaysfigure}
 
-\begin{sidewaystable}
+\begin{sidewaystable}{H}
 \newcolumntype{H}{>{\bf}lp{2.5cm}}
 \caption{Meaning of the \lstinline|i| values in the database tables.}
 \begin{tabularx}{\textheight}{+H^X^X^X^X^X}
@@ -362,13 +364,13 @@ Perl version	&	 5.10.0 \\\bottomrule
 \subsubsection{Web addresses}
 \label{subsubsec:urls}
 
-\textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
+%\textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
 
-\begin{sidewaystable}
 \begin{center} 
+\begin{sidewaystable}{H}
 \newcolumntype{H}{>{\bf}p{9cm}}
-\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
-\begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
+\begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
+%\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \toprule
 \rowstyle{\bfseries}
 Address	&	Description \\\midrule
@@ -388,8 +390,8 @@ Address	&	Description \\\midrule
 \end{tabularx}
 \captionof{table}{List of web addresses.}
 \label{tab:web_addresses}
-\end{center}
 \end{sidewaystable}
+\end{center}
 
 % Files and Directories
 \subsubsection{Files \& directories overview}
