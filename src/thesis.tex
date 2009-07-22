@@ -54,7 +54,7 @@
 \usepackage{tabularx}
 \usepackage{ctable}
 \usepackage{longtable}
-\usepackage{rotfloat}
+%\usepackage{rotfloat}
 
 % subfigures 
 \usepackage{subfig}
@@ -364,12 +364,13 @@ Perl version	&	 5.10.0 \\\bottomrule
 \subsubsection{Web addresses}
 \label{subsubsec:urls}
 
-%\textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
+\textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
 
-\begin{center} 
-\begin{sidewaystable}{H}
-\newcolumntype{H}{>{\bf}p{9cm}}
-\begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
+\begin{center}
+\footnotesize 
+%\begin{sidewaystable}{H}
+\newcolumntype{H}{>{\bf}p{8.5cm}}
+\begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 %\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \toprule
 \rowstyle{\bfseries}
@@ -390,7 +391,7 @@ Address	&	Description \\\midrule
 \end{tabularx}
 \captionof{table}{List of web addresses.}
 \label{tab:web_addresses}
-\end{sidewaystable}
+%\end{sidewaystable}
 \end{center}
 
 % Files and Directories
@@ -399,7 +400,8 @@ Address	&	Description \\\midrule
 
 \lstset{language=bash}
 
-\begin{center} 
+\begin{center}
+\footnotesize 
 \newcolumntype{H}{>{\bf}p{5cm}}
 \renewcommand\arraystretch{1.2}% 1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
