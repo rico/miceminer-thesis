@@ -3,17 +3,17 @@
 
 The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-As well in biology, networks or graphs are widely used to visualize and analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
-tool for the study of sociality}\cite{wey:08} reviews and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
+As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+tool for the study of sociality}\cite{wey:08}, and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
 
 Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
 
-The next section contains a very short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the \textit{miceminder} application are outlined.  
+The next section contains a short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the application are outlined.  
 
 \subsection{Short introduction to network theory}
 \label{subsec:graph_intro}
 
-Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available.   
+Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available\footnote{For example ``Social Network Analysis'' written by John Scott\cite{scott:00} or ``Introduction to social network methods" written by Rober Hanneman\cite{hanneman:05} and published online.}.
 
 \subsubsection{Network types}
 \label{subsubsec:net_types}
@@ -306,7 +306,6 @@ Such models networks are for example the \textbf{Regular Network} (figure \ref{f
 
 Detailed information about the properties of these model networks is beyond the scope of this document \footnote{Pages 74 - 81 in the book ``Exploring Animal Social Networks''\cite{croft:07} offers a good introduction to this topic.}.
 
-
 \begin{figure}[htpb]% 
 	\centering 
 	\subfloat[][]{
@@ -357,8 +356,8 @@ The network can be dragged over the whole area of the component. Additionaly, th
 
 Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
 
-\subsubsection*{Data selection} 
-The period of the loaded network data is always one month\footnote{Based on the amount of \lstinline|meeting results| in the database this seems to be an appropriate period.}. Month selection is done by choosing the year and a month from the respective drop down menus.  
+\subsubsection*{Data selection}
+The period of the loaded network data is always one month\footnote{Based on the amount of data this seems to be an appropriate period.}. Month selection is done by choosing the year and a month from the respective drop down menus.  
 
 \subsubsection*{Node based measures}
 
@@ -391,7 +390,7 @@ The second label in figure \ref{fig:node_based_measures} points to a text input 
 
 This panel offers settings to vary the different aspects aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. The degree of separation limits the visible nodes to a certain distance from the currently highlighted node. A checkbox is available to show or hide the edge labels.
 
-Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examince and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be freely dragged to a desired position.
+Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examine and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be freely dragged to a desired position.
 
 \subsubsection*{Export options}
 
@@ -417,12 +416,23 @@ A few additional options, that turned out to be useful or were just implemented 
 
 \paragraph{Egocentric network view}
 
-Switching to the egocentric network view can be useful to verify a thesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highligted node), the user can choose another node from within the neighborhood of the starting node to check the egocentric network of this node.
+Switching to the egocentric network view can be useful to verify a thesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highlighted node), the user can choose another node from within the egocentric network of the starting node to check the egocentric network of this node.
 
 \paragraph{Edge data}
 
-The data for an edge can be accessed by double clicking on the edge label. This opens up a window showing the data for the edge.
+To unveil the \lstinline|meeting results| which make up an edge, the label of the edges can be double clicked. The pop up window which is openend contains the meeting data which can be explored either in a tabular or in a chart view, similar to the interface of the \textbf{Browse Data} component.
 
+In the tabular view, the data can be grouped by the nestboxes, the meetings took place in, or by the meeting type\footnote{See list \ref{list:meeting_types} on page \pageref{list:meeting_types} for details about the meeting types.}.
+
+The chart view is used to bin the data by the meeting duration. The number of bins can be adjusted and the grouping of the \lstinline|meeting results| can be set to the nestboxes or meeting type (see figure \ref{fig:edge_data_panel_chart}).
+
+\begin{figure}[!htpb]
+\begin{center}
+  \includegraphics[width=\textwidth]{assets/pdf/edge_data_panel_chart.pdf}
+  \caption[Edge data chart]{Chart of the binned \lstinline|meeting results|, grouped by the nestbox, which make up an edge between the mice with rfid \lstinline|0006954D6A| and \lstinline|0006B8D45A|.}
+  \label{fig:edge_data_panel_chart}
+\end{center}
+\end{figure}   
 
 \subsection{Possible research}
 \label{subsec:graph_research}
