@@ -1,9 +1,9 @@
 \section{Exploration of the social network data}
 \label{sec:graph}
 
-The visualization of somewhow pairwise connected data is ganining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more coventional statistical approach. Compared to the conventional approach, which is concerned with the monoadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
+The visualization of somehow pairwise connected data is gaining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more conventional statistical approach. Compared to the conventional approach, which is concerned with the monadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The intersted reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The interested reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
 tool for the study of sociality}\cite{wey:08}, and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
 
 Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
@@ -13,62 +13,56 @@ The next section contains a short introduction to network theory, the theoretica
 \subsection{Short introduction to network theory}
 \label{subsec:graph_intro}
 
-Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available\footnote{For example ``Social Network Analysis'' written by John Scott\cite{scott:00} or ``Introduction to social network methods" written by Rober Hanneman\cite{hanneman:05} and published online.}.
+Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available\footnote{For example ``Social Network Analysis'' written by John Scott\cite{scott:00} or ``Introduction to social network methods" written by Robert Hanneman\cite{hanneman:05} and published online.}.
 
 \subsubsection{Network types}
 \label{subsubsec:net_types}
-Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes, also called actors, are normally indviduals and the edges denote a relationship between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
+Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes, also called actors, are normally individuals and the edges denote a relationship between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
 
-Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strenght of a connection. Reffering to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
+Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strength of a connection. Referring to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
 
-\begin{figure}[htbp]
-	\begin{minipage}[b]{0.5\textwidth}
-    \captionsetup{width=.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected.pdf}
-			\caption{Undirected network with binary edges.}
-			\label{fig:graph_undirected}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[b]{0.5\textwidth}
-    \captionsetup{width=.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
-			\caption{Undirected network with weighted edges.}
-			\label{fig:graph_undirected_weighted}
-	\end{minipage}
-\end{figure}
+
+\begin{figure}[htpb]% 
+	\centering 
+	\subfloat[][]{
+					\label{fig:graph_undirected} %
+					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_undirected.pdf}
+				}% 
+	\qquad 
+	\subfloat[][]{
+					\label{fig:graph_undirected_weighted} %
+					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
+				} 
+	\caption{An undirected model network with binary edges \subref{fig:graph_undirected} and the same network with weighted edges \subref{fig:graph_undirected_weighted}.} 
+
+\end{figure}	 
 
 Another type of networks are the so called directed networks (see figures \ref{fig:graph_directed} and \ref{fig:graph_directed_weighted}). Unlike the undirected networks, the edges have a direction (usually depicted by an arrowhead). Applied to our real world model networks, the direction could represent a one way track of a train network, or the connection between a supplier and a customer. 
 
-\begin{figure}[htbp]
-	\begin{minipage}[b]{0.5\textwidth}
-    	\captionsetup{width=.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed.pdf}
-			\caption{Directed network with binary edges.}
-			\label{fig:graph_directed}
-	\end{minipage}
-	\hspace{0.5cm}
-	\begin{minipage}[b]{0.5\textwidth}
-    \captionsetup{width=.5\textwidth}
-		\centering
-			\includegraphics[width=0.5\textwidth]{assets/pdf/graph_directed_weighted.pdf}
-			\caption{Directed network with weighted edges.}
-			\label{fig:graph_directed_weighted}
-	\end{minipage}
-\end{figure}
+\begin{figure}[htpb]% 
+	\centering 
+	\subfloat[][]{
+					\label{fig:graph_directed} %
+					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_directed.pdf}
+				}% 
+	\qquad 
+	\subfloat[][]{
+					\label{fig:graph_directed_weighted} %
+					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_directed_weighted.pdf}
+				} 
+	\caption{A directed model network with binary edges \subref{fig:graph_directed} and the same network with weighted edges \subref{fig:graph_directed_weighted}.} 
+
+\end{figure}	 
 
 There are plenty of other varieties of networks. But the ones described above are adequate to understand the visualization implemented in the \textit{miceminer} application.
 
 \subsubsection{Adjacency matrix}
 \label{subsubsec:adjacency_matrix}
 
-The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular reprsentation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
+The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular representation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
 
-\begin{figure}[ht]
-	\begin{minipage}[t]{0.5\textwidth}
-    \captionsetup{width=.45\textwidth}
+\begin{figure}[htbp]
+	\begin{minipage}[t]{0.45\textwidth}
     \vspace{0pt}
 		\centering
 			\newcolumntype{H}{>{\bf}p{.5cm}}

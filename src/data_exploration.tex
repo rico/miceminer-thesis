@@ -16,7 +16,7 @@ Written entirely in \textit{Flex}\footnote{Adobe Flex is a software development 
 
 Furthermore, the \textit{miceminer} application doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, which is called the client. This has the comfortable consequence, that each user always uses the latest version.
 
-Additionaly, \textit{Flex} offers convincing tools to build interactive user interfaces and, in counjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java application can run on any Java virtual machine (JVM) regardless of computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the \ac{API} offered by \textit{Flex} is appropriate for our needs.
+Additionally, \textit{Flex} offers convincing tools to build interactive user interfaces and, in conjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java application can run on any Java virtual machine (JVM) regardless of computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the \ac{API} offered by \textit{Flex} is appropriate for our needs.
 
 More information about the \textit{miceminer} project, including screencasts which show how to use the application, \ac{API} documentation, source code and links to other resources used in the development, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}\footnote{The site is only accessible from within the network of the University of Z\"urich.}. 
 
@@ -30,7 +30,7 @@ Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer}
 \begin{figure}[!ht]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/interface_overview.pdf}
-  \caption[miceminer interface overview]{Screenshot of the miceminer application, displaying data for a (transpondered) mice and identifying the main parts of the interface.}
+  \caption[miceminer interface overview]{Screenshot of the miceminer application, displaying data for a mouse and identifying the main parts of the interface.}
   \label{fig:interface_overview}
 \end{center}
 \end{figure}
@@ -204,7 +204,7 @@ When the user has selected the chart view, the \textit{Excel} export behaviour c
 
 In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the period. In fact, this secondary chart is the same as if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
 
-Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible positive social relations between the mice living in the shed is elucidated in section \ref{sec:graph} on page \pageref{sec:graph}.
+Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible positive social relations between the mice living in the barn is elucidated in section \ref{sec:graph} on page \pageref{sec:graph}.
 
 % ----------------------------------------------
 % Data analysis
@@ -217,7 +217,7 @@ The \textit{miceminer} application provides some simple data analysis functional
 \subsubsection{Home range}
 \label{subsubsec:homerangedata}
 
-To carry out home range analysis, the positions of the nestboxes within the shed have been added to the database. The interface consists of a selector for the rfid and another one for the period the data should be retrieved for. \footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a file format called \textit{dBase} or if the calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
+To carry out home range analysis, the positions of the nestboxes within the barn have been added to the database. The interface consists of a selector for the rfid and another one for the period the data should be retrieved for. \footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a file format called \textit{dBase} or if the calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
 
 \begin{figure}[htpb]
 \begin{center}
