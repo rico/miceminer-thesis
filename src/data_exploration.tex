@@ -49,7 +49,7 @@ Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
 Graph Data		&	Interactive network representation of possible social networks within the mice community. \\
 Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
 \end{tabularx}
-\captionof{table}{Main components selectable from the main menu within the \textit{miceminer} application.}
+\captionof{table}[miceminer main menu]{Main components selectable from the main menu within the \textit{miceminer} application.}
 \label{tab:main_components}
 \end{center}
 
@@ -62,7 +62,7 @@ In the parameters section, the user sets the factors influencing the data displa
 \begin{figure}[!htbp]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/interface_component.pdf}
-  \caption[miceminer coponent interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
+  \caption[Browse Data component interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
   \label{fig:interface_component}
 \end{center}
 \end{figure}
@@ -79,7 +79,7 @@ The interactions of the different software parts is illustrated in figure \ref{f
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/application_design_miceminer.pdf}
-  \caption[User Interface overview]{Overview of the parts involved in the user interface.}
+  \caption[User interface overview]{Overview of the parts involved in the user interface.}
   \label{fig:app_design_miceminer}
 \end{center}
 \end{figure}
@@ -102,7 +102,7 @@ On one hand, the software should offer a variety of ways and means to browse the
 
 This concept is elucidated in the following sections, on the basis of the three main functionalities that the application provide. 
    
-\subsubsection{Data Filtering}
+\subsubsection{Data filtering}
 \label{sububsec:datafilter}
 
 The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at an antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches share, is that the data is usually analyzed for a specific period. Hence, the selection of the period has been defined to be the starting point for every session (see figure \ref{fig:date_period}).
@@ -150,14 +150,14 @@ Once the data has been load loaded into the miceminer, a secondary group of tabl
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/overview_data.pdf}
-  \caption[Overview of the data sets for mouse]{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
+  \caption{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
   \label{fig:overview_data}
 \end{center}
 \end{figure}  
 
 With the whole package of filter options, starting with the period and ending with the column filter option, the user is able to explore and export the data at every level. If the application itself is not able to handle the amount of data requested by the user, it can be exported to an \textit{Excel} sheet where the desired filters can be applied.       
 
-\subsubsection{Data Visualization}
+\subsubsection{Data visualization}
 \label{subsubsec:datavis}
 
 Sometimes it might not be convenient to look at tables to get an idea of how an item, a mouse for instance, is positioned by its numbers in comparison to the others. Furthermore, distributions are better illustrated by the use of a pie chart. 
@@ -167,7 +167,7 @@ For the visualization of the tables containing the summarized data, the chart vi
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.33\textwidth]{assets/pdf/mouse_chart_item.pdf}
-  \caption[Chart item of a mouse]{Chart item of a mouse with the corresponding data counts.}
+  \caption[Chart item for a mouse with corresponding data counts]{Chart item for a mouse with corresponding data counts.}
   \label{fig:mouse_chart_item}
 \end{center}
 \end{figure}
@@ -200,7 +200,7 @@ The chart view for the actual results of a mouse, box or antenna is different, b
 \end{center}
 \end{figure}
 
-When the user has selected the chart view, the \textit{Excel} export behaviour changes. Not the data shown in the table will be exported, but the grouped data underlying the chart. This has been introduced according to the needs of the researchers.
+When the user has selected the chart view, the \textit{Excel} export behavior changes. Not the data shown in the table will be exported, but the grouped data underlying the chart. This has been introduced according to the needs of the researchers.
 
 In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the period. In fact, this secondary chart is the same as if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
 
@@ -266,7 +266,7 @@ With the threshold set to 90\%, a nestbox must have at least a data count of $25
 
 The data count distribution is shown in the detail panel of the interface (labeled in figure \ref{fig:home_range}), to simplify the selection of the right percentage value.     
 
-\subsubsection{Shared Preferences}
+\subsubsection{Shared preferences}
 \label{subsubsec:sharedpref}
 
 The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is only the case if two mice have a some kind of a positive social relationship - caused by relatedness for example.
@@ -283,10 +283,10 @@ Figure \ref{fig:shared_pref} shows the component interface consisting of two con
 
 The calculation starts by retrieving the time each of the two mice spent in a nestbox from the \lstinline|result| table (see section \ref{para:res_table} \pageref{para:res_table}). These time values are put into relation to the time the two mice spent together in a nestbox, which can be determined by querying the \lstinline|meetings| table (see section \ref{para:meetings_table} \pageref{para:meetings_table}). Resulting are a relative values for the expected and and the observed time which can be compared. 
 
-\subsubsection{Monthly Box \& Monthly Antennas}
+\subsubsection{Monthly box \& Monthly antennas}
 \label{subsubsec:monthbox}
 
-Both components have been created to support Olivia Dieser in her work to determine the terretorial behaviour of the mice (see \ref{subsubsec:homerange} on page \pageref{subsubsec:homerange}).
+Both components have been created to support Olivia Dieser in her work to determine the terretorial behavior of the mice (see \ref{subsubsec:homerange} on page \pageref{subsubsec:homerange}).
 
 The user selects a month and optionally a period of the time of day (see figure \ref{fig:month_box_ant} for a screenshot with labeled controls) and obtains a table where the columns denote the nestboxes and each row represents a mouse. The respective data counts are found in the intersection of the nestbox column and the mouse row.
 
@@ -300,4 +300,4 @@ In the case of the \textbf{Monthly Box} component, the \lstinline|direction resu
 \end{center}
 \end{figure}
 
-The option to select a period of the time of day is used tp perform a differentiated analysis of the terretorial behaviour of the mice during phases of higher and lower activity.
+The option to select a period of the time of day is used tp perform a differentiated analysis of the terretorial behavior of the mice during phases of higher and lower activity.

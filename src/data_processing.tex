@@ -36,7 +36,7 @@ Prior to the data extraction, the  script creates a backup of the actual databas
 
 As mentioned in section \ref{subsubsec:problems} on page \pageref{subsubsec:problems}, some of the antennas could not be addressed properly. Therefore, the script has to catch these exceptional values and convert them to the designated ones\footnote{See listing \ref{lst:antenna_adress_conversions} on page \pageref{lst:antenna_adress_conversions} for the detailed conversions.}.  
 
-\subsection{Direction Results}
+\subsection{Direction results}
 \label{subsec:dirres}
 
 The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table, which build a \textit{direction result}. A pair matches if,
@@ -52,7 +52,7 @@ Figure \ref{fig:direction_result} shows the composition of a direction \textit{i
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/direction_result_schema.pdf}
-  \caption[Illustration of direction result]{Illustration of the possible composition of a \textit{direction result}.}
+  \caption[Illustration of a direction result]{Illustration of the possible composition of a \textit{direction result}.}
   \label{fig:direction_result}
 \end{center}
 \end{figure}
@@ -68,7 +68,7 @@ Figure \ref{fig:direction_result} shows the composition of a direction \textit{i
 					\label{fig:dirout_ant_read_distr}%
 					\includegraphics[width=.45\textwidth]{assets/pdf/dirout_ant_read_distr.pdf}
 				} 
-	\caption{Frequencies of the time spent between the two antenna readings for a \lstinline|direction result| with direction \lstinline|in| \subref{fig:dirin_ant_read_distr} and direction \lstinline|out| \subref{fig:dirout_ant_read_distr}. \footnotesize(Charts created by Nicolas Perony, used by permission.)} 
+	\caption[Frequencies of the elapsed time between the antenna readings of direction results]{Frequencies of the time elapsed between the two antenna readings for a \lstinline|direction result| with direction \lstinline|in| \subref{fig:dirin_ant_read_distr} and direction \lstinline|out| \subref{fig:dirout_ant_read_distr}. \footnotesize(Charts created by Nicolas Perony, used by permission.)} 
 	 
 \end{figure}
 
@@ -79,7 +79,7 @@ If the \lstinline|<antennaInterval>| is changed, the \lstinline| searchdirreset.
 
 The \textit{direction results} are written to the \lstinline|dir| table as explained in paragraph \ref{para:dir_table} on page \pageref{para:dir_table}. 
 
-\subsection{Stay Results}
+\subsection{Stay results}
 \label{subsec:stayres}
 
 The \lstinline|searchres.pl| aims to find matching \textit{direction results} in the \lstinline|dir| table, which build a \textit{stay results}.
@@ -104,7 +104,7 @@ In the former case, the \textit{stay result} is of \textbf{type 3}, in the latte
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/stay_result_type_3_schema.pdf}
-  \caption[Illustration of a Type 3 \textit{stay result}]{Illustration of a Type 3 \textit{stay result} at box 16,  made up by a direction \lstinline|in| and a direction \lstinline|out| result.}
+  \caption[Illustration of a type 3 \textit{stay result}]{Illustration of a Type 3 \textit{stay result} at box 16,  made up by a direction \lstinline|in| and a direction \lstinline|out| result.}
   \label{fig:type_3_stay_result}
 \end{center}
 \end{figure}
@@ -112,7 +112,7 @@ In the former case, the \textit{stay result} is of \textbf{type 3}, in the latte
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/stay_result_type_4_schema.pdf}
-  \caption[Illustration of a Type 4 \textit{stay result}]{Illustration of a Type 4 \textit{stay result} made up by a direction \lstinline|in| result and a reading at the outer antenna.}
+  \caption[Illustration of a type 4 \textit{stay result}]{Illustration of a Type 4 \textit{stay result} made up by a direction \lstinline|in| result and a reading at the outer antenna.}
   \label{fig:type_4_stay_result}
 \end{center}
 \end{figure}
@@ -124,7 +124,7 @@ In figure \ref{fig:result_overlap} we have the situation, that one \textit{stay 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/result_overlaps_schema.pdf}
-  \caption[Multiple result overlap illustration]{Illustration of a possible result overlap situation, where a \textit{stay result} overlaps many others.}
+  \caption[Illustration of a possible result overlap situation]{Illustration of a possible result overlap situation, where a \textit{stay result} overlaps many others.}
   \label{fig:result_overlap}
 \end{center}
 \end{figure}
@@ -136,7 +136,7 @@ The justification for this approach is pretty similar to the one just discussed.
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/result_overlaps_single_schema.pdf}
-  \caption[Single result fully overlap illustration]{Illustration of a possible result overlap situation, where a \textit{stay result} fully overlaps another.}
+  \caption[Single result full overlap situation]{Illustration of a possible result overlap situation, where a \textit{stay result} fully overlaps another.}
   \label{fig:result_overlap_single}
 \end{center}
 \end{figure} 
@@ -144,7 +144,7 @@ The justification for this approach is pretty similar to the one just discussed.
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/result_overlaps_single_shifted_schema.pdf}
-  \caption[Single result partly overlap illustration]{Illustration of a possible result overlap situation, where a \textit{stay result} partly overlaps another.}
+  \caption[Single result partly overlap situation]{Illustration of a possible result overlap situation, where a \textit{stay result} partly overlaps another.}
   \label{fig:result_overlap_single_shifted}
 \end{center}
 \end{figure}
@@ -156,7 +156,7 @@ In figure \ref{fig:dataset_overlap}, four other antenna readings could be found,
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/dataset_overlap_schema.pdf}
-  \caption[Dataset overlap illustration]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a\textit{stay result}.}
+  \caption[Dataset overlap situation]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a\textit{stay result}.}
   \label{fig:dataset_overlap}
 \end{center}
 \end{figure}
@@ -168,7 +168,7 @@ The \textit{nervous index} is simply the number of readings at the inner antenna
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/dataset_overlap_nervous_schema.pdf}
-  \caption[Dataset overlap illustration]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a \textit{stay result}, but only at the inner antenna of the box. Such a situation is termed a \textit{nervous mouse}.}
+  \caption[Dataset overlap situation for a \textit{nervous mouse}]{Illustration of a possible dataset overlap situation, where other antenna readings have been found during a \textit{stay result}, but only at the inner antenna of the box. Such a situation is termed a \textit{nervous mouse}.}
   \label{fig:dataset_overlap_nervous}
 \end{center}
 \end{figure}
@@ -179,7 +179,7 @@ Nevertheless, an inconsistency remains. 536 (0.05\%) of the \textit{stay result}
 
 The \textit{stay results} are written to the \lstinline|res| table as described in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
 
-\subsection{Meeting Results}
+\subsection{Meeting results}
 \label{subsec:meetingres}
 
 The \lstinline|meetings.pl| script determines, when and how many time the mice spend together in the nestboxes. The \textit{stay results} make the basis. A \textit{meeting result} is found, whenever
@@ -209,7 +209,7 @@ Additionally, the script analyses, how the mice meet. There are four different p
 \end{center}
 \end{figure}
 
-However, the \textit{meeting result} types and explanations above, only apply, if we look at the situations from the point of view of mouse Tr. A. When looking at the situations from Tr. B, the types are swapped as follows\footnote{When using the \textit{miceminer Graph Data} interface to retrieve the data, these adjustments are already done (see \ref{sec:netexp})}.
+However, the \textit{meeting result} types and explanations above, only apply, if we look at the situations from the point of view of mouse Tr. A. When looking at the situations from Tr. B, the types are swapped as follows\footnote{When using the \textit{miceminer Graph Data} interface to retrieve the data, these adjustments are already done (see \ref{sec:graph} on page \pageref{sec:graph})}.
 
 \begin{mylist}
 \item Type 1 is swapped to \textbf{Type 2}   

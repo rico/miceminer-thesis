@@ -5,16 +5,16 @@
 \section{Data}
 \label{sec:datacollection}
 
-When gathering data for behavioural analysis of different species, typically the observer tracks the position of one or several individuals over the time. Additionally pheno- and genotypical data of the individuals is collected.
+When gathering data for behavioral analysis of different species, typically the observer tracks the position of one or several individuals over the time. Additionally pheno- and genotypical data of the individuals is collected.
 
-Usually the spatial position data is collected by one ore a few people. In this project the data is collected by an antenna system (see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos}). This approach has the advantage, that the data is recorded 24 hours a day, without presence of people needed.
+Usually the spatial position data is collected by one ore a few people. In this project, however, the data is collected by an antenna system (see section \ref{subsec:collectspatialpos}). Obviously, automated data collection has the advantage, that data is recorded every day, all day long, without presence of people needed.
 
-To collect phenotypical data, so called \textit{population checks} (see \ref{subsec:dataattr} on page \pageref{subsec:dataattr} for details) are conducted every 6 to 8 weeks. During these checks, the mice get caught for measuring, weighing (see section \ref{subsec:dataattr} on page \pageref{subsec:dataattr} for details) and - if not already present and the mouse has a weight of at least 18 grams - an \ac{RFID} (RFID) transponder is injected under the skin of the mouse (see figures \ref{fig:transponder} and \ref{fig:inject_rfid}). About 240 transponders are injected every Year.
+To collect phenotypical data, so called \textit{population checks} (see \ref{subsec:dataattr} on page \pageref{subsec:dataattr} for details) are conducted every 6 to 8 weeks. During these checks, the mice get caught for measuring, weighing (see section \ref{subsec:dataattr} on page \pageref{subsec:dataattr} for details) and - if not already present and the mouse has a weight of at least 18 grams - an \ac{RFID} (RFID) transponder is injected under the skin of the mouse (see figures \ref{fig:transponder} and \ref{fig:inject_rfid}). About 240 transponders are injected every year.
 
 \begin{figure}[htpb]
 \begin{center}
 		\includegraphics[width=0.5\textwidth]{assets/pdf/transponder.pdf}
-  		\caption[Trovan ID-100A Microtransponder]{Pictured an ID-100A Microtransponder from $Trovan^{\copyright}$. The transponder weighs 0.1 g and the coat is made of biocompatible glass.\newline \small Picture courtesy of Trovan.}
+  		\caption[Trovan ID-100A Microtransponder]{Pictured an ID-100A Microtransponder from $Trovan^{\copyright}$. The transponder weighs 0.1 g and the coat is made of biocompatible glass.\footnotesize Picture courtesy of Trovan.}
   		\label{fig:transponder}
 \end{center}
 \end{figure}
@@ -26,7 +26,7 @@ To collect phenotypical data, so called \textit{population checks} (see \ref{sub
 \end{center}
 \end{figure}
 
-Furthermore, tissue samples are taken from the ear of each individual for genetic analysis. The genetical information is needed to get information about the relatedness between the mice within the population and about specific genetic markers. Genotypical information is not included in the data used for this work.
+Furthermore, tissue samples are taken from the ear of each individual for genetic analysis. The genetical information provides an insight into the relatednesses within the mice population and allows to compare specific genetic markers. Genotypical information is not included in the data used for this thesis.
 
 %----------------------------------------------
 %Position / Time data
@@ -34,11 +34,11 @@ Furthermore, tissue samples are taken from the ear of each individual for geneti
 \subsection{Collecting spatial position data}
 \label{subsec:collectspatialpos}
 
-To collect the spatial position data, a project specific system has been by built by \textit{New Behaviour}, a company specialized in creating systems to study animal behaviour. 
+To collect the spatial position data, a project specific system has been by built by \textit{New Behaviour}, a company specialized in developing technical systems to study animal behavior. 
 
-The basic idea is to use \acf{RFID} transponders, to identify the mice at specific locations in the barn. These \ac{RFID} transponders are about the size of a rice corn and are injected under the skin of the mice (see figure \ref{fig:inject_rfid}). 
+The basic idea is to identify mice carrying an RFID transponder at specific locations. The locations where the identification occurs are the 40 artifical nestboxes distributed in the barn. 
 
-Furthermore, the system includes 40 artificial nestboxes, made of \ac{PVC}, which have a diameter and a height of 15 centimeters. The entry tube is about 20 to 25 centimeters long, made of \textit{Plexiglas}, and is bent by an angle of 45 degrees to slow down the mice when they go trough the pipe (see fig. \ref{fig:artNestbox} on page \pageref{fig:artNestbox}). This is improving the accuracy of the two antennas which are wrapped around the tube and read the RFID transponders. The antennas have a coverage area with a radius of about 10 to 12 centimeters.
+An artificial nestbox consists of a cylinder, made of \ac{PVC}, with a diameter and a height of 15 centimeters and an entry tube made of \textit{Plexiglas} which is about 20 to 25 centimeters long. Wrapped around the tube are two antennas with a coverage area of 10 to 12 centimeters, capable of reading out the rfid transponders. Each antenna can be identified by an adress which is set manually. To improve the antenna accuracy, the entry tube is bent by 45 degrees to slow down the mice passing through. . Figure \ref{fig:artNestbox} depicts a model of such an artificial nestbox.
  
 \begin{figure}[htbp]	
 \centering	
@@ -47,33 +47,33 @@ Furthermore, the system includes 40 artificial nestboxes, made of \ac{PVC}, whic
 \label{fig:artNestbox}
 \end{figure}
 
-The \ac{RFID} transponders used are passive, meaning that they do not include a battery. The antenna acts as a scanner, presenting an inductive field which excites the \ac{RFID} transponder when entering the coverage area of the antenna. This energy is used by the transponder to send its identification to the antenna. 
+The RFID transponders used are passive, meaning that they do not include a battery. The antenna acts as a scanner, presenting an inductive field which excites the transponder when entering the coverage area of the antenna. This energy is used by the transponder to send its identification to the antenna. 
 
-So, whenever a mouse carrying a transponder passes by an antenna, it's identification is recorded and sent to a central computer along with the antenna address. The computer then writes the received data to a text file. The structure of these data files is explained in detail in the next section.
+So, whenever a mouse carrying a transponder passes by an antenna, it's identification is recorded and sent to a central computer along with the antenna address. The computer then adds a time value to the received data before writing it to a text file. The structure of these text files containing the data is explained in detail in the next section.
 
-\subsubsection{Data File Format}
+\subsubsection{Data file format}
 \label{subsubsec:datafileformat}
-The data files are simple text files, where each line denotes an \textit{event} registered by an antenna in the system. Every day the data file is closed, saved, and a new data file is created automatically by the system.
+The data files are simple text files, where each line denotes an event registered by an antenna in the system. Every day the data file is saved, closed, and a new one is created automatically by the system.
 
-Basically there are to types of events. The system output for first type is shown in figure \ref{fig:dataset} on page \pageref{fig:dataset}. It shows the line of text written to the data file when the \ac{RFID} transponder has been identified by an antenna. The id of the transponder is a unique, ten character wide, alphanumeric value.
+Basically there are to types of events. The first type occurs if the antenna could identify a transponder. In such a case a line as shown in figure \ref{fig:dataset} is written to the data file. The id of the transponder is a unique, ten character wide, alphanumeric value.
 
 \begin{figure}[htbp]	
 \centering	
-\includegraphics[width=0.8\textwidth]{assets/pdf/dataset.pdf}	
-\caption[Dataset with RFID transponder identification]{Typical dataset in a data file with and \ac{RFID} transponder identification}
+\includegraphics[width=0.75\textwidth]{assets/pdf/dataset.pdf}	
+\caption[Dataset including an RFID transponder identification]{Typical dataset in a data file including an \ac{RFID} transponder identification}
 \label{fig:dataset}
 \end{figure}
 
-If a transponder enters or leaves the coverage area of an antenna, the second event type occurs. The output is shown in figure \ref{fig:dataset_no_data} on page \pageref{fig:dataset_no_data}.
+The second type of event, for which the resulting data line looks like shown in figure \ref{fig:dataset_no_data}, occurs when a transponder enters or leaves the coverage area of an antenna.
 
 \begin{figure}[htbp]	
 \centering	
-\includegraphics[width=0.8\textwidth]{assets/pdf/dataset_no_data.pdf}	
+\includegraphics[width=0.75\textwidth]{assets/pdf/dataset_no_data.pdf}	
 \caption[Dataset without RFID transponder identification]{Typical dataset in a data file without an \ac{RFID} transponder identification}
 \label{fig:dataset_no_data}
 \end{figure}
 
-The following lines show the data written to the data file by the system, when a mouse passes the two antennas attached to a box. The events taking place when each of these lines is written to the data file is explained in the following list. The list numbers match the line numbers of the data file fragment. 
+The following clipping and corresponding list show and explain the lines written to a data file, when a transponder passes by the two antennas beloning to an artificial nestbox. According to the previous explanations, the events are explained in the subsequent list.  
 
 \numcodestyle
 \begin{lstlisting}[frame=none]
@@ -85,64 +85,40 @@ The following lines show the data written to the data file by the system, when a
 2008-10-01 16:31:44:014;   113;   0;
 \end{lstlisting}
 
+The list numbering matches the line numbering of the clipping.  
+
 \begin{condensed_enum}
-  \item The transponder \textbf{enters coverage area} of the antenna with address \lstinline|111|.
-  \item The transponder \textbf{enters coverage area} of the antenna with address \lstinline|113|.
-  \item The transponder is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|111|.
-  \item The transponder is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|113|.
-  \item The transponder \textbf{leaves coverage area} of the antenna with address \lstinline|111|.
-  \item The transponder \textbf{leaves coverage area} of the antenna with address \lstinline|113|. 
+  \item Transponder \textbf{enters coverage area} of the antenna with address \lstinline|111|.
+  \item Transponder \textbf{enters coverage area} of the antenna with address \lstinline|113|.
+  \item Transponder is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|111|.
+  \item Transponder is \textbf{identified} as \lstinline|00 06 B8 D4 5A| at antenna with address \lstinline|113|.
+  \item Transponder \textbf{leaves coverage area} of the antenna with address \lstinline|111|.
+  \item Transponder \textbf{leaves coverage area} of the antenna with address \lstinline|113|. 
 \end{condensed_enum}
  
-Depending on the event type, the value of the packet size is either a \lstinline|0| for events without a transponder identification value, or a \lstinline|5| if the transponder has been identified. For the data processing (see section \ref{sec:dataproc} on page \pageref{sec:dataproc}) only the datasets with a transponder identification are taken into account.
+Depending on the event type, the value of the packet size is either a \lstinline|0|, for events without a transponder identification value, or a \lstinline|5| if the transponder has been identified. For the data processing (see section \ref{sec:dataproc} on page \pageref{sec:dataproc}) only the datasets with a transponder identification are taken into account.
 
 \subsubsection{Antenna addressing}
 \label{subsubsec:addressing}
 
-There are always two antennas attached to an entry tube of a box (see figure \ref{fig:artNestbox} on page \pageref{fig:artNestbox}). The antenna address is three digits long, composed by the box number it is attached to (first two digits), and the position at the entry tube of the box. Outer antennas have a \lstinline|1| as the last digit of the address, inner antennas a \lstinline|3| (e.g the antennas attached to box 11 are addressed 111 for the outer, 113 for the inner antenna, respectively). Needless to say, that box numbers have to be unique.
+The antenna address is three digits long, composed by the box number it is attached to (first two digits), and the position at the entry tube of the box. Outer antennas have a \lstinline|1| as the last digit of the address, inner antennas a \lstinline|3| (e.g the antennas attached to box 11 are addressed 111 for the outer, 113 for the inner antenna, respectively). Needless to say, that box numbers have to be unique.
 
-Unfortunately there are a few exceptions to that schema, as for a few antennas, the correct addressing failed due to technical problems (cp. \ref{subsubsec:problems} at page \pageref{subsubsec:problems}).
+Unfortunately there are a few exceptions to that schema, as for a few antennas, the correct addressing failed due to technical problems (see section \ref{subsec:problems}).
 
-\subsubsection{General system design and functionality}
-\label{subsubsec:generalsystem}
-
-\begin{itemize}
-  \item Can-Bus
-  \item cable loop
-  \item rfid identification how
-  \item What happens in the boxes (boards) next to the antennas
-  \item How is can bus working/implemented
-  \item Where are the different cable loops (which antennas connected to a loop)
-  \item General system layout (cabling, protocols)
-  \item Programmed software
-  \item etc. 
-\end{itemize}
-
-\subsubsection{Problems}
-\label{subsubsec:problems}
-
-Unfortunately the problems with the system are diverse. Antenna drop outs, broken laptop or cable connections chewed by the mice, to name just a few. Some of these problems could be solved, other still remain.
-
-However, one of biggest problem is, that the readings at the antennas are not as reliable as planned. This is clearly visible in the following numbers:
-
-From the 5 of April 2007 to the 27 of March 2009, 8,171,945 datasets (table \lstinline|data|) have been collected. Assuming that the system works perfect, we would get 4,085,972 \textit{direction results}. Compared to the real number of \textit{direction results}, which is 2,907,495 , we have a yield of 71.16\%.
-
-In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find 1,453,747 results in the 2,907,495 \textit{direction results}, but finds 992,128 which is 68.25\%. Most likely these low numbers are an effect of missed antenna readings. 
-
-Normally, an antenna reads out the transponder information 10 times, to ensure maximum reliability of a correct reading. The antenna system in the barn reads the identification only 3 times, as the time that a transpondered mouse spends in the coverage area of an antenna is usually short. We are able to partially comprehend the impact of this factor by looking at the \lstinline|rfid| table. The table contains 4605 different transponder id's, whereof only 1014 have been read at an antenna more then 10 times. The other 3546 rfids are most probably a result of the so called \textit{bit flipping}. Consider the the following listing which shows a clipping of a data file. The \ac{RFID} transponder is identified as \lstinline|00 05 B8 D2 70| on line two, but as \lstinline|0 06 B8 E2 70| on the other lines. 
-
-\numcodestyle
-\begin{lstlisting}[frame=none]
-2007-11-25 10:09:12:906;   381;   5;  00 06 B8 E2 70
-2007-11-25 10:09:16:529;   381;   5;  00 05 B8 D2 70
-2007-11-25 10:09:16:932;   381;   5;  00 06 B8 E2 70
-2007-11-25 10:09:19:950;   381;   0; 
-2007-11-25 10:09:20:253;   381;   5;  00 06 B8 E2 70
-\end{lstlisting}
-
-The first four digits of the transponder identification represents some kind of the manufacturer series. The manufacturer sold only transponder from the \lstinline|00 06| series to us. Just out of this fact, we can conclude, that line two is a read error. Still, this transponder has been read 53 times between the November 2007 and May 2008, but none of the readings could be used to form a \textit{direction result}. Assuming that this is not a singular case, we get many of these false readings, leading to a low rate of yield in the following data analysis. 
-
-Furthermore, for some antennas the address could not be set properly. In one case two antennas even sent the same address, so that no distinction of the data could be made. The workaround for this problem is, two find an unused address which we are able to set and map it to the desired address during the data import (see section \ref{subsec:importing} on page \pageref{subsec:importing}).   
+% \subsubsection{General system design and functionality}
+% \label{subsubsec:generalsystem}
+% 
+% \begin{itemize}
+%   \item Can-Bus
+%   \item cable loop
+%   \item rfid identification how
+%   \item What happens in the boxes (boards) next to the antennas
+%   \item How is can bus working/implemented
+%   \item Where are the different cable loops (which antennas connected to a loop)
+%   \item General system layout (cabling, protocols)
+%   \item Programmed software
+%   \item etc. 
+% \end{itemize}
 
 % ----------------------------------------------
 %Data attributes
@@ -150,17 +126,17 @@ Furthermore, for some antennas the address could not be set properly. In one cas
 \subsection{Collecting Data Attributes}
 \label{subsec:dataattr}
 
-During the \textit{population checks}, the whole barn, including all artificial nestboxes, plastic pipes and other structuring elements, is checked to screen the mice population. During these so called population and nest checks the data are collected using the following procedure.
+During the \textit{population checks}, the whole barn, including all artificial nestboxes, plastic pipes and other structuring elements, is checked to collect attribute data of th emice according to the following procedure.
 
 \begin{enumerate} 
 	\item Each box is opened and the following observations made:
-	\begin{itemize}
+	\begin{mylist}
       \item \textbf{Mice in the box:} If adult mice are in the box, they get identified by their transponder, measured and weighed. Furthermore it will be checked, if the sex of the mouse has already been determined.  
       \item \textbf{Bedding:} Determine if the nestbox shows marks of usage, like trampled bedding.
       \item \textbf{Nest:} Determine wether the nestbox contains an open or closed nest built by the mice out of haw or straw regularly provided in the barn.  
       \item \textbf{Pups:} Does the box contain pups, and if yes how many and whats their estimated age. 
       \item \textbf{Communal nest:} Check if two or more litters are reared in the box. 
-    \end{itemize}
+    \end{mylist}
 	\item All the possible shelters, like planks an pipes, are checked for mice presence as well.
 \end{enumerate}
 
@@ -170,17 +146,15 @@ During the \textit{population checks}, the whole barn, including all artificial 
 \subsection{Data storage}
 \label{subsec:datastorage}
 
-This section contains detailed information about the design of the database. However, it is not designed as a documentation for computer scientists. Rather, it should reveal the full available data set and information contained in the database to the researchers working with the data.   
+This section contains detailed information about the design of the database. However, it is not designed as a documentation for computer scientists. Rather, it should reveal information contained in the database to researchers interested in the data.   
 
-All the data is stored in a MySQL\footnote{\href{http://www.mysql.com/}{MySQL database}} database, which is  a \acf{RDBMS} (RDMS). Figure \ref{fig:database_schema} on page \pageref{fig:database_schema} shows an overview of all the tables, including the data types\footnote{An overview of the MySQL data types can be found on the following webpage: \url{http://dev.mysql.com/doc/refman/5.0/en/data-types.html}} of the columns and their relations to columns in other tables\footnote{A schema of the database including all the tables and the references between the table columns can be found in the Appendix on page \pageref{fig:database_schema}.}. 
+The data is stored in a MySQL\footnote{\href{http://www.mysql.com/}{MySQL database}} database, which is  a \acf{RDBMS} (RDMS). Figure \ref{fig:database_schema} on page \pageref{fig:database_schema} in the appendix shows an overview of all the tables, including the data types\footnote{An overview of the MySQL data types can be found on the following webpage: \url{http://dev.mysql.com/doc/refman/5.0/en/data-types.html}} of the columns and their relations to columns in other tables. 
 
-The tables can be split up in groups based on the sort of data they contain.
+Based on the sort of data the tables contain, they can be split up in different groups.
 
 \subsubsection{Processed data}
 
-This group comprehends tables with data based on the spatial position data collected by the system in the barn (see section \ref{subsec:collectspatialpos} on page \pageref{subsec:collectspatialpos} for details).
-
-The tables belonging to that group are outlined in figure \ref{fig:processed_data_schema} on page \pageref{fig:processed_data_schema}.
+This group comprehends tables with data based on the spatial position data collected by the system in the barn. The tables belonging to that group are outlined in figure \ref{fig:processed_data_schema} on page \pageref{fig:processed_data_schema}.
  
 \begin{figure}[htpb]
 \begin{center}
@@ -193,7 +167,7 @@ The tables belonging to that group are outlined in figure \ref{fig:processed_dat
 \paragraph{data table}
 \label{para:data_table}
 
-A \ac{perl} script imports the data files written by the system in the barn into the \lstinline|data| table. 
+A \ac{perl} script imports the data files written by the antenna system in the barn into the \lstinline|data| table.
 
 Shown next is a row of the \lstinline|data| table followed by short explanation of the columns.
 
@@ -217,12 +191,12 @@ Shown next is a row of the \lstinline|data| table followed by short explanation 
 \end{lstlisting}
 
 \begin{mydesc}
-  \item \lstinline|id| is an auto increment integer and therefore a unique identifier of a dataset in this table.
-  \item \lstinline|rfid| is a transponder value. This value is a reference to a value in the \lstinline|id| column of the \lstinline|rfid| table (see paragraph \ref{para:rfid_table} on page \pageref{para:rfid_table}).
+  \item \lstinline|id| is a unique identifier of a dataset in this table. Such a unique identifier is normally used as target for a relation, and does not have any further meaning.
+  \item \lstinline|rfid| is a transponder value. This value is a reference to a value in the \lstinline|id| column of the \lstinline|rfid| table (see paragraph \ref{para:rfid_table}).
   \item \lstinline|time| and \lstinline|millsec| columns harbor the time the dataset has been recorded. Unfortunately the \textit{MySQL} \lstinline|DATETIME| data type does not include the milliseconds. Hence, these values have to be stored in a separate column.
-  \item \lstinline|ant| denotes the antenna the data was recorded at. This value is a reference to a value in the \lstinline|id| column of the \lstinline|ant| table (see paragraph \ref{para:ant_table} on page \pageref{para:ant_table}).
-  \item \lstinline|import| is a reference to a dataset in the \lstinline|logs| table, simply unveils from which data file this dataset is part of.
-  \item \lstinline|i| is an indicator if the dataset could is used in a direction result (see \ref{para:dir_table} ) and stay result (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} gives an overview of the \lstinline|i| values in the different tables.
+  \item \lstinline|ant| denotes the antenna the data was recorded at. This value is a reference to a value in the \lstinline|id| column of the \lstinline|ant| table (see paragraph \ref{para:ant_table}.
+  \item \lstinline|import| is a reference to a dataset in the \lstinline|logs| table, simply unveils of which data file this dataset is part of.
+  \item \lstinline|i| is an indicator if the dataset could be used in a \lstinline|direction result| and \lstinline|stay result| (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} of the appendix gives an overview of the meaning of the \lstinline|i| values in the different tables.
   \item \lstinline|dir_id| is a reference to an \lstinline|id| in the \lstinline|dir| table, if that dataset could be used in a \textit{direction result}. Else, this value is \lstinline|NULL|.
   \item \lstinline|res_id| is a reference to an \lstinline|id| in the \lstinline|res| table, if that dataset could be used in \textit{stay result}. Else this value is \lstinline|NULL|.
 \end{mydesc}
@@ -487,7 +461,7 @@ Shown next is a row of the \lstinline|logs| table followed by short explanation 
 \paragraph{rfid\_count, box\_count, ant\_count}
 \label{para:counts}
 
-These three tables contain per day data counts for transponders (\lstinline|rfid_count|), boxes (\lstinline|box_count|) and antennas (\lstinline|ant_count|), and are exclusively needed by the \textit{miceminer} application to allow faster browsing of the data.
+These three tables contains the per day data counts for transponders (\lstinline|rfid_count|), boxes (\lstinline|box_count|) and antennas (\lstinline|ant_count|), and are exclusively needed by the \textit{miceminer} application to allow faster browsing of the data.
 
 Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstinline|ant_count| tables followed by short explanation of the columns.
 
@@ -525,6 +499,34 @@ Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstin
 	\item \lstinline|day| points to the day the table row holds the data counts for.
 	\item \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| contain the per day counts for the datasets, the \textit{direction results} and the \textit{stay results}.
 \end{mydesc}
+
+\subsection{Efficiency and problems of the antenna system}
+\label{subsec:problems}
+
+Unfortunately the problems with the antenna system are diverse. Antenna drop outs, broken laptop or cable connections chewed by the mice, to name just a few. Some of these problems could be solved, other still remain.
+
+However, one of biggest problem is, that the readings at the antennas are not as reliable as planned. This is clearly visible by looking at the efficiency of the system.
+
+From the 5 of April 2007 to the 27 of March 2009, 8,171,945 datasets (table \lstinline|data|) have been collected. Assuming that the system works perfect, we would get 4,085,972 \textit{direction results}. Compared to the real number of \textit{direction results}, which is 2,907,495 , we have a yield of 71.16\%.
+
+In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find 1,453,747 results in the 2,907,495 \textit{direction results}, but finds 992,128 which is 68.25\%. Most likely these low numbers are an effect of missed antenna readings.
+
+Normally, an antenna reads out the transponder information 10 times, to ensure maximum reliability of a correct reading. The antenna system in the barn, however, reads out the identification only 3 times, as the time that a transpondered mouse spends in the coverage area of an antenna is usually short. We are able to partially comprehend the impact of this factor by looking at the \lstinline|rfid| table. The table contains 4605 different transponder id's, whereof only 1014 have been read at an antenna more then 10 times. The other 3546 rfids are most probably a result a phenomeneon called \textit{bit flipping}.
+
+The following listing shows a clipping of a data file, where a transponder is identified as \lstinline|00 05 B8 D2 70| on line two, but as \lstinline|00 06 B8 E2 70| on the other lines. 
+
+\numcodestyle
+\begin{lstlisting}[frame=none]
+2007-11-25 10:09:12:906;   381;   5;  00 06 B8 E2 70
+2007-11-25 10:09:16:529;   381;   5;  00 05 B8 D2 70
+2007-11-25 10:09:16:932;   381;   5;  00 06 B8 E2 70
+2007-11-25 10:09:19:950;   381;   0; 
+2007-11-25 10:09:20:253;   381;   5;  00 06 B8 E2 70
+\end{lstlisting}
+
+The first four digits of the transponder identification represents some sort of the manufacturer series. The manufacturer sold only transponder from the \lstinline|00 06| series to us. Just out of this fact, we can conclude, that line two is a read error. Still, this transponder has been read 53 times between the November 2007 and May 2008, but none of the readings could be used to form a \textit{direction result}. Assuming that this is not a singular case, we get many of these false readings, leading to a low rate of yield in the following data processing. 
+
+Furthermore, for some antennas, the address could not be set properly. In one case two antennas even sent the same address, so that distinction of the data is impossible. The workaround for this problem is to find an unused address which we are able to set, and map it to the desired address during the data import (see section \ref{subsec:importing} on page \pageref{subsec:importing}).   
 
 \subsection{Data access}
 \label{subsec:dataccess}

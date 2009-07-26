@@ -3,8 +3,8 @@
 
 The visualization of somehow pairwise connected data is gaining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more conventional statistical approach. Compared to the conventional approach, which is concerned with the monadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behaviour of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The interested reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
-tool for the study of sociality}\cite{wey:08}, and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behaviour.
+As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behavior of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The interested reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+tool for the study of sociality}\cite{wey:08}, and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behavior.
 
 Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
 
@@ -33,7 +33,7 @@ Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in fi
 					\label{fig:graph_undirected_weighted} %
 					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
 				} 
-	\caption{An undirected model network with binary edges \subref{fig:graph_undirected} and the same network with weighted edges \subref{fig:graph_undirected_weighted}.} 
+	\caption[Undirected model network with binary and weighted edges]{An undirected model network with binary edges \subref{fig:graph_undirected} and the same network with weighted edges \subref{fig:graph_undirected_weighted}.} 
 
 \end{figure}	 
 
@@ -50,7 +50,7 @@ Another type of networks are the so called directed networks (see figures \ref{f
 					\label{fig:graph_directed_weighted} %
 					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_directed_weighted.pdf}
 				} 
-	\caption{A directed model network with binary edges \subref{fig:graph_directed} and the same network with weighted edges \subref{fig:graph_directed_weighted}.} 
+	\caption[Directed model network with binary and weighted edges]{A directed model network with binary edges \subref{fig:graph_directed} and the same network with weighted edges \subref{fig:graph_directed_weighted}.} 
 
 \end{figure}	 
 
@@ -176,7 +176,7 @@ A special network is the so called \textit{Ego Network}. The ego network consist
 \begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=.33\textwidth]{assets/pdf/graph_egocentric.pdf}
-  \caption[Ego Network]{Ego Network for node \textbf{A}.}
+  \caption[Ego network]{Ego network for node \textbf{A}.}
   \label{fig:graph_ego}
 \end{center}
 \end{figure} 
@@ -287,7 +287,7 @@ Usually the betweeness values correlate with the degree. But sometimes, a node c
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/broker.pdf}
-  \caption[Model network with two groups]{Model network with two groups connected over a single node, called a ``Broker''.}
+  \caption[Model network consisting of two groups]{Model network consisting of two groups connected by single node, called a ``Broker''.}
   \label{fig:broker}
 \end{center}
 \end{figure}
@@ -311,7 +311,7 @@ Detailed information about the properties of these model networks is beyond the 
 					\label{fig:random_graph}%
 					\includegraphics[width=.33\textwidth]{assets/pdf/random_network.pdf}
 				} 
-	\caption{A regular \subref{fig:regular_graph} and a random \subref{fig:random_graph} model network with the same number of nodes.} 
+	\caption[A regular and a random model network]{A regular \subref{fig:regular_graph} and a random \subref{fig:random_graph} model network with the same number of nodes.} 
 	 
 \end{figure} 
 
@@ -393,7 +393,7 @@ Since the \textit{miceminer} does not offer a full set of tools for social netwo
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/img/netdraw_export_component.png}
-  \caption[Netdraw]{Screenshot of the \textit{NetDraw} application visualizing a network.}
+  \caption[Scereenshot of the Netdraw application]{Screenshot of the \textit{NetDraw} application visualizing a network.}
   \label{fig:netdraw_export_component}
 \end{center}
 \end{figure}
