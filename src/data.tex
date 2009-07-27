@@ -148,26 +148,28 @@ During the \textit{population checks}, the whole barn, including all artificial 
 
 This section contains detailed information about the design of the database. However, it is not designed as a documentation for computer scientists. Rather, it should reveal information contained in the database to researchers interested in the data.   
 
-The data is stored in a MySQL\footnote{\href{http://www.mysql.com/}{MySQL database}} database, which is  a \acf{RDBMS} (RDMS). Figure \ref{fig:database_schema} on page \pageref{fig:database_schema} in the appendix shows an overview of all the tables, including the data types\footnote{An overview of the MySQL data types can be found on the following webpage: \url{http://dev.mysql.com/doc/refman/5.0/en/data-types.html}} of the columns and their relations to columns in other tables. 
+The data is stored in a \textit{MySQL}\footnote{\href{http://www.mysql.com/}{MySQL database}} database, which is  a \acf{RDBMS} (RDMS). Figure \ref{fig:database_schema} on page \pageref{fig:database_schema} in the appendix shows an overview of all the tables, including the data types\footnote{An overview of the MySQL data types can be found on the following webpage: \url{http://dev.mysql.com/doc/refman/5.0/en/data-types.html}} of the columns and their relations to columns in other tables.
 
-Based on the sort of data the tables contain, they can be split up in different groups.
+Upon completion of a cascade of \ac{perl} scripts, which process and extract information from the spatial position data in the data files, the resulting data is merged with the collected attribute data and is written to the tables as outlined in this section. For details about the cascade refer to section \ref{sec:dataproc}. 
+
+The tables can be split up in three different groups, depending of the sort of data they contain. 
 
 \subsubsection{Processed data}
-
-This group comprehends tables with data based on the spatial position data collected by the system in the barn. The tables belonging to that group are outlined in figure \ref{fig:processed_data_schema} on page \pageref{fig:processed_data_schema}.
+ 
+This group comprehends of the tables exclusively written to by the scripts in the import cascade. A schema of the tables belonging to that group, as well as the relations between them, is shown in figure \ref{fig:processed_data_schema}. 
  
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/processed_data_schema.pdf}
-  \caption[Schema of database tables with processed data]{Schemata of the data tables with the processed spatial position data and the relations between them.}
+  \caption[Schema of database tables with processed data]{Schema of the database tables with the processed spatial position data and the relations between them.}
   \label{fig:processed_data_schema}
 \end{center}
-\end{figure}
+\end{figure} 
 
 \paragraph{data table}
 \label{para:data_table}
 
-A \ac{perl} script imports the data files written by the antenna system in the barn into the \lstinline|data| table.
+A script (see section \ref{subsec:importing}) imports the data files written by the antenna system in the barn into the \lstinline|data| table.
 
 Shown next is a row of the \lstinline|data| table followed by short explanation of the columns.
 
@@ -191,23 +193,22 @@ Shown next is a row of the \lstinline|data| table followed by short explanation 
 \end{lstlisting}
 
 \begin{mydesc}
-  \item \lstinline|id| is a unique identifier of a dataset in this table. Such a unique identifier is normally used as target for a relation, and does not have any further meaning.
+  \item \lstinline|id| is a unique identifier of a dataset in this table. Such a unique identifier is normally used as target for a relation between columns of different tables and does not have any further meaning.
   \item \lstinline|rfid| is a transponder value. This value is a reference to a value in the \lstinline|id| column of the \lstinline|rfid| table (see paragraph \ref{para:rfid_table}).
   \item \lstinline|time| and \lstinline|millsec| columns harbor the time the dataset has been recorded. Unfortunately the \textit{MySQL} \lstinline|DATETIME| data type does not include the milliseconds. Hence, these values have to be stored in a separate column.
   \item \lstinline|ant| denotes the antenna the data was recorded at. This value is a reference to a value in the \lstinline|id| column of the \lstinline|ant| table (see paragraph \ref{para:ant_table}.
   \item \lstinline|import| is a reference to a dataset in the \lstinline|logs| table, simply unveils of which data file this dataset is part of.
   \item \lstinline|i| is an indicator if the dataset could be used in a \lstinline|direction result| and \lstinline|stay result| (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} of the appendix gives an overview of the meaning of the \lstinline|i| values in the different tables.
   \item \lstinline|dir_id| is a reference to an \lstinline|id| in the \lstinline|dir| table, if that dataset could be used in a \textit{direction result}. Else, this value is \lstinline|NULL|.
-  \item \lstinline|res_id| is a reference to an \lstinline|id| in the \lstinline|res| table, if that dataset could be used in \textit{stay result}. Else this value is \lstinline|NULL|.
+  \item \lstinline|res_id| is a reference to an \lstinline|id| in the \lstinline|res| table, if that dataset could be used in \textit{stay result}. Else this value is \lstinline|NULL|\footnote{\textit{MySQL} sets the \lstinline|NULL| value to indicate a missing or unknown value.}.
 \end{mydesc}
 
 \paragraph{dir table}
 \label{para:dir_table}
-Another \ac{perl} script searches for matching pairs of datasets in the \lstinline|data| table which form a \textit{direction result}.
 
-When a mouse carrying an \ac{RFID} transponder passes the two antennas attached to an artificial nestbox, within a certain time, it is possible to determine if the mouse went in or out of that box (see section \ref{subsec:dirres} on page \pageref{subsec:dirres} for details about the script). 
+Another script (see section \ref{subsec:dirres}) searches for matching pairs of datasets in the \lstinline|data| table which form a \textit{direction result}. When a mouse carrying a transponder passes the two antennas attached to the antry tube of an artificial nestbox, within a certain time, it is possible to determine if the mouse went in or out of that box. 
 
-Shown next is a row of the \lstinline|dir| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|dir| table followed by a short explanation of the columns.
 
 \codescript
 \begin{lstlisting}[frame=none]
@@ -231,18 +232,18 @@ Shown next is a row of the \lstinline|dir| table followed by short explanation o
   \item \lstinline|id| and \lstinline|rfid| have the identical function as in the \lstinline|data| table.
   \item \lstinline|time| denotes the moment the the \lstinline|rfid| entered or left the \lstinline|box|.
   \item \lstinline|box| is a reference to a value in the \lstinline|id| column of the \lstinline|box| table (see paragraph \ref{para:box_table} on page \pageref{para:box_table}).
-  \item \lstinline|dir| is either \textit{in} or \textit{out} and depicts the direction.
+  \item \lstinline|dir| is either set to \lstinline|in| or \lstinline|out| and depicts the direction.
   \item \lstinline|outerdataid| and \lstinline|innerdataid| values can be used to backtrack the datasets in the \lstinline|data| table making up the \textit{direction result}. This is explained in detail in section \ref{subsec:dirres} on page \pageref{subsec:dirres}.
-  \item \lstinline|i| is an indicator if the direction result could is used in a \textit{} (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} gives an overview of the \lstinline|i| values in the different tables.
-  \item \lstinline|res_id| is a reference to an \lstinline|id| in the \lstinline|res| table, if that dataset could be used in \textit{stay result}. Else this value is \lstinline|NULL| (= empty).
+  \item \lstinline|i| is an indicator if the direction result could is used in a \textit{stay result} (see \ref{para:res_table}). Table \ref{tab:i_values} on page \pageref{tab:i_values} of the appendix gives an overview of the meaning of the \lstinline|i| values in the different tables.
+  \item \lstinline|res_id| is a reference to an \lstinline|id| in the \lstinline|res| table, if that dataset could be used in \textit{stay result}. Else this value is \lstinline|NULL|.
 \end{mydesc}
 
 \paragraph{res table}
 \label{para:res_table}
 
-When two \textit{direction results}, one with a \lstinline|dir| value of \lstinline|in| and the other with a \lstinline|dir| value of \lstinline|out|, as well as matching \lstinline|rfid| and \lstinline|box| values are found, they form a so called \textit{stay result} (see section \ref{subsec:stayres} on page \pageref{subsec:stayres} for details).
+When two \textit{direction results}, one with a \lstinline|dir| value of \lstinline|in| and the other with a \lstinline|dir| value of \lstinline|out|, as well as matching \lstinline|rfid| and \lstinline|box| values are found, they form a so called \textit{stay result}.
 
-Shown next is a row of the \lstinline|res| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|res| table followed by a short explanation of the columns.
 
 \codescript
 \begin{lstlisting}[frame=none]
@@ -265,19 +266,21 @@ Shown next is a row of the \lstinline|res| table followed by short explanation o
 
 \begin{mydesc}
 	\item \lstinline|id|, \lstinline|rfid| and \lstinline|box| were already explained for the previous tables, and have the same function in this table.
-	\item \lstinline|box_in| and \lstinline|box_out| denote the beginning and the end time of the sojourn of the \lstinline|rfid| in a \lstinline|box|.
-	 \item \lstinline|inid| and \lstinline|outid| can be used to backtrace the datasets in the \lstinline|dir| or \lstinline|data| table making up the \textit{stay result}. This is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
-	 \item \lstinline|i| is either \lstinline|3| or \lstinline|4| and indicates the type of the result. This distinction is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}.
-	 \item \lstinline|meetings| is set to \lstinline|true| when the result set has been analyzed for meetings.
-	 \item \lstinline|nerv_index| gives an idea about how \textit{nervous} the mouse was when she stayed in the box. The \textit{nervosity} is explained in detail in section \ref{subsec:stayres} on page \pageref{subsec:stayres}. 
+	\item \lstinline|box_in| and \lstinline|box_out| denote the beginning and the end time of the stay of the \lstinline|rfid| in a \lstinline|box|.
+	 \item \lstinline|inid| and \lstinline|outid| can be used to backtrace the datasets in the \lstinline|dir| or \lstinline|data| table making up the \textit{stay result}.
+	 \item \lstinline|i| is either \lstinline|3| or \lstinline|4| and indicates the type of the result.
+	 \item \lstinline|meetings| is set to \lstinline|true| when the result set has been analyzed for meetings (see next paragraph and section \ref{subsec:meetingres} for details about the \textit{meeting results}).
+	 \item \lstinline|nerv_index| gives an idea about how \textit{nervous} the mouse was when she stayed in the box. 
 \end{mydesc}
+
+For detailed information about the meanings and formation of the columns, refer to section \ref{subsec:stayres}.
 
 \paragraph{meetings table}
 \label{para:meetings_table}
 
-In this work, an event is termed a \textit{meeting}, if \textit{stay results} of different mice in the same box show a temporal overlap. These meeting data are written to the \lstinline|meeting| table (see section \ref{subsec:meetingres} on page \pageref{subsec:meetingres} for details).
+In this work, an event is termed a \textit{meeting}, if \textit{stay results} of different mice in the same box show a temporal overlap. The meeting data is written to the \lstinline|meeting| table (see section \ref{subsec:meetingres} on page \pageref{subsec:meetingres} for details).
 
-Shown next is a row of the \lstinline|meetings| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|meetings| table followed by a short explanation of the columns.
 \codescript
 \begin{lstlisting}[frame=none]
 
@@ -297,25 +300,24 @@ Shown next is a row of the \lstinline|meetings| table followed by short explanat
 \end{lstlisting}
 
 \begin{mydesc}
-	\item \lstinline|id| is the unique identifier of a dataset.
-	\item \lstinline|rfid_from| and \lstinline|rfid_to| denote the two participating mice (\ac{RFID} transponders) of the \textit{meeting result}.
+	\item \lstinline|id| is again the unique identifier.
+	\item \lstinline|rfid_from| and \lstinline|rfid_to| denote the two participating RFID's (mice) of the \textit{meeting result}.
 	\item \lstinline|res_id_from| points to the \lstinline|id| of the \textit{stay result} from the \lstinline|rfid_from|, and the \lstinline|res_id_to| to the one of the \lstinline|rfid_to|. This allows to look up the the \textit{stay results} making up this \lstinline|meeting result|.
 	\item \lstinline|from|, \lstinline|to| and \lstinline|dt| declare the start, the end time and the duration of the meeting.
-	\item \lstinline|box| contains the reference to an \lstinline|id| in the \lstinline|box| table (see \ref{para:box_table}).
-	\item The different values of the \lstinline|typ| column are explained in detail in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.
+	\item \lstinline|box| contains the reference to an \lstinline|id| in the \lstinline|box| table (see section \ref{para:box_table}).
+	\item The different values of the \lstinline|typ| column are explained in detail in section \ref{subsec:meetingres}.
 \end{mydesc}
-
 
 \subsubsection{System members data}
 
-This group encloses the tables which contain data about the different \textit{members} of the data collection system in the barn.
+This group encloses the tables which contain information about the rfids (transpondered mice) as well as the antennas and boxes.
 
-The tables included in that group are outlined in figure \ref{fig:system_members} on page \pageref{fig:system_members}. 
+Figure \ref{fig:system_members} shows an overview of the tables within this group plus the relations between the table columns. 
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/system_members_schema.pdf}
-  \caption[Schema of database tables with system member data]{Schemata of the database tables containing the \textit{system members} data.}
+  \caption[Schema of database tables with system member data]{Schema of the database tables containing the \textit{system members} data.}
   \label{fig:system_members}
 \end{center}
 \end{figure}
@@ -323,9 +325,9 @@ The tables included in that group are outlined in figure \ref{fig:system_members
 \paragraph{rfid table}
 \label{para:rfid_table}
 
-The \lstinline|rfid| table contains all the different transponder id's recorded by the system, along with the corresponding attribute data and some summarized information about each \ac{RFID}. 
+All the rfids ever recorded by the system, including their corresponding attribute data are stored in the  \lstinline|rfid| table.
 
-Shown next is a row of the \lstinline|rfid| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|rfid| table followed by short a explanation of the columns.
 \codescript
 \begin{lstlisting}[frame=none]
 
@@ -347,12 +349,12 @@ Shown next is a row of the \lstinline|rfid| table followed by short explanation 
 
 \begin{mydesc}
 	\item \lstinline|id| is the unique, 10 character wide alphanumeric transponder identification.
-	\item \lstinline|i| is is a helper value used in the data import procedure. It is \lstinline|0| if new data for the transponder has been imported, \lstinline|2| if the data is searched for \textit{direction results} and \lstinline|3| if the data has been searched for results.
+	\item \lstinline|i| is is a helper value used in the data import procedure. It is \lstinline|0| if new data for the transponder has been imported, \lstinline|2| if the data is searched for \textit{direction results} and \lstinline|3| if the data has been searched for \textit{stay results} .
 	\item \lstinline|data_count| contains the sum of datasets in the \lstinline|data| table.
 	\item \lstinline|dir_count| contains the sum of datasets in the \lstinline|direction| table.
 	\item \lstinline|res_count| contains the sum of datasets in the \lstinline|results| table.
-	\item \lstinline|sex| column holds the gender of the mouse.
-	\item \lstinline|last| points to the maximum value in the \lstinline|time| column of the \lstinline|data| table for this mouse. 
+	\item \lstinline|sex| denotes the gender of the mouse, if it is known.
+	\item \lstinline|last| points to the maximum value in the \lstinline|time| column of the \lstinline|data| table for this mouse, which is just the last time the transponder has been recorded by the antenna system.
 	\item \lstinline|implant_date| holds the date of the transponder injection.
 	\item \lstinline|weight| contains a decimal number with the weight of the mouse in grams.
 \end{mydesc}
@@ -362,7 +364,7 @@ Shown next is a row of the \lstinline|rfid| table followed by short explanation 
 
 The box table contains all the information about the 40 artificial nestboxes. 
 
-Shown next is a row of the \lstinline|box| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|box| table followed by a short explanation of the columns.
 \codescript
 \begin{lstlisting}[frame=none]
 
@@ -384,9 +386,9 @@ Shown next is a row of the \lstinline|box| table followed by short explanation o
 
 \begin{mydesc}
 	\item \lstinline|id| is the unique 2 character wide box identification.
-	\item \lstinline|segment| point to the segment (A, B, C or D) the box is located in.
-	\item The meaning of the \lstinline|last| \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| columns is already explained in the \lstinline|rfid| table.
-	\item \lstinline|xcoord| and \lstinline|ycoord| contain the x (entrance side wall) and y (left wall from the entrance wall) coordinates in centimeter of the box in the barn.
+	\item \lstinline|segment| points to the segment (A, B, C or D) the box is located in.
+	\item The meaning of the \lstinline|last| \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| columns was already explained in the \lstinline|rfid| table.
+	\item \lstinline|xcoord| and \lstinline|ycoord| denote the position of the nestbox in the barn. The entrance wall stands for the x-axis, the side wall to the left of the entrance for the y-axis of the coordinate system. The coordinate values are stored in centimeters. 
 \end{mydesc}
 
 \paragraph{ant table}
@@ -394,7 +396,7 @@ Shown next is a row of the \lstinline|box| table followed by short explanation o
 
 The ant table contains all the information about the 80 antennas. 
 
-Shown next is a row of the \lstinline|ant| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|ant| table followed by a short explanation of the columns.
 \codescript
 \begin{lstlisting}[frame=none]
 +-----+---------------------+------------+-----------+-----------+-----+
@@ -407,13 +409,16 @@ Shown next is a row of the \lstinline|ant| table followed by short explanation o
 
 \begin{mydesc}
 	\item \lstinline|id| is the unique 3 character wide antenna identification.
-	\item The meaning of the \lstinline|last| \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| columns is already explained in the \lstinline|rfid| table.
+	\item The meaning of the \lstinline|last| \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| columns was already explained in the \lstinline|rfid| table.
 	\item \lstinline|box| points to the \lstinline|id| value in the \lstinline|box| table, the antenna is attached to.
 \end{mydesc}
 
 \subsubsection{Auxiliary tables}
 
-This group includes tables that contain precalculated data for faster data browsing with the \textit{miceminer} application and a table with the imported data files. 
+Tables in this group contain data about the imported data files, and precalculated values to improve the performance when browsing the data using the graphical user interface.
+
+Figure \ref{fig:auxiliary_tables} shows an overview of the tables within this group. 
+
 
 \begin{figure}[htpb]
 \begin{center}
@@ -428,7 +433,7 @@ This group includes tables that contain precalculated data for faster data brows
 
 The \lstinline|logs| table contains information about the imported data files.
 
-Shown next is a row of the \lstinline|logs| table followed by short explanation of the columns.
+Shown next is a row of the \lstinline|logs| table followed by a short explanation of the columns.
 
 \codescript
 \begin{lstlisting}[frame=none]
@@ -451,19 +456,19 @@ Shown next is a row of the \lstinline|logs| table followed by short explanation 
 \begin{mydesc}
 	\item \lstinline|id| is the unique identifier of dataset.
 	\item The original filename of the data file is stored in the \lstinline|logfile| column.
-	\item \lstinline|short| values are a kind of code made up from parts of the data filename. This column was important at the beginning of the project, when we had to import data files with a different structure.
+	\item \lstinline|short| values are a kind of code made up from parts of the data filename. This column was important at the beginning of the project, when we had to import data files with a another format.
 	\item \lstinline|size| contains the filesize in bytes of the data file.
-	\item \lstinline|start| and \lstinline|end| indicate the first an and last point in time of an antenna reading, this data file contains.
+	\item \lstinline|start| and \lstinline|end| indicate the first and last point in time of an antenna reading, this data file contains.
 	\item \lstinline|duration| is simply the period between the \lstinline|start| and \lstinline|end| values.
-	\item \lstinline|import| refers to the time the import of the data in the file into the \lstinline|data| table was finished.
+	\item \lstinline|import| refers to the time the import of the data in the file into the \lstinline|data| table has been finished.
 \end{mydesc}
 
 \paragraph{rfid\_count, box\_count, ant\_count}
 \label{para:counts}
 
-These three tables contains the per day data counts for transponders (\lstinline|rfid_count|), boxes (\lstinline|box_count|) and antennas (\lstinline|ant_count|), and are exclusively needed by the \textit{miceminer} application to allow faster browsing of the data.
+These three tables contains the per day data counts for transponders (\lstinline|rfid_count|), boxes (\lstinline|box_count|) and antennas (\lstinline|ant_count|), and are exclusively needed by the user interface to allow faster browsing of the data.
 
-Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstinline|ant_count| tables followed by short explanation of the columns.
+Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstinline|ant_count| tables followed by a short explanation of the columns.
 
 \codescript
 \begin{lstlisting}[frame=none]
@@ -495,7 +500,7 @@ Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstin
 
 \begin{mydesc}
 	\item \lstinline|counter| is the unique identifier of dataset.
-	\item \lstinline|id| contains the identification of the transponder, the box or the antenna.
+	\item \lstinline|id| contains the \lstinline|id| value of the transponder, the box or the antenna.
 	\item \lstinline|day| points to the day the table row holds the data counts for.
 	\item \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| contain the per day counts for the datasets, the \textit{direction results} and the \textit{stay results}.
 \end{mydesc}
@@ -531,4 +536,4 @@ Furthermore, for some antennas, the address could not be set properly. In one ca
 \subsection{Data access}
 \label{subsec:dataccess}
 
-Most of the mainly used relational databases offer \ac{SQL} (SQL) to manage and retrieve the data. However, SQL is not easy to learn and use, lacks built-in export functionality of the data to file formats such as $Microsoft Excel^{\copyright}$, and does not offer any possibility to visualize the data. Therefore, a feature rich but still handy and intuitive, \ac{GUI} (GUI) is available, making it easy for the user to explore, visualize and export data (see section \ref{subsec:dataexp} on page \pageref{subsec:dataexp}).
+Most of the mainly used relational databases offer \ac{SQL} (SQL) to manage and retrieve the data. However, SQL is not easy to learn and use, lacks built-in export functionality to file formats such as \textit{Microsoft Excel}, and does not offer any possibility to visualize the data. Therefore, a feature rich but still handy and intuitive, \ac{GUI} (GUI) is available, making it easy for the user to explore, visualize and export data. A presentation to the GUI can be found in section \ref{sec:dataaccessandexp}.
