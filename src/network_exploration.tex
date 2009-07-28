@@ -1,25 +1,25 @@
 \section{Exploration of the social network data}
 \label{sec:graph}
 
-The visualization of somehow pairwise connected data is gaining popularity in a broad variety of research fields. Mainly cause it as an attractive way to present the data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, there is a variety of mathematical methods available to run statistical analysis over the data underlying the visualization. This makes the approach interesting as well for researchers using a more conventional statistical approach. Compared to the conventional approach, which is concerned with the monadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
+The visualization of somehow pairwise connected data is gaining popularity in a broad variety of research fields. Mainly cause it is as an attractive way to present such data, and facilitates the communication of complex interdependences within the data. Beyond the visualization, however, a variety of mathematical methods is available to run statistical analysis over the underlying data of the visualization. This makes the approach interesting as well for researchers using a more conventional statistical approach. Compared to the conventional approach, which is concerned with the monadic attributes (e.g. sex, age, etc.) of the individuals, the \textit{Social Network Analysis} puts the dyadic attributes, the social relations between them, in the focus.
 
-As well in biology, networks or graphs are widely used to visualize, analyse study, complex systems of correlated data. For example protein interactions, food webs or social behavior of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The interested reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
+As well in biology, networks or graphs are widely used to visualize, analyse and study complex systems of correlated data. For example protein interactions, food webs or social behavior of animals living in groups. However, especially for the latter one, little work has been done so far and only a handful of scientific papers have been published. The interested reader is referred to the review entitled \textit{Social network analysis of animal behaviour: a promising 
 tool for the study of sociality}\cite{wey:08}, and the excellent book \textit{Exploring Animal Social Networks}\cite{croft:07} containing an overview of the applications and possibilities to use the social network analysis in animal behavior.
 
-Since the data set collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should include tools which allow to use the data for social network analysis.
+Since the data collected for the conventional approach is perfect to get dyadic data\footnote{See the description of the meeting data in section \ref{subsec:meetingres} on page \pageref{subsec:meetingres}.}, and exceptionally large, it was clear that the \textit{miceminer} application should provide tools for a social network analysis.
 
 The next section contains a short introduction to network theory, the theoretical fundament of the social network analysis. Thereafter, the concept and the actual implementation of the options in the application are outlined.  
 
 \subsection{Short introduction to network theory}
 \label{subsec:graph_intro}
 
-Please note that the following information are the basics of the network theory to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available\footnote{For example ``Social Network Analysis'' written by John Scott\cite{scott:00} or ``Introduction to social network methods" written by Robert Hanneman\cite{hanneman:05} and published online.}.
+Please note that the following information are the basics of the network theory which sould help to understand the implementation of social network analysis tools in the \textit{miceminer} application. For an extensive introduction refer to the plenty of books, papers and online resources available\footnote{For example \textit{Social Network Analysis} written by John Scott\cite{scott:00} or \textit{Introduction to social network methods} written by Robert Hanneman\cite{hanneman:05} which is published online.}.
 
 \subsubsection{Network types}
 \label{subsubsec:net_types}
 Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some (binary) edges between them. In social networks, the nodes, also called actors, are normally individuals and the edges denote a relationship between them. For a train network, however, the nodes would stand for the train stations, and the edges for the connecting tracks.
 
-Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strength of a connection. Referring to the example with the train network, the weight or the thickness of the edge could stand for the traffic volume of the specific track. Or for a social network, the weight would indicate the strength of the social relation between the two individuals.  
+Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which just exist or not, the weighted edges illustrate the strength of a connection. Referring to the example with the train network, the weight, which is indicated yb the thickness of the edge, could stand for the traffic volume of the specific track. In a social network, the weight would indicate the strength of the social relation between the two individuals.  
 
 
 \begin{figure}[htpb]% 
@@ -33,7 +33,7 @@ Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in fi
 					\label{fig:graph_undirected_weighted} %
 					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_undirected_weighted.pdf}
 				} 
-	\caption[Undirected model network with binary and weighted edges]{An undirected model network with binary edges \subref{fig:graph_undirected} and the same network with weighted edges \subref{fig:graph_undirected_weighted}.} 
+	\caption[Undirected model network with binary and weighted edges]{An undirected model network with binary edges \subref{fig:graph_undirected}, and the same network with weighted edges \subref{fig:graph_undirected_weighted}.} 
 
 \end{figure}	 
 
@@ -50,16 +50,18 @@ Another type of networks are the so called directed networks (see figures \ref{f
 					\label{fig:graph_directed_weighted} %
 					\includegraphics[width=0.45\textwidth]{assets/pdf/graph_directed_weighted.pdf}
 				} 
-	\caption[Directed model network with binary and weighted edges]{A directed model network with binary edges \subref{fig:graph_directed} and the same network with weighted edges \subref{fig:graph_directed_weighted}.} 
+	\caption[Directed model network with binary and weighted edges]{A directed model network with binary edges \subref{fig:graph_directed}, and the same network with weighted edges \subref{fig:graph_directed_weighted}.} 
 
-\end{figure}	 
+\end{figure}
+
+A special network is the so called \textit{Ego Network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to \textit{Ego}, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network.	 
 
 There are plenty of other varieties of networks. But the ones described above are adequate to understand the visualization implemented in the \textit{miceminer} application.
 
 \subsubsection{Adjacency matrix}
 \label{subsubsec:adjacency_matrix}
 
-The data underlying the visualization is a so called adjacency matrix. Table \ref{tab:am_undirected} shows the tabular representation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
+The data underlying the visualization is usually represented as a so called \textit{adjacency matrix}. Table \ref{tab:am_undirected} shows the tabular representation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
 
 \begin{figure}[htbp]
 	\begin{minipage}[t]{0.45\textwidth}
@@ -171,8 +173,6 @@ Consequently, for a directed network, as the one shown in figure \ref{fig:graph_
 	\end{minipage}
 \end{figure}
 
-A special network is the so called \textit{Ego Network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to \textit{Ego}, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network.
-
 \begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=.33\textwidth]{assets/pdf/graph_egocentric.pdf}
@@ -181,7 +181,7 @@ A special network is the so called \textit{Ego Network}. The ego network consist
 \end{center}
 \end{figure} 
 
-The adjacency matrix offers the basis to apply mathematics to the network, such that networks or nodes within networks can be compared. These analytical tools are outlined in the following two sectons.
+The adjacency matrix offers the basis to apply mathematics to the network, such that networks or nodes within networks can be compared. These analytical measurements are outlined in the following section.
 
 \subsubsection{Node based measures}
 \label{subsubsec:node_based}
@@ -190,7 +190,7 @@ In order to have comparable statistical values of nodes within a network, measur
 
 The following methods to calculate the node based measures apply to networks with unweighted edges. Approaches are available, however, to calculate some of the measures for networks with weighted edges. Though, the mathematics behind these methods is quite complex and most of the software available to analyse networks do not offer these methods.
 
-For the following explainations, the model network from the previous sections is sligthly extended by two nodes and seven edges (see figure \ref{fig:extended_network}).
+For the following explainations, the model network from the previous sections is sligthly extended, to look as shown in figure \ref{fig:extended_network}.
 
 \begin{figure}[!htpb]
 \begin{center}
@@ -235,7 +235,7 @@ L = \frac{1}{ \frac{1}{2}n(n-1)}\sum_{i<j} d_{ij} = \frac{1}{n}\sum^n_{i=1}L_i
 \label{eq:mean_path_lenght}
 \end{equation} 
 
-In a social network, this value could indicate how fast information can spread. The lower the value of $L$, the faster the information is received by all the individuals in the network. 
+In a social network, this value is an indicator of how fast information can spread. The lower the value of $L$, the faster the information is received by all the individuals in the network. 
 
 \paragraph{Clustering coefficient}
 
@@ -251,7 +251,7 @@ Unlike the mean path length, only the nodes which are directly connected to a no
 \end{center}
 \end{figure}
 
-The maximum number of edges in the neighborhood of a node $i$ is $\frac{1}{2}k_i(k_1 -1)$, where $k$ is the number of nodes directly connected to $i$. This makes $\frac{1}{2}3(3 -1) = 3$ for node \textbf{B}. The clustering coefficient is just the fraction of the edges between the neighborhood nodes that really exist, which is $\frac{1}{3}$ (compare with figure \ref{fig:clust_coeff}). The average of the clustering coefficient of all nodes is called network clustering coefficient $C$.
+In theory, the maximum number of edges in the neighborhood of a node $i$ is $\frac{1}{2}k_i(k_1 -1)$, where $k$ is the number of nodes directly connected to $i$. This makes $\frac{1}{2}3(3 -1) = 3$ for node \textbf{B}. The clustering coefficient is just the fraction of the edges between the neighborhood nodes that really exist, which is $\frac{1}{3}$. The average of the clustering coefficient of all nodes is called network clustering coefficient $C$.
 
 \begin{equation}
 C = \frac{1}{n}\sum^n_{i=1}C_i
@@ -282,7 +282,7 @@ B_i =	\sum_{
 
 For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
 
-Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects the two groups of the network, as shown in figure \ref{fig:broker}. The node colored red is called a ``Broker'', since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the ``Broker'', but play a minor role when information needs to be spread over the whole network. 
+Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects two groups of nodes within the network as shown in figure \ref{fig:broker}. The node colored red is called a \textit{Broker}, since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -298,7 +298,7 @@ Node based measures calculated for a network needs to be compared to some kind o
 
 Such models networks are for example the \textbf{Regular Network} (figure \ref{fig:regular_graph}), \textbf{Random Network} (figure \ref{fig:random_graph}), \textbf{Small World Network} and the \textbf{Scale-Free Networks}.
 
-Detailed information about the properties of these model networks is beyond the scope of this document \footnote{Pages 74 - 81 in the book ``Exploring Animal Social Networks''\cite{croft:07} offers a good introduction to this topic.}.
+Detailed information about the properties of these model networks is beyond the scope of this document \footnote{Pages 74 - 81 in the book \textit{Exploring Animal Social Networks}\cite{croft:07} offers a good introduction to this topic.}.
 
 \begin{figure}[htpb]% 
 	\centering 
@@ -311,7 +311,7 @@ Detailed information about the properties of these model networks is beyond the 
 					\label{fig:random_graph}%
 					\includegraphics[width=.33\textwidth]{assets/pdf/random_network.pdf}
 				} 
-	\caption[A regular and a random model network]{A regular \subref{fig:regular_graph} and a random \subref{fig:random_graph} model network with the same number of nodes.} 
+	\caption[A regular and a random model network]{A regular \subref{fig:regular_graph}, and a random \subref{fig:random_graph} model network with the same number of nodes.} 
 	 
 \end{figure} 
 
@@ -320,11 +320,11 @@ Detailed information about the properties of these model networks is beyond the 
 
 Social relations in the sense of this project are defined as the time two mice spend together in an artificial nestbox. This is an obvious approach. Mice only share an area at the same time voluntarily, if they have some kind of affirmative social relation.
 
-Since the data includes information about the strength of the relationship, which is the actual time two mice spent together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) imaginable, how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure \ref{fig:meeting_types}). Anyway, this information is not clearly unidirectional. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have a directed graph.
+Since the data includes information about the strength of the relationship, which is the actual time two mice spent together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) imaginable, how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure \ref{fig:meeting_types}). Anyway, this information is not clearly unidirectional. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have an exlicit directed graph.
 
 Consequently, an undirected network with weighted edges is shown. The weight depends on the sum of time two mice spend together over a period of time. In addition, the node based measures for the shown mice and information about the composition (different meetings) of the edges must be available.
 
-The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. Similar to the component to browse the data, the user should be provided with a tidy interface presenting the main information and options: the visulization of the network and the corresponding node based values, as well as export options for further analysis in the preferred software.
+The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. Similar to the component to browse the data, the user should be provided with a tidy interface presenting the main information and options: the visualization of the network and the corresponding node based values, as well as export options for further analysis in the preferred software.
 
 \subsection{Configuration}
 \label{subsec:graph_config}
@@ -344,7 +344,7 @@ Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the
 \end{center}
 \end{figure}
 
-The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all \lstinline|meeting resuls| (see \ref{subsec:meetingres} on page \pageref{subsec:meetingres} for details) during the selected period. Female mice are colored pink, male mice light blue, and the ones without a known gender grey. 
+The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all meeting results (see \ref{subsec:meetingres} on page \pageref{subsec:meetingres} for details), during the selected period. Female mice are colored pink, male mice light blue, and the ones without a known gender grey. 
 
 The network can be dragged over the whole area of the component. Additionaly, the panels containing the controls and node based measures can be mimimized for an unhindered visual exploration.
 
@@ -364,9 +364,9 @@ Figure \ref{fig:node_based_measures} shows a section of the table containing the
 \item Betweenness
 \end{mylist}
 
-As it turned out, the network, or graph, is consits of several unconnected network components. Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
+As it turned out, the network, consists of several unconnected network components. Due to technical limitations and performance issues, not all the components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
 
-The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization of the network component.
+The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node, which is not in the network component currently visualized, the application switches to the appropriate visualization.
 
 However, if the clicked node belongs to the currently shown component, the node will be highlighted (node gets a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well. If the user double-clicks a node in the visualization, the corresponding table row will be selected.
 
@@ -382,13 +382,13 @@ The second label in figure \ref{fig:node_based_measures} points to a text input 
 
 \subsubsection*{Layout \& view options}
 
-This panel offers settings to vary the different aspects aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. The degree of separation limits the visible nodes to a certain distance from the currently highlighted node. A checkbox is available to show or hide the edge labels.
+This panel offers settings to vary the different aspects of the network visualization. Using the respective slider, the link length, the zoom level, the node size as well as the degree of separation shown can be altered. The degree of separation limits the visible nodes to a certain distance from the currently highlighted node. In addition, a checkbox is available to show or hide the edge labels.
 
 Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examine and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be freely dragged to a desired position.
 
 \subsubsection*{Export options}
 
-Since the \textit{miceminer} does not offer a full set of tools for social network analysis, an export to a file format, which can be imported into \textit{NetDraw} or \textit{UCINET}\footnote{Visit \href{http://www.analytictech.com/downloadnd.htm}{http://www.analytictech.com/downloadnd.htm} for details.}, is available. \textit{NetDraw} is a versatile tool to visualize networks, whereas \textit{UCINET} offer comprehensive tools for social network analysis. Shown in figure \ref{fig:netdraw_export_component} is a screenshot of \textit{NetDraw} visualizing a network for which the data has been exported from the \textit{miceminer} application.
+Since the \textit{miceminer} does not offer a full set of tools for social network analysis, an export to a file format, which can be imported into \textit{NetDraw} or \textit{UCINET}\footnote{Visit \href{http://www.analytictech.com/downloadnd.htm}{http://www.analytictech.com/downloadnd.htm} for details.}, is available. \textit{NetDraw} is a versatile tool to visualize networks, whereas \textit{UCINET} offer comprehensive methods for social network analysis. Shown in figure \ref{fig:netdraw_export_component} is a screenshot of \textit{NetDraw} visualizing a network for which the data has been exported from the \textit{miceminer} application.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -398,7 +398,7 @@ Since the \textit{miceminer} does not offer a full set of tools for social netwo
 \end{center}
 \end{figure}
 
-The edge data as well as the node based measures can be exported to an \textit{Excel} file. Additionally, the network visualization can be exported as an image.
+The edge data, as well as the node based measures, can be exported to an \textit{Excel} worksheet. Additionally, the network visualization can be exported as an image.
 
 \subsubsection*{Edge filter}
 
@@ -406,24 +406,24 @@ Edge filtering is used to hide edges which are under a certain weight. This can 
 
 \subsubsection*{Additional options}
 
-A few additional options, that turned out to be useful or were just implemented out of interest, have been added to this component.
+A few additional options, that turned out to be useful or were just implemented out of interest, have been added to the component.
 
 \paragraph{Egocentric network view}
 
-Switching to the egocentric network view can be useful to verify a thesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highlighted node), the user can choose another node from within the egocentric network of the starting node to check the egocentric network of this node.
+Switching to the egocentric network view can be useful to verify a thesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highlighted node), the user can choose another node from within the egocentric network of the starting node, to check the egocentric network of this node.
 
 \paragraph{Edge data}
 
-To unveil the \lstinline|meeting results| which make up an edge, the label of the edges can be double clicked. The pop up window which is openend contains the meeting data which can be explored either in a tabular or in a chart view, similar to the interface of the \textbf{Browse Data} component.
+To unveil the \lstinline|meeting results| which make up an edge, the label of the edges can be double clicked. A pop up window will open, containing the meeting data, which can be explored either in a tabular or in a chart view, similar to the interface of the \textbf{Browse Data} component.
 
 In the tabular view, the data can be grouped by the nestboxes, the meetings took place in, or by the meeting type\footnote{See list \ref{list:meeting_types} on page \pageref{list:meeting_types} for details about the meeting types.}.
 
-The chart view is used to bin the data by the meeting duration. The number of bins can be adjusted and the grouping of the \lstinline|meeting results| can be set to the nestboxes or meeting type (see figure \ref{fig:edge_data_panel_chart}).
+The chart view is used to bin the data by the meeting duration. The number of bins can be adjusted, and the grouping of the data can be set to the nestboxes or meeting type (see figure \ref{fig:edge_data_panel_chart}).
 
 \begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/edge_data_panel_chart.pdf}
-  \caption[Edge data chart]{Chart of the binned \lstinline|meeting results|, grouped by the nestbox, which make up an edge between the mice with rfid \lstinline|0006954D6A| and \lstinline|0006B8D45A|.}
+  \caption[Edge data chart]{Chart of the binned \lstinline|meeting results|, grouped by the nestbox which make up an edge between the mice with rfid \lstinline|0006954D6A| and \lstinline|0006B8D45A|.}
   \label{fig:edge_data_panel_chart}
 \end{center}
 \end{figure}   

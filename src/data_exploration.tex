@@ -70,7 +70,7 @@ In the \textit{Parameters} section, the user sets the factors influencing the da
 \subsection{Software design}
 \label{subsec:miceminer_design}   
 
-\textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{amfphp}\footnote{See \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
+\textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{amfphp}\footnote{Visit \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
 
 \textit{PHP} offers convincing ways to export the data to different file formats, from which the most prominent is \textit{Excel}. Additional export options have been designed to ensure the usage of the data in specialised data analysis software used by the researchers.
 
@@ -141,7 +141,7 @@ Based on the tables with the summarized data, the user can choose the mice, box 
 \end{center}
 \end{figure}
 
-If the user choses to show the data in the application, a secondary group of tables containing the antenna recordings, \textit{direction results} and \textit{stay results} is shown in the right part of the \textit{Viewport} (see figure \ref{fig:overview_data} for clippings of the tables containing the data for a mouse). The menu with the column based filters, as well as the filter mechanism is exactly the same as in the tables with the summarized data, to ensure usabilty and avoid cluttering of the interface. 
+If the user choses to show the data in the application, a secondary group of tables containing the antenna recordings, \textit{direction results} and \textit{stay results} is shown in the right part of the \textit{Viewport} (see figure \ref{fig:overview_data} for clippings of the tables containing the data for a mouse). The column based filters works exactly the same as in the tables with the summarized data to ensure usabilty and avoid cluttering of the interface. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -181,12 +181,12 @@ As in the table view, the chart view offers the same sorting, filter and export 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/table_chart_view.pdf}
-  \caption[Split view]{Split view in in the \textbf{Browse Data} component. Indicated are the values which are synchronized in both, the table and the chart, views}
+  \caption[Split view]{Split view in in the \textbf{Browse Data} component. Indicated are the values which are synchronized in both, the table and the chart view.}
   \label{fig:table_chart_view}
 \end{center}
 \end{figure}
 
-The chart view for the actual results of a mouse, box or antenna is different, because the reseachers are usually interested at which location a mouse has spent how many time. Therefore the data is grouped on the values in a column and displayed as a pie chart (see figure \ref{fig:pie_chart_for_mouse}). This reveals the distribution of the time spent at the different locations in a simple and clear way. 
+The chart view for the actual results of a mouse, box or antenna is different, because the reseachers are usually interested in the distribution of the results. Therefore the data is grouped on the values in a column and displayed as a pie chart (see figure \ref{fig:pie_chart_for_mouse}). Accordingly, the \textit{Excel} export behavior changes as well. Not the data shown in the tabular view will be exported, but the grouped data underlying the chart.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -196,11 +196,9 @@ The chart view for the actual results of a mouse, box or antenna is different, b
 \end{center}
 \end{figure}
 
-When the user has selected the chart view, the \textit{Excel} export behavior changes. Not the data shown in the table will be exported, but the grouped data underlying the chart. This has been introduced according to the needs of the researchers.
+In addition a secondary chart can be accessed. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the selected period. In fact, this secondary chart is the same as if the user selects the chart view of the results for box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
 
-In addition a secondary chart can be requested by the user. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the period. In fact, this secondary chart is the same as if the user selects the chart view for the result of box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
-
-Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible positive social relations between the mice living in the barn is elucidated in section \ref{sec:graph} on page \pageref{sec:graph}.
+Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible positive social relationships between the mice living in the barn is elucidated in section \ref{sec:graph}.
 
 % ----------------------------------------------
 % Data analysis
@@ -213,19 +211,19 @@ The \textit{miceminer} application provides some simple data analysis functional
 \subsubsection{Home range}
 \label{subsubsec:homerangedata}
 
-To carry out home range analysis, the positions of the nestboxes within the barn have been added to the database. The interface consists of a selector for the rfid and another one for the period the data should be retrieved for. \footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a file format called \textit{dBase} or if the calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
+To carry out home range analysis, the positions of the nestboxes within the barn have been added to the database. The interface consists of a selectorto choose the rfid and another one for the period, the data should be retrieved for. \footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a file format called \textit{dBase}, or if a calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/home_range.pdf}
-  \caption[Home range component interface]{Interface of the component to retrieve data for a subsequent home range analysis or MCP calculation.}
+  \caption[Home range component interface]{Interface of the component to retrieve data for a subsequent home range analysis or to calculate an MCP.}
   \label{fig:home_range}
 \end{center}
 \end{figure}
 
 The exported \textit{dBase} file includes all the information needed for a home range analyses using \textit{ArcGIS}\footnote{Visit \href{http://www.esri.com/software/arcgis/}{http://www.esri.com/software/arcgis/} for details about \textit{ArcGIS}.}, a software widely used for spatial analysis. 
 
-If the selected mouse vistited more than two nestboxes in the selected period, we get a polygon spanned by the position of these nestboxes. This area can be calculated and is called the minumum convex polygon (MCP). Figure \ref{fig:mcp} shows an example for an MCP which is calculated for a mouse that visited nestboxes 12 to 17. 
+If the selected mouse has been recorded at more than two nestboxes during the selected period, we get a polygon spanned by the position of these nestboxes. This area can be calculated, and is called the minumum convex polygon (MCP). Figure \ref{fig:mcp} shows an example for an MCP which is calculated for a mouse that visited nestboxes 12 to 17. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -235,13 +233,12 @@ If the selected mouse vistited more than two nestboxes in the selected period, w
 \end{center}
 \end{figure}
 
-Since this method of determining the home range is very sensible for outliers the MCP can be limited to the nestboxes with an adequate number of datasets. This is accomplished by selecting an appropriate percentage value for the MCP calculation. If the value is set 100\% percent all the nestboxes, independent of their data count, are included in the calculation. For a value of 90\%, the nestbox must have a data count which is equal or greater than 10\% of the data count for all the nestboxes. The following example which is based on the situation shown in figure \ref{fig:mcp} should clarify the method. Table \ref{tab:mcp_example} contains the distribution of the data counts for the nestboxes 12 to 17.
+Since this method of determining the home range is very sensible for outliers, the MCP can be limited to the nestboxes with an adequate number of datasets. This is accomplished by selecting an appropriate percentage value for the MCP calculation. If the value is set to 100\% percent, all the nestboxes, independent of their data count, are included in the calculation. For a value of 90\%, the nestbox must have a data count which is equal or greater than 10\% of the sum of the data count for all the nestboxes. The following example which is based on the situation shown in figure \ref{fig:mcp} should clarify the method.
 
 \begin{center} 
 \newcolumntype{H}{>{}p{2cm}}
 \renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{.4\textwidth}{+>{\raggedright\arraybackslash}H^X}
-\toprule
 \rowstyle{\bfseries}
 Nestbox	& 	Data count \\\midrule
 12	&	44 \\
@@ -250,11 +247,11 @@ Nestbox	& 	Data count \\\midrule
 15	&	52 \\
 16	&	12 \\
 17	&	4 \\
-\midrule\midrule
+\midrule
 \rowstyle{\bfseries}
 Sum	&	254
 \end{tabularx}
-\captionof{table}{Data count distribution for the nestboxes.}
+\captionof{table}[Sample disttribution of data counts to the nestboxes]{Distribution of the data counts for the nestboxes 12 to 17.}
 \label{tab:mcp_example}
 \end{center}
 
@@ -265,9 +262,9 @@ The data count distribution is shown in the detail panel of the interface (label
 \subsubsection{Shared preferences}
 \label{subsubsec:sharedpref}
 
-The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is only the case if two mice have a some kind of a positive social relationship - caused by relatedness for example.
+The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is the case if two mice have a some kind of a positive social relationship, for example caused by relatedness.
 
-Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for a period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
+Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for the period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -277,14 +274,14 @@ Figure \ref{fig:shared_pref} shows the component interface consisting of two con
 \end{center}
 \end{figure}
 
-The calculation starts by retrieving the time each of the two mice spent in a nestbox from the \lstinline|result| table (see section \ref{para:res_table} \pageref{para:res_table}). These time values are put into relation to the time the two mice spent together in a nestbox, which can be determined by querying the \lstinline|meetings| table (see section \ref{para:meetings_table} \pageref{para:meetings_table}). Resulting are a relative values for the expected and and the observed time which can be compared. 
+The calculation starts by retrieving the time each of the two mice spent in a nestbox from the \lstinline|result| table (see section \ref{para:res_table} on page \pageref{para:res_table}). These time values are put into relation to the time the two mice spent together in a nestbox, which can be determined by querying the \lstinline|meetings| table (see section \ref{para:meetings_table}). Resulting are relative values for the expected and and the observed time which can be compared. 
 
 \subsubsection{Monthly box \& Monthly antennas}
 \label{subsubsec:monthbox}
 
 Both components have been created to support Olivia Dieser in her work to determine the terretorial behavior of the mice (see \ref{subsubsec:homerange} on page \pageref{subsubsec:homerange}).
 
-The user selects a month and optionally a period of the time of day (see figure \ref{fig:month_box_ant} for a screenshot with labeled controls) and obtains a table where the columns denote the nestboxes and each row represents a mouse. The respective data counts are found in the intersection of the nestbox column and the mouse row.
+The user selects a month, and optionally a period of the time of day, and obtains a table where the columns denote the nestboxes and each row represents a mouse (see figure \ref{fig:month_box_ant} for a screenshot with labeled controls). The respective data counts are found in the intersection of the nestbox (column) and the mouse (row).
 
 In the case of the \textbf{Monthly Box} component, the \lstinline|direction results| with a direction value of \lstinline|in| (see section \ref{para:dir_table} on page \pageref{para:dir_table}) are searched for the appropriate data. For the \textbf{Monthly Antenna} component, the data is retrieved from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).
 
@@ -296,4 +293,4 @@ In the case of the \textbf{Monthly Box} component, the \lstinline|direction resu
 \end{center}
 \end{figure}
 
-The option to select a period of the time of day is used tp perform a differentiated analysis of the terretorial behavior of the mice during phases of higher and lower activity.
+The option to select a period of the time of day is used to perform a differentiated analysis of the terretorial behavior of the mice during phases of higher and lower activity.

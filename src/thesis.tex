@@ -289,7 +289,6 @@
 \newpage
 \section{Tables \& schemata}
 \label{sec:tables_schmemata}
-
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/application_design.pdf}
@@ -306,7 +305,7 @@
   \label{fig:database_schema}
 \end{sidewaysfigure}
 
-\begin{sidewaystable}{H}
+\begin{sidewaystable}
 \newcolumntype{H}{>{\bf}lp{2.5cm}}
 \caption{Meaning of the \lstinline|i| values in the database tables.}
 \begin{tabularx}{\textheight}{+H^X^X^X^X^X}
@@ -364,7 +363,7 @@ Perl version	&	 5.10.0 \\\bottomrule
 \subsubsection{Web addresses}
 \label{subsubsec:urls}
 
-\textbf{Please note that the server is only accessible from within the network of the \textit{University of Z\"urich}.}
+\textbf{Please note that the server is only accessible from within the network of the University of Z\"urich.}
 
 \begin{center}
 \footnotesize 
@@ -386,7 +385,7 @@ Address	&	Description \\\midrule
 \url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\\midrule
 \url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\\midrule
 \url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\\midrule
-\url{http://github.com/rico/miceminer-thesis/tree/master}	& \ac{GIT} repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
+\url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
 
 \end{tabularx}
 \captionof{table}{List of web addresses.}
@@ -415,6 +414,7 @@ Directory	&	Description \\\midrule
 \hline
 \\\midrule
 \lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\\midrule
+\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\\midrule
 \lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\\midrule
 \lstinline|data/|	&	Uploaded but not yet imported data files. \\\midrule
 \lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\\midrule
@@ -437,7 +437,7 @@ Directory	&	Description \\\midrule
 \subsection{Starting \& scheduling import scripts}
 \label{app:import_schedule}
 
-To start the import cascade, a set of \ac{BASH} scripts is provided (see table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} for the directoy these scripts are located in). Each of these scripts starts the import cascade at a specific per script and sends a mail including the transcript of the process to \href{mailto:miceminer@gmail.com}{miceminer@gmail.com} upon completion.
+To start the import cascade, a set of \ac{BASH} scripts is provided (see table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} for the directory these scripts are located in). Each of these scripts starts the import cascade at a specific perl script and sends a mail including the transcript of the process to \href{mailto:miceminer@gmail.com}{miceminer@gmail.com} upon completion.
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{5cm}}
@@ -464,14 +464,14 @@ These scripts can be started manually from the command line or through a so call
 0 23 * * *      /var/www/mouse/import_scripts/import_step_1.sh   
 \end{lstlisting}
 
-The above listing shows the actual \textit{cronjob} which starts the import cascade every day at 11 o'clock p.m. beginning with the \lstinline|logimport.pl| script.
+The above listing shows the actual \textit{cronjob} which starts the import cascade every day at 11~o'clock p.m. beginning with the \lstinline|logimport.pl| script.
 
 % configuration XML
 \newpage
 \subsection{Configuration}
 \label{app:config} 
 
-The application wide configuration is stored in a single XML file. The different possibilities to access or view the file can be found in the \ref{tab:directories_and_files_overview} table and the \ref{tab:web_addresses} table.
+The application wide configuration is stored in a single \ac{XML} file. The different possibilities to access or view the file can be found in table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} and table \ref{tab:web_addresses} on page \pageref{tab:web_addresses}.
 
 Please be careful on what you change. Never move the file to another location or delete it. Some minor knowledge in XML is advantageous to make changes in the configuration. It is strongly recommended to make a backup copy of the original file before applying changes. The file contains some explanations of what can be changed easely and what should not be changed.
 
@@ -481,11 +481,26 @@ Please be careful on what you change. Never move the file to another location or
 \subsubsection{Database}
 \label{app:configdb}
 
-The following listing shows the part of the XML-configuration file responsible for the database connection to the \textit{MySQL} server. 
+The following listing shows the part of the XML configuration file responsible for the database connection to the \textit{MySQL} server. 
 
-The values for the connection are set in the four nodes, \lstinline|<dbname>| contains the database name, \lstinline|<dbuser>| the user name, \lstinline|<dbpass>| the user password and \lstinline|<dbsocket>| the MySQL socket. This allows to switch the database, but only whne the table structures match (see the entry for the SQL file to create the database in table \ref{tab:web_addresses} on page \pageref{tab:web_addresses}).
+\lstinputlisting[firstnumber=25,firstline=25, lastline=43, caption=Database configuration, label=lst:database_config]{assets/code/config.xml}
 
-The mapping to the database tables can be changed by setting the node value to another table, but only when the table structures match.
+The values for the connection are set in the following nodes:
+
+\begin{center} 
+\newcolumntype{H}{>{\bf}p{2cm}}
+%\renewcommand\arraystretch{1.2}
+\begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
+\toprule
+\lstinline|<dbname>|	&	The name of the database. \\\midrule
+\lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\\midrule
+\lstinline|<dbpass>|	&	The password for the database user. \\\midrule
+\lstinline|<dbsocket>|	&	The MySQL socket. \\\midrule
+\end{tabularx}
+\label{tab:database_config}
+\end{center}
+
+This allows to switch the database, but only when the table structures match (see the entry for the SQL file to create the database in table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview}).
 
 \subsubsection{Perl}
 \label{app:configperl}
@@ -494,15 +509,18 @@ The perl part of the XML configuration file.
 
 \lstinputlisting[firstnumber=59,firstline=59, lastline=70, caption=Perl configuration, label=lst:perl_config]{assets/code/config.xml}
 
-\paragraph{scriptsFolder} The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details).
-
-\paragraph{dbBackupUser} A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the databse configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). 
-
-\paragraph{dbBackupDirectory} The directory in which the database backups are saved which are created at the beinning of the data import process.
-
-\paragraph{antennaInterval}
-\label{para:perl_antenna_interval}
-Number of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}. 
+\begin{center} 
+\newcolumntype{H}{>{\bf}p{3.7cm}}
+%\renewcommand\arraystretch{1.2}
+\begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
+\toprule
+\lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\\midrule
+\lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the databse configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\\midrule
+\lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beinning of the data import process. \\\midrule
+\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\\midrule
+\end{tabularx}
+\label{tab:perl_config}
+\end{center} 
 
 \subsubsection{GUI \& PHP}
 \label{app:configfrontend}
@@ -510,11 +528,11 @@ Number of seconds that are allowed to elapse between the transponder readings at
 
 \lstinputlisting[firstnumber=84,firstline=84, lastline=111, caption={Components configuration}, label=lst:comp_config]{assets/code/config.xml}
 
-Shown in the next listing is the beginning of the configuration for the grids in the GUI. The different part of the configuration is explained on the spot in the configuration file.
+Shown in the next listing is the beginning of the configuration for the grids in the GUI. The different configuration options are explained on spot.
 
 \lstinputlisting[firstnumber=418,firstline=418, lastline=468, caption=sample Grid configuration, label=lst:grid_config]{assets/code/config.xml}
 
-The configuration parameter to set the minimal duration of meetings between to mice within the selected month to be included in the data shown in the \textbf{Graph Data} component. 
+The configuration parameter to set the minimal duration of meetings between two mice, within the selected month, to be included in the data shown in the \textbf{Graph Data} component. 
 
 \lstinputlisting[firstnumber=394,firstline=394, lastline=398, caption=Graph Data component limit value , label=lst:graph_data_limit]{assets/code/config.xml}
 
@@ -527,19 +545,19 @@ The configuration parameter to set the minimal duration of meetings between to m
 \begin{acronym}
 \acro{RDBMS}[Relational Database Management System]{A Relational Database Management System is a \acs{DBMS} in which data is stored in the form of tables and the relationship among the data is also stored in the form of tables \cite{wiki:rdbms}.}
 \acro{DBMS}[Database Management System]{A Database Management System is computer software that manages databases \cite{wiki:dbms}.}
-\acro{RFID}[Radio-frequency identification]{Radio-frequency identification (RFID) is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves \cite{wiki:rfid}}
+\acro{RFID}[Radio-frequency identification]{Radio-frequency identification is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves \cite{wiki:rfid}}
 \acro{SQL}[Structured Query Language]{The Structured Query Language is a database computer language designed for the retrieval and management of data in relational database management systems.\cite{wiki:sql}}
 \acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one metre. \cite{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
-\acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted, dynamic programming language. \cite{wiki:perl}}
+\acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted programming language. \cite{wiki:perl}}
 \acro{PVC}[PVC]{Polyvinyl chloride is a widely used thermoplastic polymer \cite{wiki:pvc}}
-\acro{GUI}[GUI]{A graphical user interface is a type of user interface which allows people to interact with electronic devices such as computers [\ldots] with images rather than text commands \cite{wiki:gui}}
+\acro{GUI}[GUI]{A graphical user interface is a type of user interface which allows people to interact with electronic devices such as computers [\ldots] by the use of images rather than text commands \cite{wiki:gui}}
 \acro{API}[API]{An Application Programming Interface (API) is a set of routines, data structures, object classes and/or protocols provided by libraries and/or operating system services in order to support the building of applications \cite{wiki:api}.}
 \acro{AFP}[AFP]{The Apple Filing Protocol is a network protocol that offers file services for Mac OS X \cite{wiki:afp}.}
 \acro{Samba}[Samba]{Samba allows file and print sharing between computers running Windows and computers running Unix \cite{wiki:samba}.}
 \acro{XML}[XML]{Extensible Markup Language is a general-purpose specification for creating custom markup languages \cite{wiki:xml}.}
-\acro{CGI}[CGI]{The Common Gateway Interface is a standard protocol for interfacing external application software with an information server, commonly a web server \cite{wiki:cgi}.}
-\acro{BASH}[BASH]{Bourne-again shell is a free software Unix shell written for the GNU Project /cite{wiki:bash}.}
-\acro{GIT}[GIT]{Git is a free distributed revision control, or software source code management project /cite{wiki:git}.}
+\acro{CGI}[CGI]{The Common Gateway Interface (CGI) is a standard protocol for interfacing external application software with an information server, commonly a web server \cite{wiki:cgi}.}
+\acro{BASH}[BASH]{Bourne-again shell is a free software Unix shell written for the GNU Project \cite{wiki:bash}.}
+\acro{GIT}[GIT]{Git is a free revision control, or software source code management project \cite{wiki:git}.}
 \end{acronym}
 
 \end{appendix}
@@ -554,7 +572,7 @@ The configuration parameter to set the minimal duration of meetings between to m
 \setlength{\parskip}{2ex}
 I would like to thank \ldots
 
-\textbf{Prof. Barbara K\"onig} for the great style she supervised this work. She granted me a lot of independence and has always been available for a clarifying, interesting and inspring conversation,
+\textbf{Prof. Barbara K\"onig} for the great manner she supervised this work. She granted me a lot of independence and has always been available for a clarifying, interesting and inspring conversation,
 
 \textbf{Nicolas Perrony} for teaming up with me, sharing his insights and providing a lot of helpful feedbacks. I wish him all the best for his PhD,
 
@@ -566,7 +584,7 @@ the two reviewers \textbf{Thomas Netter} and \textbf{Christian Iten} for their g
 the \textbf{Artificial Intelligence Lab} at the University of Z\"urich for granting me a perfect workplace in an inspiring ambiance,
 \vspace{.2cm}
 
-\textbf{all the developers} which created the open source software used in this project, and spent their time to answer my questions,
+\textbf{all the developers} who created the open source software used in this project, and spent their time to answer my questions,
 
 my \textbf{family}, \textbf{friends} and especially my \textbf{partner} for the support,
 
