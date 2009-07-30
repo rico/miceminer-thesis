@@ -8,7 +8,7 @@
 %---------------------------------------------------------------------------------------------------------
 
 % paper format and stylesheet
-\documentclass[a4paper,10pt,twoside,headings=small,bibliography=totocnumbered,headsepline]{scrartcl}
+\documentclass[a4paper,10pt,twoside,titlepage,headings=small,bibliography=totocnumbered,headsepline]{scrartcl}
 \usepackage[bindingoffset=1cm,centering,includeheadfoot,margin=2cm]{geometry}
 %\usepackage[english,german,brazilian]{babel}
 
@@ -16,10 +16,8 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 
-% titlepage
-\usepackage{titlepic}
+% used to change page setup
 \usepackage{changepage}
-\usepackage{textpos}
 
 % Font
 \usepackage{times}
@@ -191,7 +189,7 @@
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{flushleft}
-\includegraphics[width=\textwidth]{assets/pdf/title.pdf}
+\includegraphics[width=\textwidth]{assets/pdf/title_header.pdf}
 \end{flushleft}
 \vspace{3cm}
 \begin{adjustwidth}{-.5cm}{-2cm}% adjust the L and R margins by 1 inch
@@ -199,11 +197,22 @@
 \end{adjustwidth}
 \vfill
 
-\includegraphics[width=\textwidth]{assets/pdf/title_footer.pdf}
+\begin{figure}[htpb]% 
+	\subfloat{
+					\includegraphics{assets/pdf/title_author.pdf}
+			}% 
+	\hfill
+	\subfloat{
+					\includegraphics{assets/pdf/title_supervisor.pdf}
+			} 
+\end{figure}	 
+
+
+%\includegraphics[width=\textwidth]{assets/pdf/title_footer.pdf}
 
 \end{titlepage}
 
-% Table of contents
+% Table of contents}
 \tableofcontents
 \listoftables
 % add table of figures to toc

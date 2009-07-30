@@ -6,15 +6,15 @@
 \section{Introduction}
 \label{sec:introduction}
 
-In May 2008, the research group around Prof. Barbara K\"onig at the Institute of Zoology of the University of Z\"urich decided to take their research in the field of animal behavior to the next level. Especially interested in the complex social behavior of house mice \textit{(Mus domesticus)} (see section \ref{subsec:socialbehaviour}) they had the idea to design an automated system, to collect spatial position data of mice living in a barn.
+In May 2008, the research group around Prof. Barbara K\"onig at the Institute of Zoology of the University of Z\"urich decided to take their research in the field of animal behavior to the next level. Especially interested in the complex social behavior of house mice \textit{(Mus domesticus)} they had the idea to design an automated system, to collect spatial position data of mice living in a barn.
 
 \subsection{Motivation}
 \label{subsec:motivation}
-The motivation for such an effort is to obtain a statistically relevant set of data to develop, test and prove scientific hypothesis about the complex social behavior of the house mice. The research interests are outlined in section \ref{subsec:researchtopics}. An automated system has the advantage that it collects data 24 hours a day, and the mice are in no way disturbed in their natural behavior by the presence of men.
+The motivation for such an effort is to obtain a statistically relevant set of data to develop, test and prove scientific hypothesis about the complex social behavior of the house mice. An automated system has the advantage that it collects data 24 hours a day, and the mice are in no way disturbed in their natural behavior by the presence of men.
 
-My personal motivation comes from the interest in informatics and my study in biology. The project gave me a lot of room to enhance my skills in informatics, while working on an interesting biological topic. Additionally, I am interested in the \textit{social network analysis}, which is based on the \textit{Graph theory}\cite{wiki:graph_theory}, to study complex social behavior. This approach is outlined in section \ref{sec:graph}.
+My personal motivation comes from the interest in informatics and my study in biology. The project gave me a lot of room to enhance my skills in informatics, while working on an interesting biological topic. Additionally, I am interested in the \textit{Social Network Analysis} to study complex social behavior.
 
-The system collecting the data in the barn has been developed and constructed by a company called \textit{New Behaviour}. For further information about the design and operation of the system see section \ref{subsec:collectspatialpos}. Thus, the main task for my master thesis was to develop informatic tools to store the data and make it accessible to the users, which are mainly the researchers involved in the house mice project. 
+The system collecting the data in the barn has been developed and constructed by a company called \textit{New Behaviour}. Thus, the main task for my master thesis was to develop informatic tools to store the data and make it accessible to the users, which are mainly the researchers involved in the house mice project. 
 
 \subsection{Tasks}
 \label{subsec:task}
@@ -22,12 +22,12 @@ Handling the spatial position data collected by the automated system is challeng
 
 \subsubsection{Storing and Accessing the Data}
 \label{subsubsec:storeaccess}
-The sheer amount of data, expected to be collected by the automated system, has to be stored in a secure and stable way. The only reasonable way to fulfill these requirements, is to set up a \ac{RDBMS} (RDBMS) (see section \ref{subsec:datastorage}). 
+The sheer amount of data, expected to be collected by the automated system, has to be stored in a secure and stable manner. The only reasonable approach to fulfill these requirements, is to set up a \ac{RDBMS} (RDBMS). 
 
-To access the data, an intuitive user interface must be available, which facilitates the data exploration and export (see section \ref{subsec:dataccess} on page \pageref{subsec:dataccess}). Furthermore, the technology used to create the interface should be cross-platform compatible, to ensure maximal accessibility.
+To access the data, an intuitive user interface must be available, which facilitates the data exploration and export. Furthermore, the technology used to create the interface should be cross-platform compatible, to ensure maximal accessibility.
 
 \subsubsection{Additional Tasks}
 \label{subsubsec:additional}
-Additionally, the user should be provided with an interface to administrate attribute data, such as the sex of the mice (see section \ref{subsec:dataattr} on page \pageref{subsec:dataattr}) and to carry out some simple data analysis methods (see section \ref{subsec:data_ana}).
+Additionally, the user should be provided with an interface to administrate attribute data, such as the sex of the mice and to carry out some simple data analysis methods.
 
-Last but not least, some functionality should be present which allows the user to compile data for a subsequent analysis of the social network (see section \ref{sec:graph}).
+Last but not least, some functionality should be present which allows the user to compile data for a subsequent analysis of the social network.
