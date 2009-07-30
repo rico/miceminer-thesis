@@ -9,6 +9,7 @@
 
 % paper format and stylesheet
 \documentclass[a4paper,10pt,twoside,headings=small,bibliography=totocnumbered,headsepline]{scrartcl}
+\usepackage[bindingoffset=1cm,centering,includeheadfoot,margin=2cm]{geometry}
 %\usepackage[english,german,brazilian]{babel}
 
 % praphic package
@@ -17,6 +18,8 @@
 
 % titlepage
 \usepackage{titlepic}
+\usepackage{changepage}
+\usepackage{textpos}
 
 % Font
 \usepackage{times}
@@ -184,36 +187,21 @@
 \selectlanguage{english}
 
 % Title page
-%\title{Informatic Tools to Explore Social Behavior in House Mice}
-%\author{Rico Leuthold}
-%\date{\today}  %\today is replaced with the current date
-%\maketitle
+
 \begin{titlepage}
+\thispagestyle{empty}
 \begin{flushleft}
-\includegraphics[width=\textwidth]{assets/pdf/title_header.pdf}
+\includegraphics[width=\textwidth]{assets/pdf/title.pdf}
 \end{flushleft}
-\vspace{2cm}
-\begin{center}
-\includegraphics[width=\textwidth]{assets/pdf/box_title.pdf}
-\end{center}
-
-
+\vspace{3cm}
+\begin{adjustwidth}{-.5cm}{-2cm}% adjust the L and R margins by 1 inch
+\includegraphics[width=.8\textwidth]{assets/pdf/title_box.pdf}
+\end{adjustwidth}
 \vfill
 
-% Author and supervisor
-\begin{minipage}{0.5\textwidth}
-	\begin{flushleft}
-		\includegraphics[width=\textwidth]{assets/pdf/title_footer_author.pdf}
-	\end{flushleft}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-	\begin{flushright}
-		\includegraphics[width=\textwidth]{assets/pdf/title_footer_supervisor.pdf}
-	\end{flushright}
-\end{minipage}
-\end{titlepage}
+\includegraphics[width=\textwidth]{assets/pdf/title_footer.pdf}
 
-\newpage
+\end{titlepage}
 
 % Table of contents
 \tableofcontents
@@ -260,10 +248,10 @@
 % Conclusions
 % ===============================
 \newpage
-\section{Conclusions}
-\label{sec:concl}
+\section{Final remarks}
+\label{sec:final_remarks}
 
-... will see. 
+What I've learned in general 
 
 %---------------------------------------------------------------------------------------------------------
 % Document References
