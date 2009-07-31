@@ -5,7 +5,7 @@
 \section{Accessing and exploring the Data }
 \label{sec:dataaccessandexp}
 
-As seen in the previous sections, the amount of available data in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options should be available to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
+As seen in the previous sections, the amount of data available in the database is enormous. In the field of computer technology, the process of scanning such a huge pool of data for potentially interesting sets is called \textit{data mining}. What is potentially interesting completely depends on the researchers intention. Therefore, a multitude of filter and visualization options must be available to facilitate the data exploration. Once a desired set of data has been identified, one should be able to export that data for further analysis. 
 
 \subsection{Introducing miceminer}
 \label{subsec:dataexp}
@@ -14,11 +14,11 @@ The \textit{miceminer} application intends to meet exactly these requirements. B
 
 Written entirely in \textit{Flex}\footnote{Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \cite{wiki:flex}.}, the application runs within every web browser which has the \textit{Flash} plug-in version 9 or above installed. Thus, the software is cross platform compatible, meaning that it runs on every operating system for which the \textit{Flash} player is available. 
 
-Furthermore, the \textit{miceminer} application doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, which is called the client. This has the comfortable consequence, that updates of the software does not need to installed on the client computers, but instead can be deployed to the server.     
+Furthermore, the \textit{miceminer} application doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, which is called the client. This has the comfortable consequence, that updates of the software does not need to be installed on the client computers, but instead can be deployed to the server.     
 
-Additionally, \textit{Flex} offers convincing tools to build interactive user interfaces and, in conjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java application can run on any Java virtual machine (JVM) regardless of computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the one offered by \textit{Flex} is appropriate for the needs in this project.
+Additionally, \textit{Flex} offers convincing tools to build interactive user interfaces and, in conjunction with third party software, dependable ways to retrieve data from a database. Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java applications can run on any Java virtual machine (JVM) regardless of the computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the one offered by \textit{Flex} is appropriate for the needs in this project.
 
-More information about the \textit{miceminer} project, including screencasts, which demonstrate the options of the software, an \ac{API} documentation, the application source code and links to other resources used for the development, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}\footnote{The site is only accessible from within the network of the University of Z\"urich.}. 
+More information about the \textit{miceminer} project, including screencasts, which demonstrate the options of the software, an \ac{API} documentation, the application source code and links to other resources used for the development, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}\footnote{Please note that the site is only accessible from within the network of the University of Z\"urich.}. 
 
 \subsection{Interface}
 \label{subsec:miceminer_interface}
@@ -27,15 +27,13 @@ This section gives an introduction to the user interface. User help is available
 
 Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer} interface and identifies its main parts.
 
-\begin{figure}[!ht]
-\begin{center}
+\begin{sidewaysfigure}
   \includegraphics[width=\textwidth]{assets/pdf/interface_overview.pdf}
   \caption[miceminer interface overview]{Screenshot of the miceminer application, displaying data for a mouse. In addition, the main parts of the interface are labeled.}
   \label{fig:interface_overview}
-\end{center}
-\end{figure}
+\end{sidewaysfigure}
 
-From the \textit{main menu}, the user can start the main components listed in table \ref{tab:main_components}. 
+From the \textit{Main menu}, the user can start the main components listed in table \ref{tab:main_components}. 
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2.5cm}}
@@ -46,10 +44,10 @@ From the \textit{main menu}, the user can start the main components listed in ta
 Browse Data		& 	This is the core component of the application and contains the functionality to explore the data within a definable date range. \\
 Data Overview	&	Shows an overview about all the mice, boxes and antennas in the database. \\
 Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
-Graph Data		&	Interactive network representation of the data which shows possible social relationships networks within the mice community. \\
+Graph Data		&	Interactive network representation of the data which shows possible social relationships within the mice community. \\
 Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
 \end{tabularx}
-\captionof{table}[miceminer main menu]{Main components selectable from the main menu of the \textit{miceminer} application.}
+\captionof{table}[miceminer main menu]{Main components selectable from the \textit{Main menu} of the \textit{miceminer} application.}
 \label{tab:main_components}
 \end{center}
 
@@ -57,22 +55,31 @@ If a main component is started, by clicking on an icon in the \textit{Main menu}
 
 The interface arrangement is the same in all components except for the \textbf{Graph Data} component. Figure \ref{fig:interface_component} identifies the different parts by means of a screenshot of the \textbf{Browse Data} component.
 
-In the \textit{Parameters} section, the user sets the factors influencing the data displayed in the \textit{Viewport}. When the \textit{Help} button is clicked, a window will pop up, containing instructions to use the actual component. An \textit{Export option} to save tabular data as an \textit{Excel} worksheet is available in every component. Some components offer additional export formats, depending on their function. The \textit{View options} are only available in the \textbf{Browse Data} component.   
-
 \begin{figure}[!htbp]
 \begin{center}
-  \includegraphics[width=.75\textwidth]{assets/pdf/interface_component.pdf}
+  \includegraphics[width=\textwidth]{assets/pdf/interface_component.pdf}
   \caption[Browse Data component interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
   \label{fig:interface_component}
 \end{center}
 \end{figure}
+
+In the \textit{Parameters} section, the user sets the factors influencing the data displayed in the \textit{Viewport}. When the \textit{Help} button is clicked, a window will pop up, containing instructions to use the actual component. An \textit{Export option} to save the tabular data as an \textit{Excel} worksheet is available in every component. Some components offer additional export formats, depending on their function. The \textit{View options} (pictured in detail in figure \ref{fig:view_options}), which are used to switch between the tabular (see section \ref{sububsec:datafilter}) and chart view (see section \ref{subsubsec:datavis}), are only available in the \textbf{Browse Data} component.
+
+\begin{figure}[htpb]
+\begin{center}
+	\includegraphics[width=.3\textwidth]{assets/pdf/view_options.pdf}
+	\caption[View options]{The \textit{View Options} for the \textbf{Browse Data} component. The splitted view is selected to get the table and the chart view side by side.}
+	\label{fig:view_options}
+\end{center}
+\end{figure}    
+
 
 \subsection{Software design}
 \label{subsec:miceminer_design}   
 
 \textit{Flex} itself does not include methods to query a database. Instead the application sends it's request to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex} application, which is running on the client computer. An auxiliary software (\textit{amfphp}\footnote{Visit \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
 
-\textit{PHP} offers convincing ways to export the data to different file formats, from which the most prominent is \textit{Excel}. Additional export options have been designed to ensure the usage of the data in specialised data analysis software used by the researchers.
+\textit{PHP} offers convincing ways to export the data to different file formats, from which the most prominent is \textit{Excel}. Additional export options have been designed to ensure the usage of the data in specialized data analysis software used by the researchers.
 
 The interactions of the different software which make up the user interface is illustrated in figure \ref{fig:app_design_miceminer}. Readers who are interested in the actual programming are reffered to the \textit{Additional Sites}\footnote{\href{http://zool-miceminer.uzh.ch/\#additional_sites}{http://zool-miceminer.uzh.ch/\#additional\_sites}} section on the project~homepage.   
 
@@ -101,7 +108,7 @@ On one hand, the software intends to offer a variety of ways and means to browse
 \subsubsection{Data filtering}
 \label{sububsec:datafilter}
 
-The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at an antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches have in common, is that the data is usually analyzed over a specific period. Hence, the selection of the period has been defined to be the starting point for every session (see figure \ref{fig:date_period}).
+The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes and antennas). Resultant are a multitude of different approaches to explore the data. One researcher, for instance, could be interested in the antenna readings of a mouse at a specific antenna, another one needs to know in which boxes a specific mouse has spent time. What both of these approaches have in common is, that the data is usually analyzed over a specific period. Hence, the selection of the period has been defined to be the starting point for every session (see figure \ref{fig:date_period}).
 
 \begin{figure}[htpb]
 \begin{center}
@@ -111,11 +118,11 @@ The database includes several different types of data (antenna readings, \textit
 \end{center}
 \end{figure}
 
-The user is then provided with three tables, one with the mice, another one with the boxes, and the third one with the antennas, for which data in the selected period could be found. For each of this table elements, the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and some additional information about the item is displayed alongside (see figure \ref{fig:data_overview_with_count}). These lists aim to be a basis for the selection of interesting items. In addition, if somebody is just intersted in summarized data, he already found what he's looking for. 
+The user is then provided with three tables, one with the mice, another one with the boxes, and the third one with the antennas, for which data in the selected period could be found. For each of this table elements, the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and some additional information about the item is displayed alongside (see figure \ref{fig:data_overview_with_count}). These tables aim to be a basis for the selection of interesting items. In addition, if somebody is just intersted in summarized data, he already found what he's looking for. 
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=.75\textwidth]{assets/pdf/overview_list.pdf}
+  \includegraphics[width=.66\textwidth]{assets/pdf/overview_list.pdf}
   \caption[Overview of the summarized data for mice, boxes and antennas within a date period]{Overview of the mice, boxes and antennas with the respective counts for a selected period. The number of \textit{direction results} are labeled \textbf{in/out count}, the \textit{stay results}  \textbf{stay count}.}
   \label{fig:data_overview_with_count}
 \end{center}
@@ -123,7 +130,7 @@ The user is then provided with three tables, one with the mice, another one with
 
 With a click on the column header, the data gets sorted ascending or descending. Moreover, the data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from central a drop down menu. The menu content follows the user focus, meaning, that if the user switches to another table, the filter menu is updated to reflect the available filters for the selected table. The type of the filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
 
-\begin{figure}[htpb]
+\begin{figure}[ht]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/filter_types.pdf}
   \caption[Filter types]{The \textit{Fulltext} filter searches the column data for the typed text. The \textit{data count} and \textit{Period} filters allow to set a lower and an upper limit by using the two sliders.}
@@ -133,7 +140,7 @@ With a click on the column header, the data gets sorted ascending or descending.
 
 Based on the tables with the summarized data, the user can choose the mice, box or antenna to get the detailed data for. Two data retrieval options are available - the first one displays the data in the application, the second one exports the data directly to an \textit{Excel} worksheet (see figure \ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Secondly, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. With the direct \textit{Excel} export, this limit can be overcome.   
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/get_data_options.pdf}
   \caption{Data retrieval options}
@@ -145,7 +152,7 @@ If the user choses to show the data in the application, a secondary group of tab
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=.75\textwidth]{assets/pdf/overview_data.pdf}
+  \includegraphics[width=.66\textwidth]{assets/pdf/overview_data.pdf}
   \caption{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
   \label{fig:overview_data}
 \end{center}
@@ -160,7 +167,7 @@ Sometimes it might not be convenient to look at tables to get an idea of how an 
 
 For the visualization of the tables containing the summarized data, the chart view displays a column chart. The x-axis values are either the mice, the boxes or the antennas with their respective counts of the antenna recordings (data count), \textit{direction results} (in/out count) and \textit{stay results} (stay count) as the y-axis values (see figure \ref{fig:mouse_chart_item} for an example of a chart item for a mouse). If the chart is visible, an option to export the chart as an image is available.
 
-\begin{figure}[htpb]
+\begin{figure}[!htbp]
 \begin{center}
   \includegraphics[width=.33\textwidth]{assets/pdf/mouse_chart_item.pdf}
   \caption[Chart item for a mouse with corresponding data counts]{Chart item for a mouse with corresponding data counts.}
@@ -168,15 +175,7 @@ For the visualization of the tables containing the summarized data, the chart vi
 \end{center}
 \end{figure}
 
-% \begin{figure}[htpb]
-% \begin{center}
-%   \includegraphics[width=.3\textwidth]{assets/pdf/view_options.pdf}
-%   \caption[View options]{The view options for the \textbf{Browse Data} component. The splitted view is selected to get the table and the chart view side by side.}
-%   \label{fig:view_options}
-% \end{center}
-% \end{figure}    
-
-As in the table view, the chart view offers the same sorting, filter and export options. Furthermore, if a sort or a filter has been applied in one of the views, or another item is selected, this change is updated in the other view. This is best seen if the splitted view is selected, as shown in figure \ref{fig:table_chart_view}. Thus, the user is able to quickly find a mouse, box or antenna, which might be of special interest for further analysis.
+As in the table view, the chart view offers the same sorting, filter and export options. Furthermore, if a sort or a filter has been applied in one of the views, or another item is selected, this change is updated in the other view. This is best seen if the splitted view is selected, as shown in figure \ref{fig:table_chart_view}, to have the table and the chart view side by side. Thus, the user is able to quickly find a mouse, box or antenna, which might be of special interest for further analysis.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -188,7 +187,7 @@ As in the table view, the chart view offers the same sorting, filter and export 
 
 The chart view for the actual results of a mouse, box or antenna is different, because the reseachers are usually interested in the distribution of the results. Therefore the data is grouped on the values in a column and displayed as a pie chart (see figure \ref{fig:pie_chart_for_mouse}). Accordingly, the \textit{Excel} export behavior changes as well. Not the data shown in the tabular view will be exported, but the grouped data underlying the chart.
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=.66\textwidth]{assets/img/pie_chart_for_mouse.png}
   \caption[Pie chart of result data for a mouse]{Pie chart with grouped box recordings for a mouse. The chart shows how many times the mouse has been recorded at the antennas of the boxes listed in the legend on the left side (e.g. 4754 times at box 40) durig the selected period.}
@@ -196,7 +195,7 @@ The chart view for the actual results of a mouse, box or antenna is different, b
 \end{center}
 \end{figure}
 
-In addition a secondary chart can be accessed. If the user double clicks a pie chart item, for example the one for box 40 as shown in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the selected period. In fact, this secondary chart is the same as if the user selects the chart view of the results for box 40 in the same period. Hence, the secondary chart is more of a handy method to view the information at the same time, side by side.
+In addition a secondary chart can be accessed. If the user double clicks a pie chart item, for example the one for box 40 in figure \ref{fig:pie_chart_for_mouse}, another pie chart will be displayed alongside. In this case, the secondary chart shows which other mice have been recorded at box 40 during the selected period. In fact, this secondary chart is the same as if the user selects the chart view of the results for box 40 in the same period. Hence, the secondary chart is more of a handy method to view both information at the same time.
 
 Combined with the shared filter capabilities and the export options, the visualization offers a good alternative to explore the data. A special visualization, which shows possible positive social relationships between the mice living in the barn is elucidated in section \ref{sec:graph}.
 
@@ -211,7 +210,7 @@ The \textit{miceminer} application provides some simple data analysis functional
 \subsubsection{Home range}
 \label{subsubsec:homerangedata}
 
-To carry out home range analysis, the positions of the nestboxes within the barn have been added to the database. The interface consists of a selectorto choose the rfid and another one for the period, the data should be retrieved for. \footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a file format called \textit{dBase}, or if a calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
+To carry out home range analysis, the positions of the nestboxes within the barn have been added to the database. The interface consists of a selector to choose the rfid and another one for the period, the data should be retrieved for\footnote{The data used in this component originates from the \lstinline|data| table (see section \ref{para:data_table} on page \pageref{para:data_table}).}. Once these values are set, the user can decide if the data should be exported into a \textit{dBase} (file extension .dbf) file, or if a calculation of the \textit{Minimum Convex Polygon (MCP)} should be executed. Figure \ref{fig:home_range} shows a labeled screenshot of the component interface.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -251,7 +250,7 @@ Nestbox	& 	Data count \\\midrule
 \rowstyle{\bfseries}
 Sum	&	254
 \end{tabularx}
-\captionof{table}[Sample disttribution of data counts to the nestboxes]{Distribution of the data counts for the nestboxes 12 to 17.}
+\captionof{table}[Sample disttribution of data counts to the nestboxes]{Exemplary distribution of the data counts for the nestboxes 12 to 17.}
 \label{tab:mcp_example}
 \end{center}
 
@@ -262,7 +261,7 @@ The data count distribution is shown in the detail panel of the interface (label
 \subsubsection{Shared preferences}
 \label{subsubsec:sharedpref}
 
-The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is the case if two mice have a some kind of a positive social relationship, for example caused by relatedness.
+The component is used to figure out if two female mice spent more time together in a nestbox, as expected. This is the case if two mice have some kind of a positive social relationship, for example caused by relatedness.
 
 Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for the period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
 

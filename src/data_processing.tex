@@ -42,8 +42,8 @@ As mentioned in section \ref{subsec:problems}, some of the antennas could not be
 The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table, which build a \textit{direction result}. A pair matches if,
 
 \begin{mylist}
-\item the transponder id's (RFIDS) of the two readings is the same,
-\item th time difference in seconds between the two readings is not greater then the value set as the \lstinline|<antennaInterval>|\footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl} for the location of the value in the configuration file.} value in the configuration file, 
+\item the transponder identification of the two readings is the same,
+\item the time difference in seconds between the two readings is not greater then the value set as the \lstinline|<antennaInterval>|\footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl} for the location of the value in the configuration file.} value in the configuration file, 
 \item and the readings originate from the two different antennas attached to a box.  
 \end{mylist}
 
@@ -79,7 +79,7 @@ If the \lstinline|<antennaInterval>| is changed, the \lstinline| searchdirreset.
 \subsection{Stay results}
 \label{subsec:stayres}
 
-The \lstinline|searchres.pl| aims to find matching \textit{direction results} in the \lstinline|dir| table, which build a \textit{stay results}.
+The \lstinline|searchres.pl| aims to find matching \textit{direction results} in the \lstinline|dir| table, which build a \textit{stay result}.
 
 A pair matches if,
 
@@ -170,9 +170,9 @@ The \textit{nervous index} is simply the number of readings at the inner antenna
 \end{center}
 \end{figure}
 
-The searches for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers. In the period from the 5 of April 2007 to the 27 of March 2009, 1,499,110 \textit{direction results} with a direction value of \lstinline|in| are found. Without any overlap filtering, the script finds a \textit{stay result} for 1,484,458 (99.0\%) . After excluding the \textit{stay result} overlaps, 1,020,983 (68.1\%) remain, and 992,128 (66.2\%) after excluding the \textit{stay results} with overlapping antenna readings. Though, 591,549 (59.6\%) of the remaining \textit{stay results} are \textit{nervous mouse} results.
+The searches for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers. In the period from the 5 of April 2007 to the 27 of March 2009, 1,499,110 \textit{direction results} with a direction value of \lstinline|in| are found. Without any overlap filtering, the script finds a \textit{stay result} for 1,484,458 (99.0\%) of the direction results. After excluding the \textit{stay result} overlaps, 1,020,983 (68.1\%) remain, and 992,128 (66.2\%) after excluding the \textit{stay results} with overlapping antenna readings. Though, 591,549 (59.6\%) of the remaining \textit{stay results} are \textit{nervous mouse} results.
 
-Nevertheless, an inconsistency remains. 536 (0.05\%) of the \textit{stay result} show a duration of stay longer than nine hours. Biologically these values are impractical, as, for instance, the mice have to drink outside of the nestbox. However, these results exist in the database and have been validated. A number of explanations have been discussed how such results can arise, which are quite complicated and unlikely, but therefore could be true for these exceptional cases. These results can be excluded to be shown in the user interface (see section \ref{subsec:miceminer_config} on page \pageref{subsec:miceminer_config}), but remain in the database.     
+Nevertheless, an inconsistency remains. 536 (0.05\%) of the \textit{stay result} show a duration of stay longer than nine hours. Biologically these values are impractical, as for instance, the mice have to drink outside of the nestbox. However, these results exist in the database and have been validated. A number of explanations have been discussed how such results can arise, which are quite complicated and unlikely, but therefore could be true for these exceptional cases. These results can be excluded to be shown in the user interface (see section \ref{subsec:miceminer_config} on page \pageref{subsec:miceminer_config}), but remain in the database.     
 
 The \textit{stay results} are written to the \lstinline|res| table as described in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
 
@@ -188,7 +188,7 @@ The \lstinline|meetings.pl| script determines, when and how many time the mice s
 \item temporally overlap.
 \end{mylist}
 
-Additionally, the script analyses, how two mice can meet. There are four different possibilities, as shown in figure \ref{fig:meeting_types} and explained in the following list.
+Additionally, the script analyses, how two mice meet. There are four different possibilities, as shown in figure \ref{fig:meeting_types} and explained in the following list.
 
 \begin{mydesc}
 \label{list:meeting_types}
@@ -200,8 +200,8 @@ Additionally, the script analyses, how two mice can meet. There are four differe
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=0.75\textwidth]{assets/pdf/meeting_types_schema.pdf}
-  \caption[Meeting results types illustration]{Illustration of the possible meeting situations in a nestbox between two mice (Tr. A , Tr. B).}
+  \includegraphics[width=0.95\textwidth]{assets/pdf/meeting_types_schema.pdf}
+  \caption[Meeting results types illustration]{Illustration of the possible meeting situations in a nestbox between two mice (Tr. A, Tr. B).}
   \label{fig:meeting_types}
 \end{center}
 \end{figure}
