@@ -84,16 +84,16 @@
 <!-- 
    Choose which components to create when the application is loaded by setting the onStart attribute to 'true' or 'false'.
    The name attribute values correspond to the button labels in the main menu of the application. 
-   Do not change the name attribute values!
+   Do not change the id attribute values!
 --> 
 <components>
-	<component name="Browse Data" onStart="true">
+	<component id="BROWSE_DATA" name="Browse Data" onStart="true">
 		<info><![CDATA[
 			<p>This component is used to browse and filter the data.</p>
 			<p>Please check out the <a href="http://zool-miceminer.uzh.ch/index.php#browse_data_sc" target="_blank">different screencasts</a> for the Browse Data component.</p>
 		]]></info>				
 	</component>
-	<component name="Data Overview" onStart="false">
+	<component id="DATA_OVERVIEW" name="Data Overview" onStart="false">
 		<info><![CDATA[
 			<p>This components lists the mice, boxes and antennas with their attributes.</p>
 			<p>The difference between the <b>Browse Data</b> component and this component, is that the counts show the values for the whole period of data in the database and not over a specific date range.</p>
@@ -101,13 +101,13 @@
 			<p>Getting data for a mouse, a box or an antenna is not possible in this component.</p>
 		]]></info>
 	</component>
-	<component name="Data Analysis" onStart="false"/>
-	<component name="Graph Data" onStart="false">
+	<component id="DATA_ANALYSIS" name="Data Analysis" onStart="false"/>
+	<component id="GRAPH_DATA" name="Graph Data" onStart="false">
 		<info><![CDATA[
 		<p>Graph Data help coming soon ...</p>
 		]]></info>
 	</component>
-	<component name="Upload Files" onStart="false"/>
+	<component id="UPLOAD_FILES" name="Upload Files" onStart="false"/>
 </components>
 <!-- helper mehods, no need to change something here -->
 <helpers>
