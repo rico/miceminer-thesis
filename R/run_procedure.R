@@ -4,10 +4,12 @@
 
 ##
 # start procedure
+library(igraph)
 library(network)
+library(sna)
 
 #
-# !!!!!!! inly for testing
+# !!!!!!! only for testing
 #
 rm(list=ls(all=TRUE))
 	
@@ -26,9 +28,9 @@ rm(list=ls(all=TRUE))
 	g_08_07_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_7_1h.paj"	, "July `08")
 	g_08_08_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_8_1h.paj"	, "August `08")
 	g_08_09_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_9_1h.paj"	, "September `08")
-	g_08_10_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_10_1h.paj"	, "Oktober `08")
+	g_08_10_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_10_1h.paj"	, "October `08")
 	g_08_11_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_11_1h.paj"	, "November `08")
-	g_08_12_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_12_1h.paj"	, "Dezember `08")
+	g_08_12_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2008_12_1h.paj"	, "December `08")
 	g_09_01_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2009_1_1h.paj"	, "January `09")
 	g_09_02_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2009_2_1h.paj"	, "February `09")
 	g_09_03_1h <- net_read("/Users/rico/Documents/workspace/miceminer_thesis/graph_data/1h/network_2009_3_1h.paj"	, "March `09")

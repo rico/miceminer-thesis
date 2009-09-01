@@ -386,19 +386,19 @@ This panel offers settings to vary the different aspects of the network visualiz
 
 Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examine and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be dragged freely to a desired position.
 
-\subsubsection*{Export options}
+\subsubsection*{Export options} 
 
-Since the \textit{miceminer} does not offer a full set of tools for social network analysis, an export to a file format, which can be imported into \textit{NetDraw} or \textit{UCINET}\footnote{Visit \href{http://www.analytictech.com/downloadnd.htm}{http://www.analytictech.com/downloadnd.htm} for details.}, is available. \textit{NetDraw} is a versatile tool to visualize networks, whereas \textit{UCINET} offer comprehensive methods for a social network analysis. Shown in figure \ref{fig:netdraw_export_component} is a screenshot of \textit{NetDraw} visualizing a network for which the data has been exported from the \textit{miceminer} application.
+Since the \textit{miceminer} does not offer a full set of tools for social network analysis, a variety of export options are available.
 
-\begin{figure}[htpb]
-\begin{center}
-  \includegraphics[width=\textwidth]{assets/img/netdraw_export_component.png}
-  \caption[Scereenshot of the Netdraw application]{Screenshot of the \textit{NetDraw} application visualizing a network.}
-  \label{fig:netdraw_export_component}
-\end{center}
-\end{figure}
+Firstly the node based measures and the edge data, of the currently visualized component or the whole network, can be exported to an \textit{Excel} worksheet, and an image of the visualization can be obtained.
 
-The edge data, as well as the node based measures, can be exported to an \textit{Excel} worksheet. Additionally, the network visualization can be exported as an image.
+Beside these evident possibilities, the software offers several export options for a subsequent social network analysis in one of the major software packages used for this purpose.
+
+\textit{Pajek}\cite{Pajek}, for instance, is a widley used free software to perform network analysis. An excellent book\cite{pajek:03}, which serves as a manual and a tutorial for the software, is available.
+
+Though, a \textit{Pajek} project file (file extension \textit{.paj}) can be imported in \textit{statnet}\cite{statnet:03} as well. \textit{Statnet} is an \lstinline|R|\cite{r:05} package designed mainly for statistical modeling of network data.
+
+\textit{UCINET}\cite{ucinet:99}, which includes \textit{NetDraw} to visualize networks, is a commercial software which offers comprehensive methods for a social network analysis. The export file format offered by the \textit{miceminer} application can be imported to \textit{NetDraw}, wherefrom \textit{UCINET} can be started.
 
 \subsubsection*{Edge filter}
 
