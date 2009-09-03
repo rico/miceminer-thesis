@@ -185,16 +185,16 @@ to_igraph <- function(net) {
 #
 # Extract inner / inter gender networks
 #
-gender_extract <- function(net) {
+gender_extract <- function(net, asNets=FALSE) {
 
 
-	net_label = net %v% "LABEL"
+	net_label = net %n% "LABEL"
 	
 	# edgelist
 	edgelst = edgelist <- as.edgelist(net)
 	
 	# edge list lengths out of mixing matrix
-	mm_obj = mixingmatrix(g_08_06_1h,"SEX")
+	mm_obj = mixingmatrix(net,"SEX")
 	mm = mm_obj$matrix
 	
 	# initiating edge_lists
@@ -260,31 +260,48 @@ gender_extract <- function(net) {
 	
 	# creating networks
 	net_ff = network(edgelist_ff,matrix.type="edgelist",directed=FALSE)
-	label_ff = paste(net_label,"ff", sep="_")
-	set.network.attribute(net_ff, "LABEL", )
+	label_ff = paste(net_label,"(ff)", sep=" ")
+	set.network.attribute(net_ff, "LABEL", "ff")
 	
 	net_mm = network(edgelist_mm,matrix.type="edgelist",directed=FALSE)
-	label_ff = paste(net_label,"mm", sep="_")
+	label_mm = paste(net_label,"(mm)", sep=" ")
 	set.network.attribute(net_mm, "LABEL", "mm")	
 	
 	net_fm = network(edgelist_fm,matrix.type="edgelist",directed=FALSE)
-	label_fm = paste(net_label,"fm", sep="_")
+	label_fm = paste(net_label,"(fm)", sep=" ")
 	set.network.attribute(net_fm, "LABEL", "fm")	
 	
 	networks = list(net_ff,net_mm, net_fm)
 	#networks = c(net_ff,net_mm, net_fm)
 	
-	indices_frame = data.frame(value_labels= c("Nodes","Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )
+	if(asNets == TRUE) {
+		nets = list("ff"=net_ff,"mm"=net_mm, "mf"=net_fm)
+	} else {
+		indices_frame = data.frame(value_labels= c("Nodes","Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )	
+		indices_frame[label_ff] <- factor( gender_extract_node_level_values(net_ff,length(unique(unlist(data_ff)))) )
+		indices_frame[label_mm] <- factor( gender_extract_node_level_values(net_mm,length(unique(unlist(data_mm)))) )
+		indices_frame[label_fm] <- factor( gender_extract_node_level_values(net_fm,length(unique(unlist(data_fm)))) )
+			
+		return(indices_frame)
+	}
+	
+
 
 }
 
 #
 # node level indices for gender extracted networ
 # 
-gender_extract_node_level_values <- fuction (net) {
-
-	indices_frame = data.frame(value_labels= c("Nodes","Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )
+gender_extract_node_level_values <- function(net, nodes) {
+	
+	igraph = to_igraph(net);
+	
+	indices = c( nodes, ecount(igraph), round(mean(degree.distribution(igraph)),3), round(average.path.length(igraph, directed=FALSE, unconnected=TRUE),3), round(transitivity(igraph, type="global"),3), round(mean(betweenness(igraph, directed = FALSE)),3) )
+	
+	return(indices)
+	
 }
+
 
 #
 # get gender based on indices
@@ -297,3 +314,8 @@ get_gender <- function(net, index) {
 
 	return(index_sex)
 }
+
+
+#
+# plot network
+#

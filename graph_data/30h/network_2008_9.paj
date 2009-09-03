@@ -1,0 +1,302 @@
+*Network network_2008_9.paj
+% Exported network data from miceminer for 2008-9
+% Code for gender partition: 1 = female , 2 = male , 3 = unknown 
+*Vertices 95
+1 "0006B8CB1F" ic OrangeRed bc OrangeRed sex f
+2 "0006CC7125" ic OrangeRed bc OrangeRed sex f
+3 "0006B8BFCF" ic CornflowerBlue bc CornflowerBlue sex m
+4 "0006CC4C2F" ic CornflowerBlue bc CornflowerBlue sex m
+5 "00069542F0" ic OrangeRed bc OrangeRed sex f
+6 "0006CC5684" ic OrangeRed bc OrangeRed sex f
+7 "0006B8BEF1" ic CornflowerBlue bc CornflowerBlue sex m
+8 "00069552DA" ic OrangeRed bc OrangeRed sex f
+9 "0006BA0027" ic OrangeRed bc OrangeRed sex f
+10 "0006BA0C9F" ic OrangeRed bc OrangeRed sex f
+11 "0006CC70CD" ic OrangeRed bc OrangeRed sex f
+12 "0006CC4418" ic CornflowerBlue bc CornflowerBlue sex m
+13 "0006CC5CFA" ic OrangeRed bc OrangeRed sex f
+14 "0006CC4A99" ic CornflowerBlue bc CornflowerBlue sex m
+15 "0006B8DC8F" ic CornflowerBlue bc CornflowerBlue sex m
+16 "0006CC40EA" ic CornflowerBlue bc CornflowerBlue sex m
+17 "0006B8D9C8" ic CornflowerBlue bc CornflowerBlue sex m
+18 "0006CC433A" ic OrangeRed bc OrangeRed sex f
+19 "0006B8E98C" ic CornflowerBlue bc CornflowerBlue sex m
+20 "0006CD8A0D" ic Gray55 bc Gray55 sex u
+21 "0006B8D45A" ic OrangeRed bc OrangeRed sex f
+22 "00069555C7" ic CornflowerBlue bc CornflowerBlue sex m
+23 "0006954921" ic CornflowerBlue bc CornflowerBlue sex m
+24 "0006B9D1A1" ic OrangeRed bc OrangeRed sex f
+25 "0006CD65BE" ic CornflowerBlue bc CornflowerBlue sex m
+26 "0006954D6A" ic OrangeRed bc OrangeRed sex f
+27 "00069B4D4D" ic OrangeRed bc OrangeRed sex f
+28 "0006B8CC8C" ic OrangeRed bc OrangeRed sex f
+29 "0006B8E2FD" ic OrangeRed bc OrangeRed sex f
+30 "0006B8C561" ic OrangeRed bc OrangeRed sex f
+31 "0006CC45B6" ic CornflowerBlue bc CornflowerBlue sex m
+32 "0006CDE4C6" ic CornflowerBlue bc CornflowerBlue sex m
+33 "0006CD37BA" ic CornflowerBlue bc CornflowerBlue sex m
+34 "0006CD4491" ic OrangeRed bc OrangeRed sex f
+35 "0006CD36F0" ic CornflowerBlue bc CornflowerBlue sex m
+36 "0006CC62D7" ic OrangeRed bc OrangeRed sex f
+37 "0006B8D0DF" ic OrangeRed bc OrangeRed sex f
+38 "0006B9CCE9" ic OrangeRed bc OrangeRed sex f
+39 "0006CC5703" ic CornflowerBlue bc CornflowerBlue sex m
+40 "0006CC77B2" ic CornflowerBlue bc CornflowerBlue sex m
+41 "0006B9C5E8" ic OrangeRed bc OrangeRed sex f
+42 "0006B8E3B8" ic OrangeRed bc OrangeRed sex f
+43 "0006B9D770" ic CornflowerBlue bc CornflowerBlue sex m
+44 "0006CC4053" ic CornflowerBlue bc CornflowerBlue sex m
+45 "0006B9B745" ic OrangeRed bc OrangeRed sex f
+46 "0006CC5A26" ic Gray55 bc Gray55 sex u
+47 "0006CC47D6" ic CornflowerBlue bc CornflowerBlue sex m
+48 "0006CC576C" ic CornflowerBlue bc CornflowerBlue sex m
+49 "0006CC44DB" ic OrangeRed bc OrangeRed sex f
+50 "0006B9AB62" ic CornflowerBlue bc CornflowerBlue sex m
+51 "0006CC607C" ic CornflowerBlue bc CornflowerBlue sex m
+52 "0006CC62BF" ic CornflowerBlue bc CornflowerBlue sex m
+53 "0006B9C3BA" ic CornflowerBlue bc CornflowerBlue sex m
+54 "0006B9D225" ic OrangeRed bc OrangeRed sex f
+55 "0006B9E497" ic CornflowerBlue bc CornflowerBlue sex m
+56 "0006CC4A3E" ic OrangeRed bc OrangeRed sex f
+57 "0006CC4228" ic OrangeRed bc OrangeRed sex f
+58 "0006CC6B00" ic OrangeRed bc OrangeRed sex f
+59 "0006CC57ED" ic CornflowerBlue bc CornflowerBlue sex m
+60 "0006CC77E5" ic CornflowerBlue bc CornflowerBlue sex m
+61 "0006CC79CA" ic CornflowerBlue bc CornflowerBlue sex m
+62 "0006CC7774" ic OrangeRed bc OrangeRed sex f
+63 "0006CC3FA9" ic CornflowerBlue bc CornflowerBlue sex m
+64 "0006CC49D7" ic OrangeRed bc OrangeRed sex f
+65 "0006CC712A" ic OrangeRed bc OrangeRed sex f
+66 "0006CC4722" ic CornflowerBlue bc CornflowerBlue sex m
+67 "0006CC4FC1" ic CornflowerBlue bc CornflowerBlue sex m
+68 "0006CC48B1" ic OrangeRed bc OrangeRed sex f
+69 "0006B8E017" ic OrangeRed bc OrangeRed sex f
+70 "0006CC7783" ic OrangeRed bc OrangeRed sex f
+71 "0006CC66A9" ic CornflowerBlue bc CornflowerBlue sex m
+72 "0006CC78D9" ic OrangeRed bc OrangeRed sex f
+73 "0006B9BDEA" ic CornflowerBlue bc CornflowerBlue sex m
+74 "0006B8BADB" ic CornflowerBlue bc CornflowerBlue sex m
+75 "0006B8CFB7" ic OrangeRed bc OrangeRed sex f
+76 "0006B8E7E5" ic OrangeRed bc OrangeRed sex f
+77 "0006CC6D31" ic CornflowerBlue bc CornflowerBlue sex m
+78 "0006CC6320" ic OrangeRed bc OrangeRed sex f
+79 "0006B8D5CC" ic CornflowerBlue bc CornflowerBlue sex m
+80 "0006B8E0D4" ic OrangeRed bc OrangeRed sex f
+81 "0006B9D3CB" ic CornflowerBlue bc CornflowerBlue sex m
+82 "0006B9D7D8" ic OrangeRed bc OrangeRed sex f
+83 "0006B8DA03" ic OrangeRed bc OrangeRed sex f
+84 "0006B9BAB9" ic OrangeRed bc OrangeRed sex f
+85 "0006B8E1C7" ic OrangeRed bc OrangeRed sex f
+86 "0006CC68DF" ic OrangeRed bc OrangeRed sex f
+87 "0006CC3EF2" ic CornflowerBlue bc CornflowerBlue sex m
+88 "00068EA1C5" ic OrangeRed bc OrangeRed sex f
+89 "0006B9A9A2" ic OrangeRed bc OrangeRed sex f
+90 "0006B9C383" ic OrangeRed bc OrangeRed sex f
+91 "0006CDC314" ic CornflowerBlue bc CornflowerBlue sex m
+92 "0006B9AED6" ic CornflowerBlue bc CornflowerBlue sex m
+93 "0006CC454B" ic OrangeRed bc OrangeRed sex f
+94 "0006B9D8C8" ic CornflowerBlue bc CornflowerBlue sex m
+95 "0006B9B464" ic CornflowerBlue bc CornflowerBlue sex m
+*Arcs :1
+8 9 1 [1-*]
+8 10 1 [1-*]
+8 6 1 [1-*]
+8 11 1 [1-*]
+9 13 1 [1-*]
+9 10 1 [1-*]
+9 6 1 [1-*]
+11 9 1 [1-*]
+11 6 1 [1-*]
+8 20 1 [1-*]
+19 15 1 [1-*]
+27 29 1 [1-*]
+30 29 1 [1-*]
+24 23 1 [1-*]
+24 25 1 [1-*]
+26 23 1 [1-*]
+37 38 1 [1-*]
+37 39 1 [1-*]
+37 40 1 [1-*]
+37 41 1 [1-*]
+42 37 1 [1-*]
+42 45 1 [1-*]
+45 37 1 [1-*]
+45 39 1 [1-*]
+45 49 1 [1-*]
+45 47 1 [1-*]
+45 44 1 [1-*]
+45 36 1 [1-*]
+45 52 1 [1-*]
+54 37 1 [1-*]
+54 45 1 [1-*]
+54 52 1 [1-*]
+54 38 1 [1-*]
+54 57 1 [1-*]
+54 47 1 [1-*]
+54 44 1 [1-*]
+54 61 1 [1-*]
+43 37 1 [1-*]
+55 37 1 [1-*]
+55 61 1 [1-*]
+55 45 1 [1-*]
+55 47 1 [1-*]
+44 47 1 [1-*]
+44 37 1 [1-*]
+44 38 1 [1-*]
+44 52 1 [1-*]
+57 37 1 [1-*]
+57 45 1 [1-*]
+57 47 1 [1-*]
+57 44 1 [1-*]
+57 52 1 [1-*]
+57 36 1 [1-*]
+57 61 1 [1-*]
+57 40 1 [1-*]
+49 37 1 [1-*]
+49 47 1 [1-*]
+49 39 1 [1-*]
+47 37 1 [1-*]
+47 41 1 [1-*]
+47 39 1 [1-*]
+47 40 1 [1-*]
+4 37 1 [1-*]
+52 39 1 [1-*]
+52 41 1 [1-*]
+52 37 1 [1-*]
+52 47 1 [1-*]
+36 37 1 [1-*]
+36 44 1 [1-*]
+36 52 1 [1-*]
+36 47 1 [1-*]
+61 38 1 [1-*]
+61 41 1 [1-*]
+61 52 1 [1-*]
+61 44 1 [1-*]
+61 4 1 [1-*]
+61 42 1 [1-*]
+61 37 1 [1-*]
+61 45 1 [1-*]
+61 49 1 [1-*]
+61 47 1 [1-*]
+61 40 1 [1-*]
+61 39 1 [1-*]
+42 52 1 [1-*]
+45 38 1 [1-*]
+45 40 1 [1-*]
+49 52 1 [1-*]
+47 38 1 [1-*]
+52 38 1 [1-*]
+52 40 1 [1-*]
+61 36 1 [1-*]
+37 47 1 [1-*]
+69 53 1 [1-*]
+69 72 1 [1-*]
+69 71 1 [1-*]
+71 72 1 [1-*]
+71 53 1 [1-*]
+72 53 1 [1-*]
+83 80 1 [1-*]
+83 82 1 [1-*]
+84 79 1 [1-*]
+84 86 1 [1-*]
+86 79 1 [1-*]
+84 81 1 [1-*]
+81 82 1 [1-*]
+94 82 1 [1-*]
+*Partition gender
+*Vertices 95
+1
+1
+2
+2
+1
+1
+2
+1
+1
+1
+1
+2
+1
+2
+2
+2
+2
+1
+2
+3
+1
+2
+2
+1
+2
+1
+1
+1
+1
+1
+2
+2
+2
+1
+2
+1
+1
+1
+2
+2
+1
+1
+2
+2
+1
+3
+2
+2
+1
+2
+2
+2
+2
+1
+2
+1
+1
+1
+2
+2
+2
+1
+2
+1
+1
+2
+2
+1
+1
+1
+2
+1
+2
+2
+1
+1
+2
+1
+2
+1
+2
+1
+1
+1
+1
+1
+2
+1
+1
+1
+2
+2
+1
+2
+2

@@ -4,97 +4,97 @@
 *Vertices 97
 1 "0006B8BFCF" ic CornflowerBlue bc CornflowerBlue sex m
 2 "0006CC45F1" ic Gray55 bc Gray55 sex u
-3 "0006CC75C4" ic Gray55 bc Gray55 sex u
-4 "0006CC533F" ic Gray55 bc Gray55 sex u
-5 "0006CC4B36" ic Gray55 bc Gray55 sex u
-6 "0006CC7125" ic Gray55 bc Gray55 sex u
-7 "0006CC56EC" ic Gray55 bc Gray55 sex u
-8 "0006CC4D64" ic Gray55 bc Gray55 sex u
-9 "0006CD3F05" ic Gray55 bc Gray55 sex u
-10 "0006CC7646" ic Gray55 bc Gray55 sex u
-11 "0006CC6992" ic Gray55 bc Gray55 sex u
+3 "0006CC75C4" ic OrangeRed bc OrangeRed sex f
+4 "0006CC533F" ic OrangeRed bc OrangeRed sex f
+5 "0006CC4B36" ic OrangeRed bc OrangeRed sex f
+6 "0006CC7125" ic OrangeRed bc OrangeRed sex f
+7 "0006CC56EC" ic OrangeRed bc OrangeRed sex f
+8 "0006CC4D64" ic CornflowerBlue bc CornflowerBlue sex m
+9 "0006CD3F05" ic OrangeRed bc OrangeRed sex f
+10 "0006CC7646" ic CornflowerBlue bc CornflowerBlue sex m
+11 "0006CC6992" ic OrangeRed bc OrangeRed sex f
 12 "0006B8BEF1" ic CornflowerBlue bc CornflowerBlue sex m
-13 "0006CC5684" ic Gray55 bc Gray55 sex u
-14 "0006CC73F0" ic Gray55 bc Gray55 sex u
-15 "0006CC50C6" ic Gray55 bc Gray55 sex u
+13 "0006CC5684" ic OrangeRed bc OrangeRed sex f
+14 "0006CC73F0" ic CornflowerBlue bc CornflowerBlue sex m
+15 "0006CC50C6" ic OrangeRed bc OrangeRed sex f
 16 "0006BA0C9F" ic OrangeRed bc OrangeRed sex f
-17 "0006CC4A99" ic Gray55 bc Gray55 sex u
-18 "0006CC4E93" ic Gray55 bc Gray55 sex u
+17 "0006CC4A99" ic CornflowerBlue bc CornflowerBlue sex m
+18 "0006CC4E93" ic OrangeRed bc OrangeRed sex f
 19 "00069567C4" ic Gray55 bc Gray55 sex u
-20 "0006B8DC8F" ic Gray55 bc Gray55 sex u
-21 "0006CC539B" ic Gray55 bc Gray55 sex u
-22 "0006CC578B" ic Gray55 bc Gray55 sex u
+20 "0006B8DC8F" ic CornflowerBlue bc CornflowerBlue sex m
+21 "0006CC539B" ic OrangeRed bc OrangeRed sex f
+22 "0006CC578B" ic OrangeRed bc OrangeRed sex f
 23 "0006CC6ADE" ic Gray55 bc Gray55 sex u
-24 "0006CC5D24" ic Gray55 bc Gray55 sex u
+24 "0006CC5D24" ic CornflowerBlue bc CornflowerBlue sex m
 25 "0006CC5CFA" ic OrangeRed bc OrangeRed sex f
-26 "0006CC527C" ic Gray55 bc Gray55 sex u
-27 "0006B8B9BE" ic Gray55 bc Gray55 sex u
-28 "0006CC4E98" ic Gray55 bc Gray55 sex u
-29 "0006CD449E" ic Gray55 bc Gray55 sex u
+26 "0006CC527C" ic CornflowerBlue bc CornflowerBlue sex m
+27 "0006B8B9BE" ic CornflowerBlue bc CornflowerBlue sex m
+28 "0006CC4E98" ic CornflowerBlue bc CornflowerBlue sex m
+29 "0006CD449E" ic CornflowerBlue bc CornflowerBlue sex m
 30 "0006B8E98C" ic CornflowerBlue bc CornflowerBlue sex m
 31 "0006954D6A" ic OrangeRed bc OrangeRed sex f
 32 "0006B9D3CB" ic CornflowerBlue bc CornflowerBlue sex m
-33 "0006CC4AE7" ic Gray55 bc Gray55 sex u
-34 "0006CC78D9" ic Gray55 bc Gray55 sex u
+33 "0006CC4AE7" ic OrangeRed bc OrangeRed sex f
+34 "0006CC78D9" ic OrangeRed bc OrangeRed sex f
 35 "0006CC5680" ic Gray55 bc Gray55 sex u
 36 "0006B8D45A" ic OrangeRed bc OrangeRed sex f
 37 "0006954921" ic CornflowerBlue bc CornflowerBlue sex m
 38 "0006B9D1A1" ic OrangeRed bc OrangeRed sex f
-39 "0006CC5B3E" ic Gray55 bc Gray55 sex u
-40 "0006CD3416" ic Gray55 bc Gray55 sex u
-41 "0006CD3C53" ic Gray55 bc Gray55 sex u
+39 "0006CC5B3E" ic CornflowerBlue bc CornflowerBlue sex m
+40 "0006CD3416" ic OrangeRed bc OrangeRed sex f
+41 "0006CD3C53" ic CornflowerBlue bc CornflowerBlue sex m
 42 "0006B8CC8C" ic OrangeRed bc OrangeRed sex f
 43 "00069555C7" ic CornflowerBlue bc CornflowerBlue sex m
-44 "0006CD4C6E" ic Gray55 bc Gray55 sex u
+44 "0006CD4C6E" ic CornflowerBlue bc CornflowerBlue sex m
 45 "0006B8E2FD" ic OrangeRed bc OrangeRed sex f
 46 "00069B4D4D" ic OrangeRed bc OrangeRed sex f
-47 "0006CD65BE" ic Gray55 bc Gray55 sex u
-48 "0006B8CED4" ic Gray55 bc Gray55 sex u
-49 "0006CC4B21" ic Gray55 bc Gray55 sex u
-50 "0006CC56DC" ic Gray55 bc Gray55 sex u
-51 "0006CC6490" ic Gray55 bc Gray55 sex u
-52 "0006CC77B2" ic Gray55 bc Gray55 sex u
-53 "0006CC40EA" ic Gray55 bc Gray55 sex u
-54 "0006CC3EFA" ic Gray55 bc Gray55 sex u
-55 "0006CC5C30" ic Gray55 bc Gray55 sex u
-56 "0006CC4228" ic Gray55 bc Gray55 sex u
+47 "0006CD65BE" ic CornflowerBlue bc CornflowerBlue sex m
+48 "0006B8CED4" ic CornflowerBlue bc CornflowerBlue sex m
+49 "0006CC4B21" ic OrangeRed bc OrangeRed sex f
+50 "0006CC56DC" ic CornflowerBlue bc CornflowerBlue sex m
+51 "0006CC6490" ic CornflowerBlue bc CornflowerBlue sex m
+52 "0006CC77B2" ic CornflowerBlue bc CornflowerBlue sex m
+53 "0006CC40EA" ic CornflowerBlue bc CornflowerBlue sex m
+54 "0006CC3EFA" ic OrangeRed bc OrangeRed sex f
+55 "0006CC5C30" ic OrangeRed bc OrangeRed sex f
+56 "0006CC4228" ic OrangeRed bc OrangeRed sex f
 57 "0006B9C5E8" ic OrangeRed bc OrangeRed sex f
-58 "0006CC79CA" ic Gray55 bc Gray55 sex u
-59 "0006CC44DB" ic Gray55 bc Gray55 sex u
-60 "0006CC4C2F" ic Gray55 bc Gray55 sex u
-61 "0006CD4E3B" ic Gray55 bc Gray55 sex u
-62 "0006CC62D7" ic Gray55 bc Gray55 sex u
+58 "0006CC79CA" ic CornflowerBlue bc CornflowerBlue sex m
+59 "0006CC44DB" ic OrangeRed bc OrangeRed sex f
+60 "0006CC4C2F" ic CornflowerBlue bc CornflowerBlue sex m
+61 "0006CD4E3B" ic CornflowerBlue bc CornflowerBlue sex m
+62 "0006CC62D7" ic OrangeRed bc OrangeRed sex f
 63 "0006B9B745" ic OrangeRed bc OrangeRed sex f
-64 "0006CC49D7" ic Gray55 bc Gray55 sex u
-65 "0006CC7774" ic Gray55 bc Gray55 sex u
+64 "0006CC49D7" ic OrangeRed bc OrangeRed sex f
+65 "0006CC7774" ic OrangeRed bc OrangeRed sex f
 66 "0006B9CCE9" ic OrangeRed bc OrangeRed sex f
-67 "0006CC576C" ic Gray55 bc Gray55 sex u
-68 "0006CC62BF" ic Gray55 bc Gray55 sex u
-69 "0006CC4053" ic Gray55 bc Gray55 sex u
+67 "0006CC576C" ic CornflowerBlue bc CornflowerBlue sex m
+68 "0006CC62BF" ic CornflowerBlue bc CornflowerBlue sex m
+69 "0006CC4053" ic CornflowerBlue bc CornflowerBlue sex m
 70 "0006B9D225" ic OrangeRed bc OrangeRed sex f
-71 "0006CD4CDC" ic Gray55 bc Gray55 sex u
-72 "0006CC47D6" ic Gray55 bc Gray55 sex u
-73 "0006CC4A3E" ic Gray55 bc Gray55 sex u
+71 "0006CD4CDC" ic CornflowerBlue bc CornflowerBlue sex m
+72 "0006CC47D6" ic CornflowerBlue bc CornflowerBlue sex m
+73 "0006CC4A3E" ic OrangeRed bc OrangeRed sex f
 74 "0006CC76E8" ic Gray55 bc Gray55 sex u
-75 "0006CC77E5" ic Gray55 bc Gray55 sex u
+75 "0006CC77E5" ic CornflowerBlue bc CornflowerBlue sex m
 76 "0006B8D0DF" ic OrangeRed bc OrangeRed sex f
-77 "0006CC40FA" ic Gray55 bc Gray55 sex u
+77 "0006CC40FA" ic CornflowerBlue bc CornflowerBlue sex m
 78 "0006B8BADB" ic CornflowerBlue bc CornflowerBlue sex m
-79 "0006CC6D31" ic Gray55 bc Gray55 sex u
+79 "0006CC6D31" ic CornflowerBlue bc CornflowerBlue sex m
 80 "0006B8D5CC" ic CornflowerBlue bc CornflowerBlue sex m
 81 "0006B8E0D4" ic OrangeRed bc OrangeRed sex f
 82 "0006B9D7D8" ic OrangeRed bc OrangeRed sex f
-83 "0006CD5D56" ic Gray55 bc Gray55 sex u
-84 "0006CC50D5" ic Gray55 bc Gray55 sex u
+83 "0006CD5D56" ic OrangeRed bc OrangeRed sex f
+84 "0006CC50D5" ic OrangeRed bc OrangeRed sex f
 85 "0006B9A9A2" ic OrangeRed bc OrangeRed sex f
-86 "0006CC68DF" ic Gray55 bc Gray55 sex u
+86 "0006CC68DF" ic OrangeRed bc OrangeRed sex f
 87 "0006B9BAB9" ic OrangeRed bc OrangeRed sex f
-88 "0006CC5B4E" ic Gray55 bc Gray55 sex u
-89 "0006CC4618" ic Gray55 bc Gray55 sex u
-90 "0006CC43B9" ic Gray55 bc Gray55 sex u
-91 "0006CC62B7" ic Gray55 bc Gray55 sex u
-92 "0006CD682A" ic Gray55 bc Gray55 sex u
-93 "0006CD4185" ic Gray55 bc Gray55 sex u
+88 "0006CC5B4E" ic CornflowerBlue bc CornflowerBlue sex m
+89 "0006CC4618" ic CornflowerBlue bc CornflowerBlue sex m
+90 "0006CC43B9" ic CornflowerBlue bc CornflowerBlue sex m
+91 "0006CC62B7" ic CornflowerBlue bc CornflowerBlue sex m
+92 "0006CD682A" ic CornflowerBlue bc CornflowerBlue sex m
+93 "0006CD4185" ic CornflowerBlue bc CornflowerBlue sex m
 94 "0006B9D8C8" ic CornflowerBlue bc CornflowerBlue sex m
 95 "0006B9C383" ic OrangeRed bc OrangeRed sex f
 96 "0006B9AED6" ic CornflowerBlue bc CornflowerBlue sex m
@@ -122,12 +122,10 @@
 7 3 1 [1-*]
 7 6 1 [1-*]
 11 9 1 [1-*]
-11 6 1 [1-*]
 11 8 1 [1-*]
 11 2 1 [1-*]
 11 3 1 [1-*]
 11 1 1 [1-*]
-11 10 1 [1-*]
 11 7 1 [1-*]
 6 2 1 [1-*]
 6 1 1 [1-*]
@@ -136,53 +134,24 @@
 10 2 1 [1-*]
 10 1 1 [1-*]
 10 7 1 [1-*]
-10 6 1 [1-*]
-10 3 1 [1-*]
 9 1 1 [1-*]
 9 7 1 [1-*]
 9 8 1 [1-*]
 9 2 1 [1-*]
 9 3 1 [1-*]
 9 6 1 [1-*]
-9 10 1 [1-*]
-12 14 1 [1-*]
-16 12 1 [1-*]
 16 13 1 [1-*]
-16 14 1 [1-*]
-17 16 1 [1-*]
-18 14 1 [1-*]
-14 13 1 [1-*]
 16 21 1 [1-*]
-18 17 1 [1-*]
-15 22 1 [1-*]
-14 22 1 [1-*]
-14 20 1 [1-*]
 16 23 1 [1-*]
 16 20 1 [1-*]
-17 13 1 [1-*]
-24 16 1 [1-*]
-24 23 1 [1-*]
-24 20 1 [1-*]
-24 25 1 [1-*]
-24 26 1 [1-*]
-24 13 1 [1-*]
-23 13 1 [1-*]
-20 13 1 [1-*]
-17 20 1 [1-*]
-21 20 1 [1-*]
-27 14 1 [1-*]
 27 21 1 [1-*]
 27 16 1 [1-*]
-27 17 1 [1-*]
-27 20 1 [1-*]
 27 28 1 [1-*]
 27 22 1 [1-*]
 27 29 1 [1-*]
 27 26 1 [1-*]
-27 24 1 [1-*]
 27 30 1 [1-*]
 27 13 1 [1-*]
-27 15 1 [1-*]
 27 18 1 [1-*]
 27 25 1 [1-*]
 27 23 1 [1-*]
@@ -192,74 +161,42 @@
 16 30 1 [1-*]
 16 25 1 [1-*]
 16 22 1 [1-*]
-16 15 1 [1-*]
-17 22 1 [1-*]
-17 29 1 [1-*]
-17 26 1 [1-*]
-17 21 1 [1-*]
-17 30 1 [1-*]
-17 28 1 [1-*]
-17 23 1 [1-*]
-17 25 1 [1-*]
 18 30 1 [1-*]
 18 16 1 [1-*]
 18 25 1 [1-*]
 18 13 1 [1-*]
-18 20 1 [1-*]
 18 22 1 [1-*]
 18 29 1 [1-*]
-18 23 1 [1-*]
 18 26 1 [1-*]
 18 21 1 [1-*]
-18 15 1 [1-*]
 18 28 1 [1-*]
 28 30 1 [1-*]
 28 16 1 [1-*]
-28 20 1 [1-*]
 28 29 1 [1-*]
 28 23 1 [1-*]
 28 26 1 [1-*]
-28 13 1 [1-*]
 28 22 1 [1-*]
 28 21 1 [1-*]
-28 25 1 [1-*]
-28 15 1 [1-*]
-15 13 1 [1-*]
-15 30 1 [1-*]
 26 30 1 [1-*]
 26 16 1 [1-*]
 26 25 1 [1-*]
 26 13 1 [1-*]
 26 20 1 [1-*]
-26 14 1 [1-*]
 26 22 1 [1-*]
 26 23 1 [1-*]
-26 15 1 [1-*]
 26 21 1 [1-*]
 21 22 1 [1-*]
-21 15 1 [1-*]
 21 30 1 [1-*]
 21 13 1 [1-*]
 22 13 1 [1-*]
-22 20 1 [1-*]
 25 13 1 [1-*]
 25 23 1 [1-*]
 25 30 1 [1-*]
-25 20 1 [1-*]
 25 22 1 [1-*]
 25 21 1 [1-*]
-24 29 1 [1-*]
-24 22 1 [1-*]
-24 18 1 [1-*]
-24 21 1 [1-*]
-24 28 1 [1-*]
-24 30 1 [1-*]
 23 22 1 [1-*]
-23 20 1 [1-*]
-23 14 1 [1-*]
 23 21 1 [1-*]
 23 30 1 [1-*]
-29 14 1 [1-*]
 29 22 1 [1-*]
 29 26 1 [1-*]
 29 21 1 [1-*]
@@ -269,39 +206,20 @@
 29 23 1 [1-*]
 29 30 1 [1-*]
 29 16 1 [1-*]
-29 15 1 [1-*]
-27 35 1 [1-*]
-18 35 1 [1-*]
-35 13 1 [1-*]
-35 22 1 [1-*]
-36 37 1 [1-*]
 38 37 1 [1-*]
-38 39 1 [1-*]
 38 36 1 [1-*]
 38 33 1 [1-*]
-33 37 1 [1-*]
 33 36 1 [1-*]
-33 39 1 [1-*]
-39 37 1 [1-*]
 39 36 1 [1-*]
-41 36 1 [1-*]
-31 42 1 [1-*]
-31 43 1 [1-*]
 31 36 1 [1-*]
-31 40 1 [1-*]
-31 39 1 [1-*]
 31 45 1 [1-*]
-31 46 1 [1-*]
-31 47 1 [1-*]
 46 39 1 [1-*]
 46 43 1 [1-*]
 46 40 1 [1-*]
-46 44 1 [1-*]
 46 47 1 [1-*]
 46 42 1 [1-*]
 46 45 1 [1-*]
 46 36 1 [1-*]
-42 44 1 [1-*]
 42 43 1 [1-*]
 42 40 1 [1-*]
 42 39 1 [1-*]
@@ -309,38 +227,22 @@
 42 45 1 [1-*]
 42 47 1 [1-*]
 48 31 1 [1-*]
-48 42 1 [1-*]
 48 49 1 [1-*]
-48 39 1 [1-*]
-48 44 1 [1-*]
-48 43 1 [1-*]
 36 43 1 [1-*]
 36 45 1 [1-*]
 45 43 1 [1-*]
 38 46 1 [1-*]
-38 43 1 [1-*]
 38 45 1 [1-*]
-38 50 1 [1-*]
-38 40 1 [1-*]
-38 44 1 [1-*]
 38 31 1 [1-*]
-38 51 1 [1-*]
-38 42 1 [1-*]
-38 47 1 [1-*]
 38 49 1 [1-*]
 33 46 1 [1-*]
-33 43 1 [1-*]
-33 47 1 [1-*]
-33 42 1 [1-*]
 33 45 1 [1-*]
-33 40 1 [1-*]
 33 31 1 [1-*]
 49 46 1 [1-*]
 49 39 1 [1-*]
 49 43 1 [1-*]
 49 36 1 [1-*]
 49 40 1 [1-*]
-49 44 1 [1-*]
 49 42 1 [1-*]
 49 50 1 [1-*]
 49 31 1 [1-*]
@@ -350,14 +252,12 @@
 50 43 1 [1-*]
 50 40 1 [1-*]
 50 39 1 [1-*]
-50 44 1 [1-*]
 50 46 1 [1-*]
 50 47 1 [1-*]
 50 36 1 [1-*]
 50 33 1 [1-*]
 50 42 1 [1-*]
 50 45 1 [1-*]
-50 31 1 [1-*]
 39 43 1 [1-*]
 39 47 1 [1-*]
 39 45 1 [1-*]
@@ -372,81 +272,42 @@
 51 44 1 [1-*]
 51 49 1 [1-*]
 51 45 1 [1-*]
-51 31 1 [1-*]
-51 33 1 [1-*]
 40 43 1 [1-*]
 40 39 1 [1-*]
 40 47 1 [1-*]
 40 45 1 [1-*]
 40 36 1 [1-*]
-41 43 1 [1-*]
-44 47 1 [1-*]
 44 43 1 [1-*]
 44 40 1 [1-*]
-44 36 1 [1-*]
 44 39 1 [1-*]
-44 45 1 [1-*]
 47 43 1 [1-*]
 47 36 1 [1-*]
-48 47 1 [1-*]
-48 33 1 [1-*]
-48 51 1 [1-*]
-48 40 1 [1-*]
 48 36 1 [1-*]
-48 46 1 [1-*]
-48 50 1 [1-*]
 48 38 1 [1-*]
 48 45 1 [1-*]
-48 41 1 [1-*]
-38 41 1 [1-*]
-33 41 1 [1-*]
-49 41 1 [1-*]
-50 41 1 [1-*]
-51 41 1 [1-*]
-41 39 1 [1-*]
-41 46 1 [1-*]
-41 45 1 [1-*]
 41 47 1 [1-*]
-41 40 1 [1-*]
-41 42 1 [1-*]
-47 45 1 [1-*]
-31 37 1 [1-*]
-41 31 1 [1-*]
-49 37 1 [1-*]
-37 45 1 [1-*]
 46 31 1 [1-*]
-53 54 1 [1-*]
 55 54 1 [1-*]
-55 53 1 [1-*]
 56 57 1 [1-*]
 56 58 1 [1-*]
 56 59 1 [1-*]
 56 60 1 [1-*]
-56 61 1 [1-*]
 56 62 1 [1-*]
-56 63 1 [1-*]
 59 57 1 [1-*]
-59 61 1 [1-*]
 59 62 1 [1-*]
 64 56 1 [1-*]
-64 61 1 [1-*]
 64 59 1 [1-*]
 64 57 1 [1-*]
 64 60 1 [1-*]
 64 58 1 [1-*]
 60 57 1 [1-*]
 60 59 1 [1-*]
-60 61 1 [1-*]
 62 57 1 [1-*]
 58 57 1 [1-*]
 58 60 1 [1-*]
 58 59 1 [1-*]
-63 57 1 [1-*]
-63 59 1 [1-*]
 56 66 1 [1-*]
-58 63 1 [1-*]
 63 66 1 [1-*]
-63 62 1 [1-*]
 66 57 1 [1-*]
 70 56 1 [1-*]
 70 62 1 [1-*]
@@ -463,15 +324,10 @@
 62 66 1 [1-*]
 65 57 1 [1-*]
 71 57 1 [1-*]
-71 63 1 [1-*]
 71 62 1 [1-*]
-74 75 1 [1-*]
-74 65 1 [1-*]
 65 75 1 [1-*]
 75 57 1 [1-*]
-76 72 1 [1-*]
 76 66 1 [1-*]
-63 72 1 [1-*]
 63 76 1 [1-*]
 70 66 1 [1-*]
 70 57 1 [1-*]
@@ -481,38 +337,23 @@
 70 76 1 [1-*]
 73 63 1 [1-*]
 73 76 1 [1-*]
-62 76 1 [1-*]
 71 66 1 [1-*]
 71 72 1 [1-*]
 71 59 1 [1-*]
-76 77 1 [1-*]
 63 77 1 [1-*]
-70 77 1 [1-*]
-77 66 1 [1-*]
 78 76 1 [1-*]
-78 70 1 [1-*]
-78 63 1 [1-*]
-78 66 1 [1-*]
-78 73 1 [1-*]
-80 81 1 [1-*]
-85 87 1 [1-*]
 87 88 1 [1-*]
 87 89 1 [1-*]
 87 81 1 [1-*]
-87 86 1 [1-*]
-87 80 1 [1-*]
 87 82 1 [1-*]
 82 83 1 [1-*]
 90 83 1 [1-*]
 90 89 1 [1-*]
 90 88 1 [1-*]
 90 87 1 [1-*]
-90 86 1 [1-*]
 90 91 1 [1-*]
 90 84 1 [1-*]
-89 80 1 [1-*]
 89 82 1 [1-*]
-89 92 1 [1-*]
 89 81 1 [1-*]
 89 84 1 [1-*]
 89 83 1 [1-*]
@@ -522,11 +363,7 @@
 88 93 1 [1-*]
 91 88 1 [1-*]
 86 80 1 [1-*]
-86 88 1 [1-*]
 86 89 1 [1-*]
-86 81 1 [1-*]
-86 84 1 [1-*]
-86 93 1 [1-*]
 81 84 1 [1-*]
 87 32 1 [1-*]
 87 93 1 [1-*]
@@ -535,7 +372,6 @@
 87 84 1 [1-*]
 95 32 1 [1-*]
 95 84 1 [1-*]
-95 88 1 [1-*]
 32 84 1 [1-*]
 32 81 1 [1-*]
 94 81 1 [1-*]
@@ -550,8 +386,6 @@
 89 94 1 [1-*]
 88 32 1 [1-*]
 88 84 1 [1-*]
-88 94 1 [1-*]
-86 32 1 [1-*]
 93 81 1 [1-*]
 93 84 1 [1-*]
 93 32 1 [1-*]
@@ -564,12 +398,9 @@
 87 91 1 [1-*]
 87 83 1 [1-*]
 87 92 1 [1-*]
-95 96 1 [1-*]
 95 82 1 [1-*]
 95 93 1 [1-*]
 95 81 1 [1-*]
-95 94 1 [1-*]
-95 89 1 [1-*]
 95 83 1 [1-*]
 95 92 1 [1-*]
 32 96 1 [1-*]
@@ -583,16 +414,12 @@
 94 82 1 [1-*]
 94 92 1 [1-*]
 90 96 1 [1-*]
-90 95 1 [1-*]
-90 92 1 [1-*]
 89 96 1 [1-*]
 84 96 1 [1-*]
 84 83 1 [1-*]
 88 96 1 [1-*]
 88 82 1 [1-*]
-88 92 1 [1-*]
 91 81 1 [1-*]
-91 94 1 [1-*]
 91 95 1 [1-*]
 91 82 1 [1-*]
 91 84 1 [1-*]
@@ -601,129 +428,108 @@
 91 89 1 [1-*]
 91 93 1 [1-*]
 91 32 1 [1-*]
-91 92 1 [1-*]
 93 82 1 [1-*]
 93 83 1 [1-*]
 93 96 1 [1-*]
-93 92 1 [1-*]
 92 82 1 [1-*]
-92 83 1 [1-*]
 92 81 1 [1-*]
 92 32 1 [1-*]
-92 96 1 [1-*]
 92 84 1 [1-*]
-85 81 1 [1-*]
-85 95 1 [1-*]
-85 82 1 [1-*]
-85 91 1 [1-*]
-85 92 1 [1-*]
-85 89 1 [1-*]
-85 94 1 [1-*]
-85 32 1 [1-*]
-85 84 1 [1-*]
-85 83 1 [1-*]
-85 93 1 [1-*]
-97 92 1 [1-*]
-97 87 1 [1-*]
-97 95 1 [1-*]
-97 32 1 [1-*]
-97 81 1 [1-*]
-97 94 1 [1-*]
 *Partition gender
 *Vertices 97
 2
 3
-3
-3
-3
-3
-3
-3
-3
-3
-3
-2
-3
-3
-3
 1
-3
-3
-3
-3
-3
-3
-3
-3
 1
-3
-3
-3
-3
-2
 1
-2
-3
-3
-3
+1
 1
 2
 1
-3
-3
-3
+2
 1
 2
-3
 1
-1
-3
-3
-3
-3
-3
-3
-3
-3
-3
-3
-1
-3
-3
-3
-3
-3
-1
-3
-3
-1
-3
-3
-3
-1
-3
-3
-3
-3
-3
-1
-3
 2
+1
+1
+2
+1
 3
 2
 1
 1
 3
-3
+2
+1
+2
+2
+2
+2
+2
+1
+2
+1
 1
 3
 1
+2
+1
+2
+1
+2
+1
+2
+2
+1
+1
+2
+2
+1
+2
+2
+2
+2
+1
+1
+1
+1
+2
+1
+2
+2
+1
+1
+1
+1
+1
+2
+2
+2
+1
+2
+2
+1
 3
-3
-3
-3
-3
-3
+2
+1
+2
+2
+2
+2
+1
+1
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+2
 2
 1
 2

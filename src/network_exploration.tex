@@ -282,7 +282,7 @@ B_i =	\sum_{
 
 For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
 
-Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects two groups of nodes within the network as shown in figure \ref{fig:broker}. The node colored red is called a \textit{Broker}, since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network. 
+Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects two groups of nodes within the network as shown in figure \ref{fig:broker}. The node colored red is called a \textit{Broker}, since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -293,8 +293,9 @@ Usually the betweeness values correlate with the degree. But sometimes, a node c
 \end{figure}
 
 \paragraph{Model networks}
+\label{para:model_networks}
 
-Node based measures calculated for a network needs to be compared to some kind of a null model network, which is very well studied and understood. After all, this reveals the significant differences of a network in question to a network which is just created by chance.
+Node based measures calculated for a network can be compared to some kind of a null model network, which is very well studied and understood. After all, this reveals the significant differences of a network in question to a network which is just created by chance.
 
 Such models networks are for example the \textbf{Regular Network} (figure \ref{fig:regular_graph}), \textbf{Random Network} (figure \ref{fig:random_graph}), \textbf{Small World Network} and the \textbf{Scale-Free Networks}.
 
@@ -387,6 +388,7 @@ This panel offers settings to vary the different aspects of the network visualiz
 Normally the network layout is done by a so called layouter. In this case, a force directed layouter is used, which treats the edges as they were springs. These spring forces determine the final position of a node. Consequently, nodes with a high degree are placed more in the center and the others in the periphery. At times, this can make it difficult to examine and select a node which lies in a central location, due to the entanglement of nodes and edges in this area. Therefore, the automatic layout can be switched off and the nodes can be dragged freely to a desired position.
 
 \subsubsection*{Export options} 
+\label{subsubsec:export_options}
 
 Since the \textit{miceminer} does not offer a full set of tools for social network analysis, a variety of export options are available.
 
@@ -427,6 +429,3 @@ The chart view is used to bin the data by the meeting duration. The number of bi
   \label{fig:edge_data_panel_chart}
 \end{center}
 \end{figure}   
-
-%\subsection{A possible research approache}
-%\label{subsec:graph_research}
