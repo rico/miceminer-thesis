@@ -69,7 +69,7 @@ node_level_values <- function (net) {
 	clusteringC = round(transitivity(i_g, type="global"),4)
 	
 
-	values = c(vcount(i_g), count_attribute_occurance(net,"SEX","f") , count_attribute_occurance(net,"SEX","m"), count_attribute_occurance(net,"SEX","u"), vcount(i_g)*.5*(vcount(i_g) -1), ecount(i_g), round( gden(net,mode="graph"),4), round(mean(degree(i_g)),4), avgPathLength, clusteringC)
+	values = c(vcount(i_g), count_attribute_occurance(net,"SEX","f") , count_attribute_occurance(net,"SEX","m"), count_attribute_occurance(net,"SEX","u"), vcount(i_g)*.5*(vcount(i_g) -1), ecount(i_g), round( gden(net,mode="graph"),4), round(mean(igraph::degree(i_g)),4), avgPathLength, clusteringC)
 	
 	return(values)
 }
@@ -183,12 +183,43 @@ to_igraph <- function(net) {
 }
 
 #
+# run gender extract over a stack of networks
+#
+gender_extract_nets <- function(nets) {
+
+	# the data frame
+	indices_frame_ff = data.frame(value_labels= c("Nodes (connected)", "Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )
+	indices_frame_mm = data.frame(value_labels= c("Nodes (connected)", "Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )
+	indices_frame_fm = data.frame(value_labels= c("Nodes (connected)", "Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )
+	
+	for( i in 1:length(nets) ) {
+		indices = gender_extract(nets[[i]], valuesOnly=TRUE)
+		indices_frame_ff[[nets[[i]] %n% "LABEL"]] <- indices$ff
+		indices_frame_mm[[nets[[i]] %n% "LABEL"]] <- indices$mm
+		indices_frame_fm[[nets[[i]] %n% "LABEL"]] <- indices$fm
+		
+	}
+	
+	indices = list("ff"= indices_frame_ff, "mm"= indices_frame_mm, "fm"=indices_frame_fm)
+	
+	return(indices)
+	
+
+}
+
+#
 # Extract inner / inter gender networks
 #
-gender_extract <- function(net, asNets=FALSE) {
+gender_extract <- function(net, asNets=FALSE, valuesOnly=FALSE) {
 
-
+	# label
 	net_label = net %n% "LABEL"
+	# gender
+	sex = net %v% "SEX"
+	# node colors
+	node_colors = net %v% "NODE_COLOR"
+	# vertex names
+	vnames = net %v% "vertex.names"
 	
 	# edgelist
 	edgelst = edgelist <- as.edgelist(net)
@@ -207,8 +238,7 @@ gender_extract <- function(net, asNets=FALSE) {
 	ff_i = 1
 	fm_i = 1
 	
-	# Gender data vector
-	sex = net %v% "SEX"
+	
 	
 	# loop edge list
 	row_num = 1
@@ -262,27 +292,52 @@ gender_extract <- function(net, asNets=FALSE) {
 	net_ff = network(edgelist_ff,matrix.type="edgelist",directed=FALSE)
 	label_ff = paste(net_label,"(ff)", sep=" ")
 	set.network.attribute(net_ff, "LABEL", "ff")
+	set.vertex.attribute(net_ff, "NODE_COLOR", node_colors)
+	set.vertex.attribute(net_ff, "vertex.names", vnames)
 	
 	net_mm = network(edgelist_mm,matrix.type="edgelist",directed=FALSE)
 	label_mm = paste(net_label,"(mm)", sep=" ")
-	set.network.attribute(net_mm, "LABEL", "mm")	
+	set.network.attribute(net_mm, "LABEL", "mm")
+	set.vertex.attribute(net_mm, "NODE_COLOR", node_colors)	
+	set.vertex.attribute(net_mm, "vertex.names", vnames)
 	
 	net_fm = network(edgelist_fm,matrix.type="edgelist",directed=FALSE)
 	label_fm = paste(net_label,"(fm)", sep=" ")
-	set.network.attribute(net_fm, "LABEL", "fm")	
-	
-	networks = list(net_ff,net_mm, net_fm)
-	#networks = c(net_ff,net_mm, net_fm)
+	set.network.attribute(net_fm, "LABEL", "fm")
+	set.vertex.attribute(net_fm, "NODE_COLOR", node_colors)
+	set.vertex.attribute(net_fm, "vertex.names", node_colors)
+	set.vertex.attribute(net_fm, "vertex.names", vnames)	
 	
 	if(asNets == TRUE) {
-		nets = list("ff"=net_ff,"mm"=net_mm, "mf"=net_fm)
+	
+		nets = list("ff"=net_ff,"mm"=net_mm, "fm"=net_fm)
+		return(nets)
+		
 	} else {
-		indices_frame = data.frame(value_labels= c("Nodes","Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )	
-		indices_frame[label_ff] <- factor( gender_extract_node_level_values(net_ff,length(unique(unlist(data_ff)))) )
-		indices_frame[label_mm] <- factor( gender_extract_node_level_values(net_mm,length(unique(unlist(data_mm)))) )
-		indices_frame[label_fm] <- factor( gender_extract_node_level_values(net_fm,length(unique(unlist(data_fm)))) )
+		
+		indices_ff = gender_extract_node_level_values(net_ff,length(unique(unlist(data_ff))))
+		indices_mm = gender_extract_node_level_values(net_mm,length(unique(unlist(data_mm))))
+		indices_fm = gender_extract_node_level_values(net_fm,length(unique(unlist(data_fm))))
+		
+		if(valuesOnly == FALSE) {
+			indices_frame = data.frame(value_labels= c("Nodes (connected)", "Edges","Mean degree", "Average Path Length", "Cc","Mean betweenness") )	
+			indices_frame[label_ff] <- factor( indices_ff )
+			indices_frame[label_mm] <- factor( indices_mm )
+			indices_frame[label_fm] <- factor( indices_fm )
 			
-		return(indices_frame)
+			return(indices_frame)
+			
+		} else {
+			indices_values = list(
+				"ff" = indices_ff,
+				"mm" = indices_mm,
+				"fm" = indices_fm
+			)
+			
+			return(indices_values)
+		}
+			
+
 	}
 	
 
@@ -296,7 +351,7 @@ gender_extract_node_level_values <- function(net, nodes) {
 	
 	igraph = to_igraph(net);
 	
-	indices = c( nodes, ecount(igraph), round(mean(degree.distribution(igraph)),3), round(average.path.length(igraph, directed=FALSE, unconnected=TRUE),3), round(transitivity(igraph, type="global"),3), round(mean(betweenness(igraph, directed = FALSE)),3) )
+	indices = c(nodes, igraph::ecount(igraph), round(mean(igraph::degree.distribution(igraph)),3), round(igraph::average.path.length(igraph, directed=FALSE, unconnected=TRUE),3), round(igraph::transitivity(igraph, type="global"),3), round(mean(igraph::betweenness(igraph, directed=FALSE)),3) )
 	
 	return(indices)
 	
@@ -319,3 +374,24 @@ get_gender <- function(net, index) {
 #
 # plot network
 #
+custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE) {
+	
+	if(colored == T) {
+		v_colors = net %v% "NODE_COLOR"
+	} else {
+		v_colors = c("gray35")
+	}
+	plot(net, layout.par=list(repulse.rad=40000), vertex.col=v_colors, vertex.sides=30, object.scale=0.015, displayisolates=di, displaylabels=dl, boxed.labels=F, label.cex=0.5, label.pos=3, pad=0.5,usecurve=F,edge.curve=F,uselen=T,edge.len=2)
+}
+
+#
+# degree layout
+#
+network.layout.deg_bet <- function(d, layout.par){ 
+	deg <- degree(d, cmode = "indegree") 
+	bet <- betweenness(d, gmode="graph", cmode="undirected")
+	cbind(deg, bet) 
+}
+
+
+
