@@ -377,7 +377,7 @@ get_gender <- function(net, index) {
 #
 # plot network
 #
-custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlf=1.3, genders=c()) {
+custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlc=TRUE, hlf=1.3, genders=c(), prop=c()) {
 
 	vert = length(net %v% "vertices")
 	
@@ -419,13 +419,22 @@ custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlf=1.3, 
 		
 		i= 1
 		for( i in 1:length(hl) ) {
-			v_colors[ hl[i] ] = "red2"
+			if(hlc == TRUE) {
+				v_colors[ hl[i] ] = "red2"
+			}
 			v_sizes[ hl[i] ] = hlf
 			
 			i = i + 1
 		}
 	
 	}
+	
+	# proportional node sizes
+	if( length(prop) != 0) {
+		v_sizes = prop
+	}
+	
+	
 	
 	
 	
@@ -439,6 +448,43 @@ network.layout.deg_bet <- function(d, layout.par){
 	deg <- degree(d, cmode = "indegree") 
 	bet <- betweenness(d, gmode="graph", cmode="undirected")
 	cbind(deg, bet) 
+}
+
+
+#
+# normalize to the values specified by max
+#
+normalize <- function (values, lower=0.5, upper=2) {
+	
+	# min / max values in vector
+	min_value = min(values)
+	max_value = max(values)
+
+	normalized_values = c()
+	
+	i = 1
+	for( i in 1:length(values) ) {
+	
+		norm_value = lower + (values[i] - min_value)*(upper - lower)/(max_value - min_value)
+		
+		#y = 1 + (x-A)*(10-1)/(B-A)
+		
+		#y = lower + (values[i] - min_value)*(upper - lower)/(max_value - min_value)
+		
+		#A: min_value
+		#B: max_value
+		#1: lower
+		#10: upper
+		#x: values[i]
+		
+		
+		normalized_values = append(normalized_values, norm_value)
+		i = i + 1
+	}
+	
+
+	return(normalized_values)
+	
 }
 
 

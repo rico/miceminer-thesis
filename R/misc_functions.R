@@ -1,7 +1,7 @@
 #
 # plot histogram of meeting duration for january 09
 #
-plot_meeting_dur_hist <- func(data) {
+plot_meeting_dur_hist <- function(data) {
 	
 	meetings_hist = hist(unlist(data[1]), breaks=2000, plot=F,freq=F)
 	plot(meetings_hist, xlim=c(60,800000),xlab="monthly meeting duration (s)",col="lightblue2",main="",freq=T)
@@ -9,5 +9,19 @@ plot_meeting_dur_hist <- func(data) {
 	abline(v = 164235, col = "orangered3", lty="dotdash")
 	abline(v = 115801, col = "olivedrab3", lty="dotdash")
 	text(165000,210,"mean: 45:37:15",col="orangered3",pos=4)
+	
+}
+
+
+#
+# normalize to the values specified by max
+#
+normalize <- function (values, basis=1) {
+	
+	max_val = max(values)
+	print(max_val)
+	normalized_values = sapply(values, function(x) basis * (max_val/(x*100)) )
+	
+	return(normalized_values)
 	
 }
