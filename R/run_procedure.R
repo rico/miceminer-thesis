@@ -11,7 +11,7 @@ library(sna)
 #
 # !!!!!!! only for testing
 #
-#rm(list=ls(all=TRUE))
+rm(list=ls(all=TRUE))
 	
 
 # load functions file

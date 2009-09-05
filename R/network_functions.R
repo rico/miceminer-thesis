@@ -30,7 +30,7 @@ node_color <- function(gender_vec)
 		gender = gender_vec[i]
 		
 		if(gender == "u") {
-			gender_color[i] = "gray35"
+			gender_color[i] = "grey77"
 		} else if(gender == 'm') {
 			gender_color[i] =  "deepskyblue"
 		} else if(gender == 'f') {
@@ -294,12 +294,14 @@ gender_extract <- function(net, asNets=FALSE, valuesOnly=FALSE) {
 	set.network.attribute(net_ff, "LABEL", "ff")
 	set.vertex.attribute(net_ff, "NODE_COLOR", node_colors)
 	set.vertex.attribute(net_ff, "vertex.names", vnames)
+	set.vertex.attribute(net_ff, "SEX", sex)
 	
 	net_mm = network(edgelist_mm,matrix.type="edgelist",directed=FALSE)
 	label_mm = paste(net_label,"(mm)", sep=" ")
 	set.network.attribute(net_mm, "LABEL", "mm")
 	set.vertex.attribute(net_mm, "NODE_COLOR", node_colors)	
 	set.vertex.attribute(net_mm, "vertex.names", vnames)
+	set.vertex.attribute(net_mm, "SEX", sex)
 	
 	net_fm = network(edgelist_fm,matrix.type="edgelist",directed=FALSE)
 	label_fm = paste(net_label,"(fm)", sep=" ")
@@ -307,6 +309,7 @@ gender_extract <- function(net, asNets=FALSE, valuesOnly=FALSE) {
 	set.vertex.attribute(net_fm, "NODE_COLOR", node_colors)
 	set.vertex.attribute(net_fm, "vertex.names", node_colors)
 	set.vertex.attribute(net_fm, "vertex.names", vnames)	
+	set.vertex.attribute(net_fm, "SEX", sex)
 	
 	if(asNets == TRUE) {
 	
@@ -374,14 +377,59 @@ get_gender <- function(net, index) {
 #
 # plot network
 #
-custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE) {
+custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlf=1.3, genders=c()) {
+
+	vert = length(net %v% "vertices")
 	
+	# node sizes
+	v_sizes = 1
+	
+	# node border color
+	v_borders = "black"
+	
+	# colored nodes
 	if(colored == T) {
-		v_colors = net %v% "NODE_COLOR"
+		v_colors = net %v% "NODE_COLOR"	
+		
+		if( length(genders) > 0) {
+			
+			v_borders = rep("black", times=vert)
+			
+			i = 1
+			for( i in 1:vert ) {
+				gender = get_gender(net, i)
+				if(length((which(genders == gender))) == 0 ) {
+				
+					v_borders[i] = "white"
+					v_colors[i] = "white"
+				} 				
+
+			}
+			
+		}
+		
 	} else {
-		v_colors = c("gray35")
+		v_colors = rep("grey77", times=vert)
 	}
-	plot(net, layout.par=list(repulse.rad=40000), vertex.col=v_colors, vertex.sides=30, object.scale=0.015, displayisolates=di, displaylabels=dl, boxed.labels=F, label.cex=0.5, label.pos=3, pad=0.5,usecurve=F,edge.curve=F,uselen=T,edge.len=2)
+	
+	# highlight nodes
+	if(length(hl) != 0) {
+	
+		v_sizes= rep(1, times=vert)
+		
+		i= 1
+		for( i in 1:length(hl) ) {
+			v_colors[ hl[i] ] = "red2"
+			v_sizes[ hl[i] ] = hlf
+			
+			i = i + 1
+		}
+	
+	}
+	
+	
+	
+	plot(net, layout.par=list(repulse.rad=40000), vertex.col=v_colors, vertex.cex=v_sizes, vertex.border=v_borders, vertex.sides=30, object.scale=0.015, displayisolates=di, displaylabels=dl, boxed.labels=F, label.cex=0.5, label.pos=3)
 }
 
 #
