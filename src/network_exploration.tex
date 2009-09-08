@@ -282,12 +282,12 @@ B_i =	\sum_{
 
 For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
 
-Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects two groups of nodes within the network as shown in figure \ref{fig:broker}. The node colored red is called a \textit{Broker}, since all the shortest paths between the nodes from the group on the left to the one on the right go through this node. In this example network, several nodes within the groups have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
+Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as he connects two groups of nodes (sub-networks) within the network as shown in figure \ref{fig:broker}. The nodes colored red are called \textit{Brokers}\cite{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/broker.pdf}
-  \caption[Model network consisting of two groups]{Model network consisting of two groups connected by single node, called a \textit{Broker}.}
+  \caption[Model network consisting of two groups]{Model network consisting of two sub-networks connected by two nodes (colored red), called \textit{Brokers}.}
   \label{fig:broker}
 \end{center}
 \end{figure}

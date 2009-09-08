@@ -11,11 +11,9 @@ The sex is the only attribute data for the mice available in the exported networ
 \subsection{Data selection \& edge filtering}
 \label{subsec:data_selection}
 
-The data has been retrieved with a minimal time two mice must have spent together (see \ref{subsec:graph_concept} and \ref{subsec:graph_config}) of 3 hours (6 minutes/day) and 20 hours (1 hour/day) and range from June 2008 to June 2009.Since the data is exported per month, we obtain data for 26 networks (13 for each limit).
+The data has been retrieved with a minimal time two mice must have spent together (see \ref{subsec:graph_concept} and \ref{subsec:graph_config}) of 3 hours (6 minutes/day) and 20 hours (1 hour/day) and range from June 2008 to June 2009. Since the data is exported per month, we obtain data for 26 networks (13 for each limit).
 
-The selection of the two thresholds is based on general considerations. Namely, to have whatever kind of social relation, two mice must spend at least 5 minutes per day ($\frac{5\:min}{day} * 30\:days\:=\:150\:min\:=\:2.5\:hours \approx 3\:hours$) together. To build a biologically more justifiable relationship, however, the mice should spend at least 1 hour per day ($\frac{1\:hour}{day} * 30\:days\:=\:30\:hours$) together. The process of determining the right threshold is called \textit{edge filtering}. 
-
-Figure \ref{fig:meeting_frequency_januray} shows a histogram of the monthly meeting duration for the network data of January 2009. Remember that the edge values are calculated as the sum of the time the two mice spent together during the month (\ref{subsec:graph_concept}).
+The selection of the thresholds is based on the following considerations. To have whatever kind of social relation, two mice must spend at least 5 minutes per day ($\frac{5\:min}{day} * 30\:days\:=\:150\:min\:=\:2.5\:hours \approx 3\:hours$) together. To build a biologically more justifiable relationship, however, the mice should spend at least 1 hour per day ($\frac{1\:hour}{day} * 30\:days\:=\:30\:hours$) together. The process of determining the right threshold is called \textit{edge filtering}. Furthermore, the histogram of the monthly meeting duration\footnote{ Remember that the edge values are calculated as the sum of the time the two mice spent together during the month (see \ref{subsec:graph_concept}).} (see figure \ref{fig:meeting_frequency_januray}) for the network data of January 2009, reveals, that the threshold of 30 hours is close to the mean and median value of this distribution.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -30,7 +28,10 @@ Figure \ref{fig:meeting_frequency_januray} shows a histogram of the monthly meet
 
 The network visualizations in this section have been created using the \textit{network}\cite{network:08} package, which is part of the \textit{statnet}\cite{statnet:03} library. The layout is determined by the \textit{Fruchterman \& Reingold}\cite{fruchterman:91} algorithm, which is a force directed layouter similar to the one used in the \textit{miceminer} implementation (see \ref{subsec:graph_explore}).
 
-Other than the visulization in the \textit{miceminer} application, the \textit{network} package allows to visualize all the network components at the same time and is flexible in terms of the selection of the data to display or the highlighting of specific elements in the visualization.    
+Other than the visulization in the \textit{miceminer} application, the \textit{network} package allows to visualize all the network components at the same time and is flexible in terms of the selection of the data to display or the highlighting of specific elements in the visualization.
+
+\subsubsection{General network structure}
+\label{subsubsec:vis_general}    
 
 Pictured in figures \ref{fig:graph_january_3h} and  \ref{fig:graph_january_30h} are the networks for January 2009 with the edge filter threshold set to 3 hours and 30 hours respectively. Although the edges within the components of the network are not visible, the amount of \textit{isolates}, nodes with a degree of zero, is noticeable higher in the network with an edge filter value set to 30 hours.
 
@@ -65,16 +66,16 @@ To draw some clearer image of the network and since we are interested in the dif
 					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_gender.pdf}
 				} 
 			
-	\caption[Network visualizations with different edge filter values]{A visualization of the network for Januray 2009 with the edge filter treshold set to 3 hours \subref{fig:graph_january_3h} and 30 hours \subref{fig:graph_january_30h}. Additionally, the nodes are colored based on the gender. Female mice are colord pink, males light blue, and mice with an unknown gender grey.} 
+	\caption[Network visualizations with different edge filter values]{A visualization of the network for Januray 2009 with the edge filter treshold set to 3 hours \subref{fig:graph_january_3h} and 30 hours \subref{fig:graph_january_30h}. Additionally, the nodes are colored according to the gender. Female mice are colord pink, males light blue, and mice with an unknown gender grey.} 
 	 
 \end{figure}
 
-Still, the entanglement of the edges within the network components do not allow for a conclusion about specific edges. However, figure \ref{fig:graph_january_30h_gender} exposes a tendency that female mice are located more in the center of the components, whereas male mice are found in the preiphery. Furthermore, the same figure reveals, that the quantity of the male \textit{isolates} is higher then the one for female mice. This supports the assumption, that females are stronger networked as the males, and can be elaborated by visualizing the inner-gender (figures \ref{fig:graph_january_3h_ff} and \ref{fig:graph_january_30h_mm} ) and inter-gender (figure \ref{fig:graph_january_30h_fm}) networks. The visual comparison clearly unveils the higher connectivity within the female mice.
+Even in the network with the edge filter set to 30 hours, the entanglement of the edges within the network components do not allow for a conclusion about specific edges. However, figure \ref{fig:graph_january_30h_gender} expose a tendency that female mice are located more in the center of the components, whereas male mice are found in the preiphery. Furthermore, the same figure reveals, that the quantity of the male \textit{isolates} is higher then the one for female mice. This supports the assumption, that females are stronger networked as their male counterparts, and can be elaborated by visualizing the inner-gender (figures \ref{fig:graph_january_30h_ff} and \ref{fig:graph_january_30h_mm} ) and inter-gender (figure \ref{fig:graph_january_30h_fm}) networks. The visual comparison clearly unveils the higher connectivity within the female mice.
 
 \begin{figure}[htpb]% 
 	\centering 
 	\subfloat[Network of female mice][Network of female mice]{
-					\label{fig:graph_january_3h_ff} %
+					\label{fig:graph_january_30h_ff} %
 					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_ff.pdf}
 				}
 	\qquad 
@@ -88,9 +89,13 @@ Still, the entanglement of the edges within the network components do not allow 
 					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_fm.pdf}
 				} 
 				
-	\caption[Network visualizations of the inner- and inter-gender networks]{Visualizations of the inter- and inner-gender networks for January 2009 with the edge filter value set to 30 hours.} 
+	\caption[Network visualizations of the inner- and inter-gender networks]{Visualizations of the inter- and inner-gender networks for January 2009 with the edge filter value set to 30 hours.}
+	\label{fig:inner_inter_gender} 
 	 
 \end{figure}
+
+\subsubsection{Identifying individuals}
+\label{subsubsec:vis_individuals}    
 
 After visually examining the general network structure, let's adapt the visualization to emphasize the role of the individuals depending on the node based measures introduced in section \ref{subsubsec:node_based} (see figures \ref{fig:graph_january_30h_apl} - \ref{fig:graph_january_30h_betweenness}). 
 
@@ -123,7 +128,7 @@ After visually examining the general network structure, let's adapt the visualiz
 
 Except for the visualization based on the betweenness values (figure \ref{fig:graph_january_30h_betweenness}), no nodes stand out. This is coherent to the observation, that the network components are strongly connected. Consequently, the clustering coefficient is high, and the average path lengths are low due to the existance of the many edges.  
 
-A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveals, that most of the nodes with a high betweenness value are \textit{Cut-Points} as well. A \textit{Cut-Point} is a node whose deletion increase the number number of components in the network\cite{pajek:03}. In and of itself, these nodes are very interesting, since they act as a bottleneck when information has to be passed from one group to the other. In this case however, all the \textit{Cut-Points} connect at most two other nodes to the network (see figure \ref{fig:graph_january_3h_cutpoints}). Hence, we focus on the nodes with a high betweeness value\footnote{8 Nodes with a betweenness value bigger than 15 have been included in the list.}, which are not \textit{Cut-Points}\footnote{7 \textit{Cut-Points} have been found using the sna\cite{sna:09} package for \lstinline|R|.} (see figure \ref{fig:graph_january_3h_cutpoints_betweenness}). The resulting visualization discovers two female mice. This idea to identify potentially interesting indviduals will be picked up in section \ref{subsec:longitudinal_analysis}. 
+A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveals, that most of the nodes with a high betweenness value are \textit{Cut-Points} as well. A \textit{Cut-Point} is a node whose deletion increase the number number of components in the network\cite{pajek:03}. In and of itself, these nodes are very interesting, since they act as a bottleneck when information has to be passed from one sub-network to the other. In this case however, all the \textit{Cut-Points} connect at most two other nodes to the network (see figure \ref{fig:graph_january_3h_cutpoints}), which reduces their importance. Hence, we focus on the nodes with a high betweeness value\footnote{8 Nodes with a betweenness value bigger than 15 have been included in the list.}, which are not \textit{Cut-Points}\footnote{7 \textit{Cut-Points} have been found using the sna\cite{sna:09} package for \lstinline|R|.} (see figure \ref{fig:graph_january_3h_cutpoints_betweenness}). The resulting visualization discovers two female mice. This idea to identify potentially interesting indviduals will be picked up in section \ref{subsec:longitudinal_analysis}. 
 
 \begin{figure}[htpb]% 
 	\centering 
@@ -137,7 +142,7 @@ A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveal
  		\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_cp_bet.pdf}
   	}
   	
-  	\caption[Network visualization of \textit{Cut-Points} and such with a high betweeness value which are not \textit{Cut-Points}]{Identifying \textit{Cut-Points} \subref{fig:graph_january_3h_cutpoints} and such nodes with a high betweenness value which are not \textit{Cut-Points} \subref{fig:graph_january_3h_cutpoints_betweenness}.}
+  	\caption[Network visualization of \textit{Cut-Points} and such with a high betweeness value which are not \textit{Cut-Points}]{Identifying \textit{Cut-Points} \subref{fig:graph_january_3h_cutpoints} and such nodes with a high betweenness value which are not \textit{Cut-Points}~\subref{fig:graph_january_3h_cutpoints_betweenness}.}
   	
 \end{figure}
 
@@ -145,36 +150,75 @@ A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveal
 \subsection{Quantitative analysis}
 \label{subsec:quantitative_analysis}
 
+Aside of quantifying the node based measures, which has already been done for the visualizations, studying the distribution of these measures and the appliance of analytical methods, allow insights in the mechanisms that lead to a network structure.
 
+\subsubsection{Degree distribution}
+\label{subsubsec:degree_dist}
 
-\subsection{Longitudinal analysis}
-\label{subsec:longitudinal_analysis}
+\subsubsection{Assortativity coefficient}
+\label{subsubsec:assortivity}     
 
+The assortativity coefficient\cite{newman:03} is used to measure a association patterns in social networks. If $e_{ij}$ is the fraction of edges in the nework that connect nodes of type $i$ to nodes of type $j$, the assortativity coefficient is defined as
 
+\begin{equation}
+r = \frac{ \sum_i e_{ii} - \sum_{ijk} e_{ik} e_{jk} }{ 1 - \sum_{ijk} e_{ik} e_{jk}}
+\label{eq:ass_coeff}
+\end{equation} 
 
+where $k$ is a dummy variable used to iterate the sum\cite{lusseau:04}. This quantity equals $1$ when we have perfect assortative mixing, meaning that all nodes of a category are connected to nodes of the same category. For a disassortative mixing, when every node of a type is connected to a node of another category, the value of $r$ lies between $-1 \leq r \leq 0$.
 
+\paragraph{Gender correlation}
+
+In our data, one category we can test for is the gender. Table \ref{tab:mm} shows the \textit{mixing matrix}, which disclose the quantities of the inner- and inter-gender connections for the network data of January 2009 (e.g. there are 154 edges that between males and females).  
+
+\begin{center}
+\newcolumntype{H}{>{\centering\bf}p{0.3cm}}
+\begin{tabularx}{3.2cm}{+H|^c^c^c}
+\rowstyle{\bfseries}
+	&	f	&	m	&	u \\\midrule
+f	&	103	&	154	&	10 \\
+m	&	154	&	60	&	8 \\
+u	&	10	&	8	&	0 \\	
+\end{tabularx}
+\captionof{table}{The \textit{mixing matrix} of the gender category for the network data of January 2009. }
+\label{tab:mm}
+\end{center}
+
+This distribution yields to an $r$ value of $0.057$ \footnote{Edges which contain nodes from which the gender is not known are not included in the calculation.}, which implies a disassortative mixing\footnote{This is consistent with the network visualizations in figure \ref{fig:inner_inter_gender}.}.
+
+For a mixing matrix with several categories this value would be tested for statistical significance, for example using the \textit{jackknife}\cite{newman:03} method,  
+
+\begin{equation}
+\sigma_r^2 = \sum_{i=1}^M(r_i -r)^2
+\label{eq:ass_coeff}
+\end{equation}  
+
+where $r_i$ i the $r$ value of $r$ for the network in which the $i$-th edge is removed, to determine the standard deviation, followed by a simple $t$-test\cite{snijders:99}. The \textit{jackknive}
+
+However, this is not applicable for the present data, since the $r$ values calculated according to the\textit{jackknife} method are not subject to Gaussian distribution\footnote{Since each iteration in the \textit{jackknife} method either removes an inner- or inter-gender edge, only three different $r$ values occur.}. A second method to statistically test the given value, is to use an \textit{ERG} model. These models will be introduced in section \ref{subsec:network_modeling}.
+
+\paragraph{Degree correlation}
+ 
+Another form of assortative mixing is the degree correlation, which is used to measure the assortative mixing by the node degree. The question behind this value is whether individuals with high degrees tend to be connected to others with high degree\cite{croft:07}. Calculation of the value for the network of January 2009 and an edge filter value of 30 hours as suggested by \textit{Newman}\cite{newman:02}, using the Pearson correlation cofficient results in $r_p = 0.373$. \cite{newman:03a}. 
+
+There is no general interpretation of the value. However, we can compare the it with with degree correlation values calculated for other networks. Interesingly, many social networks exhibit a positive degree correlation, whereas metabolic networks, food webs and neural networks usually have a negativ degree correlation\cite{newman:03a}. \textit{Lusseau et al.}\cite{lusseau:06} for example, reported a value of $r_p = 0.170$ for a social network of bottelnodes dolphins, and \textit{Croft et al.}\cite{croft:05} found degree correlation values between $0.28$ and $0.7$ for 5 populations of small freshwater fish.   
+ 
 \subsection{Network modeling}
 \label{subsec:network_modeling}
+
+EGRM
 
 \subsubsection{Longitudinal exploration of the network data}
 \label{subsec:longitudinal}
 No statistics.
+Comparing the networks using the hammond distance.
 
 \begin{mylist}
 \item Trace special mice or positions (brokers, cut-points) over a period of one year.
 \item How the network changes over the time based on the node based measures.
 \end{mylist} 
 
-\subsection{Statistical modeling of a network}
-\label{subsec:exploratory}
+\subsection{Conclusions}
+\label{subsec:conclusions}
 
-\begin{mylist}
-\item ERGM: Introduction
-\item ERGM: simple modelling approach
-\item ERGM: outline the possibilities with more attribute data
-\item ERGM: outline the possibilities with weighted edges
-\end{mylist}
 
-\subsubsection{Longitudinal exploration of the network data by use of ERGM and Hammond Distances}
-
-Comparing the networks using the hammond distance.

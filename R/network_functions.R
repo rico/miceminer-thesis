@@ -487,5 +487,136 @@ normalize <- function (values, lower=0.5, upper=2) {
 	
 }
 
+#
+# calculate assortativity index for the SEX attribute based on Newman (2003)
+#
+assort_coeff <- function(net) {
+
+	# mixing_atrix
+	mm_obj = mixingmatrix(net, "SEX")
+	mm = mm_obj$matrix
+	
+	# sum of edges (known gender)
+	e_sum = mm[2,2] + mm[1,1] + mm[1,2]
+	
+	# edge proportions Eii, Eij
+	e_mm = mm[2,2] / e_sum
+	e_ff = mm[1,1] / e_sum
+	e_fm = (mm[1,2] / 2) / e_sum
+	e_mf = (mm[1,2] / 2) / e_sum
+	
+	
+	r = ( e_mm + e_ff - (e_mm+e_mf)^2 - (e_ff + e_fm)^2 ) / ( 1 - (e_mm + e_mf)^2 - (e_ff + e_fm)^2 )
+	
+	r = round(r,4)
+	
+	return(r)
+
+}
 
 
+#
+# calculate standard deviation for assort coeff
+# 
+assort_coeff_dev <- function(net, rvals=F) {
+	
+	net_clean = network.copy(net)
+	net_clean = del_u_edges(net_clean)
+	
+	n_edges = length(as.matrix(net_clean,matrix.type="edgelist")) / 2
+
+	edgelist = as.matrix(net_clean,matrix.type="edgelist")
+	
+	
+	# coefficient for original net
+	r_net = assort_coeff(net_clean)
+	r_dev_q = 0
+	r_vals = c()
+	
+	i = 1
+	for( i in 1: n_edges) {
+
+		net_i = network.copy(net_clean)
+		edge_i = edgelist[i,]
+		
+
+		# remove i-th edge
+		net_i[edge_i[1], edge_i[2]] = 0
+			
+		# calculate assort coeff
+		r_i = assort_coeff(net_i)
+		r_vals = append(r_vals, r_i)
+		
+		r_dev_q = r_dev_q + (r_i - r_net)^2
+		
+		i = i + 1
+	}
+	
+	if(rvals == T) {
+		return(r_vals)
+	}
+	
+	r_dev = sqrt(r_dev_q)
+	
+	return(r_dev)
+	
+}
+
+#
+# delete edges to unknown nodes
+#
+del_u_edges <- function(net) {
+
+	n_edges = length(as.matrix(net,matrix.type="edgelist")) / 2
+	edgelist = as.matrix(net,matrix.type="edgelist")
+	
+	i = 1
+	for( i in 1: n_edges) {
+
+		edge_i = edgelist[i,]
+		
+		gender_x = get_gender(net, edge_i[1] )
+		#print(gender_x)
+		gender_y = get_gender(net, edge_i[2] )
+		#print(gender_y)
+		
+		
+		# check if a node if unknown gender is part of the edge, if true go to the next edge		
+		if( gender_x == "u" ||  gender_y == "u") {
+			net[edge_i[1], edge_i[2]] = 0
+			#print("del")
+			
+		}
+		
+		i = i + 1
+	}
+	
+	return(net)
+
+}
+
+degree_corr <- function(net) {
+	n_edges = length(as.matrix(net,matrix.type="edgelist")) / 2
+	edgelist = as.matrix(net,matrix.type="edgelist")
+	deg = degree(net,gmode="graph")
+	x = c()
+	y = c()
+	
+	i = 1
+	for( i in 1: n_edges) {
+		edge_i = edgelist[i,]
+		
+		# degree of connected nodes
+		deg_x = deg[ edge_i[1] ]
+		deg_y = deg[ edge_i[2] ]
+	
+		x = append(x, deg_x) 
+		y = append(y, deg_y) 
+	
+		i = i + 1
+	}
+	
+	dc = cov(x,y)/(sd(x)*sd(y))
+	
+	return(dc)
+}
