@@ -116,7 +116,7 @@ node_level_values_as_data_frame <- function(nets, returnVec=FALSE) {
 # create random (undirected) networks with a given number of vertices and edges (passed as a network object) 
 # and calculate simple node level indices
 #
-random_test <- function(net, asList=FALSE, rand_nets = 2) {
+random_test <- function(net, asList=FALSE, rand_nets = 100) {
 	
 	
 	# data storage objects
@@ -619,4 +619,40 @@ degree_corr <- function(net) {
 	dc = cov(x,y)/(sd(x)*sd(y))
 	
 	return(dc)
+}
+
+#
+# Mann-Whitney test for degree distrubution by gender
+#
+mann_whitey_degree <- function(net) {
+	
+	nodes_deg = degree(net,gmode="graph")
+
+	deg_sex = cbind(net %v% "SEX", nodes_deg)
+	
+	females = which(deg_sex[,1] == "f")
+	males = which(deg_sex[,1] == "m")
+	
+	degrees = sort(unique(nodes_deg))
+	
+	female_ranks = c()
+	female_ranks_sum = 0
+	
+	i = 1
+	for ( i in 1:length(females) ) {
+		row_f = females[i]
+		female_deg = as.numeric(deg_sex[ row_f ,2 ])
+		
+		female_ranks = append(female_ranks, which(degrees == female_deg))
+		female_ranks_sum = female_ranks_sum + which(degrees == female_deg)
+		
+		i = i + 1
+	}
+	
+	u = (length(females) * length(males)) + ((length(females)*(length(females) -1))/2) - female_ranks_sum
+	
+	return(u)
+	
+	
+
 }

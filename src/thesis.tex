@@ -21,10 +21,9 @@
 % hold lines together
 \usepackage{needspace}
 
-
 % Font
-% \usepackage{times}
-\usepackage{assets/fonts/garamond/garamond}
+\usepackage{times}
+%\usepackage{assets/fonts/garamond/garamond}
 \usepackage[T1]{fontenc} 
 \usepackage[english]{babel}
 \usepackage{color}
@@ -173,7 +172,7 @@
 	\end{itemize}
 }
 
-% Table column types for bold row 
+\usepackage{array}
 \newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
 \newcolumntype{^}{>{\currentrowstyle}}
 \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
@@ -186,7 +185,7 @@
 \begin{document}
 
 % sans serif
-%\sffamily
+\sffamily
 % select language
 \selectlanguage{english}
 
@@ -486,6 +485,27 @@ These scripts can be started manually from the command line or through a so call
 \end{lstlisting}
 
 The above listing shows the actual \textit{cronjob} which starts the import cascade every day at 11~o'clock p.m. beginning with the \lstinline|logimport.pl| script.
+
+\subsection{Antenna adress conversions}
+\label{app:antenna_adress_conversions}
+List of the antenna address conversions as implemented in the \lstinline|logimport.pl| script to handle the badly addressed antennas.
+
+\begin{center} 
+
+\renewcommand\arraystretch{1.2}
+\begin{tabular}{+l^l}
+\toprule
+\textbf{original value}	&	\bfseries{after conversion} \\\midrule
+1A1	&	161 \\\midrule
+1A3	&	163 \\\midrule
+2A1	&	171 \\\midrule
+2A3	&	173 \\\midrule
+421	&	131 \\\midrule
+423	&	133 \\\midrule
+\end{tabular}
+\captionof{table}{Antenna adress conversions.}
+\label{tab:ant_adress_conversions}
+\end{center} 
 
 % configuration XML
 \newpage

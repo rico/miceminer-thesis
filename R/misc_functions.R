@@ -12,16 +12,22 @@ plot_meeting_dur_hist <- function(data) {
 	
 }
 
+coerce_vector <- function(x) {
 
-#
-# normalize to the values specified by max
-#
-normalize <- function (values, basis=1) {
+	y = c(0:(length(x) -1))
+	z = c()
+
+	i = 1
+	for(i in 1:length(x)) {
+		z = append(z, x[[i]])
+		
+		i = i + 1
+	}
 	
-	max_val = max(values)
-	print(max_val)
-	normalized_values = sapply(values, function(x) basis * (max_val/(x*100)) )
+	m = cbind(y,z)
 	
-	return(normalized_values)
-	
+	return(m)
+
 }
+
+
