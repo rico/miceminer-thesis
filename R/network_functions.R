@@ -656,3 +656,41 @@ mann_whitey_degree <- function(net) {
 	
 
 }
+
+#
+# Mann-Whitney test for degree distrubution by gender
+#
+mann_whitey_cc <- function(net) {
+	
+	i_g = to_igraph(net)
+	nodes_cc = transitivity(i_g, type="local")
+	
+	cc_sex = cbind(c(net $v "SEX")[ which(cc != "NaN")], cc[which(cc != "NaN")])
+
+	
+	females = which(cc_sex[,1] == "f")
+	males = which(cc_sex[,1] == "m")
+	
+	cc_ranks = sort(unique(nodes_cc))
+	
+	female_ranks = c()
+	female_ranks_sum = 0
+	
+	i = 1
+	for ( i in 1:length(females) ) {
+		row_f = females[i]
+		female_deg = as.numeric(cc_sex[ row_f ,2 ])
+		
+		female_ranks = append(female_ranks, which(degrees == female_deg))
+		female_ranks_sum = female_ranks_sum + which(degrees == female_deg)
+		
+		i = i + 1
+	}
+	
+	u = (length(females) * length(males)) + ((length(females)*(length(females) -1))/2) - female_ranks_sum
+	
+	return(u)
+	
+	
+
+}

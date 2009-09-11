@@ -152,8 +152,52 @@ A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveal
 
 Aside of quantifying the node based measures, which has already been done for the visualizations, studying the distribution of these measures and the appliance of analytical methods, allow insights in the mechanisms that lead to a network structure.
 
-\subsubsection{Degree distribution}
-\label{subsubsec:degree_dist}
+\subsubsection{Distribution of node based measures on the genders}
+\label{subsubsec:nbm_dist}
+
+\begin{figure}[htpb]% 
+	\centering 
+				
+	\subfloat[Average path length]{
+					\label{fig:graph_january_30h_apl_dist}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_apl_dist.pdf}
+				}
+	\qquad 
+	\subfloat[Clustering coefficient]{
+					\label{fig:graph_january_30h_cc_dist}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_cc_dist.pdf}
+				}
+	\qquad 			
+	\subfloat[Degree]{
+					\label{fig:graph_january_30h_degree_dist}
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_degree_dist.pdf}
+				}
+	\qquad 
+	\subfloat[Betweenness]{
+					\label{fig:graph_january_30h_betweenness_dist}
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_bet_dist.pdf}
+				} 		 				
+				
+	\caption[Distribution of the node based measures split up by the gender.]{Distribution of the node based measures, for the network data of Januray 2009 with an edge filter value of 30 hours, split up by the gender. Values for female mice are colord pink, respectively, light blue for males.} 
+	 
+\end{figure}
+
+
+\begin{center} 
+
+\renewcommand\arraystretch{1.2}
+\begin{tabular}{lllll}
+\toprule
+\textbf{Measure} &	\textbf{Females}	& \textbf{Males}	& \textbf{$u$} & \textbf{$p$} \\\midrule
+Average path length	&	41	&	35	& $0.3773519$	& $0.9674$	 \\
+Clustering coefficient	&	39	&	30	&  $0.65$	&	$0.502$ \\
+Degree	&	45 	& 	47 	& $0.6186761$	& $0.0246$	\\
+Betweenness	&	45	&	47	&	$0.6747045$	&	$0.001310$ \\\bottomrule
+
+\end{tabular}
+\captionof{table}{  $u$ values for node based measures calculated using a \textit{Mann-Whitney} test.}
+\label{tab:u_test}
+\end{center} 
 
 \subsubsection{Assortativity coefficient}
 \label{subsubsec:assortivity}     

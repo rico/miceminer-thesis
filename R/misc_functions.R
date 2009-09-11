@@ -31,3 +31,24 @@ coerce_vector <- function(x) {
 }
 
 
+#
+# calculate distribution
+#
+as_hist <- function(dat) {
+	
+	xy = matrix(c(sort(unique(dat)), rep(0,length(unique(dat))) ),length(unique(dat)),2)
+	
+
+	for(i in 1:length(dat)) {
+		
+		ind = which(xy[,1] == dat[i])
+		xy[ind,2] = xy[ind,2] + 1
+		
+		i = i + 1
+	}
+
+	return(xy)
+
+}
+
+
