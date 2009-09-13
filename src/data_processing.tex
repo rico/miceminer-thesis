@@ -7,7 +7,7 @@
 
 This section targets readers who are interested in the scripts that has been developed, to make the data available, as described in the previous section. Since the information is of great value to everybody working with the data, it is written it in a way, that all interested readers can understand the fundamental ideas. However, for a full understanding, some knowledge in informatics is mandatory.
 
-Figure \ref{fig:app_design_perl} shows an overview of the different parts to import and analyze the data. The \ac{perl} scripts that read data from, and write data to the database build the main part of this framework\footnote{The directories in which the scripts, modules and files are located, are listed in appendix \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview}.}.
+Figure \ref{fig:app_design_perl} shows an overview of the different parts to import and analyze the data. The \ac{perl} scripts that read data from, and write data to the database build the main part of this framework (see appendix \ref{tab:directories_and_files_overview} for a list of the directories in which the scripts, modules and files are located).
 
 \begin{figure}[htpb]
 \begin{center}
@@ -19,11 +19,11 @@ Figure \ref{fig:app_design_perl} shows an overview of the different parts to imp
 
 The \textit{Import Scripts} run in a cascade, beginning with the \lstinline|logimport.pl| script, which reads the data files from the barn, and ends with the \lstinline|counter.pl| script (indicated in figure \ref{fig:app_design_perl} by the green arrows). Each of these scrips writes a transcript file to make their progress traceable. Upon completion of the cascade, the data is stored in the respective tables.
 
-A scheduled, daily task checks for new data files uploaded to the server and starts the cascade if needed\footnote{For details about this topic see appendix \ref{app:import_schedule} on page \pageref{app:import_schedule}.}.
+A scheduled, daily task checks for new data files uploaded to the server and starts the cascade if needed (see appendix \ref{app:import_schedule} for details).
 
-The \textit{Reset Scripts} set the database back to a state from where the import cascade can be rerun, starting with the corresponding import script (indicated in figure \ref{fig:app_design_perl} by the orange arrows). If, for example, the \lstinline|searchdirreset.pl| is executed, the import cascade will be started with the \lstinline|searchdir.pl| script\footnote{It is recommended to start the import cascade using the import BASH scripts. This is explained in appendix \ref{app:import_schedule} on page \pageref{app:import_schedule}.}.
+The \textit{Reset Scripts} set the database back to a state from where the import cascade can be rerun, starting with the corresponding import script (indicated in figure \ref{fig:app_design_perl} by the orange arrows). If, for example, the \lstinline|searchdirreset.pl| is executed, the import cascade will be started with the \lstinline|searchdir.pl| script. It is recommended to start the import cascade using the import BASH scripts (see appendix \ref{app:import_schedule} for details).
 
-The \textit{Modules} read out the configuration from the central \ac{XML} based configuration file and make it available for the import and reset scripts (indicated in figure \ref{fig:app_design_perl} by the large grey arrow with the white border)\footnote{The fragment of the configuration file accountable for the scripts is shown in appendix \ref{app:configperl} on page \pageref{app:configperl}}. As the perl scripts heavily interact with the database, the database configuration is read out as well by some of the \textit{Modules}\footnote{Refer to appendix \ref{app:configdb} on page \pageref{app:configdb} for a listing and explanations about the database configuration.}. 
+The \textit{Modules} read out the configuration from the central \ac{XML} based configuration file (see appendix \ref{app:configperl} for details) and make it available for the import and reset scripts (indicated in figure \ref{fig:app_design_perl} by the large grey arrow with the white border). As the perl scripts heavily interact with the database, the database configuration is read out as well by some of the \textit{Modules} (see appendix \ref{app:configdb} for details). 
 
 The following sections provide details about each script in the import cascade.
 
@@ -32,9 +32,9 @@ The following sections provide details about each script in the import cascade.
 
 The \lstinline|logimport.pl| extracts the spatial position data from the data files and writes it to the \lstinline|data| table (see \ref{para:data_table} on page \pageref{para:data_table} for the table structure).
 
-Prior to the data extraction, the  script creates a backup of the actual database\footnote{Appendix \ref{app:configperl} on page \pageref{app:configperl} explains how the backup procedure is configured.}. Subsequently the data is extracted from the data files and written to the database. 
+Prior to the data extraction, the  script creates a backup of the actual database (see appendix \ref{app:configperl} for details). Subsequently the data is extracted from the data files and written to the database. 
 
-As mentioned in section \ref{subsec:problems}, some of the antennas could not be addressed properly. Therefore, the script has to catch these exceptional values and convert them to the designated ones\footnote{See appendix \ref{app:antenna_adress_conversions} on page \pageref{app:antenna_adress_conversions} for a list of the conversions.}.  
+As mentioned in section \ref{subsec:problems}, some of the antennas could not be addressed properly. Therefore, the script has to catch these exceptional values and convert them to the designated ones (see appendix \ref{app:antenna_adress_conversions} for a list of the conversions).  
 
 \subsection{Direction results}
 \label{subsec:dirres}
@@ -43,7 +43,7 @@ The \lstinline|searchdir.pl| script searches for matching pairs of antenna readi
 
 \begin{mylist}
 \item the transponder identification of the two readings is the same
-\item the time difference in seconds between the two readings is not greater than the value set as the \lstinline|<antennaInterval>|\footnote{See appendix \ref{app:configperl} on page \pageref{app:configperl} for the location of the value in the configuration file.} value in the configuration file, 
+\item the time difference in seconds between the two readings is not greater than the value set as the \lstinline|<antennaInterval>| (see appendix \ref{app:configperl}for details) value in the configuration file, 
 \item and the readings originate from the two different antennas attached to a box.  
 \end{mylist}
 
@@ -158,7 +158,7 @@ In figure \ref{fig:dataset_overlap}, four other antenna readings could be found,
 \end{center}
 \end{figure}
 
-As seen in figure \ref{fig:dataset_overlap}, the reading at antenna \lstinline|163|, which is the inner antenna attached to nestbox 16, is colored green. If we have a look at the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the innner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case, we keep the result, as the mouse has not left the box\footnote{As stated in section \ref{subsec:dirres}, a mouse is out of the box if she is recorded at the outer antenna.}, and denote it a \textit{nervous mouse}, as we think, that she is only checking the entry tube out of nervousness.
+As seen in figure \ref{fig:dataset_overlap}, the reading at antenna \lstinline|163|, which is the inner antenna attached to nestbox 16, is colored green. If we have a look at the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the innner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case, we keep the result, as the mouse has not left the box - as stated in section \ref{subsec:dirres}, a mouse is out of the box if she is recorded at the outer antenna - and denote it a \textit{nervous mouse}, as we think, that she is only checking the entry tube out of nervousness.
 
 The \textit{nervous index} is simply the number of readings at the inner antenna during the \textit{stay result}, which is 4 for the situation shown in figure \ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table}.
 
@@ -206,7 +206,7 @@ Additionally, the script analyses, how two mice meet. There are four different p
 \end{center}
 \end{figure}
 
-However, the \textit{meeting result} types and explanations above only apply, if we look at the situations from the point of view of mouse Tr. A. When looking at the situations from Tr. B, the types are swapped as follows\footnote{When using the \textit{miceminer Graph Data} interface to retrieve the data, these adjustments are already done (see section \ref{sec:graph} on page \pageref{sec:graph})}.
+However, the \textit{meeting result} types and explanations above only apply, if we look at the situations from the point of view of mouse Tr. A. When looking at the situations from Tr. B, the types are swapped as follows.
 
 \begin{mylist}
 \item Type 1 is swapped to \textbf{Type 2}   

@@ -51,4 +51,10 @@ as_hist <- function(dat) {
 
 }
 
+#
+# plot all 30h networks with highlighted cutpoints
+#
+
+plot_all_cp <- function(nets){}
+
 

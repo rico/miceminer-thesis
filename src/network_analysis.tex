@@ -150,10 +150,79 @@ A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveal
 \subsection{Quantitative analysis}
 \label{subsec:quantitative_analysis}
 
-Aside of quantifying the node based measures, which has already been done for the visualizations, studying the distribution of these measures and the appliance of analytical methods, allow insights in the mechanisms that lead to a network structure.
+Aside of quantifying the node based measures, which has already been done for the visualizations, studying the distribution of these measures and the appliance of analytical methods to the network data, allow insights in the mechanisms that lead to the network structure.  
 
-\subsubsection{Distribution of node based measures on the genders}
+To find a statistical evidence of the findings, however, the set of data is rather small, and the structure of the network makes it difficult to find a network model, which could be used as the null model. 
+
+\subsubsection{General network structure}
+\label{subsubsec:general_structure}
+
+A basic question, if we look at network depicted in figure \ref{fig:graph_january_30h_gender}, is how the seperation of the network in several components evolved. To explore this topic I determined in which nestboxes the meetings occured in January 2009. These findings can be mapped to the components found in the network. The results are shown in table \ref{tab:comp_box_meet_dist}.
+
+\begin{figure}[p]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Component size} &	\textbf{Nestboxes in which the meetings occured}	&	\textbf{Sum of meeting durations (h:m:s)} \\\midrule
+18	& 15	& 2006:35:05 \\
+ 	& 18	& 1800:24:34 \\
+	& 13	& 1630:43:24 \\
+	& 12	& 1507:04:51 \\
+	& 11	& 36:26:24 \\
+	& 16	& 00:21:05 \\
+	& 17	& 00:16:42 \\
+	& 09	& 00:01:31 \\\midrule
+
+18	& 27	& 2735:14:47 \\
+	& 21	& 950:02:00 \\
+	& 29	& 713:50:05 \\
+	& 25	& 187:48:39 \\
+	& 28	& 141:33:31 \\
+	& 22	& 134:26:27 \\
+	& 23 	& 12:36:56 \\
+	& 24	& 11:02:57 \\\midrule
+
+17	& 36	& 5676:16:38 \\
+	& 37	& 1716:46:11 \\
+	& 35	& 254:34:27 \\
+	& 34	& 228:01:20 \\
+	& 40	& 179:18:27 \\
+	& 38	& 23:19:02 \\
+	& 09	& 00:00:12 \\
+	& 39	& 00:00:8 \\\midrule
+
+13	& 09	& 2339:51:41 \\
+	& 08 	& 1984:33:2 \\
+	& 10	& 232:50:42 \\
+	& 05	& 11:01:31 \\
+	& 03 	& 02:05:59 \\
+	& 11 	& 00:57:41 \\
+	& 06	& 00:12:20 \\
+	& 07	& 00:02:50 \\\midrule
+	
+10	& 02	& 2667:49:11 \\
+	& 01	& 2075:11:12 \\
+	& 04	& 01:26:32 \\
+	& 03	& 00:00:32 \\
+	& 12	& 00:00:32 \\
+	& 09	& 00:00:05 \\\midrule
+
+2	& 19	& 52:41:08 \\
+	& 20	& 05:08:17 \\
+	& 18	& 00:00:30 \\\bottomrule
+
+\end{tabular}
+\captionof{table}{Allocation of the nestboxes, in which meetings occured in January 2009, to the components observed in the network. Additionally the size of the components (number of mice making up the component) and the sum of the meeting durations for the boxes is included (according to \lstinline|<maxStay>| value explained in section \ref{subsec:miceminer_config}, meetings with a duration of stay longer than 9 hours have been excluded from the sum).}
+\label{tab:comp_box_meet_dist}
+\end{center}
+\end{figure} 
+
+Interestingly, if we compare this allocation to the placement of the nestboxes and dividers in the barn (see figure \ref{fig:shedschema} on page \ref{fig:shedschema}), from the six components, five components are restricted to one of the four segments (A, B, C, D). Furthermore, the number of boxes where most of meetings (based on the sum of the stay duration) of a component occur, is between 2 and 4. 
+ 
+\subsubsection{Separation of node based measures by gender}
 \label{subsubsec:nbm_dist}
+
+Pictured in figure \ref{fig:node_based:measures_dist} are the distributions of the node based measures for female and male mice. Although the charts do not show a clear separation 
 
 \begin{figure}[htpb]% 
 	\centering 
@@ -178,8 +247,8 @@ Aside of quantifying the node based measures, which has already been done for th
 					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_bet_dist.pdf}
 				} 		 				
 				
-	\caption[Distribution of the node based measures split up by the gender.]{Distribution of the node based measures, for the network data of Januray 2009 with an edge filter value of 30 hours, split up by the gender. Values for female mice are colord pink, respectively, light blue for males.} 
-	 
+	\caption[Distribution of the node based measures split up by the gender.]{Distribution of the node based measures, for the network data of Januray 2009 with an edge filter value of 30 hours. Values for female mice are colored pink and light blue for males.}
+	 \label{fig:node_based:measures_dist}
 \end{figure}
 
 
@@ -188,21 +257,21 @@ Aside of quantifying the node based measures, which has already been done for th
 \renewcommand\arraystretch{1.2}
 \begin{tabular}{lllll}
 \toprule
-\textbf{Measure} &	\textbf{Females}	& \textbf{Males}	& \textbf{$u$} & \textbf{$p$} \\\midrule
-Average path length	&	41	&	35	& $0.3773519$	& $0.9674$	 \\
-Clustering coefficient	&	39	&	30	&  $0.65$	&	$0.502$ \\
-Degree	&	45 	& 	47 	& $0.6186761$	& $0.0246$	\\
-Betweenness	&	45	&	47	&	$0.6747045$	&	$0.001310$ \\\bottomrule
+\textbf{Measure} &	\textbf{Females}	& \textbf{Males}	& \textbf{$u$} \\\midrule
+Average path length	&	41	&	35	& $0.38$\\
+Clustering coefficient	&	39	&	30	&  $0.65$ \\
+Degree	&	45 	& 	47 	& $0.62$	\\
+Betweenness	&	45	&	47	&	$0.67$ \\\bottomrule
 
 \end{tabular}
-\captionof{table}{  $u$ values for node based measures calculated using a \textit{Mann-Whitney} test.}
+\captionof{table}{$u$ values for node based measures calculated using a \textit{Mann-Whitney} test.}
 \label{tab:u_test}
 \end{center} 
 
 \subsubsection{Assortativity coefficient}
 \label{subsubsec:assortivity}     
 
-The assortativity coefficient\cite{newman:03} is used to measure a association patterns in social networks. If $e_{ij}$ is the fraction of edges in the nework that connect nodes of type $i$ to nodes of type $j$, the assortativity coefficient is defined as
+The assortativity coefficient\cite{newman:03} is used to measure association patterns in social networks. If $e_{ij}$ is the fraction of edges in the nework that connect nodes of type $i$ to nodes of type $j$, the assortativity coefficient is defined as
 
 \begin{equation}
 r = \frac{ \sum_i e_{ii} - \sum_{ijk} e_{ik} e_{jk} }{ 1 - \sum_{ijk} e_{ik} e_{jk}}
@@ -213,7 +282,7 @@ where $k$ is a dummy variable used to iterate the sum\cite{lusseau:04}. This qua
 
 \paragraph{Gender correlation}
 
-In our data, one category we can test for is the gender. Table \ref{tab:mm} shows the \textit{mixing matrix}, which disclose the quantities of the inner- and inter-gender connections for the network data of January 2009 (e.g. there are 154 edges that between males and females).  
+In our data, one category we can test for is the gender. Table \ref{tab:mm} shows the \textit{mixing matrix}, which discloses the quantities of the inner- and inter-gender connections for the network data of January 2009 (e.g. there are 154 edges that between males and females).  
 
 \begin{center}
 \newcolumntype{H}{>{\centering\bf}p{0.3cm}}
@@ -239,19 +308,14 @@ For a mixing matrix with several categories this value would be tested for stati
 
 where $r_i$ i the $r$ value of $r$ for the network in which the $i$-th edge is removed, to determine the standard deviation, followed by a simple $t$-test\cite{snijders:99}. The \textit{jackknive}
 
-However, this is not applicable for the present data, since the $r$ values calculated according to the\textit{jackknife} method are not subject to Gaussian distribution\footnote{Since each iteration in the \textit{jackknife} method either removes an inner- or inter-gender edge, only three different $r$ values occur.}. A second method to statistically test the given value, is to use an \textit{ERG} model. These models will be introduced in section \ref{subsec:network_modeling}.
+However, this is not applicable for the present data, since the $r$ values calculated according to the\textit{jackknife} method are not subject to Gaussian distribution. Each iteration in the \textit{jackknife} method either removes an inner- or inter-gender edge, only three different $r$ values occur.
 
 \paragraph{Degree correlation}
  
-Another form of assortative mixing is the degree correlation, which is used to measure the assortative mixing by the node degree. The question behind this value is whether individuals with high degrees tend to be connected to others with high degree\cite{croft:07}. Calculation of the value for the network of January 2009 and an edge filter value of 30 hours as suggested by \textit{Newman}\cite{newman:02}, using the Pearson correlation cofficient results in $r_p = 0.373$. \cite{newman:03a}. 
+Another form of assortative mixing is the degree correlation, which is used to measure the assortative mixing by the node degree. The question behind this value is whether individuals with high degrees tend to be connected to others with a high degree\cite{croft:07}. Calculation of the value for the network of January 2009 and an edge filter value of 30 hours as suggested by \textit{Newman}\cite{newman:02}, using the Pearson correlation cofficient results in $r_p = 0.373$. \cite{newman:03a}. 
 
-There is no general interpretation of the value. However, we can compare the it with with degree correlation values calculated for other networks. Interesingly, many social networks exhibit a positive degree correlation, whereas metabolic networks, food webs and neural networks usually have a negativ degree correlation\cite{newman:03a}. \textit{Lusseau et al.}\cite{lusseau:06} for example, reported a value of $r_p = 0.170$ for a social network of bottelnodes dolphins, and \textit{Croft et al.}\cite{croft:05} found degree correlation values between $0.28$ and $0.7$ for 5 populations of small freshwater fish.   
+There is no general interpretation of the value. However, we can compare it with with degree correlation values calculated for other networks. Interesingly, many social networks exhibit a positive degree correlation, whereas metabolic networks, food webs and neural networks usually have a negativ degree correlation\cite{newman:03a}. \textit{Lusseau et al.}\cite{lusseau:06} for example, reported a value of $r_p = 0.170$ for a social network of bottelnose dolphins, and \textit{Croft et al.}\cite{croft:05} found degree correlation values between $0.28$ and $0.7$ for 5 populations of small freshwater fish.   
  
-\subsection{Network modeling}
-\label{subsec:network_modeling}
-
-EGRM
-
 \subsubsection{Longitudinal exploration of the network data}
 \label{subsec:longitudinal}
 No statistics.

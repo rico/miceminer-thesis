@@ -377,7 +377,7 @@ get_gender <- function(net, index) {
 #
 # plot network
 #
-custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlc=TRUE, hlf=1.3, genders=c(), prop=c()) {
+custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlc=TRUE, hlf=1.3, genders=c(), prop=c(), tit="") {
 
 	vert = length(net %v% "vertices")
 	
@@ -438,7 +438,7 @@ custom_plot <- function(net, dl=FALSE, di=FALSE, colored=TRUE, hl=c(), hlc=TRUE,
 	
 	
 	
-	plot(net, layout.par=list(repulse.rad=40000), vertex.col=v_colors, vertex.cex=v_sizes, vertex.border=v_borders, vertex.sides=30, object.scale=0.015, displayisolates=di, displaylabels=dl, boxed.labels=F, label.cex=0.5, label.pos=3)
+	plot(net, layout.par=list(repulse.rad=40000), vertex.col=v_colors, vertex.cex=v_sizes, vertex.border=v_borders, vertex.sides=30, object.scale=0.015, displayisolates=di, displaylabels=dl, boxed.labels=F, label.cex=0.5, label.pos=3, main=tit)
 }
 
 #
@@ -625,72 +625,22 @@ degree_corr <- function(net) {
 # Mann-Whitney test for degree distrubution by gender
 #
 mann_whitey_degree <- function(net) {
-	
-	nodes_deg = degree(net,gmode="graph")
-
-	deg_sex = cbind(net %v% "SEX", nodes_deg)
-	
-	females = which(deg_sex[,1] == "f")
-	males = which(deg_sex[,1] == "m")
-	
-	degrees = sort(unique(nodes_deg))
-	
-	female_ranks = c()
-	female_ranks_sum = 0
-	
-	i = 1
-	for ( i in 1:length(females) ) {
-		row_f = females[i]
-		female_deg = as.numeric(deg_sex[ row_f ,2 ])
-		
-		female_ranks = append(female_ranks, which(degrees == female_deg))
-		female_ranks_sum = female_ranks_sum + which(degrees == female_deg)
-		
-		i = i + 1
-	}
-	
-	u = (length(females) * length(males)) + ((length(females)*(length(females) -1))/2) - female_ranks_sum
-	
-	return(u)
-	
-	
 
 }
 
 #
-# Mann-Whitney test for degree distrubution by gender
+# randomize by fixed degreee sequence
 #
-mann_whitey_cc <- function(net) {
-	
-	i_g = to_igraph(net)
-	nodes_cc = transitivity(i_g, type="local")
-	
-	cc_sex = cbind(c(net $v "SEX")[ which(cc != "NaN")], cc[which(cc != "NaN")])
+rand_deg <- function(degrees, iterations = 100) {
 
+	rand_graphs = c()
 	
-	females = which(cc_sex[,1] == "f")
-	males = which(cc_sex[,1] == "m")
-	
-	cc_ranks = sort(unique(nodes_cc))
-	
-	female_ranks = c()
-	female_ranks_sum = 0
-	
-	i = 1
-	for ( i in 1:length(females) ) {
-		row_f = females[i]
-		female_deg = as.numeric(cc_sex[ row_f ,2 ])
-		
-		female_ranks = append(female_ranks, which(degrees == female_deg))
-		female_ranks_sum = female_ranks_sum + which(degrees == female_deg)
-		
-		i = i + 1
+	i=0
+	while ( i < iterations ) {
+		rand_graph = degree.sequence.game(degrees, method="vl")
+		rand_graphs = append(rand_graphs, rand_graph)
+		i = i+1
 	}
-	
-	u = (length(females) * length(males)) + ((length(females)*(length(females) -1))/2) - female_ranks_sum
-	
-	return(u)
-	
-	
 
+	return(rand_graphs)
 }
