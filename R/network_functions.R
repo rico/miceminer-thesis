@@ -63,13 +63,60 @@ net_convert <- function(net)
 # (node count, females count, males count, unknown gender count, network density, edgecount, mean degree, average path length, clustering coefficient)
 node_level_values <- function (net) {
 	
-	# the igraph package is used to draw some values wherefor no function is available in the statnet packages
+	# whole net
 	i_g = to_igraph(net);
-	avgPathLength = round(average.path.length(i_g, directed=FALSE, unconnected=TRUE),4)
-	clusteringC = round(transitivity(i_g, type="global"),4)
+	n = vcount(i_g)
+	f = count_attribute_occurance(net,"SEX","f")
+	m = count_attribute_occurance(net,"SEX","m")
+	u = count_attribute_occurance(net,"SEX","u")
+	comp = components(net)
+	emax = vcount(i_g)*.5*(vcount(i_g) -1)
+	e = ecount(i_g)
+	den = round( gden(net,mode="graph"),2)
+	deg	= round(mean(igraph::degree(i_g)),2)
+	apl = round(average.path.length(i_g, directed=FALSE, unconnected=TRUE),2)
+	cc = round(transitivity(i_g, type="global"),2)
+	bet = round(mean(betweenness(net, gmode="graph")),2)
+	deg_corr = round(degree_corr(net),2)
+	ass_coeff = round(assort_coeff(net),2)
 	
+	# gender networks	
+	g_nets = gender_extract(net, asNets=T)
+	
+	# components
+	comps = igraph::clusters(i_g)
+	
+	# cc
+	cc_loc = transitivity(i_g, type="local")
 
-	values = c(vcount(i_g), count_attribute_occurance(net,"SEX","f") , count_attribute_occurance(net,"SEX","m"), count_attribute_occurance(net,"SEX","u"), vcount(i_g)*.5*(vcount(i_g) -1), ecount(i_g), round( gden(net,mode="graph"),4), round(mean(igraph::degree(i_g)),4), avgPathLength, clusteringC)
+	cc_m_all <- cc_loc[which(net %v% "SEX" =="m")]
+
+	# females net
+	net_f = g_nets$ff
+	net_f_i = to_igraph(net_f)
+	comp_f = length(unique(comps$membership[which(net %v% "SEX" == "f")]))
+	e_f = ecount(net_f_i)
+	deg_f = round(mean(degree(net, nodes=c( which(net %v% "SEX" == "f")), gmode="graph")),2)
+	cc_f = round(mean(cc_loc[which(net %v% "SEX" =="f")], na.rm=T),2)
+	bet_f = round(mean(betweenness(net, nodes=c(which(net %v% "SEX" == "f")), gmode="graph")),2)
+	
+	# males net
+	net_m = g_nets$mm
+	net_m_i = to_igraph(net_m)
+	comp_m = length(unique(comps$membership[which(net %v% "SEX" == "m")]))
+	e_m = ecount(net_m_i)
+	deg_m = round(mean(degree(net, nodes=c( which(net %v% "SEX" == "m")), gmode="graph")),2)
+	cc_m = round(mean(cc_loc[which(net %v% "SEX" =="m")], na.rm=T),2)
+	bet_m = round(mean(betweenness(net, nodes=c(which(net %v% "SEX" == "m")), gmode="graph")),2)
+	
+	# males-females net
+	net_fm = g_nets$fm
+	net_fm_i = to_igraph(net_fm)
+	e_fm = ecount(net_fm_i)
+	
+	values = c(n, f, m, u, comp, comp_f, comp_m, emax, e, e_f, e_m, e_fm, den, deg, deg_f, deg_m, apl, cc, cc_f, cc_m, bet, bet_f, bet_m, deg_corr, ass_coeff)
+	
+	#values = list("n" = n, "f" = f, "m" = m, "u" = u, "comp" = comp,"comp_f" = comp_f, "comp_m" = comp_m, "emax" = emax, "e" = e, "ef" = e_f, "em" = e_m, "e_fm" = e_fm, "den" = den, "deg" = deg, "deg_f" = deg_f, "deg_m" = deg_m, "apl" = apl, "apl_f"=apl_f, "apl_m"=apl_m, "cc"=cc, "cc_f"=cc_f, "cc_m"=cc_m, "deg_corr"=deg_corr, "ass_coeff"=ass_coeff)
 	
 	return(values)
 }
@@ -78,7 +125,9 @@ node_level_values <- function (net) {
 # The labels (rows) fo the node level indices
 #
 node_level_labels <- function() {
-	value_labels = c("Nodes", "Females", "Males", "Unknown", "E max", "Edges", "Density", "Mean degree", "Average Path Length", "Clustering Coefficient")
+
+	value_labels = c("Nodes", "Females", "Males", "Unknown", "Components", "Components (f)", "Components (m)", "E max", "Edges", "Edges (ff)", "Edges (mm)", "Edges (fm)", "Density", "Mean degree", "Mean Deg (f)", "Mean deg (m)",  "Average Path Length", "Clustering Coefficient", "CC (f)", "CC (m)", "Betweenness", "Betweenness (f)", "Betweenness (m)", "Degree Corr.", "Assort. Coeff")
+	
 	return(value_labels)
 }
 
@@ -94,20 +143,32 @@ count_attribute_occurance <- function(net, attribute, value) {
 # node level indices as a data frame for the networks in the passed list
 # The NODE_LEVEL_INDICES_LABELS and NODE_LEVEL_INDICES_VALUES must exist
 #
-node_level_values_as_data_frame <- function(nets, returnVec=FALSE) {
+node_level_values_as_data_frame <- function(nets, returnVec=FALSE, returnM=FALSE, named=F) {
 	
 	# the data frame
 	indices_frame = data.frame(value_labels=node_level_labels() )
+	
 	indices_vec = c()
 	
 	for( i in 1:length(nets) ) {
+	
 		indices_frame[[nets[[i]] %n% "LABEL"]] <- factor( node_level_values(nets[[i]]) )
-		append(indices_vec, node_level_values(nets[[i]]),after=length(indices_vec))
+		indices_vec = append(indices_vec, node_level_values(nets[[i]]),after=length(indices_vec))
+		
 	}
 	
 	if(returnVec) {
 		return(indices_vec)
+	} else if (returnM) {
+		indices_m = matrix( indices_vec, nrow=length(node_level_labels()), ncol=length(nets) )
+		
+		if(named == T) {
+			dimnames(indices_m) = list(as.list(node_level_labels()), as.list(names(indices_frame)[which(names(indices_frame) !="value_labels")]))
+		}
+		
+		return(indices_m)
 	} else {
+	
 		return(indices_frame)
 	}
 }
@@ -279,37 +340,56 @@ gender_extract <- function(net, asNets=FALSE, valuesOnly=FALSE) {
 		
 	}
 	
-	data_ff[, c(1,2)] <- data_ff[ , c(2,1)]
-	data_mm[, c(1,2)] <- data_mm[ , c(2,1)]
-	data_fm[, c(1,2)] <- data_fm[ , c(2,1)]
+	if( length(data_ff) == 0) {
+		print("ff")
+		net_ff = network.initialize(1)
+
+	} else {
+		data_ff[, c(1,2)] <- data_ff[ , c(2,1)]
+		edgelist_ff <- matrix(unlist(data_ff), ncol=2)
+		
+		net_ff = network(edgelist_ff,matrix.type="edgelist",directed=FALSE)
+		label_ff = paste(net_label,"(ff)", sep=" ")
+		set.network.attribute(net_ff, "LABEL", "ff")
+		set.vertex.attribute(net_ff, "NODE_COLOR", node_colors)
+		set.vertex.attribute(net_ff, "vertex.names", vnames)
+		set.vertex.attribute(net_ff, "SEX", sex)
+	}
 	
-	# convert matrix like list to matrix
-	edgelist_ff <- matrix(unlist(data_ff), ncol=2)
-	edgelist_mm <- matrix(unlist(data_mm), ncol=2)
-	edgelist_fm <- matrix(unlist(data_fm), ncol=2)
+	if( length(data_mm) == 0) {
+		
+		print( paste("mm", net_label, sep= " "))
+		net_mm = network.initialize(1)
+
+	} else {
+		data_mm[, c(1,2)] <- data_mm[ , c(2,1)]
+		edgelist_mm <- matrix(unlist(data_mm), ncol=2)
+		
+		net_mm = network(edgelist_mm,matrix.type="edgelist",directed=FALSE)
+		label_mm = paste(net_label,"(mm)", sep=" ")
+		set.network.attribute(net_mm, "LABEL", "mm")
+		set.vertex.attribute(net_mm, "NODE_COLOR", node_colors)	
+		set.vertex.attribute(net_mm, "vertex.names", vnames)
+		set.vertex.attribute(net_mm, "SEX", sex)
+	}
 	
-	# creating networks
-	net_ff = network(edgelist_ff,matrix.type="edgelist",directed=FALSE)
-	label_ff = paste(net_label,"(ff)", sep=" ")
-	set.network.attribute(net_ff, "LABEL", "ff")
-	set.vertex.attribute(net_ff, "NODE_COLOR", node_colors)
-	set.vertex.attribute(net_ff, "vertex.names", vnames)
-	set.vertex.attribute(net_ff, "SEX", sex)
-	
-	net_mm = network(edgelist_mm,matrix.type="edgelist",directed=FALSE)
-	label_mm = paste(net_label,"(mm)", sep=" ")
-	set.network.attribute(net_mm, "LABEL", "mm")
-	set.vertex.attribute(net_mm, "NODE_COLOR", node_colors)	
-	set.vertex.attribute(net_mm, "vertex.names", vnames)
-	set.vertex.attribute(net_mm, "SEX", sex)
-	
-	net_fm = network(edgelist_fm,matrix.type="edgelist",directed=FALSE)
-	label_fm = paste(net_label,"(fm)", sep=" ")
-	set.network.attribute(net_fm, "LABEL", "fm")
-	set.vertex.attribute(net_fm, "NODE_COLOR", node_colors)
-	set.vertex.attribute(net_fm, "vertex.names", node_colors)
-	set.vertex.attribute(net_fm, "vertex.names", vnames)	
-	set.vertex.attribute(net_fm, "SEX", sex)
+	if( length(data_fm) == 0) {
+		print("fm")
+		net_fm = network.initialize(1)
+
+	} else {
+		data_fm[, c(1,2)] <- data_fm[ , c(2,1)]
+		edgelist_fm <- matrix(unlist(data_fm), ncol=2)
+		
+		net_fm = network(edgelist_fm,matrix.type="edgelist",directed=FALSE)
+		label_fm = paste(net_label,"(fm)", sep=" ")
+		set.network.attribute(net_fm, "LABEL", "fm")
+		set.vertex.attribute(net_fm, "NODE_COLOR", node_colors)
+		set.vertex.attribute(net_fm, "vertex.names", node_colors)
+		set.vertex.attribute(net_fm, "vertex.names", vnames)	
+		set.vertex.attribute(net_fm, "SEX", sex)		
+	}
+
 	
 	if(asNets == TRUE) {
 	
@@ -598,7 +678,7 @@ del_u_edges <- function(net) {
 degree_corr <- function(net) {
 	n_edges = length(as.matrix(net,matrix.type="edgelist")) / 2
 	edgelist = as.matrix(net,matrix.type="edgelist")
-	deg = degree(net,gmode="graph")
+	deg = igraph::degree(to_igraph(net))
 	x = c()
 	y = c()
 	

@@ -52,9 +52,24 @@ as_hist <- function(dat) {
 }
 
 #
-# plot all 30h networks with highlighted cutpoints
+# plot longitudinal measures
 #
 
-plot_all_cp <- function(nets){}
+long_plot <- function(values) {
+		
+		x_lim= c(min(values), max(values))
+		
+		# axis labels
+		xlabs <- c( "Jun. `08", "Jul. `08", "Aug. `08", "Sept. `08", "Oct. `08", "Nov. `08", "Dec. `08", "Jan. `09", "Feb. `09", "Mar. `09", "Apr. `09" , "May `09", "Jun. `09")
+		
+		# plot command 	
+		par(mar = c(6, 5, 4, 2));
+		par(mgp = c(0,3,2)) ; 
+		plot(values, type="b", pch=20, col="royalblue", xlab="month", ylab="nodes", yaxt="n",xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
+		axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
+		axis(2)
+}
+
+
 
 
