@@ -33,7 +33,7 @@ Other than the visulization in the \textit{miceminer} application, the \textit{n
 \subsubsection{General network structure}
 \label{subsubsec:vis_general}    
 
-Pictured in figures \ref{fig:graph_january_3h} and  \ref{fig:graph_january_30h} are the networks for January 2009 with the edge filter threshold set to 3 hours and 30 hours respectively. Although the edges within the components of the network are not visible, the amount of \textit{isolates}, nodes with a degree of zero, is noticeable higher in the network with an edge filter value set to 30 hours.
+Pictured in figures \ref{fig:graph_january_3h} and  \ref{fig:graph_january_30h} are the networks for January 2009 with the edge filter threshold set to 3 hours and 30 hours respectively. Although the edges within the components of the network are not visible, the amount of \textit{isolates}, nodes with a degree of zero, is noticeable higher in the network with an edge filter value set to 30 hours. \textit{Isolates} arise from the filter process. Because the weight of the edges, of these nodes, are lower then the filter value and the edges are therefore removed in the filtered network.   
 
 \begin{figure}[htpb]% 
 	\centering 
@@ -356,8 +356,102 @@ There is no general interpretation of the value. However, we can compare it with
  
 \subsection{Longitudinal exploration of the network data}
 \label{subsec:longitudinal}
-No statistics.
-Comparing the networks using the hammond distance.
+
+After the visual exploration, and the examination of some quantitative network measures, on the basis of a single network, we expand this methods to a series of networks. The network series includes the data from June 2008 to June 2009, with an edge filter value of 30 hours. Although this 13 networks do not reveal eventual annual periodicities, as such a study would need to be carried out with network data for several year, tendencies can still be spotted.
+ 
+To identify this tendencies, rather then analysing the data based on known methods to study the longitudinal dynamics in networks\cite{snijders:05}, the already introduced quantitive measures have been calculated for the whole set.
+
+\subsubsection*{Nodes}
+
+Pictured in figure \ref{fig:long_node}, is the quantity of mice, for which meetings have been recorded, for each of the thirteen months. The blue vaues indicate the whole amount of mice per month. The values in pink, light blue and grey, represent the quantity of female, male and mice with an unknown gender, respectively. Unless otherwise stipulated, the color code for the genders is the same in all of the following figures.
+
+The convergence of the values for the females and males from September 2008 to April 2009 allows for a more significant comparison of these networks.
+
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_nodes.pdf}
+  \caption[Quantity of mice over the months]{Quantity of mice for each month. The solid blue line indicates the sum of the female (pink), the male (light blue) and the mice with an unknown gender (grey).}
+  \label{fig:long_node}
+\end{center}
+\end{figure}
+
+\subsubsection*{Edges}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_edges.pdf}
+  \caption[Edges]{Edges}
+  \label{fig:long_edges}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Components}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_comps.pdf}
+  \caption[Components]{Components}
+  \label{fig:long_comps}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Clustering coefficient}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_cc.pdf}
+  \caption[clustering coefficient]{clustering coefficient}
+  \label{fig:long_cc}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Degree}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_degree.pdf}
+  \caption[Degree]{Degree}
+  \label{fig:long_degree}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Betweenness}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_betweenness.pdf}
+  \caption[Betweenness]{Betweenness}
+  \label{fig:long_betweenness}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Gender correlation coefficient}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_betweenness.pdf}
+  \caption[Gender correlation coefficient]{Gender correlation coefficient}
+  \label{fig:long_gender_corr}
+\end{center}
+\end{figure} 
+
+
+\subsubsection*{Degree correlation coefficient}
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_degree.pdf}
+  \caption[Degree correlation coefficient]{Degree correlation coefficient}
+  \label{fig:long_degree_cor}
+\end{center}
+\end{figure} 
+
 
 \begin{mylist}
 \item Trace special mice or positions (brokers, cut-points) over a period of one year.

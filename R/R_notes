@@ -63,17 +63,17 @@ points(c(1:13), nlv[22,], pch=15, type="b", col="deeppink", lty=3);
 points(c(1:13), nlv[23,], pch=17, type="b", col="deepskyblue", lty=3);
 
 # components plot
-min_v = 10
-max_v = 80
+min_v = 2
+max_v = 12
 par(mar = c(6, 5, 4, 2));
 par(mgp = c(0,3,2)) ;
-plot(nlv[5,], type="b", pch=19, col="royalblue", xlab="month", ylab="components",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
+plot(nlv[5,], type="b", pch=19, col="royalblue", xlab="month", ylab="components (n > 1)",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
 axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
-axis(2, at=seq(min_v, max_v, by=5), las=2);
+axis(2, at=seq(min_v, max_v, by=1), las=2);
 points(c(1:13), nlv[6,], pch=15, type="b", col="deeppink", lty=3);
 points(c(1:13), nlv[7,], pch=17, type="b", col="deepskyblue", lty=3);
 
-# components plot
+# degree correlation plot
 min_v = 0.2
 max_v = 0.9
 par(mar = c(6, 5, 4, 2));

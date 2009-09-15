@@ -65,11 +65,14 @@ node_level_values <- function (net) {
 	
 	# whole net
 	i_g = to_igraph(net);
+	# components
+	comps = igraph::clusters(i_g)
+	
 	n = vcount(i_g)
 	f = count_attribute_occurance(net,"SEX","f")
 	m = count_attribute_occurance(net,"SEX","m")
 	u = count_attribute_occurance(net,"SEX","u")
-	comp = components(net)
+	comp = length(unique(comps$membership)) - length(isolates(net))
 	emax = vcount(i_g)*.5*(vcount(i_g) -1)
 	e = ecount(i_g)
 	den = round( gden(net,mode="graph"),2)
@@ -83,8 +86,6 @@ node_level_values <- function (net) {
 	# gender networks	
 	g_nets = gender_extract(net, asNets=T)
 	
-	# components
-	comps = igraph::clusters(i_g)
 	
 	# cc
 	cc_loc = transitivity(i_g, type="local")
@@ -94,7 +95,7 @@ node_level_values <- function (net) {
 	# females net
 	net_f = g_nets$ff
 	net_f_i = to_igraph(net_f)
-	comp_f = length(unique(comps$membership[which(net %v% "SEX" == "f")]))
+	comp_f = length(unique(comps$membership[which(net %v% "SEX" == "f")])) - length(which(c(net %v% "SEX")[isolates(net)] == "f")) 
 	e_f = ecount(net_f_i)
 	deg_f = round(mean(degree(net, nodes=c( which(net %v% "SEX" == "f")), gmode="graph")),2)
 	cc_f = round(mean(cc_loc[which(net %v% "SEX" =="f")], na.rm=T),2)
@@ -103,7 +104,7 @@ node_level_values <- function (net) {
 	# males net
 	net_m = g_nets$mm
 	net_m_i = to_igraph(net_m)
-	comp_m = length(unique(comps$membership[which(net %v% "SEX" == "m")]))
+	comp_m = length(unique(comps$membership[which(net %v% "SEX" == "m")])) - length(which(c(net %v% "SEX")[isolates(net)] == "m"))
 	e_m = ecount(net_m_i)
 	deg_m = round(mean(degree(net, nodes=c( which(net %v% "SEX" == "m")), gmode="graph")),2)
 	cc_m = round(mean(cc_loc[which(net %v% "SEX" =="m")], na.rm=T),2)
