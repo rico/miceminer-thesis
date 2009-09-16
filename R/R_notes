@@ -5,7 +5,6 @@ nlv <- node_level_values_as_data_frame(networks_30h, returnM=T, named=F)
 xlabs <- c( "Jun. `08", "Jul. `08", "Aug. `08", "Sept. `08", "Oct. `08", "Nov. `08", "Dec. `08", "Jan. `09", "Feb. `09", "Mar. `09", "Apr. `09" , "May `09", "Jun. `09")
 
 # plot command nodes
-
 par(mar = c(6, 5, 4, 2));
 par(mgp = c(0,3,2)) ; 
 plot(nlv[1,], type="b", pch=19, col="royalblue", xlab="month", ylab="nodes",ylim=c(0,120), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
@@ -78,7 +77,7 @@ min_v = 0.2
 max_v = 0.9
 par(mar = c(6, 5, 4, 2));
 par(mgp = c(0,3,2)) ;
-plot(nlv[24,], type="b", pch=19, col="royalblue", xlab="month", ylab="degree correlation coefficient",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
+plot(nlv[24,], type="b", pch=19, col="royalblue", xlab="month", ylab="degree correlation coefficient (r)",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
 axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
 axis(2, at=seq(min_v, max_v, by=0.1), las=2);
 
@@ -87,6 +86,13 @@ min_v = -0.5
 max_v = 0.5
 par(mar = c(6, 5, 4, 2));
 par(mgp = c(0,3,2)) ;
-plot(nlv[25,], type="b", pch=19, col="royalblue", xlab="month", ylab="gender correlation coefficient",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
+plot(nlv[25,], type="b", pch=19, col="royalblue", xlab="month", ylab="gender correlation coefficient (r)",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
 axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
 axis(2, at=seq(min_v, max_v, by=0.1), las=2);
+
+min_v = 0
+max_v = 12
+par(mar = c(5, 4, 4, 2) + 0.1);
+par(mgp = c(3,1,0)) ;
+plot(deg_f_h, type="b", pch=15, col="deeppink", xlab="Degree", ylab="Frequency",ylim=c(min_v,max_v), bty="n") ;
+points( deg_m_h, pch=17, type="b", col="deepskyblue", lty=1);

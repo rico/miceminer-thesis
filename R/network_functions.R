@@ -725,3 +725,70 @@ rand_deg <- function(degrees, iterations = 100) {
 
 	return(rand_graphs)
 }
+
+#
+# find interesting nodes over a stack of networks
+# 
+int_nodes_nets <- function(nets, valsOnly=F) {
+
+	res = list()
+	
+	for(i in 1:length(nets)) {
+		net_i = nets[[i]]
+		super_n = int_nodes(net_i)
+		
+		net_lab = net_i %n% "LABEL"		
+		nodes_sex = c(net_i %v% "SEX")[super_n]
+		nodes_lab = c(net %v% "vertex.names")[super_n]
+		
+		if(valsOnly==T) {
+			res[[i]] = c(super_n, nodes_lab, nodes_sex)
+		} else {
+			res[[i]] = list("net"=net_lab,"nodes" = super_n, "labels"=nodes_lab, "sex"=nodes_sex)
+		}
+		
+	}
+	
+	return(res)
+
+}
+
+#
+# Find interesting nodes, such as the nodes have a hight betweenness bit are not cut-points which would components with size two or less
+#
+int_nodes <- function(net) {
+
+	i_g = to_igraph(net)
+	comps = igraph::clusters(i_g)
+	
+	sc_org = length(which(comps$csize < 3))
+	cp = cutpoints(net)
+	
+	deg = degree(net, gmode="graph")
+	bet = betweenness(net, gmode="graph")
+	# get five highest betweenness values
+	top_f_vals = c(sort( bet, decreasing=T))[0:5]
+	
+	in_top_f <- sapply(bet, function(x) x %in% top_f_vals)
+	t_f = which(in_top_f == T) # the nodes in the top five
+	
+	sup_nodes = c();
+	for ( i in 1:length(t_f)) {
+		nc = network.copy(net)
+		delete.vertices(nc,t_f[i]) # delete vertex
+		igc = to_igraph(nc)
+
+		compsc <- igraph::clusters(igc)
+		sc_c = length(which(compsc$csize < 3)) # check if there are more components with size two or less
+		
+		
+		if(sc_c == sc_org && deg[t_f[i]] != 1) { # nodes with degree 1 are not interesting
+			sup_nodes = append(sup_nodes, t_f[i])
+		}
+	
+	}
+	
+	return(sup_nodes)
+	
+	
+}

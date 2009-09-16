@@ -254,7 +254,7 @@ Pictured in figure \ref{fig:node_based:measures_dist} are the frequency distribu
 
 Although the charts do not show a clear separation, the observations made in the network visualizations (figures \ref{fig:inner_inter_gender} and \ref{fig:graph_january_30h_node_based_measures}), that females are better connected, is supoorted. Figure \ref{fig:graph_january_30h_degree_dist}, for instance, shows, that there are more male\textit{isolates} (nodes with degree 0) than female. Furthermore, the female mice with a high betweeness value are easy seen in figure \ref{fig:graph_january_30h_betweenness_dist}. 
 
-The simplest way to quantify the segmentation, is to calcuate the means by gender (see table \ref{tab:means_nbm}). There seems to be an exlicit difference in the betweeness. 
+The simplest way to quantify the segmentation, is to calcuate the means by gender (see table \ref{tab:means_nbm}). There seems to be an explicit difference in the betweeness. 
 
 \begin{center}
 \begin{tabular}{l+lll}
@@ -316,11 +316,12 @@ r = \frac{ \sum_i e_{ii} - \sum_{ijk} e_{ik} e_{jk} }{ 1 - \sum_{ijk} e_{ik} e_{
 \label{eq:ass_coeff}
 \end{equation} 
 
-where $k$ is a dummy variable used to iterate the sum\cite{lusseau:04}. This quantity equals $1$ when we have perfect assortative mixing, meaning that all nodes of a category are connected to nodes of the same category. For a disassortative mixing, when every node of a type is connected to a node of another category, the value of $r$ lies between $-1 \leq r \leq 0$.  
+where $k$ is a dummy variable used to iterate the sum\cite{lusseau:04}. This quantity equals $1$ when we have perfect assortative mixing, meaning that all nodes of a category are connected to nodes of the same category. For a disassortative mixing, when every node of a type is connected to a node of another category, the value of $r$ lies between $-1 \leq r \leq 0$. 
 
 \paragraph{Gender correlation}
+\label{para:gender_corr}
 
-In our data, one category we can test for is the gender. Table \ref{tab:mm} shows the \textit{mixing matrix}, which discloses the quantities of the inner- and inter-gender connections for the network data of January 2009 (e.g. there are 154 edges that between males and females).  
+In our data, one category we can test for is the gender. Table \ref{tab:mm} shows the \textit{mixing matrix}, which discloses the quantities of the inner- and inter-gender connections for the network data of January 2009 (e.g. there are 154 edges that between males and females).
 
 \begin{center}
 \newcolumntype{H}{>{\centering\bf}p{0.3cm}}
@@ -331,7 +332,7 @@ f	&	103	&	154	&	10 \\
 m	&	154	&	60	&	8 \\
 u	&	10	&	8	&	0 \\	
 \end{tabularx}
-\captionof{table}{The \textit{mixing matrix} of the gender category for the network data of January 2009. }
+\captionof{table}{The \textit{mixing matrix} of the gender category for the network data of January 2009.}
 \label{tab:mm}
 \end{center}
 
@@ -349,6 +350,7 @@ where $r_i$ i the $r$ value of $r$ for the network in which the $i$-th edge is r
 However, this is not applicable for the present data, since the $r$ values calculated according to the\textit{jackknife} method are not subject to Gaussian distribution. Each iteration in the \textit{jackknife} method either removes an inner- or inter-gender edge, only three different $r$ values occur.
 
 \paragraph{Degree correlation}
+\label{para:degree_corr}
  
 Another form of assortative mixing is the degree correlation, which is used to measure the assortative mixing by the node degree. The question behind this value is whether individuals with high degrees tend to be connected to others with a high degree\cite{croft:07}. Calculation of the value for the network of January 2009 and an edge filter value of 30 hours as suggested by \textit{Newman}\cite{newman:02}, using the Pearson correlation cofficient results in $r_p = 0.373$. \cite{newman:03a}. 
 
@@ -357,64 +359,96 @@ There is no general interpretation of the value. However, we can compare it with
 \subsection{Longitudinal exploration of the network data}
 \label{subsec:longitudinal}
 
-After the visual exploration, and the examination of some quantitative network measures, on the basis of a single network, we expand this methods to a series of networks. The network series includes the data from June 2008 to June 2009, with an edge filter value of 30 hours. Although this 13 networks do not reveal eventual annual periodicities, as such a study would need to be carried out with network data for several year, tendencies can still be spotted.
+After the visual exploration, and the examination of some quantitative network measures on the basis of a single network, we expand this methods to a series of networks. The series includes the data from June 2008 to June 2009, with an edge filter value of 30 hours. Although this 13 networks do not reveal eventual annual periodicities, as such a study would need to be carried out with network data for several year, tendencies can still be spotted.
  
-To identify this tendencies, rather then analysing the data based on known methods to study the longitudinal dynamics in networks\cite{snijders:05}, the already introduced quantitive measures have been calculated for the whole set.
+To identify this tendencies, rather then analysing the data based on known methods to study the longitudinal dynamics in networks\cite{snijders:05}, most of the already introduced quantitive measures have been calculated for the whole set, and are presented as charts. A possible trend in the dynamics, or another exceptional finding, of a measure is described on spot. The full statement of the observations is found in the subsequent section (see \ref{subsec:discussion}).  
 
 \subsubsection*{Nodes}
 
-Pictured in figure \ref{fig:long_node}, is the quantity of mice, for which meetings have been recorded, for each of the thirteen months. The blue vaues indicate the whole amount of mice per month. The values in pink, light blue and grey, represent the quantity of female, male and mice with an unknown gender, respectively. Unless otherwise stipulated, the color code for the genders is the same in all of the following figures.
+Pictured in figure \ref{fig:long_node}, is the quantity of mice, for which meetings have been recorded, for each of the thirteen months. The blue vaues indicate the whole amount of mice per month. The values in pink, light blue and grey, represent the quantity of female, male and mice with an unknown gender, respectively. Unless otherwise stipulated, the color code for the genders is the same in all of the figures in this section.
 
-The convergence of the values for the females and males from September 2008 to April 2009 allows for a more significant comparison of these networks.
-
+Notable is the convergence of the quantities for the female and male mice from September 2008 to April 2009. This allows for a more significant comparison of these networks, since a lot of the methods and measures are in some way dependent on the number of nodes.  
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.6\textwidth]{assets/pdf/long_nodes.pdf}
-  \caption[Quantity of mice over the months]{Quantity of mice for each month. The solid blue line indicates the sum of the female (pink), the male (light blue) and the mice with an unknown gender (grey).}
+  \caption[Number of mice over the months]{Quantity of mice for each month. The solid blue line indicates the sum of the female (pink), the male (light blue) and the mice with an unknown gender (grey).}
   \label{fig:long_node}
 \end{center}
 \end{figure}
 
 \subsubsection*{Edges}
 
+Figure \ref{fig:long_edges} shows the number of edges for the networks. Furthermore, the number of edges between females (pink), males (light blue), between males and females (grey) are indicated. The sum of the edges (colored blue) does coprehend the edges that includes mice of which the gender is unknown. However, this fraction is not indicated in the figure.
+
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.6\textwidth]{assets/pdf/long_edges.pdf}
-  \caption[Edges]{Edges}
+  \caption[Number of edges over the months]{Number of edges over the months.}
   \label{fig:long_edges}
 \end{center}
+\end{figure}
+
+The chart suggests a seasonal trend for the connectedness of the mice during summer and winter. Even though the number of mice is lower in summer than in winter (see figure \ref{fig:long_node}), the differences in the connectedness of the mice is clearly visible, when the networks are compared visually. 
+
+Figure \ref{fig:june_jan_side} shows the networks for June 2008 and January 2009 side by side. Quite clearly, the density of edges in the network for January is much higher than for June. The density of a network can be quantified by calculating the fraction of possible edges in the network, which is given by 
+
+\begin{equation}
+\rho = \frac{E}{E_max} = \frac{2E}{n(n-1)}
+\label{eq:ass_coeff}
+\end{equation}      
+
+where $E$ denotes the existing edges, and $n$ is the number of nodes in the network. The densities for June 2008 and January 2009 are $\rho_{jun.} = 0.01$ and $\rho_{jan} = 0.14$ , respectively. The factor of 14 between this two values is even underestimated, since the number of possible edges for June is $E_{max} = (\frac{1}{2})n(n-1) = (\frac{1}{2}) 74(74 -1) = 2701$ whereas for January 2009 $E_{max} = (\frac{1}{2}) 97(97-1)  = 4656$. Hence, the mice are much better connected in winter than in summer.  
+
+\begin{figure}[htpb]% 
+	\centering 
+	
+	\subfloat[June 2008]{
+					\label{fig:graph_jun_30h}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_june_08_30h.pdf}
+				}	
+	\qquad 			
+	\subfloat[January 2009]{
+					\label{fig:graph_jan_30h}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_january_30h_gender.pdf}
+				}
+	\caption[Network visualizations for June 2008 and January 2009]{Network visualizations for June 2008 and January 2009.}
+	 \label{fig:june_jan_side}
 \end{figure} 
 
-
+The amount of edges between the genders is most of the time higher than the amount for genders running within the gender. Moreover, female mice seems to be better connected among each other as males. The most significant differences are found for the networks of January and February. The number of mice is almost equal for both genders for these two months (see figure \ref{fig:long_node}), but the number of edges running between females is noticeable higher. 
+      
 \subsubsection*{Components}
+
+The number of network components (see figure \ref{fig:long_comps}) reveal, how fragmented  the network is. \textit{Isolates} have not been counted as components in this calculation. The values for the female and male mice indicate, in how many network components one or more individual of the gender is found. Therefore, the overlapping of the values for the genders with the value of the number of components (colored blue), from October to December, suggests, that there is a good mixing of genders in the components. Consequentely, we may expect disassortative mixing by gender (see \ref{para:gender_corr}) for these months. The dynamic of the gender correlation coefficient is pictured in figure \ref{fig:long_gender_corr}. Indeed, over the period in question the coefficient $r$ is around 0 which implies disassortative mixing.
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.6\textwidth]{assets/pdf/long_comps.pdf}
-  \caption[Components]{Components}
+  \caption[Number of components over the months]{Number of components over the months. \textit{Isolates} are not included in the calculation.}
   \label{fig:long_comps}
 \end{center}
-\end{figure} 
+\end{figure}
 
 
-\subsubsection*{Clustering coefficient}
-
-\begin{figure}[htpb]
-\begin{center}
-  \includegraphics[width=.6\textwidth]{assets/pdf/long_cc.pdf}
-  \caption[clustering coefficient]{clustering coefficient}
-  \label{fig:long_cc}
-\end{center}
-\end{figure} 
-
+% \subsubsection*{Clustering coefficient}
+% 
+% \begin{figure}[htpb]
+% \begin{center}
+%   \includegraphics[width=.6\textwidth]{assets/pdf/long_cc.pdf}
+%   \caption[clustering coefficient]{clustering coefficient}
+%   \label{fig:long_cc}
+% \end{center}
+% \end{figure} 
 
 \subsubsection*{Degree}
+
+Pictured in figure \ref{fig:long_degree} are the mean degrees of the nodes over the months. As already assumed, based on the observation made on the single network in section \ref{subsubsec:nbm_dist}, female mice retain a higher mean degree over the whole period. This is another argument that supports the hypothesis, that female mice are socially better or wider connected.
 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.6\textwidth]{assets/pdf/long_degree.pdf}
-  \caption[Degree]{Degree}
+  \caption[Mean degree of the nodes over the months]{Mean degree of the nodes over the months.}
   \label{fig:long_degree}
 \end{center}
 \end{figure} 
@@ -422,21 +456,43 @@ The convergence of the values for the females and males from September 2008 to A
 
 \subsubsection*{Betweenness}
 
+As already mentioned in the section where the betweenness value has been introduced (see section \ref{para:node_between} on page \pageref{para:node_between}), the betweenness usually correlates with the degree of a node. The mean betweeness values for the monthly networks shown in figure \ref{fig:long_betweenness}, mostly support this generalization. However, the separation of the betweenness values for the genders is more distinct, compared to the degree values (see figure \ref{fig:long_degree}), and the values for the March stand out.   
+
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.6\textwidth]{assets/pdf/long_betweenness.pdf}
-  \caption[Betweenness]{Betweenness}
+  \caption[Mean betweenness of the nodes over the months]{Mean betweenness of the nodes over the months.}
   \label{fig:long_betweenness}
 \end{center}
+\end{figure}
+
+In March, males have a higher men betweenness than females. Since this observation does not correlate with the mean degree values, we expect some males to be \textit{brokers}, according to the definition in section \ref{para:node_between}. The network visualizations shown in in figure \ref{fig:graphs_march}, identify two male mice, with an exceptionally high betweenness value (figure \ref{fig:graph_mar_prop_bet}) which are as well \textit{Cut-Points} (figure \ref{fig:graph_mar_hl_cp}), since they connect two sub-networks. Such nodes, and especially the edges between them, may be of great interest for somebody who plans to analyze single edges in the network.   
+
+\begin{figure}[htpb]% 
+	\centering 
+	
+	\subfloat[Node size proportional to betweenness value]{
+					\label{fig:graph_mar_prop_bet}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_march_09_30h_prop_bet.pdf}
+				}	
+	\qquad 			
+	\subfloat[Highlighted \textit{Cut-Points}]{
+					\label{fig:graph_mar_hl_cp}%
+					\includegraphics[width=.45\textwidth]{assets/pdf/graph_march_09_30h_hl_cutpoints.pdf}
+				}
+	\caption[Network visualizations for March 2009]{Network visualizations for March 2009, where the node size is proportional to the betweeness value of the node \subref{fig:graph_mar_prop_bet}, and the \textit{Cut-Points} are highlighted \subref{fig:graph_mar_hl_cp}.}
+	 \label{fig:graphs_march}
 \end{figure} 
 
 
-\subsubsection*{Gender correlation coefficient}
+\subsubsection*{Gender correlation}
+
+Pictured in figure \ref{fig:long_gender_corr}, are the assortativity coefficients $r$ for the gender correlation. A clear tendency, away from the disassorsative to an assortative mixing is shown. However, $r$ values for sparse networks, as the one of June 2009 ( $\rho = 0.02$), may be doubted to be significant.
 
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=.6\textwidth]{assets/pdf/long_betweenness.pdf}
-  \caption[Gender correlation coefficient]{Gender correlation coefficient}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_gender_corr.pdf}
+  \caption[Assortatitivity coefficient of genders over the monts]{Assortatitivity coefficient of genders over the months.}
   \label{fig:long_gender_corr}
 \end{center}
 \end{figure} 
@@ -444,9 +500,11 @@ The convergence of the values for the females and males from September 2008 to A
 
 \subsubsection*{Degree correlation coefficient}
 
+No stabilty, not even a tendency is visible for the degree correlations shown in figure \ref{fig:long_degree_cor}. However, the values for the coefficient are positive over all the months, which is consistent with the values determined for other social networks (see section \ref{para:degree_corr}). 
+
 \begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=.6\textwidth]{assets/pdf/long_degree.pdf}
+  \includegraphics[width=.6\textwidth]{assets/pdf/long_degree_corr.pdf}
   \caption[Degree correlation coefficient]{Degree correlation coefficient}
   \label{fig:long_degree_cor}
 \end{center}
