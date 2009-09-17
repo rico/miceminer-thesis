@@ -729,7 +729,7 @@ rand_deg <- function(degrees, iterations = 100) {
 #
 # find interesting nodes over a stack of networks
 # 
-int_nodes_nets <- function(nets, valsOnly=F) {
+int_nodes_nets <- function(nets) {
 
 	res = list()
 	
@@ -737,15 +737,9 @@ int_nodes_nets <- function(nets, valsOnly=F) {
 		net_i = nets[[i]]
 		super_n = int_nodes(net_i)
 		
-		net_lab = net_i %n% "LABEL"		
-		nodes_sex = c(net_i %v% "SEX")[super_n]
-		nodes_lab = c(net %v% "vertex.names")[super_n]
+		super_n[["net"]] = net_i %n% "LABEL"
 		
-		if(valsOnly==T) {
-			res[[i]] = c(super_n, nodes_lab, nodes_sex)
-		} else {
-			res[[i]] = list("net"=net_lab,"nodes" = super_n, "labels"=nodes_lab, "sex"=nodes_sex)
-		}
+		res[[i]] = super_n
 		
 	}
 	
@@ -772,21 +766,50 @@ int_nodes <- function(net) {
 	in_top_f <- sapply(bet, function(x) x %in% top_f_vals)
 	t_f = which(in_top_f == T) # the nodes in the top five
 	
-	sup_nodes = c();
+	sup_nodes = list()
+	sup_nodes_indices = c();
+	sup_nodes_labels = c()
+	sup_nodes_sex = c()
+	
 	for ( i in 1:length(t_f)) {
+		sup_node_index = t_f[i]
 		nc = network.copy(net)
-		delete.vertices(nc,t_f[i]) # delete vertex
+		#sex_v = c(nc %v% "SEX")
+		#names_v = c(nc %v% "vertex.names")
+		
+		sup_node_label = c(nc %v% "vertex.names")[sup_node_index]
+		
+		sup_node_sex = c(nc %v% "SEX")[sup_node_index]
+		
+		
+		delete.vertices(nc,sup_node_index) # delete vertex
+		#delete.vertex.attribute(nc,"SEX") # adapt vertex names and sex to the deletion
+		#delete.vertex.attribute(nc, "vertex.names")
+		#sex_v = sex_v[-t_f[i]]
+		#names_v = names_v[-t_f[i]]
+		
+		#set.vertex.attribute(nc, "SEX", sex_v)
+		#set.vertex.attribute(nc, "vertex.names", names_v)
+		
 		igc = to_igraph(nc)
 
 		compsc <- igraph::clusters(igc)
 		sc_c = length(which(compsc$csize < 3)) # check if there are more components with size two or less
 		
 		
-		if(sc_c == sc_org && deg[t_f[i]] != 1) { # nodes with degree 1 are not interesting
-			sup_nodes = append(sup_nodes, t_f[i])
+		if(sc_c == sc_org && deg[sup_node_index] != 1) { # nodes with degree 1 are not interesting
+			
+			sup_nodes_labels = append(sup_nodes_labels, sup_node_label)
+			sup_nodes_indices = append(sup_nodes_indices, sup_node_index)
+			sup_nodes_sex = append(sup_nodes_sex, sup_node_sex)
+	
 		}
 	
 	}
+	
+	sup_nodes[["indices"]]=sup_nodes_indices
+	sup_nodes[["names"]]=sup_nodes_labels
+	sup_nodes[["sex"]]=sup_nodes_sex
 	
 	return(sup_nodes)
 	
