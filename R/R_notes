@@ -81,12 +81,12 @@ plot(nlv[24,], type="b", pch=19, col="royalblue", xlab="month", ylab="degree cor
 axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
 axis(2, at=seq(min_v, max_v, by=0.1), las=2);
 
-# gender correlation plot
+# Assortativity coefficient 
 min_v = -0.5
 max_v = 0.5
 par(mar = c(6, 5, 4, 2));
 par(mgp = c(0,3,2)) ;
-plot(nlv[25,], type="b", pch=19, col="royalblue", xlab="month", ylab="gender correlation coefficient (r)",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
+plot(nlv[25,], type="b", pch=19, col="royalblue", xlab="month", ylab="Assortativity coefficient (r)",ylim=c(min_v,max_v), yaxt="n", xaxt="n", bty="l", las=1, lwd=2, fg=grey(0.7)) ;
 axis(1, labels=xlabs, at=c(1:length(xlabs)), cex.axis=0.75, las=2);
 axis(2, at=seq(min_v, max_v, by=0.1), las=2);
 
