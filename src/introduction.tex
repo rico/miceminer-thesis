@@ -1,6 +1,3 @@
-% TITLE
-% MiceMiner: A web server to study societies of RFID-tagged mice
-% Title must be very specific. Yours is not enough. -tnetter 11/08/2009 17:43 
 % ===============================
 % Introduction
 % ===============================
@@ -9,67 +6,28 @@
 \section{Introduction}
 \label{sec:introduction}
 
-% SInce when has Koenig been working with mice?
-% What had been achieved so far?
-% What was missing?  -tnetter 11/08/2009 17:46 
+In May 2008, the research group around Prof. Barbara K\"onig at the Institute of Zoology of the University of Z\"urich decided to take their research in the field of animal behavior to the next level. Especially interested in the complex social behavior of house mice \textit{(Mus domesticus)} they came up with the idea to design an automated system to collect spatial position data of mice living in a barn.
 
-In May 2008, May 2008???????????? What have you been smoking, Rico????????? -tnetter 11/08/2009 17:49 Prof. Barbara K\"onig's research group at the Institute of Zoology of the University of Z\"urich decided to take their research in the field of animal behavior to the next level. Especially interested in the complex social behavior of house mice \textit{(Mus domesticus)} they had the idea to design an automated system, to collect spatial position data of mice living in a barn.
-
-%Put something about lab's publications and a bit about mouse social behavior -tnetter 11/08/2009 18:09 
-% True - will ask B. König
-
-% Experimental Apparatus (Setup) is following - why in the introduction? Makes no sense to me.
-\subsection{Experimental Apparatus}
+\subsection{Motivation}
 \label{subsec:motivation}
-The motivation for such an effort is to obtain a statistically relevant set of data to develop, test, and prove scientific hypotheses about the complex social behavior of the house mice. An automated system has the advantage that it collects data 24 hours a day, and the mice are not disturbed in their natural behavior by human the presence of men.
-% Isn't it essential that they are not disturbed in their natural behavior? Or is that just clear?
+The motivation for such an effort is to obtain a statistically relevant set of data to develop, test and prove scientific hypothesis about the complex social behavior of house mice. An automated system has the advantage that it collects data 24 hours a day, and the mice are in no way disturbed in their natural behavior by the presence of an observer.
 
-% This paragraph should go to conclusion, not intro -tnetter 11/08/2009 17:56 
-My personal motivation comes from the interest in informatics and my study in biology. The project gave me a lot of room to enhance my skills in informatics, while working on an interesting biological topic. Additionally, I am interested in the \textit{Social Network Analysis} to study complex social behavior.
+My personal motivation derives from the interest in informatics and my study in biology. The project gave me a lot of room to enhance my skills in informatics, while working on an interesting biological topic. Additionally, I am interested in the \textit{Social Network Analysis} to study complex social behavior.
 
-The automated system collecting the data in the barn was developed by \textit{New Behaviour}, a company based in XYZ . Briefly, the automated system comprises:
-\begin{itemize}
-\item XX RFID-tagged mice
-\item YY nests for raising pups
-\item Nest entrance with RFID sensors
-\item Network and computer system for RFID data acquisition, timing, and Internet transfer
-\item more stuff...
-\end{itemize}
+The system collecting the data in the barn has been developed and constructed by a company called \textit{New Behaviour}, a company based in Z\"urich. Thus, the main objective of this work was to develop software to store data and make it accessible to researchers for analysis 
 
-% Don't talk about "my masters thesis", just talk about the work -tnetter 11/08/2009 18:12 
-% Hmmm - don't understand what you mean by that.
-Thus, the main objective of this work was to develop software to store data and make it accessible to researchers for analysis, which are mainly the researchers involved in the house mice project. 
-
-\subsection{Data Acquisition}
+\subsection{Tasks}
 \label{subsec:task}
-
-% This comes later in detail, don't thimk that the introduction is the right place
-The data acquisition system provides the following information:
-Mouse RFID
-Location where RFID was acquired
-Time of RFID acquisition
-
-Unfortunately, data acquisition also introduces some positives such as:
-False entries, for example when a mouse approaches the RFID sensor but backs out
-Multiple entries...
- 
-
-% Man... that paragraph is bla bla. Remove! -tnetter 11/08/2009 18:18 
 Handling the spatial position data collected by the automated system is challenging, as it includes several tasks which can be carried out only using informatics on a level that biologists normally can not cope with.
-
 
 \subsubsection{Storing and Accessing the Data}
 \label{subsubsec:storeaccess}
-The sheer amount of data, expected to be 
-% Absolutely avoid superlatives!!!!!!!!! -tnetter 11/08/2009 18:27 
+The data collected by the automated system must be stored securely. Theredore, part of the approach is to set up a \ac{RDBMS} (RDBMS). 
 
-The data collected by the automated system must be stored securely in a secure and stable manner. The only reasonable Part of the approach to fulfill these requirements, is to set up a \ac{RDBMS} (RDBMS). % also specify acronym here! -tnetter 11/08/2009 18:29 
-
-Also, an intuitive user interface must be available, which to access and analyze the data, facilitate data exploration, and export to other software applications. Furthermore, the technology used to create the interface should be cross-platform compatible, to ensure maximal accessibility.
+Also, an intuitive user interface must be available, to access the data, facilitate data exploration, and export to other software applications. Furthermore, the technology used to create the interface should be cross-platform compatible, to ensure maximal accessibility.
 
 \subsubsection{Additional Tasks}
 \label{subsubsec:additional}
-Additionally, the user should be provided with an interface to administrate attribute data, such as the sex of the mice and to carry out some simple statistical analysis methods.
+Additionally, the user should be provided with an interface to carry out some simple statistical analysis.
 
-Last but not least, some functionality should be present which allows the user to compile data for a subsequent analysis of the enable to graphically display the social network.
-% DONE -tnetter 11/08/2009 19:01 
+Last but not least, some functionality should enable to graphically display the social network, and export the data for a social network analysis. 
