@@ -43,13 +43,13 @@ As mentioned in section \ref{subsec:problems}, some of the antennas could not be
 The \lstinline|searchdir.pl| script searches for matching pairs of antenna readings in the \lstinline|data| table, which serves to build a \textit{direction result}. A pair matches if:
 
 \begin{mylist}
-\item The transponder identifications of both readings are the same
-\item The time difference (in seconds) between the two readings is not greater than the value set as the \lstinline|<antennaInterval>| value in the configuration file (see Appendix \ref{app:configperl} for details) 
-\item The readings originate from both antennas attached to a box
+\item The RFID of both readings is the same,
+\item The time difference (in seconds) between the two readings is not greater than the value set as the \lstinline|<antennaInterval>| value in the configuration file (see Appendix \ref{app:configperl} for details), 
+\item The readings originate from both antennas attached to a box.
 \end{mylist}
 
-Figure \ref{fig:direction_result} shows the composition of a direction \textit{in} and a direction \textit{out} by means of an example at nestbox 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Although, the interval value has been estimated at first, it could be justified afterwards. Figure \ref{fig:dist_dir_elapse} and shows the distribution of elapsed millisecondes between the two antenna readings for a given direction. Based on this ditribution, the interval value could even be reduced.
- % rico - corrections 
+Figure \ref{fig:direction_result} shows the composition of a direction \textit{in} and a direction \textit{out} by means of an example at nestbox 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Although, the interval value has been estimated at first, it could be justified afterwards. Figure \ref{fig:dist_dir_elapse} shows the distribution of elapsed milliseconds between the two antenna readings, separated by direction. Based on this distribution, the interval value could even be reduced.
+ 
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/direction_result_schema.pdf}
@@ -76,9 +76,7 @@ Figure \ref{fig:direction_result} shows the composition of a direction \textit{i
 
 The findings are written to the \lstinline|dir| table (see section \ref{para:dir_table} on page \pageref{para:dir_table} for the table structure). The value for the \lstinline|time| field of the \textit{direction result} is always set to the time value of the reading at the outer antenna. Therefore, a mouse is said to have left a box when it passes the outer antenna.
 
-If the \lstinline|<antennaInterval>| is changed, the \lstinline| searchdirreset.pl| must be executed and followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script.
-
-% done -tnetter 16/09/2009 00:23 
+If the \lstinline|<antennaInterval>| is changed, the \lstinline| searchdirreset.pl| must be executed and followed by the scripts in the import cascade starting with the \lstinline|searchdir.pl| script. 
 
 \subsection{Stay results}
 \label{subsec:stayres}
@@ -88,26 +86,23 @@ The \lstinline|searchres.pl| aims to find matching \textit{direction results} in
 A pair of \textit{direction results} matches if the following 3 conditions are satisfied:
 
 \begin{mylist}
-\item Transponder ID's of both \textit{direction results} are the same
-\item \textit{direction results} have opposite \lstinline|direction| values
-\item \textit{direction results} are recorded at the same box
+\item RFIDS's of both \textit{direction results} are the same,
+\item \textit{direction results} have opposite \lstinline|direction| values,
+\item \textit{direction results} are recorded at the same nestbox.
 \end{mylist}
 
-or if:
-% I had to rewrite this part. I can barely understand it... -tnetter 16/09/2009 14:19 
+A \textit{stay result} is found as well, if a \textit{direction result} can be paired with an unused dataset (i.e. a dataset which is not used in a \lstinline|direction result|). 
+
+Such a pair matches if the following conditions are satisfied:
+ 
 \begin{mylist}
-\item A \textit{direction result} that features:
-    \begin{mylist}
-        \item Same transponder IDs
-        \item A \lstinline|direction| value of \lstinline|in|
-        \item An unused dataset (i.e. unused for a \textit{direction result}) from the \lstinline|data| table recorded at an outer antenna
-	\end{mylist}
-\item and belong to the same box 
+	\item The RFIDS's of the \textit{direction result} and the unused dataset are the same,
+	\item The \textit{direction result} has a \lstinline|dir| value of \lstinline|in| (i.e. the mouse enters the nestbox),
+	\item The unused dataset is recorded at the outer antenna of the nestbox (i.e. the mouse leaves the nestbox),
+	\item The \textit{direction result} and the unused dataset are recorded at the same nestbox.  
 \end{mylist}
 
-In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Out of the 992,128 \textit{stay results} currently in the database, 851612 (85.8\%) are type 3 results and 140516 (14.2\%) of type 4.
-% Rico, I already told you not to put the exact values in the text. It's ridiculous! -tnetter 16/09/2009 14:40 
-
+In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Of the \textit{stay results} currently in the database, 85.8\% are type 3 results and 14.2\% type 4. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -125,9 +120,9 @@ In the former case, the \textit{stay result} is of \textbf{type 3}, in the latte
 \end{center}
 \end{figure}
 
-Additionally, the script handles the temporal overlaps within the \textit{stay results}. As explained in section \ref{subsec:problems}, the overlaps occur because the antenna system is imperfect. If the script kept all possible \textit{stay results}, situations illustrated in figures \ref{fig:result_overlap} and \ref{fig:result_overlap_single} would arise. All the \textit{stay results} (1, 2, and 3) originate from the same transponder recorded at the same or other boxes. Hence, the antenna system must have missed readings, but we have no clue about the exact moment.  
+Additionally, the script handles the temporal overlaps within the \textit{stay results}. As explained in section \ref{subsec:problems}, the overlaps occur because the antenna system is imperfect. If the script kept all possible \textit{stay results}, situations illustrated in figures \ref{fig:result_overlap} and \ref{fig:result_overlap_single} would arise. All the \textit{stay results} (1, 2, and 3) originate from the same transponder recorded at the same or other nestboxes. Hence, the antenna system must have missed readings, but we have no clue about the exact moment.  
 
-Illustrated in \ref{fig:result_overlap} is the situation where one \textit{stay result} (1) overlaps two others (2),(3). A reasonable explanation is that there are several antenna recordings missing. Since we have two \textit{stay results}, (2) and (3), which look valid, we discard \textit{stay result} (1) where we don't know what really happened. Furthermore, this approach is reasonable as the probability of missed antenna readings is much higher than the probability that eight antenna readings (two per \textit{direction result}) that constitute two perfect-looking \textit{stay results} are wrong.
+Illustrated in figure \ref{fig:result_overlap} is the situation where one \textit{stay result} (1) overlaps two others (2),(3). A reasonable explanation is that there are several antenna recordings missing. Since we have two \textit{stay results}, (2) and (3), which look valid, we discard \textit{stay result} (1) where we don't know what really happened. Furthermore, this approach is reasonable as the probability of missed antenna readings is much higher than the probability that eight antenna readings (two per \textit{direction result}) that constitute two perfect-looking \textit{stay results} are wrong.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -159,7 +154,7 @@ The justification for this approach is similar to the one just discussed: \texti
 
 If the \textit{stay result} does not overlap another the script checks for other antenna readings that were recorded during the \textit{stay result}. This is illustrated in figure \ref{fig:dataset_overlap}. Obviously, only antenna readings which originate from the same transponder are taken into account.
 
-In figure \ref{fig:dataset_overlap} four other antenna readings could be found, two of them happen not to be from the same box. This \textit{stay result} will be discarded, as we don't know what really happened.
+In figure \ref{fig:dataset_overlap} four other antenna readings could be found, two of them happen not to be from the same nestbox. This \textit{stay result} will be discarded, as we don't know what really happened.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -169,8 +164,7 @@ In figure \ref{fig:dataset_overlap} four other antenna readings could be found, 
 \end{center}
 \end{figure}
 
-As seen in figure \ref{fig:dataset_overlap}, the reading from antenna \lstinline|163| at nestbox 16 is colored green. If we consider the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the innner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case we keep the result, as the mouse has not left the box and might only be nervously inspecting the entry tube. As stated in section \ref{subsec:dirres}, a mouse is out of the box if it is recorded at the outer antenna.
-% All animals are "it", not "she" or "he", except maybe in pet stories and children books -tnetter 16/09/2009 15:29 
+As seen in figure \ref{fig:dataset_overlap}, the reading from antenna \lstinline|163| at nestbox 16 is colored green. If we consider the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the inner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case we keep the result, as the mouse has not left the box and might only be nervously inspecting the entry tube. As stated in section \ref{subsec:dirres}, a mouse is out of the box if it is recorded at the outer antenna. 
 
 The \textit{nervous index} is the number of readings at the inner antenna during the \textit{stay result}. The \textit{nervous index} is 4 for the situation shown in figure \ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table}.
 
@@ -181,25 +175,19 @@ The \textit{nervous index} is the number of readings at the inner antenna during
   \label{fig:dataset_overlap_nervous}
 \end{center}
 \end{figure}
+ 
+The search for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers. In the period from the 5th of April 2007 to the 27th of March 2009, 1.5 million \textit{direction results} with a direction value of \lstinline|in| are found. Without any overlap filtering, the script finds a \textit{stay result} for 99.0\% of the direction results. After excluding the \textit{stay result} overlaps, 68.1\% remain, and 66.2\% after excluding the \textit{stay results} with overlapping antenna readings. Though, 59.6\% of the remaining \textit{stay results} are \textit{nervous mouse} results.
 
-% Please rewrite this paragraph. I don't want to see those precise numbers. -tnetter 16/09/2009 15:34 
-The search for the \textit{stay result} overlaps and the overlapped antenna recordings could be combined. Though, we are interested in the influence of these steps on the numbers. In the period from the 5 of April 2007 to the 27 of March 2009, 1,499,110 \textit{direction results} with a direction value of \lstinline|in| are found. Without any overlap filtering, the script finds a \textit{stay result} for 1,484,458 (99.0\%) of the direction results. After excluding the \textit{stay result} overlaps, 1,020,983 (68.1\%) remain, and 992,128 (66.2\%) after excluding the \textit{stay results} with overlapping antenna readings. Though, 591,549 (59.6\%) of the remaining \textit{stay results} are \textit{nervous mouse} results.
-
-Nevertheless, an inconsistency remains. 536 (0.05\%) of the \textit{stay result} show a duration of stay longer than nine hours. These values are implausible as the mice have to drink outside the nestbox, for example. However, these results exist in the database and are validated. A number of explanations have been discussed how such results can arise, which are quite complicated and unlikely, but therefore could be true for these exceptional cases. These results may be removed from display (see section \ref{subsec:miceminer_config} on page \pageref{subsec:miceminer_config}) but kept in the database.     
+Nevertheless, an inconsistency remains. 0.05\% of the \textit{stay result} show a duration of stay longer than nine hours. These values are implausible as the mice have to drink outside the nestbox, for example. However, these results exist in the database and are validated. A number of explanations have been discussed how such results can arise, which are quite complicated and unlikely, but therefore could be true for these exceptional cases. These results may be removed from display (see section \ref{subsec:miceminer_config} on page \pageref{subsec:miceminer_config}) but kept in the database.     
 
 The \textit{stay results} are written to the \lstinline|res| table as described in paragraph \ref{para:res_table} on page \pageref{para:res_table}.
 
 \subsection{Meeting results}
 \label{subsec:meetingres}
 
-The \lstinline|meetings.pl| script determines when and how many time the mice spend together in the nestboxes. A \textit{meeting result} is found whenever:
+The \lstinline|meetings.pl| script determines when and how many time the mice spend together in the nestboxes. 
 
-\begin{mylist}
-\item Two \textit{stay results}, % what?????? -tnetter 16/09/2009 15:39 
-\item of two different transpondered mice, % This is not how one uses a list. Please rewrite. I don't understand -tnetter 16/09/2009 15:39 
-\item which take place in the same nestbox,
-\item temporally overlap.
-\end{mylist}
+Consider the situation that two \textit{stay results} of different RFID's recorded at the same nestbox temporally overlap. In such a situation, the two mice meet in the nestbox and a \textit{meeting result} is found.
 
 Additionally, the script analyzes how two mice meet. There are four different possibilities, as shown in figure \ref{fig:meeting_types} and explained in the following list:
 
@@ -232,4 +220,4 @@ As mentioned in the section about the \textit{stay results}, a few results show 
 
 The \textit{meeting results}, are written to the \lstinline|meetings| table as described in paragraph \ref{para:meetings_table} on page \pageref{para:meetings_table}. 
 
-% Chapter conclusion? -tnetter 16/09/2009 15:44 
+The rules in the data processing were accurately determined based on several cycles of calculation. After each pass, the rules have been adjusted to reduce inconsistencies. In the final procedure presented in this section, inconsistencies are removed without loss of to many results.
