@@ -12,13 +12,13 @@ As seen in the previous sections, the amount of data available in the database i
 
 The \textit{miceminer} application intends to meet exactly these requirements. Basically, the application provides a user friendly interface to retrieve data from the database. Combined with some nifty filter capabilities and visualization options, the user gets a powerful tool to explore the data.
 
-\textit{miceminer}'s user interface is written entirely in \textit{Flex} developed by Adobe corporation. Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \cite{wiki:flex}. The application runs within every web browser which has the \textit{Flash} plug-in version 9 or above installed. Thus, the software is cross-platform compatible, meaning that it runs on every operating system for which the \textit{Flash} player is available. 
+\textit{miceminer}'s user interface is written entirely in \textit{Flex} developed by Adobe corporation. Adobe Flex is a software development kit released by Adobe Systems for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform \citep{wiki:flex}. The application runs within every web browser which has the \textit{Flash} plug-in version 9 or above installed. Thus, the software is cross-platform compatible, meaning that it runs on every operating system for which the \textit{Flash} player is available. 
  
 Furthermore, \textit{miceminer} doesn't need to be installed on every computer, but is stored on a computer accessible over the internet, which is called a server. Every time the application is accessed, it gets downloaded to the inquiring computer, called the client. This has the comfortable consequence software updates do not need to be installed on the client's computer but instead can be deployed to the server only.     
 
 Additionally, \textit{Flex} offers convincing tools to build interactive user interfaces and, in conjunction with third party software, dependable ways to retrieve data from a database. 
 
-% Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java applications can run on any Java virtual machine (JVM) regardless of the computer architecture\cite{wiki:java}.}, which has a immense \ac{API}, the one offered by \textit{Flex} is appropriate for the needs in this project.
+% Compared to \textit{Java}\footnote{Java is a programming language.[\ldots] Java applications can run on any Java virtual machine (JVM) regardless of the computer architecture\citep{wiki:java}.}, which has a immense \ac{API}, the one offered by \textit{Flex} is appropriate for the needs in this project.
 
 More information about the \textit{miceminer} project, including screencasts, that illustrate features, an \ac{API} documentation, the application source code and links to other resources used for the development, can be found on the project homepage at \href{http://zool-miceminer.uzh.ch/}{http://zool-miceminer.uzh.ch}\footnote{Please note that the site is only accessible from within the network of the University of Z\"urich.}. 
 
@@ -31,7 +31,7 @@ Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer}
 
 \begin{sidewaysfigure}
   \includegraphics[width=\textwidth]{assets/pdf/interface_overview.pdf}
-  \caption[miceminer interface overview]{Screenshot of the miceminer application, displaying data for a mouse. In addition, the main parts of the interface are labeled.}
+  \caption[\textit{miceminer} interface overview]{Screenshot of the miceminer application, displaying data for a mouse. In addition, the main parts of the interface are labeled.}
   \label{fig:interface_overview}
 \end{sidewaysfigure}
 
@@ -50,7 +50,7 @@ Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
 Graph Data	 &	Interactive network representation of the data which shows possible social relationships within the mice community. \\
 Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
 \end{tabularx}
-\captionof{table}[miceminer main menu]{Main components selectable from the \textit{Main menu} of the \textit{miceminer} application.}
+\captionof{table}[\textit{miceminer} main menu]{Main components selectable from the \textit{Main menu} of the \textit{miceminer} application.}
 \label{tab:main_components}
 \end{center}
 \end{table}
@@ -62,7 +62,7 @@ The interface arrangement is the same in all components except for the \textbf{G
 \begin{figure}[!htbp]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/interface_component.pdf}
-  \caption[Browse Data component interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
+  \caption[\textit{Browse Data} component interface]{Screenshot of the \textbf{Browse Data} component, with labeled parts of the interface.}
   \label{fig:interface_component}
 \end{center}
 \end{figure}
@@ -80,7 +80,7 @@ In the \textit{Parameters} section, the user sets the factors influencing data d
 \subsection{Software design}
 \label{subsec:miceminer_design}   
 
-\textit{Flex} itself does not include methods to query a database. Instead, the application sends its requests to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\cite{wiki:php}.} file stored on the server, thereby providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex}-based \textit{miceminer} application running on the client computer. An auxiliary software (\textit{amfphp}\footnote{Visit \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
+\textit{Flex} itself does not include methods to query a database. Instead, the application sends its requests to a \textit{PHP}\footnote{PHP is a scripting language originally designed for producing dynamic web pages\citep{wiki:php}.} file stored on the server, thereby providing the necessary methods. These methods handle the database queries and send the results back to the \textit{Flex}-based \textit{miceminer} application running on the client computer. An auxiliary software (\textit{amfphp}\footnote{Visit \href{http://www.amfphp.org}{http://www.amfphp.org} for details.}) speeds up the data transfer between the server and the client.
 
 \textit{PHP} provides ways to export data to different file formats such as \textit{Excel}. Additional export options have been designed so data can be analyzed by other scientific softwares.
 
@@ -89,7 +89,7 @@ The way user interface software components interact is illustrated in figure \re
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/application_design_miceminer.pdf}
-  \caption{Schema of the user interface software design.}
+  \caption[Schema of the user interface design]{Schema of the user interface design.}
   \label{fig:app_design_miceminer}
 \end{center}
 \end{figure}
@@ -116,7 +116,7 @@ The database includes several different types of data (antenna readings, \textit
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/date_period.pdf}
-  \caption[Date period selection]{Date period selector and current selection.}
+  \caption[Date period selector]{Date period selector and current selection.}
   \label{fig:date_period}
 \end{center}
 \end{figure}
@@ -146,7 +146,7 @@ Based on the tables with summarized data, the user can choose the mouse, box, or
 \begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/get_data_options.pdf}
-  \caption{Data retrieval options}
+  \caption[Data retrieval options]{Data retrieval options.}
   \label{fig:get_data_options}
 \end{center}
 \end{figure}
@@ -156,7 +156,7 @@ If the user chooses to show the data in the application, a secondary group of ta
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.66\textwidth]{assets/pdf/overview_data.pdf}
-  \caption{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
+  \caption[Clippings of the tables containing the results for a mouse]{Clippings of the tables containing the antenna recordings, \textit{direction results} and \textit{stay results} for a mouse.}
   \label{fig:overview_data}
 \end{center}
 \end{figure}  
@@ -218,7 +218,7 @@ To carry out home range analysis, the positions of the nestboxes within the barn
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=.75\textwidth]{assets/pdf/home_range.pdf}
-  \caption[Home range component interface]{Interface of the component to retrieve data for a subsequent home range analysis or to calculate an MCP.}
+  \caption[\textit{Home range} component interface overview]{Interface of the component to retrieve data for a subsequent home range analysis or to calculate an MCP.}
   \label{fig:home_range}
 \end{center}
 \end{figure}
@@ -277,7 +277,7 @@ Figure \ref{fig:shared_pref} shows the component interface consisting of two con
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/shared_pref.pdf}
-  \caption[Shared preference component interface]{Shared preference component interface overview.}
+  \caption[\textit{Shared preferences} component interface overview]{Interface overview of the \textit{Shared preferences} component.}
   \label{fig:shared_pref}
 \end{center}
 \end{figure}
@@ -296,7 +296,7 @@ In the case of the \textbf{Monthly Box} component, the \lstinline|direction resu
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/month_box_ant.pdf}
-  \caption[Monthly boxes component interface]{Monthly boxes component interface overview.}
+  \caption[\textit{Monthly box} component interface overview]{Interface overview of the \textit{Monthly box} component.}
   \label{fig:month_box_ant}
 \end{center}
 \end{figure}
@@ -312,7 +312,7 @@ In conjunction with the genetic data, the \textit{miceminer} application allows 
  
 However, one result can already be presented.
  
-Olivia Dieser \cite{dieser:08} carried out a long-term analysis to investigate the territorial social behavior of the house mice population living in the barn (see section \ref{sec:shedsetup}). Data used in this work has been retrieved via the \textit{miceminer} application (see section \ref{subsubsec:monthbox}). Based on the data of 321 individual mice, collected over a period of 15 months, the influence of gender, season and time of day, on the usage of the nestboxes was analyzed. Furthermore, the seasonal influence on the composition of the mouse population has been determined. Refer to section \ref{subsec:collectspatialpos} for details about the artificial nestboxes and the system which is collecting the data.
+Olivia Dieser \citep{dieser:08} carried out a long-term analysis to investigate the territorial social behavior of the house mice population living in the barn (see section \ref{sec:shedsetup}). Data used in this work has been retrieved via the \textit{miceminer} application (see section \ref{subsubsec:monthbox}). Based on the data of 321 individual mice, collected over a period of 15 months, the influence of gender, season and time of day, on the usage of the nestboxes was analyzed. Furthermore, the seasonal influence on the composition of the mouse population has been determined. Refer to section \ref{subsec:collectspatialpos} for details about the artificial nestboxes and the system which is collecting the data.
  
 During summer, when the mating activity is high, more female than male mice lived in the barn, while in winter the ratio was about one. This result can be explained by the polygynandric mating behavior of the house mice. Only dominant male mice get access to a female for mating. Hence, subdominant male mice may be banished from the barn by the dominant mice. This hypothesis is supported by the finding that overlap of male terretories is less in summer than in winter. 
  

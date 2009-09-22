@@ -360,7 +360,8 @@ res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay 
 
 \subsubsection{General information}
 \label{subsubsec:general_sys_info}
- 
+
+\begin{table}
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2.5cm}}
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
@@ -380,6 +381,7 @@ Perl version	&	 5.10.0 \\\bottomrule
 \captionof{table}{General information about the server}
 \label{tab:server_information}
 \end{center}
+\end{table}
 
 \newpage
 % Web addresses
@@ -388,6 +390,7 @@ Perl version	&	 5.10.0 \\\bottomrule
 
 \textbf{Please note that the server is only accessible from within the network of the University of Z\"urich.}
 
+\begin{table}
 \begin{center}
 \footnotesize 
 %\begin{sidewaystable}{H}
@@ -415,6 +418,7 @@ Address	&	Description \\\midrule
 \label{tab:web_addresses}
 %\end{sidewaystable}
 \end{center}
+\end{table}
 
 % Files and Directories
 \subsubsection{Files \& directories overview}
@@ -422,6 +426,7 @@ Address	&	Description \\\midrule
 
 \lstset{language=bash}
 
+\begin{table}
 \begin{center}
 \footnotesize 
 \newcolumntype{H}{>{\bf}p{5cm}}
@@ -454,6 +459,7 @@ Directory	&	Description \\\midrule
 \captionof{table}{Overview of the important files and directories.}
 \label{tab:directories_and_files_overview}
 \end{center}
+\end{table}
 
 % import scripts
 \newpage
@@ -462,6 +468,7 @@ Directory	&	Description \\\midrule
 
 To start the import cascade, a set of \ac{BASH} scripts is provided (see table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} for the directory these scripts are located in). Each of these scripts starts the import cascade at a specific perl script and sends a mail including the transcript of the process to \href{mailto:miceminer@gmail.com}{miceminer@gmail.com} upon completion.
 
+\begin{table}
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{5cm}}
 \renewcommand\arraystretch{1.2}
@@ -478,6 +485,7 @@ BASH script	&	perl script \\\midrule
 \captionof{table}{Overview of the BASH scripts and the perl import script they start.}
 \label{tab:import_bash_scripts}
 \end{center}
+\end{table}
  
 These scripts can be started manually from the command line or through a so called \textit{cronjob} which schedules the execution of the scripts.
 
@@ -587,21 +595,21 @@ The configuration parameter to set the minimal duration of meetings between two 
 
 \section{Glossary}
 \begin{acronym}
-\acro{RDBMS}[Relational Database Management System]{A Relational Database Management System is a \acs{DBMS} in which data is stored in the form of tables and the relationship among the data is also stored in the form of tables \cite{wiki:rdbms}.}
-\acro{DBMS}[Database Management System]{A Database Management System is computer software that manages databases \cite{wiki:dbms}.}
-\acro{RFID}[Radio-frequency identification]{Radio-frequency identification is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves \cite{wiki:rfid}}
-\acro{SQL}[Structured Query Language]{The Structured Query Language (SQL) is a database computer language designed for the retrieval and management of data in relational database management systems.\cite{wiki:sql}}
-\acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one metre. \cite{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
-\acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted programming language. \cite{wiki:perl}}
-\acro{PVC}[PVC]{Polyvinyl chloride is a widely used thermoplastic polymer \cite{wiki:pvc}}
-\acro{GUI}[Graphical User Interface]{A Graphical User Interface (GUI) is a type of user interface which allows people to interact with electronic devices such as computers [\ldots] by the use of images rather than text commands \cite{wiki:gui}}
-\acro{API}[API]{An Application Programming Interface (API) is a set of routines, data structures, object classes and/or protocols provided by libraries and/or operating system services in order to support the building of applications \cite{wiki:api}.}
-\acro{AFP}[AFP]{The Apple Filing Protocol is a network protocol that offers file services for Mac OS X \cite{wiki:afp}.}
-\acro{Samba}[Samba]{Samba allows file and print sharing between computers running Windows and computers running Unix \cite{wiki:samba}.}
-\acro{XML}[XML]{Extensible Markup Language is a general-purpose specification for creating custom markup languages \cite{wiki:xml}.}
-\acro{CGI}[CGI]{The Common Gateway Interface (CGI) is a standard protocol for interfacing external application software with an information server, commonly a web server \cite{wiki:cgi}.}
-\acro{BASH}[BASH]{Bourne-again shell is a free software Unix shell written for the GNU Project \cite{wiki:bash}.}
-\acro{GIT}[GIT]{Git is a free revision control, or software source code management project \cite{wiki:git}.}
+\acro{RDBMS}[Relational Database Management System]{A Relational Database Management System is a \acs{DBMS} in which data is stored in the form of tables and the relationship among the data is also stored in the form of tables \citep{wiki:rdbms}.}
+\acro{DBMS}[Database Management System]{A Database Management System is computer software that manages databases \citep{wiki:dbms}.}
+\acro{RFID}[Radio-frequency identification]{Radio-frequency identification is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves \citep{wiki:rfid}}
+\acro{SQL}[Structured Query Language]{The Structured Query Language (SQL) is a database computer language designed for the retrieval and management of data in relational database management systems.\citep{wiki:sql}}
+\acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one metre. \citep{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
+\acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted programming language. \citep{wiki:perl}}
+\acro{PVC}[PVC]{Polyvinyl chloride is a widely used thermoplastic polymer \citep{wiki:pvc}}
+\acro{GUI}[Graphical User Interface]{A Graphical User Interface (GUI) is a type of user interface which allows people to interact with electronic devices such as computers [\ldots] by the use of images rather than text commands \citep{wiki:gui}}
+\acro{API}[API]{An Application Programming Interface (API) is a set of routines, data structures, object classes and/or protocols provided by libraries and/or operating system services in order to support the building of applications \citep{wiki:api}.}
+\acro{AFP}[AFP]{The Apple Filing Protocol is a network protocol that offers file services for Mac OS X \citep{wiki:afp}.}
+\acro{Samba}[Samba]{Samba allows file and print sharing between computers running Windows and computers running Unix \citep{wiki:samba}.}
+\acro{XML}[XML]{Extensible Markup Language is a general-purpose specification for creating custom markup languages \citep{wiki:xml}.}
+\acro{CGI}[CGI]{The Common Gateway Interface (CGI) is a standard protocol for interfacing external application software with an information server, commonly a web server \citep{wiki:cgi}.}
+\acro{BASH}[BASH]{Bourne-again shell is a free software Unix shell written for the GNU Project \citep{wiki:bash}.}
+\acro{GIT}[GIT]{Git is a free revision control, or software source code management project \citep{wiki:git}.}
 \end{acronym}
 
 \end{appendix}
