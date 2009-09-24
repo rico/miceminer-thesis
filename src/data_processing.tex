@@ -21,13 +21,13 @@ data processing framework (relevant files are listed in Appendix \ref{tab:direct
 \end{center}
 \end{figure}
 
-The \textit{Import Scripts} run in a cascade, beginning with the \lstinline|logimport.pl| script, which reads the data files from the barn and ends with the \lstinline|counter.pl| script (indicated in figure \ref{fig:app_design_perl} by the green arrows). Each script writes a transcript file to trace progress. Upon completion of the cascade, data is stored in the respective tables.
+The \textit{Import Scripts} run in a cascade, beginning with the \lstinline|logimport.pl| script, which reads the data files from the barn and ends with the \lstinline|counter.pl| script (indicated in figure~\ref{fig:app_design_perl} by the green arrows). Each script writes a transcript file to trace progress. Upon completion of the cascade, data is stored in the respective tables.
 
 A scheduled daily task checks for new data files uploaded to the server and starts the cascade when needed (details in Appendix \ref{app:import_schedule} on page \pageref{app:import_schedule}). 
 
-The \textit{Reset Scripts} set the database back to a state where the import cascade can be rerun, starting with the corresponding import script (indicated in figure \ref{fig:app_design_perl} by the orange arrows). If, for example, the \lstinline|searchdirreset.pl| is executed, the import cascade will be started with the \lstinline|searchdir.pl| script. It is recommended to start the import cascade using the import scripts programmed in BASH language (see Appendix \ref{app:import_schedule} for details).
+The \textit{Reset Scripts} set the database back to a state where the import cascade can be rerun, starting with the corresponding import script (indicated in figure~\ref{fig:app_design_perl} by the orange arrows). If, for example, the \lstinline|searchdirreset.pl| is executed, the import cascade will be started with the \lstinline|searchdir.pl| script. It is recommended to start the import cascade using the import scripts programmed in BASH language (see Appendix \ref{app:import_schedule} for details).
 
-The \textit{Modules} read out the configuration from the central \ac{XML} based configuration file (see Appendix \ref{app:configperl} for details) and make it available to the import and reset scripts (indicated in figure \ref{fig:app_design_perl} by the large grey arrow with the white border). As the perl scripts interact with the database, the database configuration is read out as well by some of the \textit{Modules} (see Appendix \ref{app:configdb} for details). 
+The \textit{Modules} read out the configuration from the central \ac{XML} based configuration file (see Appendix \ref{app:configperl} for details) and make it available to the import and reset scripts (indicated in figure~\ref{fig:app_design_perl} by the large grey arrow with the white border). As the perl scripts interact with the database, the database configuration is read out as well by some of the \textit{Modules} (see Appendix \ref{app:configdb} for details). 
 
 The following sections provide details about each script in the import cascade.
 
@@ -107,6 +107,8 @@ Such a pair matches if the following conditions are satisfied:
 
 In the former case, the \textit{stay result} is of \textbf{type 3}, in the latter case as of \textbf{type 4}. Figures \ref{fig:type_3_stay_result} and \ref{fig:type_4_stay_result} illustrate the differences between the types by means of an example at box 16. The \lstinline|<antennaInterval>| value is set to 5 seconds. Of the \textit{stay results} currently in the database, 85.8\% are type 3 results and 14.2\% type 4. 
 
+Additionally, the script handles the temporal overlaps within the \textit{stay results}. As explained in section \ref{subsec:problems}, the overlaps occur because the antenna system is imperfect. If the script kept all possible \textit{stay results}, situations illustrated in figures~\ref{fig:result_overlap}~and~\ref{fig:result_overlap_single} would arise. All the \textit{stay results} (1, 2, and 3) originate from the same transponder recorded at the same or other nestboxes. Hence, the antenna system must have missed readings, but we have no clue about the exact moment.
+
 \begin{figure}[htpb]
 \begin{center}
   \includegraphics[width=0.75\textwidth]{assets/pdf/stay_result_type_3_schema.pdf}
@@ -122,10 +124,8 @@ In the former case, the \textit{stay result} is of \textbf{type 3}, in the latte
   \label{fig:type_4_stay_result}
 \end{center}
 \end{figure}
-
-Additionally, the script handles the temporal overlaps within the \textit{stay results}. As explained in section \ref{subsec:problems}, the overlaps occur because the antenna system is imperfect. If the script kept all possible \textit{stay results}, situations illustrated in figures \ref{fig:result_overlap} and \ref{fig:result_overlap_single} would arise. All the \textit{stay results} (1, 2, and 3) originate from the same transponder recorded at the same or other nestboxes. Hence, the antenna system must have missed readings, but we have no clue about the exact moment.  
-
-Illustrated in figure \ref{fig:result_overlap} is the situation where one \textit{stay result} (1) overlaps two others (2),(3). A reasonable explanation is that there are several antenna recordings missing. Since we have two \textit{stay results}, (2) and (3), which look valid, we discard \textit{stay result} (1) where we don't know what really happened. Furthermore, this approach is reasonable as the probability of missed antenna readings is much higher than the probability that eight antenna readings (two per \textit{direction result}) that constitute two perfect-looking \textit{stay results} are wrong.
+  
+Illustrated in figure~\ref{fig:result_overlap} is the situation where one \textit{stay result} (1) overlaps two others (2),(3). A reasonable explanation is that there are several antenna recordings missing. Since we have two \textit{stay results}, (2) and (3), which look valid, we discard \textit{stay result} (1) where we don't know what really happened. Furthermore, this approach is reasonable as the probability of missed antenna readings is much higher than the probability that eight antenna readings (two per \textit{direction result}) that constitute two perfect-looking \textit{stay results} are wrong.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -136,8 +136,6 @@ Illustrated in figure \ref{fig:result_overlap} is the situation where one \texti
 \end{figure}
 
 Figures \ref{fig:result_overlap_single} and \ref{fig:result_overlap_single_shifted} illustrate the situation where one \textit{stay result} overlaps another. In this case, the \textit{stay result} (1) is discarded as well.
-
-The justification for this approach is similar to the one just discussed: \textit{Stay result} (2) looks valid, but there must be missed antenna readings. In figure \ref{fig:result_overlap_single_shifted}, the two \textit{stay results} are only partly overlapping. \textit{Stay result} (1) is discarded as well, but \textit{stay result} (2) will be discarded in the next step to eliminate temporal overlaps.      
 
 \begin{figure}[htpb]
 \begin{center}
@@ -155,9 +153,12 @@ The justification for this approach is similar to the one just discussed: \texti
 \end{center}
 \end{figure}
 
-If the \textit{stay result} does not overlap another the script checks for other antenna readings that were recorded during the \textit{stay result}. This is illustrated in figure \ref{fig:dataset_overlap}. Obviously, only antenna readings which originate from the same transponder are taken into account.
+The justification for this approach is similar to the one just discussed: \textit{Stay result} (2) looks valid, but there must be missed antenna readings. In figure~\ref{fig:result_overlap_single_shifted}, the two \textit{stay results} are only partly overlapping. \textit{Stay result} (1) is discarded as well, but \textit{stay result} (2) will be discarded in the next step to eliminate temporal overlaps.
 
-In figure \ref{fig:dataset_overlap} four other antenna readings could be found, two of them happen not to be from the same nestbox. This \textit{stay result} will be discarded, as we don't know what really happened.
+
+If the \textit{stay result} does not overlap another the script checks for other antenna readings that were recorded during the \textit{stay result}. This is illustrated in figure~\ref{fig:dataset_overlap}. Obviously, only antenna readings which originate from the same transponder are taken into account.
+
+In figure~\ref{fig:dataset_overlap} four other antenna readings could be found, two of them happen not to be from the same nestbox. This \textit{stay result} will be discarded, as we don't know what really happened.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -167,9 +168,9 @@ In figure \ref{fig:dataset_overlap} four other antenna readings could be found, 
 \end{center}
 \end{figure}
 
-As seen in figure \ref{fig:dataset_overlap}, the reading from antenna \lstinline|163| at nestbox 16 is colored green. If we consider the situation illustrated in figure \ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the inner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case we keep the result, as the mouse has not left the box and might only be nervously inspecting the entry tube. As stated in section \ref{subsec:dirres}, a mouse is out of the box if it is recorded at the outer antenna. 
+As seen in figure~\ref{fig:dataset_overlap}, the reading from antenna \lstinline|163| at nestbox 16 is colored green. If we consider the situation illustrated in figure~\ref{fig:dataset_overlap_nervous}, we can see that several datasets which are exclusively recorded at the inner antenna of nestbox 16 are overlapped by the \textit{stay result}. In such a case we keep the result, as the mouse has not left the box and might only be nervously inspecting the entry tube. As stated in section \ref{subsec:dirres}, a mouse is out of the box if it is recorded at the outer antenna. 
 
-The \textit{nervous index} is the number of readings at the inner antenna during the \textit{stay result}. The \textit{nervous index} is 4 for the situation shown in figure \ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table}.
+The \textit{nervous index} is the number of readings at the inner antenna during the \textit{stay result}. The \textit{nervous index} is 4 for the situation shown in figure~\ref{fig:dataset_overlap_nervous}. This value is written to the database as explained in section \ref{para:res_table}.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -192,7 +193,7 @@ The \lstinline|meetings.pl| script determines when and how many time the mice sp
 
 Consider the situation that two \textit{stay results} of different RFID's recorded at the same nestbox temporally overlap. In such a situation, the two mice meet in the nestbox and a \textit{meeting result} is found.
 
-Additionally, the script analyzes how two mice meet. There are four different possibilities, as shown in figure \ref{fig:meeting_types} and explained in the following list:
+Additionally, the script analyzes how two mice meet. There are four different possibilities, as shown in figure~\ref{fig:meeting_types} and explained in the following list:
 
 \begin{mydesc}
 \label{list:meeting_types}
@@ -202,13 +203,15 @@ Additionally, the script analyzes how two mice meet. There are four different po
 \item \textbf{Type 4}: Tr. A entered the nestbox, while Tr. B was already in the box, and Tr. B left the nestbox, while Tr. A was still in the box. 
 \end{mydesc}
 
-\begin{figure}[htpb]
+\begin{figure}[pbth]
 \begin{center}
-  \includegraphics[width=0.66\textwidth]{assets/pdf/meeting_types_schema.pdf}
+  \includegraphics[width=0.75\textwidth]{assets/pdf/meeting_types_schema.pdf}
   \caption[illustration of meeting result types]{Illustration of possible meeting situations in a nestbox with two mice (Tr. A, Tr. B).}
   \label{fig:meeting_types}
 \end{center}
 \end{figure}
+
+\pagebreak
 
 However, the \textit{meeting result} types and explanations above only apply if we look at the situations from the viewpoint of mouse Tr. A. When looking at the situations from Tr. B, the types are swapped as follows:
 

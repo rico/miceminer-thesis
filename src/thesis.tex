@@ -318,6 +318,7 @@
 
 \begin{sidewaystable}
 \newcolumntype{H}{>{\bf}lp{2.5cm}}
+\renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
 \caption{Meaning of the \lstinline|i| values in the database tables.}
 \begin{tabularx}{\textheight}{+H^X^X^X^X^X}
 \hline
@@ -369,7 +370,6 @@ Perl version	&	 5.10.0 \\\hline
 \label{tab:server_information}
 \end{center}
 
-\newpage
 % Web addresses
 \subsubsection{Web addresses}
 \label{subsubsec:urls}
@@ -378,31 +378,33 @@ Perl version	&	 5.10.0 \\\hline
 
 \begin{center}
 \footnotesize 
-%\begin{sidewaystable}{H}
 \newcolumntype{H}{>{\bf}p{8.5cm}}
+\renewcommand\arraystretch{1.9}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 %\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
  \hline
 \rowstyle{\bfseries}
 Address	&	Description \\ \hline
-\url{http://zool-miceminer.uzh.ch}	&	Main Site containing containing a lot of information about the project. \\ \hline
-\url{afp://zool-miceminer.uzh.ch}	&	\ac{AFP} access to the server. \\ \hline
-\url{smb://zool-miceminer.uzh.ch}	&	\ac{Samba} access to the server. \\ \hline
-\url{http://zool-miceminer.uzh.ch/phpmyadmin}	&	Web-based MySQL database administration tool (\href{http://www.phpmyadmin.net}{phpMyAdmin}). \\ \hline
-\url{http://zool-miceminer.uzh.ch/amfphp/browser/index.html}	&	\href{http://www.amfphp.org}{amfphp} service browser. \\ \hline
-\url{http://zool-miceminer.uzh.ch/webalizer}	&	Webserver traffic analyzer (\href{http://www.webalizer.org}{Webalizer}). \\ \hline
-\url{http://zool-miceminer.uzh.ch/miceminer/srcview/index.html}	&	Source of the \textit{miceminer} application. \\ \hline
-\url{http://zool-miceminer.uzh.ch/asdoc/index.html}	& \textit{Adobe Flex} \ac{API} documentation of the \textit{miceminer} application. \\ \hline
-\url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\ \hline
-\url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\ \hline
-\url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\ \hline
-\url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, etc.\\\hline
-
+\url{http://zool-miceminer.uzh.ch}	&	Main Site containing containing a lot of information about the project. \\ 
+\url{afp://zool-miceminer.uzh.ch}	&	\ac{AFP} access to the server. \\ 
+\url{smb://zool-miceminer.uzh.ch}	&	\ac{Samba} access to the server. \\
+\url{http://zool-miceminer.uzh.ch/phpmyadmin}	&	Web-based MySQL database administration tool (\href{http://www.phpmyadmin.net}{phpMyAdmin}). \\
+\url{http://zool-miceminer.uzh.ch/amfphp/browser/index.html}	&	\href{http://www.amfphp.org}{amfphp} service browser. \\
+\url{http://zool-miceminer.uzh.ch/webalizer}	&	Webserver traffic analyzer (\href{http://www.webalizer.org}{Webalizer}). \\
+\url{http://zool-miceminer.uzh.ch/miceminer/srcview/index.html}	&	Source of the \textit{miceminer} application. \\
+\url{http://zool-miceminer.uzh.ch/asdoc/index.html}	& \textit{Adobe Flex} \ac{API} documentation of the \textit{miceminer} application. \\
+\url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\
+\url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\
+\url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\
+\url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, \lstinline|R| files etc.\\
+\hline
 \end{tabularx}
 \captionof{table}{List of web addresses.}
 \label{tab:web_addresses}
 %\end{sidewaystable}
 \end{center}
+
+\newpage
 
 % Files and Directories
 \subsubsection{Files \& directories overview}
@@ -410,40 +412,39 @@ Address	&	Description \\ \hline
 
 \lstset{language=bash}
 
-\begin{table}
 \begin{center}
 \footnotesize 
 \newcolumntype{H}{>{\bf}p{5cm}}
-\renewcommand\arraystretch{1.2}% 1.0 is for standard spacing)
+\renewcommand\arraystretch{2}% 1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
 \rowstyle{\bfseries}
-Directory	&	Description \\ \hline
-\lstinline|/var/www/mouse|	&	\textbf{Base directory} of the whole project relevant files and folders. \\ \hline
+Directory	&	Description \\ \hline 
+\lstinline|/var/www/mouse|	&	\textbf{Base directory} of the whole project relevant files and folders. \\ 
 \\
 \hline
 \multicolumn{2}{|l|}{\textbf{All of the following files and directories are located within the base directory!}} \\
 \hline
-\\ \hline
-\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\ \hline
-\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\ \hline
-\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\ \hline
-\lstinline|data/|	&	Uploaded but not yet imported data files. \\ \hline
-\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\ \hline
-\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\ \hline
-\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\ \hline
-\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\ \hline
-\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\ \hline
-\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\ \hline
-\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\ \hline
-\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\ \hline
-\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\ \hline
-\lstinline|asdoc/|	&	Contains the \textit{miceminer} \ac{API} online documentation files. \\\hline
+\\ 
+\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\ [3ex] 
+\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\ [3ex] 
+\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\ [3ex]
+\lstinline|data/|	&	Uploaded but not yet imported data files. \\ [3ex]
+\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\ [3ex] 
+\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\ [3ex] 
+\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\ [3ex]
+\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\ [3ex]
+\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\ [3ex]
+\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\ [3ex]
+\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\ [3ex]
+\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\ [3ex]
+\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\ [3ex] 
+\lstinline|asdoc/|	&	Contains the \textit{miceminer} \ac{API} online documentation files. \\
+\hline
 \end{tabularx}
 \captionof{table}{Overview of the important files and directories.}
 \label{tab:directories_and_files_overview}
 \end{center}
-\end{table}
 
 % import scripts
 \newpage
@@ -452,24 +453,23 @@ Directory	&	Description \\ \hline
 
 To start the import cascade, a set of \ac{BASH} scripts is provided (see table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} for the directory these scripts are located in). Each of these scripts starts the import cascade at a specific perl script and sends a mail including the transcript of the process to \href{mailto:miceminer@gmail.com}{miceminer@gmail.com} upon completion.
 
-\begin{table}
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{5cm}}
-\renewcommand\arraystretch{1.2}
+\renewcommand\arraystretch{1.5}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
 \rowstyle{\bfseries}
 BASH script	&	perl script \\ \hline
-\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\ \hline
-\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\ \hline
-\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\ \hline
-\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\ \hline
-\lstinline|counter_step_5.sh|	&	\lstinline|counter.pl| \\ \hline
+\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\ [1ex] 
+\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\ [1ex]
+\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\ [1ex]
+\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\ [1ex]
+\lstinline|counter_step_5.sh|	&	\lstinline|counter.pl| \\ 
+\hline
 \end{tabularx}
 \captionof{table}{Overview of the BASH scripts and the perl import script they start.}
 \label{tab:import_bash_scripts}
 \end{center}
-\end{table}
  
 These scripts can be started manually from the command line or through a so called \textit{cronjob} which schedules the execution of the scripts.
 
@@ -481,14 +481,16 @@ These scripts can be started manually from the command line or through a so call
 
 The above listing shows the actual \textit{cronjob} which starts the import cascade every day at 11~o'clock p.m. beginning with the \lstinline|logimport.pl| script.
 
+\vspace{3cm}
+
 \subsection{Antenna address conversions}
 \label{app:antenna_adress_conversions}
 List of the antenna address conversions as implemented in the \lstinline|logimport.pl| script to handle the badly addressed antennas.
 
-\begin{table}
 \begin{center} 
 \renewcommand\arraystretch{1.2}
 \begin{tabular}{+l^l}
+\hline
 \rowstyle{\bfseries}
 original value	&	after conversion \\ \hline
 1A1	&	161 \\ 
@@ -496,12 +498,12 @@ original value	&	after conversion \\ \hline
 2A1	&	171 \\ 
 2A3	&	173 \\ 
 421	&	131 \\ 
-423	&	133 \\ 
+423	&	133 \\
+\hline 
 \end{tabular}
 \captionof{table}{Antenna address conversions.}
 \label{tab:ant_adress_conversions}
 \end{center} 
-\end{table}
 
 % configuration XML
 \newpage
@@ -526,18 +528,21 @@ The values for the connection are set in the following nodes:
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2cm}}
-%\renewcommand\arraystretch{1.2}
+\renewcommand\arraystretch{2}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
-\lstinline|<dbname>|	&	The name of the database. \\ \hline
-\lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\ \hline
-\lstinline|<dbpass>|	&	The password for the database user. \\ \hline
-\lstinline|<dbsocket>|	&	The MySQL socket. \\ \hline
+\lstinline|<dbname>|	&	The name of the database. \\ 
+\lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\
+\lstinline|<dbpass>|	&	The password for the database user. \\ 
+\lstinline|<dbsocket>|	&	The MySQL socket. \\ 
+\hline
 \end{tabularx}
 \label{tab:database_config}
 \end{center}
 
 This allows to switch the database, but only when the table structures match (see the entry for the SQL file to create the database in table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview}).
+
+\pagebreak
 
 \subsubsection{Perl}
 \label{app:configperl}
@@ -548,13 +553,14 @@ The perl part of the XML configuration file.
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{3.7cm}}
-%\renewcommand\arraystretch{1.2}
+\renewcommand\arraystretch{2}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
-\lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\ \hline
-\lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the database configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\ \hline
-\lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beginning of the data import process. \\ \hline
-\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ \hline
+\lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\ 
+\lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the database configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\ 
+\lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beginning of the data import process. \\ 
+\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ 
+\hline
 \end{tabularx}
 \label{tab:perl_config}
 \end{center} 

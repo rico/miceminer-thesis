@@ -16,9 +16,9 @@ The following provides basics of network theory and should help clarify the impl
 
 \subsection{Network types}
 \label{subsec:net_types}
-Depicted in figure \ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some binary edges between them. In social networks, the \textit{nodes} (also-called actors) are usually individuals. The \textit{edges} denote a relationship between them. In a railway network the nodes would be the train stations and the edges the connecting tracks.
+Depicted in figure~\ref{fig:graph_undirected} is a very simple network with five nodes (A to D) and some binary edges between them. In social networks, the \textit{nodes} (also-called actors) are usually individuals. The \textit{edges} denote a relationship between them. In a railway network the nodes would be the train stations and the edges the connecting tracks.
 
-Shown in figure \ref{fig:graph_undirected_weighted} is the same network as in figure \ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which may or may not exist, the weighted edges illustrate the strength of a connection. Referring to the railway network example, the weight, which is indicated by the thickness of the edge, could stand for traffic volume on a given track. In a social network, the weight would indicate the strength of the social relation between two individuals.  
+Shown in figure~\ref{fig:graph_undirected_weighted} is the same network as in figure~\ref{fig:graph_undirected}, but with weighted edges. In addition to the binary edges, which may or may not exist, the weighted edges illustrate the strength of a connection. Referring to the railway network example, the weight, which is indicated by the thickness of the edge, could stand for traffic volume on a given track. In a social network, the weight would indicate the strength of the social relation between two individuals.  
 
 
 \begin{figure}[htpb]% 
@@ -53,7 +53,7 @@ Another type of network is the so-called directed network (see figures \ref{fig:
 
 \end{figure}
 
-A special network is the so-called \textit{ego network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to it, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network.
+A special network is the so-called \textit{ego network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to it, plus the edges between them. The ego network for node \textbf{A} is shown in figure~\ref{fig:graph_ego}. See figure~\ref{fig:graph_undirected} for the full network.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -68,7 +68,7 @@ There are plenty of other varieties of networks. The ones just described are ade
 \subsection{Adjacency matrix}
 \label{subsec:adjacency_matrix}
 
-The data underlying the visualization is usually represented as a so-called \textit{adjacency matrix}. Table \ref{tab:am_undirected} shows the tabular representation of the network shown in figure \ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure \ref{fig:am_undirected}.
+The data underlying the visualization is usually represented as a so-called \textit{adjacency matrix}. Table \ref{tab:am_undirected} shows the tabular representation of the network shown in figure~\ref{fig:graph_undirected} and the corresponding adjacency matrix alongside in figure~\ref{fig:am_undirected}.
 
 \begin{figure}[htbp]
 	\begin{minipage}[t]{0.45\textwidth}
@@ -84,7 +84,7 @@ The data underlying the visualization is usually represented as a so-called \tex
 			C	&	0	&	1	&	0	&	0 \\
 			D	&	1	&	1	&	0	&	0 \\	
 			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected}.}
+			\captionof{table}{Tabular representation of the network shown in figure~\ref{fig:graph_undirected}.}
 			\label{tab:am_undirected}
 	\end{minipage}
 	\hspace{0.5cm}
@@ -105,7 +105,7 @@ The data underlying the visualization is usually represented as a so-called \tex
 	\end{minipage}
 \end{figure}
 
-For the model network with the weighted graph (figure \ref{fig:graph_undirected_weighted}), the tabular representation and the adjacency matrix look like shown in table \ref{tab:am_undirected_weighted} and figure \ref{fig:am_undirected_weighted} (assuming that the maximum weight of an edge is 5).
+For the model network with the weighted graph (figure~\ref{fig:graph_undirected_weighted}), the tabular representation and the adjacency matrix look like shown in table \ref{tab:am_undirected_weighted} and figure~\ref{fig:am_undirected_weighted} (assuming that the maximum weight of an edge is 5).
 
 An adjacency matrix for an undirected network is diagonally symmetric since the edges have no direction. 
 
@@ -124,7 +124,7 @@ An adjacency matrix for an undirected network is diagonally symmetric since the 
 			C	&	0	&	1	&	0	&	0 \\
 			D	&	4	&	2	&	0	&	0 \\	
 			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_undirected_weighted}.}
+			\captionof{table}{Tabular representation of the network shown in figure~\ref{fig:graph_undirected_weighted}.}
 			\label{tab:am_undirected_weighted}
 	\end{minipage}
 	\hspace{0.5cm}
@@ -145,7 +145,7 @@ An adjacency matrix for an undirected network is diagonally symmetric since the 
 	\end{minipage}
 \end{figure}
 
-Consequently, for a directed network as the one shown in figure \ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure \ref{fig:am_directed}).
+Consequently, for a directed network as the one shown in figure~\ref{fig:graph_directed}, the adjacency matrix does not show any symmetry (see table \ref{tab:am_directed} and figure~\ref{fig:am_directed}).
 
 
 \begin{figure}[!htpb]
@@ -163,7 +163,7 @@ Consequently, for a directed network as the one shown in figure \ref{fig:graph_d
 			C	&	0	&	0	&	0	&	0 \\
 			D	&	0	&	0	&	0	&	0 \\	
 			\end{tabularx}
-			\captionof{table}{Tabular representation of the network shown in figure \ref{fig:graph_directed}.}
+			\captionof{table}{Tabular representation of the network shown in figure~\ref{fig:graph_directed}.}
 			\label{tab:am_directed}
 	\end{minipage}
 	\hspace{0.5cm}
@@ -194,7 +194,7 @@ measures available. Presented here are only those available in \textit{miceminer
 
 The following methods to calculate the node-based measures apply to networks with unweighted edges. However, approaches are available as well, to calculate these measures for networks with weighted edges\citep{bocaletti:06}. 
 
-For the following explanations, the model network from the previous sections is extended to look as shown in figure \ref{fig:extended_network}.
+For the following explanations, the model network from the previous sections is extended to look as shown in figure~\ref{fig:extended_network}.
 
 \clearpage
 
@@ -248,7 +248,7 @@ In a social network, the mean path length $L$ is an indicator of how fast inform
 
 The clustering coefficient is a measure of how connected the neighborhood of a node is, and contributes to the understanding of how information flows through a network.
 
-Unlike the mean path length, only the nodes which are directly connected to a neighboring node are taken into account for the calculation. To start, the existing and possible edges in a node's neighborhood are determined. Shown in figure \ref{fig:clust_coeff} is the neighborhood of node \textbf{B}. Possible edges are indicated by a dotted line.
+Unlike the mean path length, only the nodes which are directly connected to a neighboring node are taken into account for the calculation. To start, the existing and possible edges in a node's neighborhood are determined. Shown in figure~\ref{fig:clust_coeff} is the neighborhood of node \textbf{B}. Possible edges are indicated by a dotted line.
 
 In theory, the maximum number of edges in the neighborhood of a node $i$ is $\frac{1}{2}k_i(k_1 -1)$, where $k$ is the number of nodes directly connected to $i$. This makes $\frac{1}{2}3(3 -1) = 3$ for node \textbf{B}. The clustering coefficient is just the fraction of the edges between the neighboring nodes that really exist: $\frac{1}{3}$. The average of the clustering coefficient of all nodes is called network clustering coefficient $C$.
 
@@ -288,7 +288,7 @@ B_i =	\sum_{
 		\frac{g_{jik}}{g_{jk}}
 \end{equation}
 
-For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
+For node \textbf{B} in the model network shown in figure~\ref{fig:node_based_measures}, $B_i = 2.5$.
 
 Usually the betweenness values correlate with the degree. But sometimes, a node can play an important role as it connects two groups of nodes (sub-networks) within the network as shown in figure~\ref{fig:broker}. The nodes colored red are called \textit{Brokers}\citep{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
 
@@ -329,7 +329,7 @@ Usually the betweenness values correlate with the degree. But sometimes, a node 
 
 Social relations in the sense of this project are defined as the time two mice spend together in an artificial nestbox. This is an obvious approach. Mice only share an area at the same time voluntarily if they have some kind of affirmative social relation.
 
-Since the data includes information about the strength of the relationship, which is the actual time two mice spend together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) to describe how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure \ref{fig:meeting_types}). This information is not clearly unidirectional, however. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have an explicit directed graph.
+Since the data includes information about the strength of the relationship, which is the actual time two mice spend together, the network has weighted edges. In some way, the data even includes directional information. As mentioned in the section about the meeting results, there are four different situations (meeting types) to describe how two mice can meet (see list \ref{list:meeting_types} and the corresponding figure~\ref{fig:meeting_types}). This information is not clearly unidirectional, however. Since the edges are made up of several different meetings, whereof never all of them are of the same meeting type, we do not have an explicit directed graph.
 
 Consequently, an undirected network with weighted edges is shown. The weight correlates to the sum of time two mice spend together over a period of time. Additionally, the node-based measures for the shown mice and information about the composition (different meetings) of the edges must be available.
 
@@ -351,13 +351,13 @@ There is only one configuration value in the central XML configuration file wort
 \subsection{Implementation}
 \label{subsec:graph_explore}
 
-Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component. 
+Pictured in figure~\ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component. 
 
 The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all meetings during the selected period. Female mice are colored pink, male mice light blue, and unknown gender grey. 
 
 The network can be dragged over the whole area of the component. Additionally, the panels containing the controls and node based measures can be minimized for an unhindered visual exploration.
 
-Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
+Following a few details about the labeled interface parts in figure~\ref{fig:graph_data_interface_overview}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -383,7 +383,7 @@ Figure \ref{fig:node_based_measures} shows a section of the table containing the
 
 As it turned out, the network consists of several unconnected network components. Due to technical limitations and performance issues not all components can be shown at the same time. Therefore, a mechanism to choose which network component to show had to be introduced.
 
-The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure \ref{fig:node_based_measures}). When the user clicks on the entry for a node that is not in the visualized network component, the application switches to the appropriate visualization.
+The nodes in the table are grouped by the network component they belong to (see labeled pointer in figure~\ref{fig:node_based_measures}). When the user clicks on the entry for a node that is not in the visualized network component, the application switches to the appropriate visualization.
 
 However, if the clicked node belongs to the currently shown component, the node will be highlighted (by adding a glow effect) and moved to the center of the visualization. This highlight mechanism works vice versa as well: If the user double-clicks a node in the visualization, the corresponding table row will be selected.
 
@@ -395,7 +395,7 @@ However, if the clicked node belongs to the currently shown component, the node 
 \end{center}
 \end{figure}
 
-The second label in figure \ref{fig:node_based_measures} points to a text input with which a certain RFID (node) can be searched. This comes in especially handy when one tries to follow a specific mouse over different months.     
+The second label in figure~\ref{fig:node_based_measures} points to a text input with which a certain RFID (node) can be searched. This comes in especially handy when one tries to follow a specific mouse over different months.     
 
 \subsubsection*{Layout \& view options}
 
@@ -426,19 +426,15 @@ Edge filtering is used to hide edges which are under a certain weight. This can 
 
 \subsubsection*{Additional options}
 
-A few additional options that turned out to be useful or were just implemented out of interest have been added to the component.
-
-\paragraph{Egocentric network view}
+A few additional options that turned out to be useful or were just implemented out of interest have been added to the component. For instance the \textbf{egocentric network view}. 
 
 Switching to the egocentric network view can be useful to verify a hypothesis about the importance of an individual in the network. In addition, when the egocentric view has been activated (by holding the \lstinline|Shift| key while clicking on the highlighted node), the user can choose another node from within the egocentric network of the starting node to check the node's egocentric network.
 
-\paragraph{Edge data}
+Another option is the \textbf{edge data panel} to unveil the \lstinline|meeting results| which make up an edge. A double-click on an edge label opens a pop-up window containing the meeting data. This data can then be explored either in tabular chart view.
 
-To unveil the \lstinline|meeting results| which make up an edge one can double click an edge's label. A pop-up window containing the meeting data will open, which can be explored either in a tabular or in a chart view similar to the interface of the \textbf{Browse Data} component.
+In the tabular view, the data can be grouped by the nestbox the meetings took place in or by the meeting type\footnote{See list \ref{list:meeting_types} on page \pageref{list:meeting_types} for details about the meeting types.}.
 
-In the tabular view, the data can be grouped by nestbox the meetings took place in or by the meeting type\footnote{See list \ref{list:meeting_types} on page \pageref{list:meeting_types} for details about the meeting types.}.
-
-The chart view is used to bin the data by meeting duration. The number of bins can be adjusted and the grouping of the data can be set to the nestboxes or meeting type (see figure \ref{fig:edge_data_panel_chart}).
+The chart view is used to bin the data by meeting duration. The number of bins can be adjusted and the grouping of data can be set to the nestboxes or the meeting type (see figure~\ref{fig:edge_data_panel_chart}).
 
 \begin{figure}[!htpb]
 \begin{center}

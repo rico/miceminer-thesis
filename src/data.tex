@@ -57,7 +57,7 @@ The data files are simple text files, where each line denotes an event registere
 
 There are to types of events: %Bullets! -tnetter 09/09/2009 15:35 % rico - how do put that in a list without a point at the end? 
 \begin{mylist}
- \item The first type occurs if the antenna could identify a transponder. In such a case a line as shown in figure \ref{fig:dataset} is written to the data file. The id of the transponder is a unique, ten character wide, alphanumeric value
+ \item The first type occurs if the antenna could identify a transponder. In such a case a line as shown in figure~\ref{fig:dataset} is written to the data file. The id of the transponder is a unique, ten character wide, alphanumeric value
  \item The second type of event, for which the resulting data line looks as shown in Fig. \ref{fig:dataset_no_data}, occurs when a transponder enters or leaves the coverage area of an antenna
  \item 
 \end{mylist}
@@ -158,15 +158,18 @@ The tables can be split up in three different groups, depending of the sort of d
 
 \subsubsection{Processed data}
 
-This group covers tables exclusively written to by the scripts in the import cascade. A diagram of the tables belonging to that group, as well as the relations between them, is shown in figure \ref{fig:processed_data_schema}. 
+This group covers tables exclusively written to by the scripts in the import cascade. A diagram of the tables belonging to that group, as well as the relations between them, is shown in figure~\ref{fig:processed_data_schema}.
 
-\begin{figure}[htpb]
+\clearpage 
+
+\begin{figure}[!htpb]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/processed_data_schema.pdf}
   \caption[Schema of database tables containing the processed data]{Schema of the database tables containing the processed spatial position data and the relations between them.}
   \label{fig:processed_data_schema}
 \end{center}
 \end{figure} 
+
 
 \paragraph{data table}
 \label{para:data_table}
@@ -400,6 +403,8 @@ Shown next is a row of the \lstinline|box| table followed by a short explanation
 \item \lstinline|xcoord| and \lstinline|ycoord| denote the position of the nestbox in the barn. The x-axis stands for the entrance wall and the y-axis for  the side wall to the left of the entrance. The coordinate values are stored in centimeters. 
 \end{mydesc}
 
+\newpage
+
 \paragraph{ant table} 
 \label{para:ant_table}
 
@@ -429,15 +434,6 @@ Shown next is a row of the \lstinline|ant| table followed by a short explanation
 Tables in this group contain data about the imported data files, and precalculated values to improve the performance when browsing the data using the graphical user interface (which is introduced in section \ref{subsec:dataexp}).
 
 Figure \ref{fig:auxiliary_tables} shows an overview of the tables within this group. 
-
-
-\begin{figure}[htpb]
-\begin{center}
-  \includegraphics[width=0.75\textwidth]{assets/pdf/auxiliary_tables_schema.pdf}
-  \caption[Schema of database tables containing the auxiliary data]{Schema of the database tables containing the auxiliary data.}
-  \label{fig:auxiliary_tables}
-\end{center}
-\end{figure}
 
 \paragraph{logs table}
 \label{para:logs_table} 
@@ -517,6 +513,14 @@ Shown next is a row of the \lstinline|rfid_count|, \lstinline|box_count|, \lstin
 \item \lstinline|day| points to the day the table row holds the data counts for.
 \item \lstinline|data_count|, \lstinline|dir_count| and \lstinline|res_count| contain the per day counts for the datasets, the \textit{direction results} and the \textit{stay results}.
 \end{mydesc}
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.75\textwidth]{assets/pdf/auxiliary_tables_schema.pdf}
+  \caption[Schema of database tables containing the auxiliary data]{Schema of the database tables containing the auxiliary data.}
+  \label{fig:auxiliary_tables}
+\end{center}
+\end{figure}
 
 \subsection{Efficiency and problems of the antenna system}
 \label{subsec:problems}
