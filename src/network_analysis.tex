@@ -157,7 +157,7 @@ In all but the visualization of the betweenness (figure \ref{fig:graph_january_3
 
 A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveals that most of the nodes with a high betweenness value are \textit{Cut-Points} as well. A \textit{Cut-Point} is a node whose deletion increase the number number of components in the network\citep{pajek:03}. In and of itself, these nodes are very interesting, since they act as a bottleneck when information has to be passed from one sub-network to the other. In this case, however, all \textit{Cut-Points} connect at most two other nodes to a component (see figure \ref{fig:graph_january_3h_cutpoints}), which reduces their general importance. Hence, we focus on nodes with a high betweenness value, which are not \textit{Cut-Points} of the kind just explained. The resulting visualization (see figure \ref{fig:graph_january_3h_cutpoints_betweenness}) unveils two female mice with a potentially important position in the network. 
 
-\begin{figure}[htpb]% 
+\begin{figure}[hpbt]% 
 	\centering 
 	\subfloat[Network visualization with highlighted \textit{Cut-Points}][Network visualizations for January 2009 with highlighted \textit{Cut-Points}.] {
 		\label{fig:graph_january_3h_cutpoints}
@@ -173,6 +173,7 @@ A closer look at figure \ref{fig:graph_january_30h_betweenness}, however, reveal
   	
 \end{figure}
 
+\clearpage
 
 \subsection{Quantitative analysis}
 \label{subsec:quantitative_analysis}
@@ -187,6 +188,7 @@ A basic question, if we consider the network depicted in figure \ref{fig:graph_j
 \begin{table}
 \begin{center}
 \small
+\renewcommand\arraystretch{1.1}
 \begin{tabular}{lll}
 \hline
 \textbf{Component size} &	\textbf{Nestboxes in which the meetings occurred}	&	\textbf{Sum of meeting durations (h:m:s)} \\\hline
@@ -282,9 +284,12 @@ Although the charts do not show a clear separation, the observations made in the
 The simplest way to quantify the segmentation is to calculate the means by gender (see table \ref{tab:means_nbm}). There seems to be an explicit difference in the betweenness and the degree values. 
 \begin{table}
 \begin{center}
-\begin{tabular}{+l|^l^l^l}
+\small
+\renewcommand\arraystretch{1.2}
+\begin{tabular}{+l^l^l^l}
+\hline
 \rowstyle{\bfseries}
-Node based measure &	Mean females	&	Mean males	& range of values (min /max) \\ \hline
+Measure &	Mean females	&	Mean males	& range of values (min /max) \\ \hline
 Average path length	& 1.27	& 1.22	&  1 / 2.94 \\
 Clustering coefficient	& 0.70	& 0.59	& 0 / 1 \\
 Degree	& 8.2	& 6	& 1 / 14 \\
@@ -298,27 +303,24 @@ Betweenness	& 5.43	& 1.54	& 0 / 40 \\ \hline
 However, a better method to determine separation of these values by gender, is to use a \textit{Mann-Whitney} test\citep{siegel:88}. For this test, all values for a node based measure, are arranged into a single ranked series. 
 
 Let $R_f$ denote the ranks of females in this series, and $n_f$ , $n_m$ be the numbers of female and male nodes. The equation to get the coefficient $U_f$ looks like
-
 \begin{equation}
 U_f = n_fn_m\frac{n_f(n_f + 1)}{2} - R_f
 \label{eq:mann_w}
 \end{equation}  
-
 $U_f$ is then scaled by $n_fn_m$
-
 \begin{equation}
 u_f = \frac{U_f}{n_fn_m}
 \label{eq:mann_w_norm}
 \end{equation}
- 
+
 The value for $u_f$ is always between 0 and 1. If females occupy the lowest $n_f$ ranks,  $u_f = 0$, and if males occupy the lowest $n_f$ ranks, $u_f=1$. For a perfect mixing of ranks, $u=0.5$.
 
 The results are listed in table \ref{tab:u_test}. For the calculation of the average path length and the clustering coefficient values, the \textit{isolates} were not included, since they would bias the result.
 
-\begin{table}
 \begin{center} 
 \renewcommand\arraystretch{1.2}
-\begin{tabular}{+l|^l^l^l}
+\begin{tabular}{+l^l^l^l}
+\hline
 \rowstyle{\bfseries}
 Measure &	Females	& Males	& $u$ \\ \hline
 Average path length	&	41	&	35	& $0.38$\\
@@ -330,7 +332,6 @@ Betweenness	&	45	&	47	&	$0.67$ \\
 \captionof{table}{$u$ values for node based measures calculated using a \textit{Mann-Whitney} test.}
 \label{tab:u_test}
 \end{center}
-\end{table}
 
 As well in this values, a tendency for a better connectedness of female mice is visible. Please note that lower values for the average path length means a better rank.
 
@@ -355,6 +356,7 @@ In our data, one category we can test for is the gender. Table \ref{tab:mm} show
 
 \begin{table}
 \begin{center}
+\renewcommand\arraystretch{1.2}
 \newcolumntype{H}{>{\centering\bf}p{0.3cm}}
 \begin{tabular}{+H|^c^c^c}
 \rowstyle{\bfseries}
@@ -547,7 +549,6 @@ No periodicity, stability, not even a tendency is visible in the degree correlat
 
 The idea presented in section \ref{subsubsec:vis_individuals}, to identify mice at important positions in the network based on the betweenness values, has been applied to all months with a density $\rho \geq 0.05$. The method to detect these nodes is as follows. At first, the nodes with the five highest betweenness values in the network are shortlisted. Each of the nodes in the shortlist is then removed from the network and the number and size of components before and after the deletion is compared. A node is assessed as a result, if the node removal does not create an additional component with size 2 or less. Table \ref{tab:foll_bet} lists the nodes found in the networks.
 
-\begin{figure}
 \begin{center}
 \scriptsize
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
@@ -564,11 +565,9 @@ Sept. `08 & Oct. `08 & Nov. `08 & Dec. `09 & Jan. `09 & Feb. `09 & Mar. `09 \\\h
 \captionof{table}{Potentially interesting nodes identified by a high betweenness value for the months between October 2008 and March 2009.}
 \label{tab:foll_bet}
 \end{center}
-\end{figure}
 
 Due to the observations made for the betweenness value (see section \ref{subsubsec:long_betweenness}), it is not surprising that most of the found nodes are females (14 females and 5 males). A closer look at the table reveals, that some mice which occupy such a position, are found in two months (see table \ref{tab:foll_bet_more}). By means of the network visualizations for December and February, shown in figure \ref{fig:pi_nodes_dec_feb}, one can identify the positions of the two RFID's (0006B8E0D4 and 0006CD3416) in the network.
 
-\begin{table}
 \begin{center}
 \scriptsize
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
@@ -576,15 +575,15 @@ Due to the observations made for the betweenness value (see section \ref{subsubs
 \hline
 \rowstyle{\bfseries}
 RFID (sex)	&	Months \\\hline
-0006B8E0D4 (f)	& December / February \\\hline
-0006CD3416 (f)	& December / February \\\hline
-0006B9C5E8 (f)	& October / November \\\hline
-0006B9D225 (f)	& October / January \\\hline 													
+0006B8E0D4 (f)	& December / February \\
+0006CD3416 (f)	& December / February \\
+0006B9C5E8 (f)	& October / November \\
+0006B9D225 (f)	& October / January \\ 
+\hline											
 \end{tabular}
 \captionof{table}{RFID's with high betweenness values which are found in two months.}
 \label{tab:foll_bet_more}
 \end{center}
-\end{table}
 
 \begin{figure}[htpb]% 
 	\centering 

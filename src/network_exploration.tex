@@ -53,7 +53,15 @@ Another type of network is the so-called directed network (see figures \ref{fig:
 
 \end{figure}
 
-A special network is the so-called \textit{ego network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to it, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network. 
+A special network is the so-called \textit{ego network}. The ego network consists of a focal node, called the \textit{Ego}, and the nodes directly connected to it, plus the edges between them. The ego network for node \textbf{A} is shown in figure \ref{fig:graph_ego}. See figure \ref{fig:graph_undirected} for the full network.
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=.45\textwidth]{assets/pdf/graph_egocentric.pdf}
+  \caption[Ego network]{Ego network for node \textbf{A}.}
+  \label{fig:graph_ego}
+\end{center}
+\end{figure}  
 
 There are plenty of other varieties of networks. The ones just described are adequate to understand the visualization implemented in \textit{miceminer}.
 
@@ -176,14 +184,6 @@ Consequently, for a directed network as the one shown in figure \ref{fig:graph_d
 	\end{minipage}
 \end{figure}
 
-\begin{figure}[!htpb]
-\begin{center}
-  \includegraphics[width=.45\textwidth]{assets/pdf/graph_egocentric.pdf}
-  \caption[Ego network]{Ego network for node \textbf{A}.}
-  \label{fig:graph_ego}
-\end{center}
-\end{figure} 
-
 The adjacency matrix offers the basis to apply mathematics to the network such that networks or nodes within networks can be compared. These analytical measurements are outlined in the next section.
 
 \subsection{Node based measures}
@@ -195,13 +195,17 @@ measures available. Presented here are only those available in \textit{miceminer
 The following methods to calculate the node-based measures apply to networks with unweighted edges. However, approaches are available as well, to calculate these measures for networks with weighted edges\citep{bocaletti:06}. 
 
 For the following explanations, the model network from the previous sections is extended to look as shown in figure \ref{fig:extended_network}.
-\begin{figure}[!htpb]
+
+\clearpage
+
+\begin{figure}[h!tpb]
 \begin{center}
   \includegraphics[width=.45\textwidth]{assets/pdf/graph_undirected_node_based.pdf}
   \caption{Extended model network}
   \label{fig:extended_network}
 \end{center}
-\end{figure}    
+\end{figure}   
+
 
 \subsubsection{Average path length}
 
@@ -238,21 +242,13 @@ L = \frac{1}{ \frac{1}{2}n(n-1)}\sum_{i<j} d_{ij} = \frac{1}{n}\sum^n_{i=1}L_i
 \label{eq:mean_path_lenght}
 \end{equation} 
 
-In a social network, the mean path length $L$ is an indicator of how fast information can spread. The lower the value of $L$, the faster the information is received by all individuals in the network. 
+In a social network, the mean path length $L$ is an indicator of how fast information can spread. The lower the value of $L$, the faster the information is received by all individuals in the network.  
 
 \subsubsection{Clustering coefficient}
 
 The clustering coefficient is a measure of how connected the neighborhood of a node is, and contributes to the understanding of how information flows through a network.
 
 Unlike the mean path length, only the nodes which are directly connected to a neighboring node are taken into account for the calculation. To start, the existing and possible edges in a node's neighborhood are determined. Shown in figure \ref{fig:clust_coeff} is the neighborhood of node \textbf{B}. Possible edges are indicated by a dotted line.
-
-\begin{figure}[htpb]
-\begin{center}
-  \includegraphics[width=.33\textwidth]{assets/pdf/clustering_coefficient.pdf}
-  \caption[Neighborhood of node \textit{B}]{Neighborhood of node \textbf{B}. Existing edges are indicated by a solid line, possible ones by a dotted line.}
-  \label{fig:clust_coeff}
-\end{center}
-\end{figure}
 
 In theory, the maximum number of edges in the neighborhood of a node $i$ is $\frac{1}{2}k_i(k_1 -1)$, where $k$ is the number of nodes directly connected to $i$. This makes $\frac{1}{2}3(3 -1) = 3$ for node \textbf{B}. The clustering coefficient is just the fraction of the edges between the neighboring nodes that really exist: $\frac{1}{3}$. The average of the clustering coefficient of all nodes is called network clustering coefficient $C$.
 
@@ -261,6 +257,14 @@ C = \frac{1}{n}\sum^n_{i=1}C_i
 \end{equation}  
 
 Newman\citep{newman:03} demonstrated, by using a model of an epidemic spreading with a fixed number of edges but adjustable clustering coefficient, that a higher clustering coefficient enables a disease to spread faster through a population.
+
+\begin{figure}[htpb]
+\begin{center}
+  \includegraphics[width=.33\textwidth]{assets/pdf/clustering_coefficient.pdf}
+  \caption[Neighborhood of node \textit{B}]{Neighborhood of node \textbf{B}. Existing edges are indicated by a solid line, possible ones by a dotted line.}
+  \label{fig:clust_coeff}
+\end{center}
+\end{figure}
      
 \subsubsection{Degree}
 
@@ -286,7 +290,7 @@ B_i =	\sum_{
 
 For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
 
-Usually the betweenness values correlate with the degree. But sometimes, a node can play an important role as it connects two groups of nodes (sub-networks) within the network as shown in figure \ref{fig:broker}. The nodes colored red are called \textit{Brokers}\citep{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
+Usually the betweenness values correlate with the degree. But sometimes, a node can play an important role as it connects two groups of nodes (sub-networks) within the network as shown in figure~\ref{fig:broker}. The nodes colored red are called \textit{Brokers}\citep{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -341,26 +345,27 @@ The aim was not to build a comprehensive tool for social network analysis, as th
 \label{subsec:graph_config}
 
 There is only one configuration value in the central XML configuration file worth mentioning here. With the \lstinline|limit| value (see Appendix \ref{lst:graph_data_limit} on page \pageref{lst:graph_data_limit}) one can set the minimal time threshold two mice must have spent together in whatever box to be included in the data which is shown by the application. 
- 
+
+\clearpage
 
 \subsection{Implementation}
 \label{subsec:graph_explore}
 
 Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the interface for the \textbf{Graph Data} component. 
 
-\begin{figure}[!htpb]
+The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all meetings during the selected period. Female mice are colored pink, male mice light blue, and unknown gender grey. 
+
+The network can be dragged over the whole area of the component. Additionally, the panels containing the controls and node based measures can be minimized for an unhindered visual exploration.
+
+Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
+
+\begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=\textwidth]{assets/pdf/graph_data_interface_overview.pdf}
   \caption[Graph Data interface overview]{Interface overview of the \textbf{Graph Data} component.}
   \label{fig:graph_data_interface_overview}
 \end{center}
 \end{figure}
-
-The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all meetings during the selected period. Female mice are colored pink, male mice light blue, and unknown gender grey. 
-
-The network can be dragged over the whole area of the component. Additionally, the panels containing the controls and node based measures can be minimized for an unhindered visual exploration.
-
-Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
 
 \subsubsection*{Data selection}
 The period of the loaded network data is always one month. Based on the amount of data this seems to be an appropriate period. Month selection is done by choosing the year and a month from the respective drop down menus.    
