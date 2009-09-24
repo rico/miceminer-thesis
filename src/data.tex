@@ -55,11 +55,11 @@ Therefore, whenever a mouse carrying a transponder passes by an antenna, its ide
 \label{subsubsec:datafileformat}
 The data files are simple text files, where each line denotes an event registered by an antenna in the system. Every day the data file is saved, closed, and a new one is created automatically by the system.
 
-There are to types of events: %Bullets! -tnetter 09/09/2009 15:35 % rico - how do put that in a list without a point at the end? 
+There are two types of events: %Bullets! -tnetter 09/09/2009 15:35 % rico - how do put that in a list without a point at the end? 
 \begin{mylist}
- \item The first type occurs if the antenna could identify a transponder. In such a case a line as shown in figure~\ref{fig:dataset} is written to the data file. The id of the transponder is a unique, ten character wide, alphanumeric value
- \item The second type of event, for which the resulting data line looks as shown in Fig. \ref{fig:dataset_no_data}, occurs when a transponder enters or leaves the coverage area of an antenna
- \item 
+ \item The first type occurs if the antenna could identify a transponder. In such a case a line as shown in figure~\ref{fig:dataset} is written to the data file. The id of the transponder is a unique, ten character wide, alphanumeric value,
+ \item The second type of event, for which the resulting data line looks as shown in Fig. \ref{fig:dataset_no_data}, occurs when a transponder enters or leaves the coverage area of an antenna.
+
 \end{mylist}
 
 \begin{figure}[!htbp]	
@@ -364,7 +364,7 @@ Shown in the next listing is a row of the \lstinline|rfid| table followed by sho
 \item \lstinline|data_count| contains the sum of datasets in the \lstinline|data| table.
 \item \lstinline|dir_count| contains the sum of datasets in the \lstinline|direction| table.
 \item \lstinline|res_count| contains the sum of datasets in the \lstinline|results| table.
-\item \lstinline|sex| denotes the gender of the mouse, when known.
+\item \lstinline|sex| denotes the sex of the mouse, when known.
 \item \lstinline|last| points to the maximum value in the \lstinline|time| column of the \lstinline|data| table for this mouse, which is just the last time the transponder has been recorded by the antenna system.
 \item \lstinline|implant_date| holds the date of the RFID tag's hypodermic injection.
 \item \lstinline|weight| contains a decimal number with the weight of the mouse in grams.
@@ -471,7 +471,7 @@ Shown next is a row of the \lstinline|logs| table followed by a short explanatio
 \item \lstinline|import| is the data import into \lstinline|data| completion timestamp.
 \end{mydesc}
 
-\paragraph{RFID\_count, box\_count, ant\_count}
+\paragraph{rfid\_count, box\_count, ant\_count}
 \label{para:counts}
 
 These three tables contain the per day data counts for transponders (\lstinline|rfid_count|), boxes (\lstinline|box_count|), and antennas (\lstinline|ant_count|). They are only needed by the user interface to speed up data browsing.

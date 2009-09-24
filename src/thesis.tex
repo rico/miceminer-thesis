@@ -22,13 +22,15 @@
 \usepackage{needspace}
 
 % Font
-\usepackage{times}
-%\usepackage{assets/fonts/garamond/garamond}
+\usepackage{times} % uncomment for sans serif
+%\usepackage{assets/fonts/garamond/garamond} % uncomment for  serif
 \usepackage[T1]{fontenc} 
 \usepackage[english]{babel}
-\usepackage{color}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[table]{xcolor}
 
-\renewcommand{\familydefault}{\sfdefault}
+
+\renewcommand{\familydefault}{\sfdefault} % uncomment for sans serif / comment for serif
 
 % captions
 \usepackage[format=plain,font=small,labelfont=bf,labelsep=period]{caption}
@@ -57,9 +59,10 @@
 \urlstyle{rm}
 
 % tables
-\usepackage{tabularx}
+\usepackage{tabularx,colortbl}
 \usepackage{ctable}
 \usepackage{longtable}
+
 %\usepackage{rotfloat}
 
 % subfigures 
@@ -176,8 +179,6 @@
 %===============================
 \begin{document}
 
-% sans serif
-%\sffamily
 % select language
 \selectlanguage{english}
 
@@ -351,11 +352,11 @@ res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay 
 \label{subsubsec:general_sys_info}
 
 \begin{center} 
-\newcolumntype{H}{>{\bf}p{2.5cm}}
+\newcolumntype{H}{>{\bf}p{4cm}}
+\rowcolors{1}{lightgrey}{white}
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
 
- \hline
 Model	& 	Dell Inspiron 530 \\ 
 Processor	&	Intel(R) Core(TM)2 Duo CPU E7200  @ 2.53GHz, 2525 MHz \\
 Memory (RAM)	&	2 GB \\ 
@@ -364,7 +365,7 @@ IP-address	&	130.60.23.6 \\
 Webserver	&	Apache/2.2.9 (Ubuntu) \\ 
 SSH	&	OpenSSH 5.1p1  \\ 
 PHP	version	&	5.2.6-2ubuntu4 \\ 
-Perl version	&	 5.10.0 \\\hline
+Perl version	&	 5.10.0 \\
 \end{tabularx}
 \captionof{table}{General information about the server}
 \label{tab:server_information}
@@ -380,6 +381,7 @@ Perl version	&	 5.10.0 \\\hline
 \footnotesize 
 \newcolumntype{H}{>{\bf}p{8.5cm}}
 \renewcommand\arraystretch{1.9}% (MyValue=1.0 is for standard spacing)
+\rowcolors{1}{white}{lightgrey}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 %\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
  \hline
@@ -397,7 +399,6 @@ Address	&	Description \\ \hline
 \url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\
 \url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\
 \url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, \lstinline|R| files etc.\\
-\hline
 \end{tabularx}
 \captionof{table}{List of web addresses.}
 \label{tab:web_addresses}
@@ -416,6 +417,7 @@ Address	&	Description \\ \hline
 \footnotesize 
 \newcolumntype{H}{>{\bf}p{5cm}}
 \renewcommand\arraystretch{2}% 1.0 is for standard spacing)
+\rowcolors{1}{white}{lightgrey}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
 \rowstyle{\bfseries}
@@ -426,21 +428,20 @@ Directory	&	Description \\ \hline
 \multicolumn{2}{|l|}{\textbf{All of the following files and directories are located within the base directory!}} \\
 \hline
 \\ 
-\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\ [3ex] 
-\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\ [3ex] 
-\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\ [3ex]
-\lstinline|data/|	&	Uploaded but not yet imported data files. \\ [3ex]
-\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\ [3ex] 
-\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\ [3ex] 
-\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\ [3ex]
-\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\ [3ex]
-\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\ [3ex]
-\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\ [3ex]
-\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\ [3ex]
-\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\ [3ex]
-\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\ [3ex] 
+\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\  
+\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\  
+\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\ 
+\lstinline|data/|	&	Uploaded but not yet imported data files. \\ 
+\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\  
+\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\  
+\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\ 
+\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\ 
+\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\ 
+\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\ 
+\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\ 
+\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\ 
+\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\  
 \lstinline|asdoc/|	&	Contains the \textit{miceminer} \ac{API} online documentation files. \\
-\hline
 \end{tabularx}
 \captionof{table}{Overview of the important files and directories.}
 \label{tab:directories_and_files_overview}
@@ -454,18 +455,18 @@ Directory	&	Description \\ \hline
 To start the import cascade, a set of \ac{BASH} scripts is provided (see table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} for the directory these scripts are located in). Each of these scripts starts the import cascade at a specific perl script and sends a mail including the transcript of the process to \href{mailto:miceminer@gmail.com}{miceminer@gmail.com} upon completion.
 
 \begin{center} 
-\newcolumntype{H}{>{\bf}p{5cm}}
+\newcolumntype{H}{>{\bf}p{4cm}}
 \renewcommand\arraystretch{1.5}
+\rowcolors{1}{white}{lightgrey}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
  \hline
 \rowstyle{\bfseries}
 BASH script	&	perl script \\ \hline
-\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\ [1ex] 
-\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\ [1ex]
-\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\ [1ex]
-\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\ [1ex]
+\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\ 
+\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\
+\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\
+\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\
 \lstinline|counter_step_5.sh|	&	\lstinline|counter.pl| \\ 
-\hline
 \end{tabularx}
 \captionof{table}{Overview of the BASH scripts and the perl import script they start.}
 \label{tab:import_bash_scripts}
@@ -489,6 +490,7 @@ List of the antenna address conversions as implemented in the \lstinline|logimpo
 
 \begin{center} 
 \renewcommand\arraystretch{1.2}
+\rowcolors{1}{white}{lightgrey}
 \begin{tabular}{+l^l}
 \hline
 \rowstyle{\bfseries}
@@ -499,7 +501,6 @@ original value	&	converted value \\ \hline
 2A3	&	173 \\ 
 421	&	131 \\ 
 423	&	133 \\
-\hline 
 \end{tabular}
 \captionof{table}{Antenna address conversions.}
 \label{tab:ant_adress_conversions}
@@ -524,18 +525,16 @@ The following listing shows the part of the XML configuration file responsible f
 
 \lstinputlisting[firstnumber=25,firstline=25, lastline=43, caption=Database configuration, label=lst:database_config]{assets/code/config.xml}
 
-The values for the connection are set in the following nodes:
 
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2cm}}
 \renewcommand\arraystretch{2}
+\rowcolors{1}{lightgrey}{white}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
- \hline
 \lstinline|<dbname>|	&	The name of the database. \\ 
 \lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\
 \lstinline|<dbpass>|	&	The password for the database user. \\ 
 \lstinline|<dbsocket>|	&	The MySQL socket. \\ 
-\hline
 \end{tabularx}
 \label{tab:database_config}
 \end{center}
@@ -554,13 +553,12 @@ The perl part of the XML configuration file.
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{3.7cm}}
 \renewcommand\arraystretch{2}
+\rowcolors{1}{lightgrey}{white}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
- \hline
 \lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\ 
 \lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the database configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\ 
 \lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beginning of the data import process. \\ 
 \lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ 
-\hline
 \end{tabularx}
 \label{tab:perl_config}
 \end{center} 
