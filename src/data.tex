@@ -1,4 +1,3 @@
-% DONE! -tnetter 10/09/2009 16:02 
 % ===============================
 % Data collection
 % ===============================
@@ -27,7 +26,7 @@ To collect phenotypical data, so called \textit{population checks} (see \ref{sub
 \end{center}
 \end{figure}
 
-Furthermore, tissue samples are taken from the ear of each individual for genetic analysis. The genetic information provides an insight into the relatednesses within the mice population and allows to compare specific genetic markers. Genotype information is not included in the data used for this thesis.
+Furthermore, tissue samples are taken from the ear of each individual for genetic analysis. The genetic information provides an insight into the relatedness within the mice population and allows to compare specific genetic markers. Genotype information is not included in the data used for this thesis.
 
 %----------------------------------------------
 %Position / Time data
@@ -35,9 +34,9 @@ Furthermore, tissue samples are taken from the ear of each individual for geneti
 \subsection{Collecting spatial position data}
 \label{subsec:collectspatialpos}
 
-To collect the spatial position data, a project-specific system has been by built by \textit{New Behaviour}, a company specialized in developing technical systems to study animal behavior. 
+To collect the spatial position data, a project-specific system has been by built by \textit{NewBehavior}, a company specialized in developing technical systems to study animal behavior.
 
-The basic idea is to identify mice carrying an RFID transponder at specific locations. The locations where the identification occurs are the 40 artifical nestboxes distributed in the barn. 
+The basic idea is to identify mice carrying an RFID transponder at specific locations. The locations where the identification occurs are the 40 artificial nestboxes distributed in the barn. 
 
 An artificial nestbox consists of a cylinder, made of \ac{PVC}, with diameter and height of 15 cm and an entry tube made of \textit{Plexiglas}, which is about 20 to 25 cm long. Wrapped around the tube are two antennas with a coverage radius of 10 to 12 cm, capable of reading out the RFID transponders. Each antenna can be identified by an address which is set manually. To improve the antenna accuracy, the entry tube is bent 45 degrees to slow down the mice passing through. Figure \ref{fig:artNestbox} depicts a model of such an artificial nestbox.
 
@@ -473,7 +472,7 @@ Shown next is a row of the \lstinline|logs| table followed by a short explanatio
 \item \lstinline|size| contains the filesize, in bytes, of the data file.
 \item \lstinline|start| and \lstinline|end| indicate the file's first and last record timestamps.
 \item \lstinline|duration| is simply the period between the \lstinline|start| and \lstinline|end| values.
-\item \lstinline|import| is the data import into \lstinline|data| completion timestamp
+\item \lstinline|import| is the data import into \lstinline|data| completion timestamp.
 \end{mydesc}
 
 \paragraph{RFID\_count, box\_count, ant\_count}
@@ -527,11 +526,11 @@ Unfortunately the problems with the antenna system are diverse such as antenna d
 However, one of the biggest problem is that the readings at the antennas are not as reliable as expected. This is clearly visible by looking at the efficiency of the system , measured by comparison of theoretical and actual number of \textit{direction} and \textit{say results}. 
 
 From the 5th of April 2007 to the 27th of March 2009, approximately 8 million datasets (table \lstinline|data|)  
-have been collected. Theoretically we would get around 4 million \textit{direction results}. The actual number of \textit{directio  results} is 2.9 million. The exact percentage is 71.16\%.
+have been collected. Theoretically we would get around 4 million \textit{direction results}. The actual number of \textit{direction  results} is 2.9 million. The exact percentage is 71.16\%.
 
-In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find 1.5  results in the 3 million \textit{direction results}, but finds around one million. More exactely  68.25\%. Most likely these low numbers are an effect of missed antenna readings.
+In the next step, two \textit{direction results} should create a \textit{stay result}. The script which searches for the \textit{stay results} could find 1.5  results in the 3 million \textit{direction results}, but finds around one million. More exactly  68.25\%. Most likely these low numbers are an effect of missed antenna readings.
  
-Normally, an antenna reads the RFID tag 10 times to increase a reading's reliability. The antenna system in the barn, however, reads the RFID only 3 times, as the time that a tagged mouse spends within antenna range is usually short. We can partly understand the impact of shortened sampling duration by looking at the \lstinline|rfid| table. The table contains 4605 different transponder id's, whereby only 1014 have been sampled over 10 times. The other 3546 rfids are most probably a result of a phenomenon called \textit{bit flipping}.
+Normally, an antenna reads the RFID tag 10 times to increase a reading's reliability. The antenna system in the barn, however, reads the RFID only 3 times, as the time that a tagged mouse spends within antenna range is usually short. We can partly understand the impact of shortened sampling duration by looking at the \lstinline|rfid| table. The table contains 4605 different transponder id's, whereby only 1014 have been sampled over 10 times. The other 3546 RFID's are most probably a result of a phenomenon called \textit{bit flipping}.
 
 The following listing shows an excerpt of a data file, where a RFID tag is identified as \lstinline|00 05 B8 D2 70| on line two, but as \lstinline|00 06 B8 E2 70| on the other lines. 
 

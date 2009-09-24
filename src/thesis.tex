@@ -133,10 +133,7 @@
 	  \setlength{\itemsep}{1pt}
 	  \setlength{\parskip}{0pt}
 	  \setlength{\parsep}{0pt}
-}
-{
-	\end{description}
-}
+}{ \end{description} }
 
 % this makes description lists spacing much better.
 \newenvironment{mylist}{
@@ -145,10 +142,7 @@
 	  \setlength{\itemsep}{0pt}
 	  \setlength{\parskip}{0pt}
 	  \setlength{\parsep}{0pt}
-}
-{
-	\end{itemize}
-}
+}{ \end{itemize} }
 
 
 % this makes list spacing much better.
@@ -157,10 +151,7 @@
 	  \setlength{\itemsep}{1pt}
 	  \setlength{\parskip}{0pt}
 	  \setlength{\parsep}{0pt}
-}
-{
-	\end{enumerate}
-}
+}{ \end{enumerate} }
 
 % this makes list spacing much better.
 \newenvironment{condensed_item}{
@@ -169,10 +160,7 @@
 	  \setlength{\itemsep}{1pt}
 	  \setlength{\parskip}{0pt}
 	  \setlength{\parsep}{0pt}
-}
-{
-	\end{itemize}
-}
+}{ \end{itemize} }
 
 \usepackage{array}
 \newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
@@ -332,14 +320,14 @@
 \newcolumntype{H}{>{\bf}lp{2.5cm}}
 \caption{Meaning of the \lstinline|i| values in the database tables.}
 \begin{tabularx}{\textheight}{+H^X^X^X^X^X}
-\toprule
+\hline
 \rowstyle{\bfseries}
-	&	\textbf{0}	&	1	&	2	&	3	&	4\\\midrule
-data	    &  Dataset has not been analyzed yet.  &  Dataset has been analyzed but no matching dataset to form a \textit{direction result} could be found.	&	Dataset is part of a \textit{direction result} .	&	Dataset is part of a typ \textbf{3} \textit{stay result}.	&	Dataset is part of a typ \textbf{4} \textit{stay result}.\\\midrule
+	&	\textbf{0}	&	1	&	2	&	3	&	4\\ \hline
+data	    &  Dataset has not been analyzed yet.  &  Dataset has been analyzed but no matching dataset to form a \textit{direction result} could be found.	&	Dataset is part of a \textit{direction result} .	&	Dataset is part of a typ \textbf{3} \textit{stay result}.	&	Dataset is part of a typ \textbf{4} \textit{stay result}.\\\hline
 
-dir     	& \textit{Direction result} has not been analyzed yet. &  \textit{direction result} has been analyzed but no matching \textit{direction result} to form a \textit{stay result} could be found. & -  &  \textit{Direction result} is part of a typ \textbf{3} \textit{stay result}. & \textit{Direction result} is part of a typ \textbf{4} \textit{stay result}.\\\midrule
+dir     	& \textit{Direction result} has not been analyzed yet. &  \textit{direction result} has been analyzed but no matching \textit{direction result} to form a \textit{stay result} could be found. & -  &  \textit{Direction result} is part of a typ \textbf{3} \textit{stay result}. & \textit{Direction result} is part of a typ \textbf{4} \textit{stay result}.\\ \hline
 
-res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay result} is of typ \textbf{4} \\\bottomrule
+res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay result} is of typ \textbf{4} \\\hline
 \label{tab:i_values}
 \end{tabularx}
 
@@ -367,16 +355,16 @@ res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay 
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
 
-\toprule
-Model	& 	Dell Inspiron 530 \\\midrule
-Processor	&	Intel(R) Core(TM)2 Duo CPU E7200  @ 2.53GHz, 2525 MHz \\\midrule
-Memory (RAM)	&	2 GB \\\midrule
-Operating system		&	Linux version 2.6.27-7-server  (gcc version 4.3.2 (Ubuntu 4.3.2-1ubuntu11) ) \\\midrule
-IP-address	&	130.60.23.6 \\\midrule
-Webserver	&	Apache/2.2.9 (Ubuntu) \\\midrule
-SSH	&	OpenSSH 5.1p1  \\\midrule
-PHP	version	&	5.2.6-2ubuntu4 \\\midrule
-Perl version	&	 5.10.0 \\\bottomrule
+ \hline
+Model	& 	Dell Inspiron 530 \\ \hline
+Processor	&	Intel(R) Core(TM)2 Duo CPU E7200  @ 2.53GHz, 2525 MHz \\ \hline
+Memory (RAM)	&	2 GB \\ \hline
+Operating system		&	Linux version 2.6.27-7-server  (gcc version 4.3.2 (Ubuntu 4.3.2-1ubuntu11) ) \\ \hline
+IP-address	&	130.60.23.6 \\ \hline
+Webserver	&	Apache/2.2.9 (Ubuntu) \\ \hline
+SSH	&	OpenSSH 5.1p1  \\ \hline
+PHP	version	&	5.2.6-2ubuntu4 \\ \hline
+Perl version	&	 5.10.0 \\\hline
 \end{tabularx}
 \captionof{table}{General information about the server}
 \label{tab:server_information}
@@ -397,21 +385,21 @@ Perl version	&	 5.10.0 \\\bottomrule
 \newcolumntype{H}{>{\bf}p{8.5cm}}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 %\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
-\toprule
+ \hline
 \rowstyle{\bfseries}
-Address	&	Description \\\midrule
-\url{http://zool-miceminer.uzh.ch}	&	Main Site containing containing a lot of information about the project. \\\midrule
-\url{afp://zool-miceminer.uzh.ch}	&	\ac{AFP} access to the server. \\\midrule
-\url{smb://zool-miceminer.uzh.ch}	&	\ac{Samba} access to the server. \\\midrule
-\url{http://zool-miceminer.uzh.ch/phpmyadmin}	&	Web-based MySQL database administration tool (\href{http://www.phpmyadmin.net}{phpMyAdmin}). \\\midrule
-\url{http://zool-miceminer.uzh.ch/amfphp/browser/index.html}	&	\href{http://www.amfphp.org}{amfphp} service browser. \\\midrule
-\url{http://zool-miceminer.uzh.ch/webalizer}	&	Webserver traffic analyzer (\href{http://www.webalizer.org}{Webalizer}). \\\midrule
-\url{http://zool-miceminer.uzh.ch/miceminer/srcview/index.html}	&	Source of the \textit{miceminer} application. \\\midrule
-\url{http://zool-miceminer.uzh.ch/asdoc/index.html}	& \textit{Adobe Flex} \ac{API} documentation of the \textit{miceminer} application. \\\midrule
-\url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\\midrule
-\url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\\midrule
-\url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\\midrule
-\url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, etc.\\\bottomrule
+Address	&	Description \\ \hline
+\url{http://zool-miceminer.uzh.ch}	&	Main Site containing containing a lot of information about the project. \\ \hline
+\url{afp://zool-miceminer.uzh.ch}	&	\ac{AFP} access to the server. \\ \hline
+\url{smb://zool-miceminer.uzh.ch}	&	\ac{Samba} access to the server. \\ \hline
+\url{http://zool-miceminer.uzh.ch/phpmyadmin}	&	Web-based MySQL database administration tool (\href{http://www.phpmyadmin.net}{phpMyAdmin}). \\ \hline
+\url{http://zool-miceminer.uzh.ch/amfphp/browser/index.html}	&	\href{http://www.amfphp.org}{amfphp} service browser. \\ \hline
+\url{http://zool-miceminer.uzh.ch/webalizer}	&	Webserver traffic analyzer (\href{http://www.webalizer.org}{Webalizer}). \\ \hline
+\url{http://zool-miceminer.uzh.ch/miceminer/srcview/index.html}	&	Source of the \textit{miceminer} application. \\ \hline
+\url{http://zool-miceminer.uzh.ch/asdoc/index.html}	& \textit{Adobe Flex} \ac{API} documentation of the \textit{miceminer} application. \\ \hline
+\url{http://zool-miceminer.uzh.ch/conf/config.xml}	&	XML-based application wide configuration file (special login required). \\ \hline
+\url{http://zool-miceminer.uzh.ch/conf/micedata_create.sql}	&	The SQL which are used to create the database structure (special login required). \\ \hline
+\url{http://github.com/rico/miceminer-perl/tree/master}	& \ac{GIT} repository of the perl part of the application containing all the source code.\\ \hline
+\url{http://github.com/rico/miceminer-thesis/tree/master}	& GIT repository of this document including all the LaTeX source files, schemata, etc.\\\hline
 
 \end{tabularx}
 \captionof{table}{List of web addresses.}
@@ -432,29 +420,29 @@ Address	&	Description \\\midrule
 \newcolumntype{H}{>{\bf}p{5cm}}
 \renewcommand\arraystretch{1.2}% 1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
-\toprule
+ \hline
 \rowstyle{\bfseries}
-Directory	&	Description \\\midrule
-\lstinline|/var/www/mouse|	&	\textbf{Base directory} of the whole project relevant files and folders. \\\midrule
+Directory	&	Description \\ \hline
+\lstinline|/var/www/mouse|	&	\textbf{Base directory} of the whole project relevant files and folders. \\ \hline
 \\
 \hline
 \multicolumn{2}{|l|}{\textbf{All of the following files and directories are located within the base directory!}} \\
 \hline
-\\\midrule
-\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\\midrule
-\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\\midrule
-\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\\midrule
-\lstinline|data/|	&	Uploaded but not yet imported data files. \\\midrule
-\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\\midrule
-\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\\midrule
-\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\\midrule
-\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\\midrule
-\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\\midrule
-\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\\midrule
-\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\\midrule
-\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\\midrule
-\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\\midrule
-\lstinline|asdoc/|	&	Contains the \textit{miceminer} \ac{API} online documentation files. \\\bottomrule
+\\ \hline
+\lstinline|conf/conf.xml|	&	The main \ac{XML} configuration file. \\ \hline
+\lstinline|conf/micedata_create.sql|	&	The SQL file used to create the database structure. \\ \hline
+\lstinline|import_scripts//|	&	Contains the \ac{BASH} scripts to start the import cascade at a specific script (see \ref{app:import_schedule} on page \pageref{app:import_schedule} for details). \\ \hline
+\lstinline|data/|	&	Uploaded but not yet imported data files. \\ \hline
+\lstinline|data/cronlogs/|	&	Transcripts created the \ac{perl} scripts involved in the data import process. \\ \hline
+\lstinline|data/imported/|	&	After successful import of a data file into the database, the file is moved into this directory.  \\ \hline
+\lstinline|miceminer/|	&	The \textit{miceminer} application main files and folders.\\ \hline
+\lstinline|perl/cgi|	&	\ac{CGI} scripts written in \ac{perl} which are used by the \textit{miceminer} application. \\ \hline
+\lstinline|perl/extras/|	&	Perl scripts to control the data validity in the database and to compile data for some special analysis. The task of these scripts is usually explained in the header section of the file. \\ \hline
+\lstinline|perl/import/|	&	Contains the perl script involved in the data import and processing. \\ \hline
+\lstinline|perl/lib/|	&	The perl modules needed by all the import, reset and CGI scripts. \\ \hline
+\lstinline|perl/reset/|	&	Scripts to set back the data in the database, so that the import scripts can be rerun. \\ \hline
+\lstinline|amfphp/services/miceMiner/Mice.php|	&	\href{http://www.amfphp.org/}{amfphp} services file. \\ \hline
+\lstinline|asdoc/|	&	Contains the \textit{miceminer} \ac{API} online documentation files. \\\hline
 \end{tabularx}
 \captionof{table}{Overview of the important files and directories.}
 \label{tab:directories_and_files_overview}
@@ -473,14 +461,14 @@ To start the import cascade, a set of \ac{BASH} scripts is provided (see table \
 \newcolumntype{H}{>{\bf}p{5cm}}
 \renewcommand\arraystretch{1.2}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
-\toprule
+ \hline
 \rowstyle{\bfseries}
-BASH script	&	perl script \\\midrule
-\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\\midrule
-\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\\midrule
-\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\\midrule
-\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\\midrule
-\lstinline|counter_step_5.sh|	&	\lstinline|counter.pl| \\\midrule
+BASH script	&	perl script \\ \hline
+\lstinline|import_step_1.sh|	&	\lstinline|logimport.pl| \\ \hline
+\lstinline|direction_step_2.sh|	&	\lstinline|searchdir.pl| \\ \hline
+\lstinline|results_step_3.sh|	&	\lstinline|searchres.pl| \\ \hline
+\lstinline|meetings_step_4.sh|	&	\lstinline|meetings.pl| \\ \hline
+\lstinline|counter_step_5.sh|	&	\lstinline|counter.pl| \\ \hline
 \end{tabularx}
 \captionof{table}{Overview of the BASH scripts and the perl import script they start.}
 \label{tab:import_bash_scripts}
@@ -497,26 +485,27 @@ These scripts can be started manually from the command line or through a so call
 
 The above listing shows the actual \textit{cronjob} which starts the import cascade every day at 11~o'clock p.m. beginning with the \lstinline|logimport.pl| script.
 
-\subsection{Antenna adress conversions}
+\subsection{Antenna address conversions}
 \label{app:antenna_adress_conversions}
 List of the antenna address conversions as implemented in the \lstinline|logimport.pl| script to handle the badly addressed antennas.
 
+\begin{table}
 \begin{center} 
-
 \renewcommand\arraystretch{1.2}
 \begin{tabular}{+l^l}
-\toprule
-\textbf{original value}	&	\bfseries{after conversion} \\\midrule
-1A1	&	161 \\\midrule
-1A3	&	163 \\\midrule
-2A1	&	171 \\\midrule
-2A3	&	173 \\\midrule
-421	&	131 \\\midrule
-423	&	133 \\\midrule
+\rowstyle{\bfseries}
+original value	&	after conversion \\ \hline
+1A1	&	161 \\ 
+1A3	&	163 \\ 
+2A1	&	171 \\ 
+2A3	&	173 \\ 
+421	&	131 \\ 
+423	&	133 \\ 
 \end{tabular}
-\captionof{table}{Antenna adress conversions.}
+\captionof{table}{Antenna address conversions.}
 \label{tab:ant_adress_conversions}
 \end{center} 
+\end{table}
 
 % configuration XML
 \newpage
@@ -525,7 +514,7 @@ List of the antenna address conversions as implemented in the \lstinline|logimpo
 
 The application wide configuration is stored in a single \ac{XML} file. The different possibilities to access or view the file can be found in table \ref{tab:directories_and_files_overview} on page \pageref{tab:directories_and_files_overview} and table \ref{tab:web_addresses} on page \pageref{tab:web_addresses}.
 
-Please be careful on what you change. Never move the file to another location or delete it. Some minor knowledge in XML is advantageous to make changes in the configuration. It is strongly recommended to make a backup copy of the original file before applying changes. The file contains some explanations of what can be changed easely and what should not be changed.
+Please be careful on what you change. Never move the file to another location or delete it. Some minor knowledge in XML is advantageous to make changes in the configuration. It is strongly recommended to make a backup copy of the original file before applying changes. The file contains some explanations of what can be changed easily and what should not be changed.
 
 \numcodestyle
 \lstset{language=XML}    
@@ -543,11 +532,11 @@ The values for the connection are set in the following nodes:
 \newcolumntype{H}{>{\bf}p{2cm}}
 %\renewcommand\arraystretch{1.2}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
-\toprule
-\lstinline|<dbname>|	&	The name of the database. \\\midrule
-\lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\\midrule
-\lstinline|<dbpass>|	&	The password for the database user. \\\midrule
-\lstinline|<dbsocket>|	&	The MySQL socket. \\\midrule
+ \hline
+\lstinline|<dbname>|	&	The name of the database. \\ \hline
+\lstinline|<dbuser>|	&	A database user with appropriate privileges (all except the \lstinline|Grant| option) to access the database. \\ \hline
+\lstinline|<dbpass>|	&	The password for the database user. \\ \hline
+\lstinline|<dbsocket>|	&	The MySQL socket. \\ \hline
 \end{tabularx}
 \label{tab:database_config}
 \end{center}
@@ -565,11 +554,11 @@ The perl part of the XML configuration file.
 \newcolumntype{H}{>{\bf}p{3.7cm}}
 %\renewcommand\arraystretch{1.2}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
-\toprule
-\lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\\midrule
-\lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the databse configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\\midrule
-\lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beinning of the data import process. \\\midrule
-\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\\midrule
+ \hline
+\lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\ \hline
+\lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the database configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\ \hline
+\lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beginning of the data import process. \\ \hline
+\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ \hline
 \end{tabularx}
 \label{tab:perl_config}
 \end{center} 
@@ -599,7 +588,7 @@ The configuration parameter to set the minimal duration of meetings between two 
 \acro{DBMS}[Database Management System]{A Database Management System is computer software that manages databases \citep{wiki:dbms}.}
 \acro{RFID}[Radio-frequency identification]{Radio-frequency identification is the use of an object (typically referred to as an RFID tag) applied to or incorporated into a product, animal, or person for the purpose of identification and tracking using radio waves \citep{wiki:rfid}}
 \acro{SQL}[Structured Query Language]{The Structured Query Language (SQL) is a database computer language designed for the retrieval and management of data in relational database management systems.\citep{wiki:sql}}
-\acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one metre. \citep{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
+\acro{KJ}[KJ]{The Joule is a derived unit of energy and defined as the work done by a force of one newton travelling through a distance of one meter. \citep{wiki:joule}. 1 Kilo Joule = 10$^3$ Joule.}
 \acro{perl}[perl]{Perl is a high-level, general-purpose, interpreted programming language. \citep{wiki:perl}}
 \acro{PVC}[PVC]{Polyvinyl chloride is a widely used thermoplastic polymer \citep{wiki:pvc}}
 \acro{GUI}[Graphical User Interface]{A Graphical User Interface (GUI) is a type of user interface which allows people to interact with electronic devices such as computers [\ldots] by the use of images rather than text commands \citep{wiki:gui}}
@@ -624,13 +613,13 @@ The configuration parameter to set the minimal duration of meetings between two 
 \setlength{\parskip}{2ex}
 I would like to thank \ldots
 
-\textbf{Prof. Barbara K\"onig} for the great manner she supervised this work. She granted me a lot of independence and has always been available for a clarifying, interesting and inspring conversation,
+\textbf{Prof. Barbara K\"onig} for the great manner she supervised this work. She granted me a lot of independence and has always been available for a clarifying, interesting and inspiring conversation,
 
 \textbf{Nicolas Perrony} for teaming up with me, sharing his insights and providing a lot of helpful feedbacks. I wish him all the best for his PhD,
 
 the two reviewers \textbf{Thomas Netter} and \textbf{Christian Iten} for their great job in making this a much better thesis,
 
-\textbf{Marc Liyanage} for beeing the technical consultant and patient friend in times when computers just get on my nerves,
+\textbf{Marc Liyanage} for being the technical consultant and patient friend in times when computers just get on my nerves,
 \vspace{.2cm}
 
 the \textbf{Artificial Intelligence Lab} at the University of Z\"urich for granting me a perfect workplace in an inspiring ambiance,

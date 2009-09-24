@@ -38,17 +38,18 @@ Figure \ref{fig:interface_overview} shows a screenshot of the \textit{miceminer}
 From the \textit{Main menu}, the user can start the main components listed in table \ref{tab:main_components}. 
 
 \begin{table}
-\begin{center} 
+\begin{center}
+%spell 
 \newcolumntype{H}{>{\bf}p{2.5cm}}
 \renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
-\begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
+\begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}X^X}
 
-\toprule
+ \hline
 Browse Data	 & This is the core component of the application and contains the functionality to explore data within a given date range. \\
 Data Overview	&	Shows an overview about all the mice, (nest-) boxes, and antennas in the database. \\
 Data Analysis	&	Offers some simple data analysis and evaluation methods. \\
 Graph Data	 &	Interactive network representation of the data which shows possible social relationships within the mice community. \\
-Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\bottomrule
+Upload Files	&	Components to perform administrative tasks. This component is password protected and is only used by the system administrators. \\\hline
 \end{tabularx}
 \captionof{table}[\textit{miceminer} main menu]{Main components selectable from the \textit{Main menu} of the \textit{miceminer} application.}
 \label{tab:main_components}
@@ -225,7 +226,7 @@ To carry out home range analysis, the positions of the nestboxes within the barn
 
 The exported \textit{dBase} file includes all the information needed for a home range analyses using \textit{ArcGIS}\footnote{Visit \href{http://www.esri.com/software/arcgis/}{http://www.esri.com/software/arcgis/} for details about \textit{ArcGIS}.}, a software widely used for spatial analysis. 
 
-If the selected mouse has been recorded at more than two nestboxes during the selected period, we get a polygon spanned by the position of these nestboxes. This area can be calculated, and is called the minumum convex polygon (MCP). Figure \ref{fig:mcp} shows an example for an MCP calculated for a mouse that visited nestboxes 12 to 17. 
+If the selected mouse has been recorded at more than two nestboxes during the selected period, we get a polygon spanned by the position of these nestboxes. This area can be calculated, and is called the minimum convex polygon (MCP). Figure \ref{fig:mcp} shows an example for an MCP calculated for a mouse that visited nestboxes 12 to 17. 
 
 \begin{figure}[htpb]
 \begin{center}
@@ -245,14 +246,14 @@ Since this method of determining the home range is very sensitive to outliers, t
 \renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{.4\textwidth}{+>{\raggedright\arraybackslash}H^X}
 \rowstyle{\bfseries}
-Nestbox	& Data count \\\midrule
+Nestbox	& Data count \\ \hline
 12	&	44 \\
 13	&	62 \\
 14	&	80 \\
 15	&	52 \\
 16	&	12 \\
 17	&	4 \\
-\midrule
+\hline
 \rowstyle{\bfseries}
 Sum	&	254
 \end{tabularx}
@@ -272,7 +273,7 @@ The data count distribution is shown in the detail panel of the interface (label
 
 The component is used to figure out if two female mice spent more time together in a nestbox as expected. This is the case if two mice have some kind of a positive social relationship, for example caused by relatedness.
 
-Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for the period. The nestbox selector allows the user to restrict the calculation to a specifc nestbox.
+Figure \ref{fig:shared_pref} shows the component interface consisting of two controls to select the female mice and a chooser for the period. The nestbox selector allows the user to restrict the calculation to a specific nestbox.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -314,7 +315,7 @@ However, one result can already be presented.
  
 Olivia Dieser \citep{dieser:08} carried out a long-term analysis to investigate the territorial social behavior of the house mice population living in the barn (see section \ref{sec:shedsetup}). Data used in this work has been retrieved via the \textit{miceminer} application (see section \ref{subsubsec:monthbox}). Based on the data of 321 individual mice, collected over a period of 15 months, the influence of gender, season and time of day, on the usage of the nestboxes was analyzed. Furthermore, the seasonal influence on the composition of the mouse population has been determined. Refer to section \ref{subsec:collectspatialpos} for details about the artificial nestboxes and the system which is collecting the data.
  
-During summer, when the mating activity is high, more female than male mice lived in the barn, while in winter the ratio was about one. This result can be explained by the polygynandric mating behavior of the house mice. Only dominant male mice get access to a female for mating. Hence, subdominant male mice may be banished from the barn by the dominant mice. This hypothesis is supported by the finding that overlap of male terretories is less in summer than in winter. 
+During summer, when the mating activity is high, more female than male mice lived in the barn, while in winter the ratio was about one. This result can be explained by the polygynandric mating behavior of the house mice. Only dominant male mice get access to a female for mating. Hence, subdominant male mice may be banished from the barn by the dominant mice. This hypothesis is supported by the finding that overlap of male territories is less in summer than in winter. 
  
 Females, on the other hand, used more boxes during the summer, possibly to increase their chances of mating with many different males or to improve access to resources for weaned offspring.
  

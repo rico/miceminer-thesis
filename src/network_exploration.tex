@@ -67,9 +67,10 @@ The data underlying the visualization is usually represented as a so-called \tex
     \vspace{0pt}
 		\centering
 			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\renewcommand\arraystretch{1.2}
 			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
 			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
+				&	A	&	B	&	C	&	D \\\hline
 			A	&	0	&	1	&	0	&	1 \\
 			B	&	1	&	0	&	1	&	1 \\
 			C	&	0	&	1	&	0	&	0 \\
@@ -106,9 +107,10 @@ An adjacency matrix for an undirected network is diagonally symmetric since the 
     \vspace{0pt}
 		\centering
 			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\renewcommand\arraystretch{1.2}
 			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
 			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
+				&	A	&	B	&	C	&	D \\\hline
 			A	&	0	&	5	&	0	&	4 \\
 			B	&	5	&	0	&	1	&	2 \\
 			C	&	0	&	1	&	0	&	0 \\
@@ -144,9 +146,10 @@ Consequently, for a directed network as the one shown in figure \ref{fig:graph_d
     \captionsetup{width=.45\textwidth}
     \vspace{0pt}
 			\newcolumntype{H}{>{\bf}p{.5cm}}
+			\renewcommand\arraystretch{1.2}
 			\begin{tabularx}{.5\textwidth}{+H|^X^X^X^X}
 			\rowstyle{\bfseries}
-				&	A	&	B	&	C	&	D \\\midrule
+				&	A	&	B	&	C	&	D \\\hline
 			A	&	0	&	1	&	0	&	1 \\
 			B	&	0	&	0	&	1	&	1 \\
 			C	&	0	&	0	&	0	&	0 \\
@@ -272,7 +275,7 @@ This simple to calculate measure should not be underestimated. For example, if a
 \subsubsection{Node Betweenness}
 \label{subsubsec:node_between}
 
-The node betweenness, written as $B_i$, is calulated by searching for all the shortest paths between two nodes, $j$ and $k$ written as $g_{jk}$, that go through node $i$, written as $g_{jik}$.
+The node betweenness, written as $B_i$, is calculated by searching for all the shortest paths between two nodes, $j$ and $k$ written as $g_{jk}$, that go through node $i$, written as $g_{jik}$.
 
 \begin{equation}
 B_i =	\sum_{
@@ -283,7 +286,7 @@ B_i =	\sum_{
 
 For node \textbf{B} in the model network shown in figure \ref{fig:node_based_measures}, $B_i = 2.5$.
 
-Usually the betweeness values correlate with the degree. But sometimes, a node can play an important role as it connects two groups of nodes (sub-networks) within the network as shown in figure \ref{fig:broker}. The nodes colored red are called \textit{Brokers}\citep{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
+Usually the betweenness values correlate with the degree. But sometimes, a node can play an important role as it connects two groups of nodes (sub-networks) within the network as shown in figure \ref{fig:broker}. The nodes colored red are called \textit{Brokers}\citep{lusseau:04}, since all the shortest paths between the nodes from the sub-network on the left to the one on the right go through these nodes. In this example network, several nodes within the sub-networks have a higher degree than the \textit{Broker}, but play a minor role when information needs to be spread over the whole network.   
 
 \begin{figure}[htpb]
 \begin{center}
@@ -326,7 +329,7 @@ Since the data includes information about the strength of the relationship, whic
 
 Consequently, an undirected network with weighted edges is shown. The weight correlates to the sum of time two mice spend together over a period of time. Additionally, the node-based measures for the shown mice and information about the composition (different meetings) of the edges must be available.
 
-The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. In parallel with the data browing component, the user should be provided with a tidy interface presenting the main information and options:
+The aim was not to build a comprehensive tool for social network analysis, as there are already plenty of them available. Instead, the component is intended to provide methods to carry out data mining of the network or meeting data. In parallel with the data browsing component, the user should be provided with a tidy interface presenting the main information and options:
 
 \begin{mylist}
 \item The visualization of the network,
@@ -355,7 +358,7 @@ Pictured in figure \ref{fig:graph_data_interface_overview} is an overview of the
 
 The displayed network consist of the nodes, which are the mice, and weighted edges which denote the sum of the duration of all meetings during the selected period. Female mice are colored pink, male mice light blue, and unknown gender grey. 
 
-The network can be dragged over the whole area of the component. Additionally, the panels containing the controls and node based measures can be mimimized for an unhindered visual exploration.
+The network can be dragged over the whole area of the component. Additionally, the panels containing the controls and node based measures can be minimized for an unhindered visual exploration.
 
 Following a few details about the labeled interface parts in figure \ref{fig:graph_data_interface_overview}.
 
@@ -408,7 +411,7 @@ Since \textit{miceminer} does not offer a full set of tools for social network a
 
 Beside these evident possibilities, the software offers export options for a subsequent social network analysis in one of the major software packages used for this purpose.
 
-\textit{Pajek}\citep{pajek}, for instance, is a widley used free software to perform network analysis. An excellent book\citep{pajek:03}, which serves as a manual and a tutorial for the software, is available. A \textit{Pajek} project file (file extension \textit{.paj}) can be imported in \textit{statnet}\citep{statnet:03} as well. \textit{Statnet} is an \lstinline|R|\citep{r:05} library mainly designed for statistical modeling of network data.
+\textit{Pajek}\citep{pajek}, for instance, is a widely used free software to perform network analysis. An excellent book\citep{pajek:03}, which serves as a manual and a tutorial for the software, is available. A \textit{Pajek} project file (file extension \textit{.paj}) can be imported in \textit{statnet}\citep{statnet:03} as well. \textit{Statnet} is an \lstinline|R|\citep{r:05} library mainly designed for statistical modeling of network data.
 
 \textit{UCINET}\citep{ucinet:99}, which includes \textit{NetDraw} to visualize networks, is a commercial software which offers comprehensive methods for a social network analysis. The export file format offered by \textit{miceminer} can be imported to \textit{NetDraw}, wherefrom \textit{UCINET} can be started.
 
