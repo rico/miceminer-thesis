@@ -109,7 +109,7 @@ On the one hand, the software intends to offer a variety of ways and means to br
 \subsubsection{Data filtering}
 \label{sububsec:datafilter}
 
-The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes, and antennas). There are therefore various approaches to explore data. One researcher, for instance, could be interested in readings for a mouse at a given antenna, another one needs to know in which boxes a specific mouse has spent time. What both approaches have in common is that the data is usually analyzed over a specific period. Hence, the period is defined to be the starting point for every session (see figure~\ref{fig:date_period}).
+The database includes several different types of data (antenna readings, \textit{direction results}, \textit{stay results} and \textit{meeting results}) which can be allocated to the different system members (mice, boxes, and antennas). There are therefore various approaches to explore data. One researcher, for instance, could be interested in readings for a mouse at a given antenna, another one needs to know in which boxes a specific mouse has spent time. What both approaches have in common is that the data is usually analyzed over a specific period. Hence, the period is defined to be the starting point for every session (Fig.~\ref{fig:date_period}).
 
 \begin{figure}[htpb]
 \begin{center}
@@ -119,9 +119,9 @@ The database includes several different types of data (antenna readings, \textit
 \end{center}
 \end{figure}
 
-The user is then provided with three tables listing mice, boxes, and antennas, respectively, for which data in the selected period could be found. For each table element the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and some additional information about the item is displayed alongside (see figure~\ref{fig:data_overview_with_count}). These tables therefore present a data summary that can serve as a basis for the selection of interesting items. 
+The user is then provided with three tables listing mice, boxes, and antennas, respectively, for which data in the selected period could be found. For each table element the exact counts of antenna recordings, \textit{direction results}, \textit{stay results} and some additional information about the item is displayed alongside (Fig.~\ref{fig:data_overview_with_count}). These tables therefore present a data summary that can serve as a basis for the selection of interesting items. 
 
-\begin{figure}[htpb]
+\begin{figure}[!hbpt]
 \begin{center}
   \includegraphics[width=.66\textwidth]{assets/pdf/overview_list.pdf}
   \caption[Overview of the summarized data for mice, boxes and antennas within a date period]{Overview of the mice, boxes and antennas with the respective counts for a selected period. The number of \textit{direction results} are labeled \textbf{in/out count}, the \textit{stay results}  \textbf{stay count}.}
@@ -131,15 +131,15 @@ The user is then provided with three tables listing mice, boxes, and antennas, r
 
 With a click on the column header, the data gets sorted ascending or descending. Moreover, the data displayed in the tables can be constrained by setting filters. For each column a filter can be chosen from a central drop down menu. The menu content follows user focus, meaning that if the user switches to another table, the filter menu is updated to reflect the available filters for the selected table. The type of filter depends on the kind of data the column contains. For a column containing text values, for instance, the appropriate filter is a text box where the user can type in the text to search for. Figure \ref{fig:filter_types} shows an overview of the filter types.
 
-\begin{figure}[ht]
+\begin{figure}[htpb]
 \begin{center}
-  \includegraphics[width=\textwidth]{assets/pdf/filter_types.pdf}
+  \includegraphics[width=.75\textwidth]{assets/pdf/filter_types.pdf}
   \caption[Filter types]{The \textit{Fulltext} filter searches the column data for the typed text. The \textit{data count} and \textit{Period} filters allow to set a lower and an upper limit by using the two sliders.}
   \label{fig:filter_types}
 \end{center}
 \end{figure}
 
-Based on the tables with summarized data, the user can choose the mouse, box, or antenna for which to obtain detailed data. Two data retrieval options are available: the first one displays the data in the application, the second one exports the data directly to an \textit{Excel} worksheet (see figure~\ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Also, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. Export to \textit{Excel} overcomes this limitation.   
+Based on the tables with summarized data, the user can choose the mouse, box, or antenna for which to obtain detailed data. Two data retrieval options are available: the first one displays the data in the application, the second one exports the data directly to an \textit{Excel} worksheet (Fig.~\ref{fig:get_data_options}). The latter option has been added as it allows the user to quickly download the data and analyze it in another tool. Also, the \textit{miceminer} application fails to display more than approximately 20,000 rows of data. Export to \textit{Excel} overcomes this limitation.   
 
 \begin{figure}[htbp]
 \begin{center}
@@ -186,7 +186,7 @@ As in the table view, the chart view offers the same sorting, filter, and export
 \end{center}
 \end{figure}
 
-The chart view for the actual results of a mouse, box, or antenna is different, because the researchers are usually interested in the distribution of the results. Therefore, the data is grouped on values in a column and displayed as a pie chart (see figure~\ref{fig:pie_chart_for_mouse}). Accordingly, \textit{Excel} export behavior changes as well. Other than in the tabular view, not the list, but the grouped data underlying the chart is exported.
+The chart view for the actual results of a mouse, box, or antenna is different, because the researchers are usually interested in the distribution of the results. Therefore, the data is grouped on values in a column and displayed as a pie chart (Fig.~\ref{fig:pie_chart_for_mouse}). Accordingly, \textit{Excel} export behavior changes as well. Other than in the tabular view, not the list, but the grouped data underlying the chart is exported.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -236,7 +236,13 @@ If the selected mouse has been recorded at more than two nestboxes during the se
  % sensitive <> sensible, check dictionnary -tnetter 11/09/2009 14:56
  % Actually the same in german. But in german, the distinction is not made that clear. However, in this context, sensitive is truly better. 
 Since this method of determining the home range is very sensitive to outliers, the MCP can be limited to the nestboxes with an adequate number of datasets. This is accomplished by selecting an appropriate percentage value for the MCP calculation. If the value is set to 100\%, all the nestboxes, independent of their data count, are included in the calculation. For a value of 90\%, the nestbox must have a data count which is equal or greater than 10\% of the sum of the data count for all the nestboxes. The following example which is based on the situation shown in figure~\ref{fig:mcp} should clarify the method.
- 
+
+
+% example <> exemplary, this is quite subtle, check dictionnary -tnetter 11/09/2009 14:58
+% In the dictionary it sais:  exemplary -> serving as an example, instance, or illustration. I don't see what was the problem here. Maybe to subtle for me.
+
+The nestboxes and corresponding data counts for this example are listed in table \ref{tab:mcp_example}. With the threshold set to 90\%, a nestbox must have at least a data count of $25.4$ (10\% of 254). Nestboxes 16 and 17 are below this value and will be excluded from the calculation. Considering figure~\ref{fig:mcp}, one can see how the MCP, and therefore the home range, diminishes strikingly due to this limitation.
+
 \begin{center} 
 \renewcommand\arraystretch{1.2}
 \begin{tabular}{+l^l}
@@ -256,12 +262,7 @@ Sum	&	254 \\
 \end{tabular}
 \captionof{table}[Sample distribution of data counts to the nestboxes]{Representative distribution of the data counts for the nestboxes 12 to 17.}
 \label{tab:mcp_example}
-\end{center}
-
-% example <> exemplary, this is quite subtle, check dictionnary -tnetter 11/09/2009 14:58
-% In the dictionary it sais:  exemplary -> serving as an example, instance, or illustration. I don't see what was the problem here. Maybe to subtle for me.
-
-With the threshold set to 90\%, a nestbox must have at least a data count of $25.4$ (10\% of 254). Nestboxes 16 and 17 are below this value and will be excluded from the calculation. Considering figure~\ref{fig:mcp}, one can see how the MCP, and therefore the home range, diminishes strikingly due to this limitation. 
+\end{center} 
 
 The data count distribution is shown in the detail panel of the interface (labeled in figure~\ref{fig:home_range}), to simplify the selection of the right percentage value.     
 

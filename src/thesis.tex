@@ -22,15 +22,17 @@
 \usepackage{needspace}
 
 % Font
-\usepackage{times} % uncomment for sans serif
-%\usepackage{assets/fonts/garamond/garamond} % uncomment for  serif
-\usepackage[T1]{fontenc} 
+%\usepackage{times} % uncomment for sans serif
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{assets/fonts/garamond/garamond} % uncomment for  serif 
 \usepackage[english]{babel}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[table]{xcolor}
+%\usepackage{parskip}
 
 
-\renewcommand{\familydefault}{\sfdefault} % uncomment for sans serif / comment for serif
+%\renewcommand{\familydefault}{\sfdefault} % uncomment for sans serif / comment for serif
 
 % captions
 \usepackage[format=plain,font=small,labelfont=bf,labelsep=period]{caption}
@@ -38,6 +40,8 @@
 % orientation
 \usepackage{rotating}
 \usepackage{lscape}
+\usepackage{hvfloat}
+
 
 %math
 \usepackage{amsmath}
@@ -299,16 +303,15 @@
 % Tables and schemata
 %---------------------------------------------------------------------------------------------------------
 \newpage
+
 \section{Tables \& schemata}
 \label{sec:tables_schmemata}
-\begin{figure}[htpb]
-\begin{center}
-  \includegraphics[width=\textwidth]{assets/pdf/application_design.pdf}
-  \caption[Application design]{Overview of the application design.}
-  \label{fig:app_design}
-\end{center}
-\end{figure}
 
+\vspace*{\fill}
+\hvFloat[rotAngle=90,nonFloat=true]{figure}
+  {\includegraphics[width=.88\textheight]{assets/pdf/application_design.pdf}}
+  {Overview of the application design.}{fig:app_design}
+\vspace*{\fill}
 
 % Micedata database schema
 \begin{sidewaysfigure}
@@ -342,21 +345,16 @@ res     	& - & - & - & \textit{Stay result} is of typ \textbf{3} & \textit{Stay 
   \label{fig:data_processing_cheatsheet}
 \end{sidewaysfigure}
 
-\newpage
-
 % Server information 
 \subsection{Server information}
 \label{subsec:server_information}
-
 \subsubsection{General information}
 \label{subsubsec:general_sys_info}
-
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{4cm}}
 \rowcolors{1}{lightgrey}{white}
-\renewcommand\arraystretch{1.5}% (MyValue=1.0 is for standard spacing)
+\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \begin{tabularx}{\textwidth}{+>{\raggedleft\arraybackslash}H^X}
-
 Model	& 	Dell Inspiron 530 \\ 
 Processor	&	Intel(R) Core(TM)2 Duo CPU E7200  @ 2.53GHz, 2525 MHz \\
 Memory (RAM)	&	2 GB \\ 
@@ -380,7 +378,7 @@ Perl version	&	 5.10.0 \\
 \begin{center}
 \footnotesize 
 \newcolumntype{H}{>{\bf}p{8.5cm}}
-\renewcommand\arraystretch{1.9}% (MyValue=1.0 is for standard spacing)
+\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
 \rowcolors{1}{white}{lightgrey}
 \begin{tabularx}{\textwidth}{+>{\raggedright\arraybackslash}H^X}
 %\renewcommand\arraystretch{1.2}% (MyValue=1.0 is for standard spacing)
@@ -404,8 +402,6 @@ Address	&	Description \\ \hline
 \label{tab:web_addresses}
 %\end{sidewaystable}
 \end{center}
-
-\newpage
 
 % Files and Directories
 \subsubsection{Files \& directories overview}
@@ -525,7 +521,6 @@ The following listing shows the part of the XML configuration file responsible f
 
 \lstinputlisting[firstnumber=25,firstline=25, lastline=43, caption=Database configuration, label=lst:database_config]{assets/code/config.xml}
 
-
 \begin{center} 
 \newcolumntype{H}{>{\bf}p{2cm}}
 \renewcommand\arraystretch{2}
@@ -558,7 +553,7 @@ The perl part of the XML configuration file.
 \lstinline|<scriptsFolder>|	&	The directory containing the perl \textit{Import Scripts} (see section \ref{sec:dataproc} on page \pageref{sec:dataproc} for details). \\ 
 \lstinline|<dbBackupUser>|	&	A MySQL user with \lstinline|SELECT| and \lstinline|LOCK TABLES| privileges on the database set as the \lstinline|<dbname>| value in the database configuration (see appendix \ref{app:configdb} on page \pageref{app:configdb}). \\ 
 \lstinline|<dbBackupDirectory>|	&	The directory in which the database backups are saved which are created at the beginning of the data import process. \\ 
-\lstinline|<antennaInterval>|	&	 umber of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ 
+\lstinline|<antennaInterval>|	&	 Number of seconds that are allowed to elapse between the transponder readings at the inner and the outer antenna of box, to form a valid \textit{direction result}.\\ 
 \end{tabularx}
 \label{tab:perl_config}
 \end{center} 
@@ -612,24 +607,33 @@ The configuration parameter to set the minimal duration of meetings between two 
 \setlength{\parindent}{0pt} 
 \setlength{\parskip}{2ex}
 I would like to thank \ldots
+\vspace{.2cm}
 
 \textbf{Prof. Barbara K\"onig} for the great manner she supervised this work. She granted me a lot of independence and has always been available for a clarifying, interesting and inspiring conversation,
+\vspace{.2cm}
 
-The reviewers \textbf{Thomas Netter}, \textbf{Christian Iten} and \textbf{Kaspar M\"uller} for their great job in making this a much better thesis,
+The main reviewer of the thesis, \textbf{Dr. Thomas Netter}. He contributed numerous corrections and comments and never gave up to improve my writing style. Furthermore, he maintained the server that hosted the initial version of \textit{miceminer},
+\vspace{.2cm} 
+
+The reviewers \textbf{Christian Iten} and \textbf{Kaspar M\"uller} for their great job in making this a much better thesis,
+\vspace{.2cm}
 
 \textbf{Marc Liyanage} for being the technical consultant and patient friend in times when computers just get on my nerves,
 \vspace{.2cm}
 
-The \textbf{Artificial Intelligence Lab} at the University of Z\"urich for granting me a perfect workplace in an inspiring ambiance,
+The University of Z\"urich's Artificial Intelligence Laboratory, led by Prof. Rolf Pfeifer, for granting me a perfect workplace in an inspiring ambiance,
 \vspace{.2cm}
 
 \textbf{Nicolas Perrony} for teaming up with me, sharing his insights and providing a lot of helpful feedbacks. I wish him all the best for his PhD,
+\vspace{.2cm}
 
 \textbf{All the developers} who created the open source software used in this project, and spent their time to answer my questions,
+\vspace{.2cm}
 
-my \textbf{family}, \textbf{friends} and especially my \textbf{partner} for the support,
+my \textbf{family}, \textbf{friends} and especially my \textbf{partner} for their support,
+\vspace{.2cm}
 
-\textbf{J\"urg Schweizer} \& \textbf{Erika M\"uller} for being great friends and letting me live at such a wonderful place.
+\textbf{J\"urg Schweizer} \& \textbf{Erika M\"uller} for being great friends and allow me to live at such a wonderful place.
 
 %---------------------------------------------------------------------------------------------------------
 % End Document
