@@ -1,0 +1,5 @@
+The research group in animal behavior at the University of Zürich is generally interested in the complex social behavior of the house mice. Mainly the influence of the social partner choice, other then mating, onto the fitness of the female mice, is in the focus of the studies. Current research is based on a large data set of spatial position data of house mice collected by an automated system.
+
+In the field of computer science, the process of scanning large databases for potentially interesting sets is called data mining. The first part of the talk is dedicated to the software developed to assist researchers in this process.
+
+Furthermore, social network data could be obtained processing the original data set. In the second part, a social network analysis of this data is presented .
